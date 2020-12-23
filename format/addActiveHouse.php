@@ -373,11 +373,11 @@ if(isset($data["image"]))
             'thumnail' => $thumnail,
             'userid' => $img["userid"]
         );
-        $image_id = $connector->insert($prefix.'image', $obj_list);
+        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
         array_push($insert,array(
             'image'=>$obj_list
         ));
-        $data["image"][$i] = $image_id;
+        $data["image"][$i] = $obj_list["id"];
     }
 }
 

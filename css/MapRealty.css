@@ -556,6 +556,7 @@ body.responsive-search-page .search-page-container .list-card-save {
 
 .favorite_border.material-icons {
     font-size: 34px;
+    color: white;
 }
 
 .responsive-mini-bubble {
@@ -1122,11 +1123,11 @@ summary {
     display: inline;
 }
 
-.zsg-h2.zsg-separator{
+.zsg-h2.zsg-separator {
     margin: 0;
 }
 
-.zsg-h2.zsg-separator{
+.zsg-h2.zsg-separator {
     color: inherit;
 }
 
@@ -1175,7 +1176,7 @@ h3 {
 .zsg-subfooter-header,
 .zsg-table .zsg-table-th,
 .zsg-table th,
-.zsg-toolbar_labeled .zsg-toolbar-label{
+.zsg-toolbar_labeled .zsg-toolbar-label {
     display: block;
 }
 

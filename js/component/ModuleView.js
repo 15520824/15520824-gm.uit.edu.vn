@@ -646,7 +646,11 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     if (header.isSaveTheme) {
         result.isSaveTheme = header.isSaveTheme;
         if (getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token) != undefined) {
-            header = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token));
+            var last = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token));
+            for (var param in last) {
+                if (typeof header[param] == 'object' && typeof header[param] == 'object')
+                    Object.assign(header[param], last[param])
+            }
             result.arrSortHeader = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_sort" + window.token));
         }
     }
@@ -3026,7 +3030,6 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
         if (result.header[j].functionClickAll !== undefined)
             functionClick = result.header[j].functionClickAll;
     }
-
     var functionChange = undefined;
     if (data.functionChange !== undefined)
         functionChange = data.functionChange;

@@ -923,14 +923,14 @@ MapView.prototype.removeMapPolygonAround = function(cellLat, cellLng) {
 
 MapView.prototype.addMapHouse = function() {
     var self = this;
-    if(this.checkAddress == undefined)
-    this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
-    if(this.checkWard == undefined)
-    self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
-    if(this.checkDistrict == undefined)
-    self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-    if(this.checkState == undefined)
-    self.checkState = moduleDatabase.getModule("states").getLibary("id");
+    if (this.checkAddress == undefined)
+        this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+    if (this.checkWard == undefined)
+        self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    if (this.checkDistrict == undefined)
+        self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    if (this.checkState == undefined)
+        self.checkState = moduleDatabase.getModule("states").getLibary("id");
     if (this.checkHouse === undefined)
         this.checkHouse = [];
     if (this.currentHouse === undefined)
@@ -964,7 +964,7 @@ MapView.prototype.addMapHouse = function() {
                     { lng: { operator: ">", value: bottomLeft[1] } }, "&&", { lng: { operator: "<", value: topRight[1] } }
                 ];
 
-                if (self.currentMarker && self.currentMarker.data !== undefined) {
+                if (self.currentMarker && self.currentMarker.data !== undefined && self.currentMarker.data.id !== undefined) {
                     queryData = [queryData];
                     queryData.push("&&");
                     queryData.push({ id: { operator: "!=", value: self.currentMarker.data.id } })
@@ -975,7 +975,7 @@ MapView.prototype.addMapHouse = function() {
                 }
                 moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
                     function(data) {
-                        var isAvailable,districtid,stateid;
+                        var isAvailable, districtid, stateid;
                         for (var i = 0; i < data.length; i++) {
                             isAvailable = false;
                             Loop: for (var param in moduleDatabase.checkPermission) {
@@ -1004,7 +1004,7 @@ MapView.prototype.addMapHouse = function() {
                                     isAvailable = true;
                                 }
                             }
-                            if(isAvailable == false)
+                            if (isAvailable == false)
                                 continue;
                             self.addOrtherMarker(data[i]);
                         }
@@ -1018,26 +1018,20 @@ MapView.prototype.addMapHouse = function() {
     });
 }
 
-MapView.prototype.setLabelContent = function(isPrice)
-{
+MapView.prototype.setLabelContent = function(isPrice) {
     this.isPrice = isPrice;
     var data;
     var labelContent;
     var label;
-    for(var i =0;i<this.currentHouse.length;i++)
-    {
+    for (var i = 0; i < this.currentHouse.length; i++) {
         data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
-        if(data)
-        {
-            for(var j = 0;j<data.length;j++)
-            {
-                if(this.isPrice == true)
-                {
+        if (data) {
+            for (var j = 0; j < data.length; j++) {
+                if (this.isPrice == true) {
                     label = data[j].data.price + " tỉ";
-                }else if(this.isPrice == false)
+                } else if (this.isPrice == false)
                     label = ((parseInt(data[j].data.pricerent) / 1000000) + " triệu");
-                else
-                {
+                else {
                     if (parseInt(data[j].data.salestatus / 10) == 1 ? true : false)
                         label = data[j].data.price + " tỉ";
                     else if (parseInt(data[j].data.salestatus % 10) == 1 ? true : false)
@@ -1068,22 +1062,16 @@ MapView.prototype.setLabelContent = function(isPrice)
     }
 }
 
-MapView.prototype.setGeneralOperator = function(WHERE)
-{
+MapView.prototype.setGeneralOperator = function(WHERE) {
     var data;
     this.WHERE = WHERE;
-    for(var i =0;i<this.currentHouse.length;i++)
-    {
+    for (var i = 0; i < this.currentHouse.length; i++) {
         data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
-        if(data)
-        {
-            for(var j = 0;j<data.length;j++)
-            {
-                if(generalOperator(data[j].data,WHERE) == false)
-                {
+        if (data) {
+            for (var j = 0; j < data.length; j++) {
+                if (generalOperator(data[j].data, WHERE) == false) {
                     data[j].setMap(null);
-                }else
-                {
+                } else {
                     data[j].setMap(this.map);
                 }
             }
@@ -1100,17 +1088,14 @@ MapView.prototype.addOrtherMarker = function(data) {
         var arr = this.checkHouse[position[0]][position[1]];
         for (var j = 0; j < arr.length; j++) {
             if (arr[j].getMap() === null) {
-                if(self.WHERE)
-                {
-                    if(generalOperator(arr[j].data,self.WHERE) == false)
-                    arr[j].setMap(null);
-                    else
-                    {
+                if (self.WHERE) {
+                    if (generalOperator(arr[j].data, self.WHERE) == false)
+                        arr[j].setMap(null);
+                    else {
                         arr[j].setMap(self.map);
-                        if(this.isPrice == true)
-                        {
+                        if (this.isPrice == true) {
                             label = arr[j].data.price + " tỉ";
-                        }else if(this.isPrice == false)
+                        } else if (this.isPrice == false)
                             label = ((parseInt(arr[j].data.pricerent) / 1000000) + " triệu");
                         else if (parseInt(arr[j].data.salestatus / 10) == 1 ? true : false)
                             label = arr[j].data.price + " tỉ";
@@ -1120,25 +1105,25 @@ MapView.prototype.addOrtherMarker = function(data) {
                             label = arr[j].data.price + " tỉ";
                         else if (arr[j].data.pricerent > 0)
                             label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
-                        }
-                        var labelContent = _({
-                            tag: "div",
-                            child: [{
-                                    tag: "div",
-                                    class: "arrow",
-                                },
-                                {
-                                    tag: "div",
-                                    class: "inner",
-                                    props: {
-                                        innerHTML: label
-                                    }
+                    }
+                    var labelContent = _({
+                        tag: "div",
+                        child: [{
+                                tag: "div",
+                                class: "arrow",
+                            },
+                            {
+                                tag: "div",
+                                class: "inner",
+                                props: {
+                                    innerHTML: label
                                 }
-                            ]
-                        })
-                        arr[j].set('labelContent', labelContent);
-                }else
-                arr[j].setMap(self.map);
+                            }
+                        ]
+                    })
+                    arr[j].set('labelContent', labelContent);
+                } else
+                    arr[j].setMap(self.map);
                 this.currentHouse.push(position);
             }
         }
@@ -1159,10 +1144,9 @@ MapView.prototype.addOrtherMarker = function(data) {
             if (checkAddress[data.addressid])
                 label = checkAddress[data.addressid].addressnumber;
         } else if (self.isShowAddress === false) {
-            if(this.isPrice == true)
-            {
+            if (this.isPrice == true) {
                 label = data.price + " tỉ";
-            }else if(this.isPrice == false)
+            } else if (this.isPrice == false)
                 label = ((parseInt(data.pricerent) / 1000000) + " triệu");
             else if (parseInt(data.salestatus / 10) == 1 ? true : false)
                 label = data.price + " tỉ";
@@ -1198,14 +1182,13 @@ MapView.prototype.addOrtherMarker = function(data) {
             labelClass: "labels",
             zIndex: 2,
         });
-        if(self.WHERE)
-        {
-            if(generalOperator(data,self.WHERE) == false)
-            marker.setMap(null);
+        if (self.WHERE) {
+            if (generalOperator(data, self.WHERE) == false)
+                marker.setMap(null);
             else
+                marker.setMap(self.map);
+        } else
             marker.setMap(self.map);
-        }else
-        marker.setMap(self.map);
         this.currentHouse.push(position);
         var imageHover = {
             url: "./assets/images/marker-green.png",

@@ -195,37 +195,29 @@ MapRealty.prototype.getView = function() {
         this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getLibary("id");
         var selectStatus = _({
             tag: "selectmenu",
-            on:{
-                change:function()
-                {
+            on: {
+                change: function() {
                     var x = JSON.parse(this.value);
                     var query;
-                    if(Array.isArray(x))
-                    {
-                        if(x.length == 2)
-                        query=["(",{salestatus:x[0]},"||",{salestatus:x[1]},")"];
+                    if (Array.isArray(x)) {
+                        if (x.length == 2)
+                            query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, ")"];
                         else
-                        query=["(",{salestatus:x[0]},"||",{salestatus:x[1]},"||",{salestatus:x[2]},")"];
-                    }else if(this.value == -1)
-                    {
+                            query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, "||", { salestatus: x[2] }, ")"];
+                    } else if (this.value == -1) {
                         query = [];
-                    }else
-                        query=[{salestatus:x}];
-                    if(this.value == "[10,11]"||this.value == "0")
-                    {
+                    } else
+                        query = [{ salestatus: x }];
+                    if (this.value == "[10,11]" || this.value == "0") {
                         self.mapView.setLabelContent(true);
-                    }else if(this.value == "[1,11]")
-                    {
+                    } else if (this.value == "[1,11]") {
                         self.mapView.setLabelContent(false);
-                    }
-                    else if(this.value == "[1,10,11]")
-                    {
+                    } else if (this.value == "[1,10,11]") {
                         self.mapView.setLabelContent()
                     }
                     self.statusQuery = query;
                     var queryAll = self.statusQuery;
-                    if(self.priceQuery&&self.priceQuery.length>0)
-                    {
+                    if (self.priceQuery && self.priceQuery.length > 0) {
                         self.lowprice.value = "";
                         self.highprice.value = "";
                         self.priceQuery = undefined;
@@ -235,7 +227,7 @@ MapRealty.prototype.getView = function() {
                 }
             },
             props: {
-                value:"[10,11]",
+                value: "[10,11]",
                 items: [
                     // {
                     //     text: "Tất cả",
@@ -317,26 +309,22 @@ MapRealty.prototype.getView = function() {
                                                         this.value = reFormatNumber(this.value);
                                                         var queryAll = [];
                                                         var query = [];
-                                                        if(self.mapView.isPrice == true)
-                                                        {
-                                                            if(self.lowprice.value!="")
-                                                            query = [{price:{ operator: ">=", value: parseInt(self.lowprice.value)/1000000000 }}];
-                                                            if(self.highprice.value!="")
-                                                            query.push({price:{ operator: "<=", value: parseInt(self.highprice.value)/1000000000 }});
-                                                        }else  if(self.mapView.isPrice == false)
-                                                        {
-                                                            if(self.lowprice.value!="")
-                                                            query.push({pricerent:{ operator: ">=", value: parseInt(self.lowprice.value) }});
-                                                            if(self.highprice.value!="")
-                                                            query.push({pricerent:{ operator: "<", value: parseInt(self.highprice.value) }});
+                                                        if (self.mapView.isPrice == true) {
+                                                            if (self.lowprice.value != "")
+                                                                query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
+                                                            if (self.highprice.value != "")
+                                                                query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
+                                                        } else if (self.mapView.isPrice == false) {
+                                                            if (self.lowprice.value != "")
+                                                                query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
+                                                            if (self.highprice.value != "")
+                                                                query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
                                                         }
-                                                        if(query.length == 2)
-                                                        {
-                                                            query.splice(1,0,"&&");
+                                                        if (query.length == 2) {
+                                                            query.splice(1, 0, "&&");
                                                         }
                                                         self.priceQuery = query;
-                                                        if(self.statusQuery&&self.statusQuery.length>0)
-                                                        {
+                                                        if (self.statusQuery && self.statusQuery.length > 0) {
                                                             queryAll = self.statusQuery.concat("&&");
                                                         }
                                                         queryAll = queryAll.concat(self.priceQuery);
@@ -359,26 +347,22 @@ MapRealty.prototype.getView = function() {
                                                         this.value = reFormatNumber(this.value);
                                                         var queryAll = [];
                                                         var query = [];
-                                                        if(self.mapView.isPrice == true)
-                                                        {
-                                                            if(self.lowprice.value!="")
-                                                            query = [{price:{ operator: ">=", value: parseInt(self.lowprice.value)/1000000000 }}];
-                                                            if(self.highprice.value!="")
-                                                            query.push({price:{ operator: "<=", value: parseInt(self.highprice.value)/1000000000 }});
-                                                        }else  if(self.mapView.isPrice == false)
-                                                        {
-                                                            if(self.lowprice.value!="")
-                                                            query.push({pricerent:{ operator: ">=", value: parseInt(self.lowprice.value) }});
-                                                            if(self.highprice.value!="")
-                                                            query.push({pricerent:{ operator: "<", value: parseInt(self.highprice.value) }});
+                                                        if (self.mapView.isPrice == true) {
+                                                            if (self.lowprice.value != "")
+                                                                query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
+                                                            if (self.highprice.value != "")
+                                                                query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
+                                                        } else if (self.mapView.isPrice == false) {
+                                                            if (self.lowprice.value != "")
+                                                                query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
+                                                            if (self.highprice.value != "")
+                                                                query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
                                                         }
-                                                        if(query.length == 2)
-                                                        {
-                                                            query.splice(1,0,"&&");
+                                                        if (query.length == 2) {
+                                                            query.splice(1, 0, "&&");
                                                         }
                                                         self.priceQuery = query;
-                                                        if(self.statusQuery&&self.statusQuery.length>0)
-                                                        {
+                                                        if (self.statusQuery && self.statusQuery.length > 0) {
                                                             queryAll = self.statusQuery.concat("&&");
                                                         }
                                                         queryAll = queryAll.concat(self.priceQuery);
@@ -390,7 +374,8 @@ MapRealty.prototype.getView = function() {
                                     }
                                 ]
                             }]
-                    }]
+                        }
+                    ]
                 },
                 this.searchControl,
                 {
@@ -408,8 +393,8 @@ MapRealty.prototype.getView = function() {
             ]
         }));
         selectStatus.emit("change");
-        self.lowprice = $(".pizo-list-realty-main-search-control-row-price-input-low",self.$view);
-        self.highprice = $(".pizo-list-realty-main-search-control-row-price-input-high",self.$view);
+        self.lowprice = $(".pizo-list-realty-main-search-control-row-price-input-low", self.$view);
+        self.highprice = $(".pizo-list-realty-main-search-control-row-price-input-high", self.$view);
     }.bind(this))
 
     moduleDatabase.getModule("users").load().then(function(value) {
@@ -419,7 +404,7 @@ MapRealty.prototype.getView = function() {
     moduleDatabase.getModule("contacts").load().then(function(value) {
         self.formatDataRowContact(value);
     })
-    
+
     return this.$view;
 }
 
@@ -515,9 +500,9 @@ MapRealty.prototype.modalRealty = function() {
             cellLng = this.mapView.currentHouse[i][1];
             arrTemp = this.mapView.checkHouse[cellLat][cellLng];
             for (var j = 0; j < arrTemp.length; j++) {
-                if (arrTemp[j].getMap()!=null) {
+                if (arrTemp[j].getMap() != null) {
                     value.push(arrTemp[j]);
-                } 
+                }
                 k++;
             }
         }
@@ -550,12 +535,11 @@ MapRealty.prototype.modalRealty = function() {
                 moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
                     self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
                     for (var i = 0; i < value.length; i++) {
-                        if(container.check[value[i].data.id]==undefined)
-                        {
+                        if (container.check[value[i].data.id] == undefined) {
                             var x = this.itemMap(value[i]);
                             container.check[value[i].data.id] = x;
-                        }else
-                        var x = container.check[value[i].data.id];
+                        } else
+                            var x = container.check[value[i].data.id];
                         x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
 
                         container.appendChild(x);
@@ -916,13 +900,11 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                             this.check = undefined;
                                                                                             this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite_border";
                                                                                             var loading = new loadingWheel();
-                                                                                            moduleDatabase.getModule("favourite").delete({userid:window.userid,houseid:data.id}).then(function(){
+                                                                                            moduleDatabase.getModule("favourite").delete({ userid: window.userid, houseid: data.id }).then(function() {
                                                                                                 loading.disable();
-                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value){
-                                                                                                    if(moduleDatabase.stackUpdateFavourite)
-                                                                                                    {
-                                                                                                        for(var i = 0;i<moduleDatabase.stackUpdateFavourite.length;i++)
-                                                                                                        {
+                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value) {
+                                                                                                    if (moduleDatabase.stackUpdateFavourite) {
+                                                                                                        for (var i = 0; i < moduleDatabase.stackUpdateFavourite.length; i++) {
                                                                                                             moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
                                                                                                         }
                                                                                                     }
@@ -932,13 +914,11 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                             this.check = true;
                                                                                             this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite";
                                                                                             var loading = new loadingWheel();
-                                                                                            moduleDatabase.getModule("favourite").add({userid:window.userid,houseid:data.id}).then(function(){
+                                                                                            moduleDatabase.getModule("favourite").add({ userid: window.userid, houseid: data.id }).then(function() {
                                                                                                 loading.disable();
-                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value){
-                                                                                                    if(moduleDatabase.stackUpdateFavourite)
-                                                                                                    {
-                                                                                                        for(var i = 0;i<moduleDatabase.stackUpdateFavourite.length;i++)
-                                                                                                        {
+                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value) {
+                                                                                                    if (moduleDatabase.stackUpdateFavourite) {
+                                                                                                        for (var i = 0; i < moduleDatabase.stackUpdateFavourite.length; i++) {
                                                                                                             moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
                                                                                                         }
                                                                                                     }
@@ -1379,10 +1359,9 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         } else
             requestEdit.style.display = "none";
     }
-    var checkButton = $(".sc-bdVaJa.gpVNOz",modal);
+    var checkButton = $(".sc-bdVaJa.gpVNOz", modal);
     var checkHouseId = moduleDatabase.getModule("favourite").getLibary("houseid");
-    if(checkHouseId[data.id])
-    {
+    if (checkHouseId[data.id]) {
         checkButton.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite";
         checkButton.check = true;
     }
@@ -3167,6 +3146,40 @@ MapRealty.prototype.itemMap = function(marker) {
                     {
                         tag: "button",
                         class: "list-card-save",
+                        on: {
+                            click: function(event) {
+                                event.stopPropagation();
+                                if (this.check) {
+                                    this.check = undefined;
+                                    this.childNodes[0].innerHTML = "favorite_border";
+                                    var loading = new loadingWheel();
+                                    moduleDatabase.getModule("favourite").delete({ userid: window.userid, houseid: data.id }).then(function() {
+                                        loading.disable();
+                                        moduleDatabase.getModule("activehouses").load().then(function(value) {
+                                            if (moduleDatabase.stackUpdateFavourite) {
+                                                for (var i = 0; i < moduleDatabase.stackUpdateFavourite.length; i++) {
+                                                    moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
+                                                }
+                                            }
+                                        })
+                                    });
+                                } else {
+                                    this.check = true;
+                                    this.childNodes[0].innerHTML = "favorite";
+                                    var loading = new loadingWheel();
+                                    moduleDatabase.getModule("favourite").add({ userid: window.userid, houseid: data.id }).then(function() {
+                                        loading.disable();
+                                        moduleDatabase.getModule("activehouses").load().then(function(value) {
+                                            if (moduleDatabase.stackUpdateFavourite) {
+                                                for (var i = 0; i < moduleDatabase.stackUpdateFavourite.length; i++) {
+                                                    moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
+                                                }
+                                            }
+                                        })
+                                    });
+                                }
+                            }
+                        },
                         child: [{
                             tag: "i",
                             class: ["favorite_border", "material-icons"],
@@ -3179,6 +3192,12 @@ MapRealty.prototype.itemMap = function(marker) {
             }
         ]
     })
+    var checkButton = $('.list-card-save', temp);
+    var checkHouseId = moduleDatabase.getModule("favourite").getLibary("houseid");
+    if (checkHouseId[data.id]) {
+        checkButton.childNodes[0].innerHTML = "favorite";
+        checkButton.check = true;
+    }
     var first = "";
     var arr = [];
     if (data !== undefined) {
@@ -3208,15 +3227,15 @@ MapRealty.prototype.itemMap = function(marker) {
         })
     thumnail.setAttribute("src", src);
     var listener = google.maps.event.addListener(marker, 'click', function(event) {
-        temp.click();
-    })
-    setTimeout(function() {
-        onRemove(temp, function() {
-            google.maps.event.removeListener(listener);
+            temp.click();
         })
-    }, 50)
-    temp.setPrice = function(price){
-        priceContent.innerHTML =  "VND " + price;
+        // setTimeout(function() {
+        //     onRemove(temp, function() {
+        //         google.maps.event.removeListener(listener);
+        //     })
+        // }, 50)
+    temp.setPrice = function(price) {
+        priceContent.innerHTML = "VND " + price;
     }
     return temp;
 }

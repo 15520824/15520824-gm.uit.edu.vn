@@ -793,12 +793,14 @@ MergeRealty.prototype.getView = function() {
             valueRoadWidth = itemData.roadwidth;
 
         if (itemData.contact.length > 0) {
-            var tempElement = this.contactItem(itemData.contact[i]);
-            var dataChild = { value: false, element: tempElement, promiseComplete: tempElement.promiseComplete };
-            $(".pizo-new-realty-contact-item-close", tempElement).addEventListener("click", function(dataChild) {
-                dataChild.value = false;
-            }.bind(null, dataChild))
-            itemContact.push(dataChild);
+            for (var j = 0; j < itemData.contact.length; j++) {
+                var tempElement = this.contactItem(itemData.contact[j]);
+                var dataChild = { value: false, element: tempElement, promiseComplete: tempElement.promiseComplete };
+                $(".pizo-new-realty-contact-item-close", tempElement).addEventListener("click", function(dataChild) {
+                    dataChild.value = false;
+                }.bind(null, dataChild))
+                itemContact.push(dataChild);
+            }
         }
 
         if (itemData.equipment.length > 0) {

@@ -55,6 +55,97 @@ export function formatDate(date, isMinutes = false, isHours = false, isDay = tru
     return resultTime.join(':') + " " + resultDayMonth.join('/');
 }
 
+export function setAction(data) {
+    var result = [];
+    var isResult = false;
+    if (data.properties !== undefined) {
+        for (var i = 0; i < data.properties.length; i++) {
+            result.push(setAction(data.properties[i]));
+        }
+        if (eval(result.join("&&"))) {
+            data["action"] = 'const';
+            isResult = true;
+        }
+    }
+    if (data.items !== undefined) {
+        if (getRealLength(data.items) <= 1) {
+            data["action"] = 'const';
+            return true;
+        }
+    } else {
+        if (result == "")
+            return true;
+        else
+        if (isResult) {
+            return true;
+        }
+    }
+    return false;
+}
+
+export function checkValueElement(element) {
+    var input = element.getElementsByTagName("input");
+    var textarea = element.getElementsByTagName("textarea");
+    var result = [];
+    for (var i = 0; i < input.length; i++) {
+        result.push(input[i].value);
+    }
+    for (var i = 0; i < textarea.length; i++) {
+        result.push(textarea[i].value);
+    }
+    return result;
+}
+
+export function checkManyArray(arrAll, arrChild) {
+    for (var i = 0; i < arrAll.length; i++) {
+        if (check2Array(arrAll[i], arrChild))
+            return true;
+    }
+    return false;
+}
+
+export function check2Array(arr1, arr2) {
+    if (arr1.length !== arr2.length)
+        return false;
+    for (var i = 0; i < arr1.length; i++) {
+        if (arr1[i] != arr2[i])
+            return false;
+    }
+    return true;
+}
+
+export function getRealLength(arr) {
+    var check = [];
+    var count = 0;
+    var checkElement = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === 'object') {
+            var item = arr[i];
+            if (checkElement[item.element.innerHTML] !== undefined && checkManyArray(checkElement[item.element.innerHTML], checkValueElement(item.element))) {
+                arr.splice(i, 1);
+                i--;
+                continue;
+            }
+            if (checkElement[item.element.innerHTML]) {
+                checkElement[item.element.innerHTML][++checkElement[item.element.innerHTML].index] = checkValueElement(item.element);
+            } else {
+                checkElement[item.element.innerHTML] = [];
+                checkElement[item.element.innerHTML].index = 0;
+                checkElement[item.element.innerHTML][checkElement[item.element.innerHTML].index] = checkValueElement(item.element);
+            }
+        } else {
+            if (check[arr[i]] !== undefined) {
+                arr.splice(i, 1);
+                i--;
+                continue;
+            }
+            check[arr[i]] = 1;
+        }
+        count++;
+    }
+    return count;
+}
+
 export function generalOperator(data, WHERE) {
     var stringResult = operator(data, WHERE);
     return eval(stringResult);
@@ -75,7 +166,7 @@ export function equal(data, WHERE) {
     } else
     if (typeof WHERE === "object") {
         if (Array.isArray(WHERE)) {
-            stringResult += this.operator(data, WHERE);
+            stringResult += operator(data, WHERE);
         } else {
             for (var param in WHERE) {
                 if (typeof WHERE[param] === "object") {

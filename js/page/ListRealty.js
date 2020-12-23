@@ -656,6 +656,8 @@ ListRealty.prototype.getView = function() {
         header.isSaveTheme = "#19001080";
         if (moduleDatabase.isStaff == true) {
             header.attachSrcoll = true;
+            header[2].hidden = true;
+            header[2].disabled = true;
         }
         self.mTable = new tableView(header, [], true, true, 1);
         self.mTable.addInputSearchHeader();
@@ -747,8 +749,7 @@ ListRealty.prototype.formatDataRow = function(data) {
     var isAvailable;
     var isCensorshipFalse;
     var checkFavourite;
-    if(this.isFavourite === true)
-    {
+    if (this.isFavourite === true) {
         checkFavourite = moduleDatabase.getModule("favourite").getLibary("houseid");
     }
     for (var i = 0; i < data.length; i++) {
@@ -785,10 +786,9 @@ ListRealty.prototype.formatDataRow = function(data) {
         }
         if (isAvailable == false)
             continue;
-        if(checkFavourite)
-        {
-            if(checkFavourite[data[i].id] == undefined)
-            continue;
+        if (checkFavourite) {
+            if (checkFavourite[data[i].id] == undefined)
+                continue;
         }
         var result = this.getDataRow(data[i], isCensorshipFalse);
         result.original = data[i];

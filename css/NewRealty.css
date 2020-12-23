@@ -91,6 +91,10 @@
     position: relative;
 }
 
+.pizo-new-realty-desc-detail-row-cell-menu-1 {
+    padding-right: 10px;
+}
+
 .pizo-new-realty-desc-detail-row-menu-1-checkbox,
 .pizo-new-realty-desc-detail-row-menu-2-checkbox,
 .pizo-new-realty-desc-detail-row-menu-3-checkbox {

@@ -285,21 +285,22 @@ if(isset($data["image"]))
         $img = $images[$i];
         if(is_numeric($img["src"]))
         {
-            for($j = 0;$j<count($image_old);$j++)
-            {
-                if($img["src"]==$image_old[$j]["id"])
-                {
-                    if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
-                    {
-                        array_push($imageTemp, array(
-                            "id"=>$img["src"],
-                            "thumnail"=>$img["thumnail"]
-                        ));
-                        $imageCheck = true;
-                        break;
-                    }
-                }
-            }
+            // for($j = 0;$j<count($image_old);$j++)
+            // {
+            //     if($img["src"]==$image_old[$j]["id"])
+            //     {
+            //         if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
+            //         {
+            //             array_push($imageTemp, array(
+            //                 "id"=>$img["src"],
+            //                 "thumnail"=>$img["thumnail"]
+            //             ));
+            //             $imageCheck = true;
+            //             break;
+            //         }
+            //     }
+            // }
+            array_push($imageTemp,  $img["src"]);
             continue;
         }
         $imageCheck = true;
@@ -333,9 +334,11 @@ if(isset($data["image"]))
             'thumnail' => $thumnail,
             'userid' => $data["userid"]
         );
-        array_push($imageTemp,array(
+        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
+        array_push($insert,array(
             'image'=>$obj_list
         ));
+        array_push($imageTemp, $obj_list["id"]);
     }
 }
 
@@ -349,9 +352,9 @@ if($count==1)
     $dataChange = array();
     foreach($result as $param=>$value)
     {
-        if($param == "created"||$param == "userid"||$param == "created")
-        continue;
-        if(isset($result)&&$data[$param]!=$value)
+        if($param == "created"||$param == "userid"||$param == "modified")
+            continue;
+        if(isset($result)&&isset($data[$param])&&$data[$param]!=$value)
         {
             $dataRequests = array(
                 "type"=>0,
@@ -364,14 +367,14 @@ if($count==1)
             array_push($dataChange,$dataRequests);
         }
     }
-    if($imageCheck==true)
+    if($imageCheck==true||count($image_old)>0)
     {
         $dataRequests = array(
             "type"=>0,
             "userid"=>$data["userid"],
             "houseid"=>$data["id"],
             "objid"=>"image",
-            "content"=>EncodingClass::fromVariable($imageTemp),
+            "content"=>json_encode($imageTemp),
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
         array_push($dataChange,$dataRequests);

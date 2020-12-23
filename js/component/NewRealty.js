@@ -25,7 +25,6 @@ function NewRealty(data) {
     this.loadConfig();
     this.textHeader = "Sửa ";
     this.data = data;
-    console.log(this)
     if (this.data == undefined)
         this.textHeader = "Thêm ";
 }

@@ -6,6 +6,7 @@ import "../css/App.css";
 import R from './R';
 import Fcore from './dom/Fcore';
 import ListRealty from './page/ListRealty';
+import ListRealtyRequest from './page/ListRealtyRequest';
 import ListWard from './page/ListWard';
 import ListStreet from './page/ListStreet';
 import ListState from './page/ListState';
@@ -35,7 +36,7 @@ function App() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     moduleDatabase.getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActivehouse.php"]);
-    moduleDatabase.getModule("modification_requests", ["loadModificationRequests.php", "addModificationRequests.php", "updateModificationRequests.php", "deleteModificationRequests.php"])
+    moduleDatabase.getModule("modification_requests", ["load.php", "addModificationRequests.php", "update.php", "delete.php"])
     moduleDatabase.getModule("inactivehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts", ["load.php", "add.php", "update.php", "deleteContact.php"]);
     moduleDatabase.getModule("users", ["load.php", "addUser.php", "updateUser.php", "deleteUser.php"]);
@@ -310,7 +311,7 @@ App.prototype.getPermisionOpenPage = function() {
         this.promisePermission = moduleDatabase.queryData("loadPermision.php", { userid: window.userid }, "privileges");
         arr.push(this.promisePermission);
         arr.push(moduleDatabase.getModule("favourite").load({ WHERE: [{ userid: window.userid }] }));
-        Promise.all(arr).then(function(resultAll){
+        Promise.all(arr).then(function(resultAll) {
             var result = resultAll[0];
             for (var i = 0; i < result.length; i++) {
                 var permissionTemp = result[i].permission
@@ -342,18 +343,19 @@ App.prototype.getPermisionOpenPage = function() {
             if (this.firstElement == undefined)
                 this.firstElement = [];
             var isRealty = false;
-            var checkStringPermission = JSON.stringify(moduleDatabase.checkPermission);
-            if (checkStringPermission.indexOf(57) == -1 &&
-                checkStringPermission.indexOf(58) == -1 &&
-                checkStringPermission.indexOf(59) == -1 &&
-                checkStringPermission.indexOf(60) == -1 &&
-                checkStringPermission.indexOf(61) == -1 &&
-                checkStringPermission.indexOf(62) == -1 &&
-                checkStringPermission.indexOf(63) == -1 &&
-                checkStringPermission.indexOf(64) == -1 &&
-                checkStringPermission.indexOf(65) == -1 &&
-                checkStringPermission.indexOf(69) == -1) {
-                moduleDatabase.isStaff = true;
+            for (var param in moduleDatabase.checkPermission) {
+                if (moduleDatabase.checkPermission[param].indexOf(57) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(58) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(59) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(60) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(61) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(62) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(63) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(64) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(65) != -1 &&
+                    moduleDatabase.checkPermission[param].indexOf(69) != -1) {
+                    moduleDatabase.isStaff = false;
+                }
             }
             for (var param in moduleDatabase.checkPermission) {
                 if (param == 0) {
@@ -595,8 +597,8 @@ App.prototype.openPage = function(index) {
             var mListRealty = new ListRealty();
             mListRealty.attach(this);
             mListRealty.isFavourite = true;
-            if(moduleDatabase.stackUpdateFavourite == undefined)
-            moduleDatabase.stackUpdateFavourite = [];
+            if (moduleDatabase.stackUpdateFavourite == undefined)
+                moduleDatabase.stackUpdateFavourite = [];
             moduleDatabase.stackUpdateFavourite.push(mListRealty);
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
@@ -637,12 +639,13 @@ App.prototype.openPage = function(index) {
             finalPage = mListRealty;
             break;
         case 17:
-            var mListRealty = new ListRealty();
-            mListRealty.attach(this);
-            var frameview = mListRealty.getView();
+            //Yeu cau chinh sua
+            var mListRealtyRequest = new ListRealtyRequest();
+            mListRealtyRequest.attach(this);
+            var frameview = mListRealtyRequest.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
-            finalPage = mListRealty;
+            finalPage = mListRealtyRequest;
             break;
         case 18:
             var mMapRealty = new MapRealty();

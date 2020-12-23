@@ -1,6 +1,6 @@
 import FormClass from './jsform';
 import '../encode';
-import {generalOperator} from './FormatFunction';
+import { generalOperator } from './FormatFunction';
 var moduleDatabase = new ModuleDatabase();
 
 function ModuleDatabase() {
@@ -211,10 +211,10 @@ DataStructure.prototype.getLibary = function(param, formatFunction, isArray = fa
         for (var j = 0; j < param.length; j++) {
             if (isLoaded === true || this.Libary[param] == undefined) {
                 this.setLibary(param, formatFunction, isArray)
-                if(this.data)
-                for (var i = 0; i < this.data.length; i++) {
-                    this.setLibaryRow(this.data[i], param[j]);
-                }
+                if (this.data)
+                    for (var i = 0; i < this.data.length; i++) {
+                        this.setLibaryRow(this.data[i], param[j]);
+                    }
             }
         }
         if (param.length == 1) {
@@ -228,17 +228,17 @@ DataStructure.prototype.getLibary = function(param, formatFunction, isArray = fa
             if (param === "id")
                 isID = true;
             this.setLibary(param, formatFunction, isArray);
-            if(this.data)
-            for (var i = 0; i < this.data.length; i++) {
-                this.setLibaryRow(this.data[i], param, formatFunction, isArray);
-            }
+            if (this.data)
+                for (var i = 0; i < this.data.length; i++) {
+                    this.setLibaryRow(this.data[i], param, formatFunction, isArray);
+                }
         }
         if (isID === false) {
             this.setLibary("id", formatFunction, isArray);
-            if(this.data)
-            for (var i = 0; i < this.data.length; i++) {
-                this.setLibaryRow(this.data[i], "id", formatFunction, isArray);
-            }
+            if (this.data)
+                for (var i = 0; i < this.data.length; i++) {
+                    this.setLibaryRow(this.data[i], "id", formatFunction, isArray);
+                }
         }
     }
 
@@ -527,8 +527,8 @@ DataStructure.prototype.delete = function(data) {
     var self = this;
     return new Promise(function(resolve, reject) {
         self.queryData(self.phpDeleter, data).then(function(value) {
-            if(value.data)
-            Object.assign(data, value.data);
+            if (value.data)
+                Object.assign(data, value.data);
             self.setFormatDelete(data);
             var update = value["update"];
             var insert = value["add"];

@@ -91,7 +91,7 @@ if($result)
                 $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
                 $data[$i]["contact"]=$contact;
     
-                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
+                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." AND status=1 )");
                 $image = array();
                 if($imageresource)
                     if ($imageresource->num_rows > 0) {

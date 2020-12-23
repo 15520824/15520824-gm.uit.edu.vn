@@ -189,6 +189,26 @@
         display: -ms-flexbox;
     }
     
+    .pizo-list-realty-confirm-request .after-first-child {
+        vertical-align: middle;
+    }
+    
+    .pizo-list-realty-confirm-request .after-first-child-cell {
+        background: url("/assets/images/down.png") no-repeat;
+        width: 100px;
+        height: 90px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .pizo-list-realty-confirm-request .mpot-choice {
+        display: block;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
     #edit-construction .mpot-group-editor-item#width .mpot-choice-list,
     #edit-construction .mpot-group-editor-item#height .mpot-choice-list,
     #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,
