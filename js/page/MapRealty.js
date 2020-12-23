@@ -198,15 +198,14 @@ MapRealty.prototype.getView = function() {
             on:{
                 change:function()
                 {
-                    console.log(this.value)
                     var x = JSON.parse(this.value);
                     var query;
                     if(Array.isArray(x))
                     {
                         if(x.length == 2)
-                        query=[{salestatus:x[0]},"||",{salestatus:x[1]}];
+                        query=["(",{salestatus:x[0]},"||",{salestatus:x[1]},")"];
                         else
-                        query=[{salestatus:x[0]},"||",{salestatus:x[1]},"||",{salestatus:x[2]}];
+                        query=["(",{salestatus:x[0]},"||",{salestatus:x[1]},"||",{salestatus:x[2]},")"];
                     }else if(this.value == -1)
                     {
                         query = [];
@@ -224,13 +223,15 @@ MapRealty.prototype.getView = function() {
                         self.mapView.setLabelContent()
                     }
                     self.statusQuery = query;
-                    var queryAll;
-                    if(self.priceQuery)
+                    var queryAll = self.statusQuery;
+                    if(self.priceQuery&&self.priceQuery.length>0)
                     {
-                        queryAll = self.statusQuery.concat("&&");
-                        queryAll = queryAll.concat(self.priceQuery);
+                        self.lowprice.value = "";
+                        self.highprice.value = "";
+                        self.priceQuery = undefined;
                     }
                     self.mapView.setGeneralOperator(queryAll);
+
                 }
             },
             props: {
@@ -315,16 +316,26 @@ MapRealty.prototype.getView = function() {
                                                     change: function(event) {
                                                         this.value = reFormatNumber(this.value);
                                                         var queryAll = [];
-                                                        var query;
+                                                        var query = [];
                                                         if(self.mapView.isPrice == true)
                                                         {
-                                                            query = [{price:{ operator: ">", value: self.lowprice.value }},"&&",{price:{ operator: "<", value: self.highprice.value }}];
+                                                            if(self.lowprice.value!="")
+                                                            query = [{price:{ operator: ">=", value: parseInt(self.lowprice.value)/1000000000 }}];
+                                                            if(self.highprice.value!="")
+                                                            query.push({price:{ operator: "<=", value: parseInt(self.highprice.value)/1000000000 }});
                                                         }else  if(self.mapView.isPrice == false)
                                                         {
-                                                            query = [{pricerent:{ operator: ">", value: self.lowprice.value }},"&&",{pricerent:{ operator: "<", value: self.highprice.value }}];
-                                                        } 
+                                                            if(self.lowprice.value!="")
+                                                            query.push({pricerent:{ operator: ">=", value: parseInt(self.lowprice.value) }});
+                                                            if(self.highprice.value!="")
+                                                            query.push({pricerent:{ operator: "<", value: parseInt(self.highprice.value) }});
+                                                        }
+                                                        if(query.length == 2)
+                                                        {
+                                                            query.splice(1,0,"&&");
+                                                        }
                                                         self.priceQuery = query;
-                                                        if(self.statusQuery)
+                                                        if(self.statusQuery&&self.statusQuery.length>0)
                                                         {
                                                             queryAll = self.statusQuery.concat("&&");
                                                         }
@@ -347,21 +358,30 @@ MapRealty.prototype.getView = function() {
                                                     change: function(event) {
                                                         this.value = reFormatNumber(this.value);
                                                         var queryAll = [];
-                                                        var query;
+                                                        var query = [];
                                                         if(self.mapView.isPrice == true)
                                                         {
-                                                            query = [{price:{ operator: ">", value: self.lowprice.value }},"&&",{price:{ operator: "<", value: self.highprice.value }}];
+                                                            if(self.lowprice.value!="")
+                                                            query = [{price:{ operator: ">=", value: parseInt(self.lowprice.value)/1000000000 }}];
+                                                            if(self.highprice.value!="")
+                                                            query.push({price:{ operator: "<=", value: parseInt(self.highprice.value)/1000000000 }});
                                                         }else  if(self.mapView.isPrice == false)
                                                         {
-                                                            query = [{pricerent:{ operator: ">", value: self.lowprice.value }},"&&",{pricerent:{ operator: "<", value: self.highprice.value }}];
-                                                        } 
+                                                            if(self.lowprice.value!="")
+                                                            query.push({pricerent:{ operator: ">=", value: parseInt(self.lowprice.value) }});
+                                                            if(self.highprice.value!="")
+                                                            query.push({pricerent:{ operator: "<", value: parseInt(self.highprice.value) }});
+                                                        }
+                                                        if(query.length == 2)
+                                                        {
+                                                            query.splice(1,0,"&&");
+                                                        }
                                                         self.priceQuery = query;
-                                                        if(self.statusQuery)
+                                                        if(self.statusQuery&&self.statusQuery.length>0)
                                                         {
                                                             queryAll = self.statusQuery.concat("&&");
                                                         }
                                                         queryAll = queryAll.concat(self.priceQuery);
-                                                        console.log(queryAll)
                                                         self.mapView.setGeneralOperator(queryAll);
                                                     }
                                                 }
@@ -388,6 +408,8 @@ MapRealty.prototype.getView = function() {
             ]
         }));
         selectStatus.emit("change");
+        self.lowprice = $(".pizo-list-realty-main-search-control-row-price-input-low",self.$view);
+        self.highprice = $(".pizo-list-realty-main-search-control-row-price-input-high",self.$view);
     }.bind(this))
 
     moduleDatabase.getModule("users").load().then(function(value) {
@@ -397,8 +419,7 @@ MapRealty.prototype.getView = function() {
     moduleDatabase.getModule("contacts").load().then(function(value) {
         self.formatDataRowContact(value);
     })
-    this.lowprice = $("pizo-list-realty-main-search-control-row-price-input-low",this.$view);
-    this.highprice = $("pizo-list-realty-main-search-control-row-price-input-high",this.$view);
+    
     return this.$view;
 }
 
@@ -501,7 +522,7 @@ MapRealty.prototype.modalRealty = function() {
             }
         }
         container.clearChild();
-        this.count.innerHTML = k + " kết quả";
+
 
         var arr = [];
         var connect = "";
@@ -538,6 +559,7 @@ MapRealty.prototype.modalRealty = function() {
                         x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
 
                         container.appendChild(x);
+                        this.count.innerHTML = container.childNodes.length + " kết quả";
                     }
 
                 }.bind(this))

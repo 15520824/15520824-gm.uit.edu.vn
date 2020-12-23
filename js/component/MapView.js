@@ -923,6 +923,14 @@ MapView.prototype.removeMapPolygonAround = function(cellLat, cellLng) {
 
 MapView.prototype.addMapHouse = function() {
     var self = this;
+    if(this.checkAddress == undefined)
+    this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+    if(this.checkWard == undefined)
+    self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    if(this.checkDistrict == undefined)
+    self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    if(this.checkState == undefined)
+    self.checkState = moduleDatabase.getModule("states").getLibary("id");
     if (this.checkHouse === undefined)
         this.checkHouse = [];
     if (this.currentHouse === undefined)
@@ -966,9 +974,39 @@ MapView.prototype.addMapHouse = function() {
                     queryData.push({ censorship: 1 });
                 }
                 moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
-                    function(value) {
-                        for (var i = 0; i < value.length; i++) {
-                            self.addOrtherMarker(value[i]);
+                    function(data) {
+                        var isAvailable,districtid,stateid;
+                        for (var i = 0; i < data.length; i++) {
+                            isAvailable = false;
+                            Loop: for (var param in moduleDatabase.checkPermission) {
+                                var object = JSON.parse(param);
+                                var address = self.checkAddress[data[i].addressid];
+                                districtid = undefined;
+                                stateid = undefined;
+                                if (address.wardid)
+                                    districtid = self.checkWard[address.wardid].districtid;
+                                if (districtid)
+                                    stateid = self.checkDistrict[districtid].stateid;
+                                for (var objectParam in object) {
+                                    if (objectParam === "stateid") {
+                                        if (stateid !== object[objectParam])
+                                            continue Loop;
+                                    } else
+                                    if (objectParam === "districtid") {
+                                        if (districtid !== object[objectParam])
+                                            continue Loop;
+                                    } else
+                                    if (object[objectParam] !== address[objectParam]) {
+                                        continue Loop;
+                                    }
+                                }
+                                if (moduleDatabase.checkPermission[param].indexOf(56) !== -1) {
+                                    isAvailable = true;
+                                }
+                            }
+                            if(isAvailable == false)
+                                continue;
+                            self.addOrtherMarker(data[i]);
                         }
                         var event = new CustomEvent("change-house");
                         self.dispatchEvent(event);
@@ -1040,12 +1078,14 @@ MapView.prototype.setGeneralOperator = function(WHERE)
         if(data)
         {
             for(var j = 0;j<data.length;j++)
-            if(generalOperator(data[j].data,WHERE) == false)
             {
-                data[j].setMap(null);
-            }else
-            {
-                data[j].setMap(this.map);
+                if(generalOperator(data[j].data,WHERE) == false)
+                {
+                    data[j].setMap(null);
+                }else
+                {
+                    data[j].setMap(this.map);
+                }
             }
         }
     }
@@ -1055,7 +1095,6 @@ MapView.prototype.setGeneralOperator = function(WHERE)
 
 MapView.prototype.addOrtherMarker = function(data) {
     var self = this;
-
     var position = [data.lat, data.lng];
     if (this.checkHouse[position[0]] !== undefined && this.checkHouse[position[0]][position[1]] !== undefined) {
         var arr = this.checkHouse[position[0]][position[1]];
@@ -1068,7 +1107,36 @@ MapView.prototype.addOrtherMarker = function(data) {
                     else
                     {
                         arr[j].setMap(self.map);
-                    }
+                        if(this.isPrice == true)
+                        {
+                            label = arr[j].data.price + " tỉ";
+                        }else if(this.isPrice == false)
+                            label = ((parseInt(arr[j].data.pricerent) / 1000000) + " triệu");
+                        else if (parseInt(arr[j].data.salestatus / 10) == 1 ? true : false)
+                            label = arr[j].data.price + " tỉ";
+                        else if (parseInt(arr[j].data.salestatus % 10) == 1 ? true : false)
+                            label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
+                        else if (arr[j].data.price > 0)
+                            label = arr[j].data.price + " tỉ";
+                        else if (arr[j].data.pricerent > 0)
+                            label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
+                        }
+                        var labelContent = _({
+                            tag: "div",
+                            child: [{
+                                    tag: "div",
+                                    class: "arrow",
+                                },
+                                {
+                                    tag: "div",
+                                    class: "inner",
+                                    props: {
+                                        innerHTML: label
+                                    }
+                                }
+                            ]
+                        })
+                        arr[j].set('labelContent', labelContent);
                 }else
                 arr[j].setMap(self.map);
                 this.currentHouse.push(position);
@@ -1091,7 +1159,12 @@ MapView.prototype.addOrtherMarker = function(data) {
             if (checkAddress[data.addressid])
                 label = checkAddress[data.addressid].addressnumber;
         } else if (self.isShowAddress === false) {
-            if (parseInt(data.salestatus / 10) == 1 ? true : false)
+            if(this.isPrice == true)
+            {
+                label = data.price + " tỉ";
+            }else if(this.isPrice == false)
+                label = ((parseInt(data.pricerent) / 1000000) + " triệu");
+            else if (parseInt(data.salestatus / 10) == 1 ? true : false)
                 label = data.price + " tỉ";
             else if (parseInt(data.salestatus % 10) == 1 ? true : false)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
@@ -1148,18 +1221,6 @@ MapView.prototype.addOrtherMarker = function(data) {
             maxWidth: 350
         });
 
-        // google.maps.event.addListener(infowindow, 'domready', function() {
-
-        //     infowindow.addListener('mouseover', function() {
-        //         mouseOverInfoWindow = true;
-        //     });
-        //     infowindow.addListener('mouseout', function() {
-        //         marker.setIcon(image);
-        //         infowindow.close();
-        //         mouseOverInfoWindow = false;
-        //     });
-        // });
-
         marker.data = data;
         google.maps.event.addListener(marker, 'mouseover', function() {
             if (infowindow.visible === true)
@@ -1170,12 +1231,6 @@ MapView.prototype.addOrtherMarker = function(data) {
             marker.setIcon(imageHover);
         });
         google.maps.event.addListener(marker, 'mouseout', function(event) {
-            // timeoutID = setTimeout(function() {
-            //     if (!mouseOverInfoWindow) {
-            //         marker.setIcon(image);
-            //         infowindow.close();
-            //     }
-            //   }, 400);
             marker.setIcon(image);
             infowindow.close();
             infowindow.visible = false;
@@ -1216,7 +1271,7 @@ MapView.prototype.modalMiniRealty = function(data) {
                     child: [{
                             tag: "strong",
                             props: {
-                                innerHTML: "VND " + data.price + "tỉ"
+                                innerHTML: "VND " + data.price + " tỉ"
                             }
                         },
                         {
