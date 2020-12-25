@@ -280,7 +280,6 @@ for($i = 0 ;$i<$count_old;$i++)
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
 $milliseconds = round(microtime(true) * 1000);
-$image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
 if(isset($data["image"]))
 {

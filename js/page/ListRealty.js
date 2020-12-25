@@ -452,6 +452,8 @@ ListRealty.prototype.getView = function() {
         var districtid;
         var stateid;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data.original.addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data.original.addressid];
             districtid = undefined;
@@ -654,10 +656,25 @@ ListRealty.prototype.getView = function() {
             }
         ];
         header.isSaveTheme = "#19001080";
-        if (moduleDatabase.isStaff == true) {
+        if (moduleDatabase.isStaff === true) {
             header.attachSrcoll = true;
             header[2].hidden = true;
             header[2].disabled = true;
+        }
+        if (moduleDatabase.isAdd == false) {
+            saveButton.style.display = "none";
+        }
+        if (moduleDatabase.isMerge == false) {
+            mergeButton.style.display = "none";
+        }
+        if (moduleDatabase.isCall == false) {
+            callAgainButton.style.display = "none";
+        }
+        if (moduleDatabase.isConfirm == false) {
+            confirmButton.style.display = "none";
+        }
+        if (moduleDatabase.isCancelConfirm == false) {
+            cancelConfirmButton.style.display = "none";
         }
         self.mTable = new tableView(header, [], true, true, 1);
         self.mTable.addInputSearchHeader();
@@ -756,6 +773,8 @@ ListRealty.prototype.formatDataRow = function(data) {
         isAvailable = false;
         isCensorshipFalse = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data[i].addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].addressid];
             districtid = undefined;
@@ -991,6 +1010,8 @@ ListRealty.prototype.browserFilter = function(data) {
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data[i].original.addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;
@@ -1070,6 +1091,8 @@ ListRealty.prototype.mergeFilter = function(data) {
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data[i].original.addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;
@@ -1146,6 +1169,8 @@ ListRealty.prototype.mergeFilterNone = function(data) {
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data[i].original.addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;

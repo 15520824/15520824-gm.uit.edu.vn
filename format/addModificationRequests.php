@@ -154,7 +154,7 @@ while (isset($data["addressid".$index]))
 }
 
 $milliseconds = round(microtime(true) * 1000);
-
+$isEquipment = false;
 if(isset($data["equipment"]))
 {
     $equipment = $data["equipment"];
@@ -170,8 +170,7 @@ if(isset($data["equipment"]))
             {
                 if($equipment[$i]["content"]!==$equipment_old[$j]["content"])
                 {
-                    $equipment_old[$j]["content"] = $equipment[$i]["content"];
-                    $connector->update($prefix."house_equipments",$equipment_old[$j]);
+                    $isEquipment = true;
                 }
                 array_splice($equipment_old,$j,1);
                 $j--;
@@ -185,11 +184,7 @@ if(isset($data["equipment"]))
             $continue = false;
             continue;
         }
-        $connector->insert($prefix."house_equipments",array(
-            "equipmentid" => $equipment[$i]["equipmentid"],
-            "houseid" => $data["id"],
-            "content" => $equipment[$i]["content"],
-        ));
+        $isEquipment = true;
     }
 }
 
@@ -197,7 +192,7 @@ for($i = 0 ;$i<$count_old;$i++)
 {
     $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
 }
-
+$isContact = false;
 if(isset($data["contact"]))
 {
     $contact = $data["contact"];
@@ -214,9 +209,7 @@ if(isset($data["contact"]))
             {
                 if($contact[$i]["note"]!==$contact_old[$j]["note"]||$contact[$i]["typecontact"]!==$contact_old[$j]["typecontact"])
                 {
-                    $contact_old[$j]["note"] = $contact[$i]["note"];
-                    $contact_old[$j]["typecontact"] = $contact[$i]["typecontact"];
-                    $connector->update($prefix."contact_link",$contact_old[$j]);
+                    $isContact = true;
                 }
                 array_splice($contact_old,$j,1);
                 $j--;
@@ -230,38 +223,12 @@ if(isset($data["contact"]))
             $continue = false;
             continue;
         }
-        if(!isset($contact[$i]["statusphone"]))
-        {
-
-        }
-        // $connector->insert($prefix."contact_link",array(
-        //     "userid" => $contact[$i]["id"],
-        //     "houseid" => $data["id"],
-        //     "note" => $contact[$i]["note"],
-        //     "typecontact" => $contact[$i]["typecontact"],
-        // ));
         else
         {
             if(!isset($contact[$i]["id"]))
             {
-                $dataInsertContact = array(
-                    "name"=>$contact[$i]["name"],
-                    "phone"=>$contact[$i]["phone"],
-                    "statusphone"=>$contact[$i]["statusphone"],
-                );
-                $contact[$i]["id"] = $connector->insert($prefix."contacts",$dataInsertContact);
-                $dataInsertContact["id"] = $contact[$i]["id"];
-                $data["contact"][$i] = $dataInsertContact;
-                array_push($insert,array(
-                    'contacts'=>$dataInsertContact
-                ));
+                $isContact = true;
             }
-            // $connector->insert($prefix."contact_link",array(
-            //     "contactid" => $contact[$i]["id"],
-            //     "houseid" => $data["id"],
-            //     "note" => $contact[$i]["note"],
-            //     "typecontact" => $contact[$i]["typecontact"],
-            // ));
         }
     }
 }
@@ -273,8 +240,10 @@ for($i = 0 ;$i<$count_old;$i++)
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
 }
 
-$imageTemp = array();
-$imageCheck = false;
+$imageTempStatus = array();
+$imageTempJuridical = array();
+$imageCheckStatus = false;
+$imageCheckJuridical = false;
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 if(isset($data["image"]))
 {
@@ -285,25 +254,24 @@ if(isset($data["image"]))
         $img = $images[$i];
         if(is_numeric($img["src"]))
         {
-            // for($j = 0;$j<count($image_old);$j++)
-            // {
-            //     if($img["src"]==$image_old[$j]["id"])
-            //     {
-            //         if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
-            //         {
-            //             array_push($imageTemp, array(
-            //                 "id"=>$img["src"],
-            //                 "thumnail"=>$img["thumnail"]
-            //             ));
-            //             $imageCheck = true;
-            //             break;
-            //         }
-            //     }
-            // }
-            array_push($imageTemp,  $img["src"]);
+            for($j = 0;$j<count($image_old);$j++)
+                {
+                    if($img["src"]==$image_old[$j]["id"])
+                    {
+                        if($image_old[$j]["type"] == 1)
+                        {
+                            array_push($imageTempStatus,  $img["src"]);
+                        }else
+                        {
+                            array_push($imageTempJuridical,  $img["src"]);
+                        }
+                       
+                        array_splice($image_old,$j,1);
+                    
+                    }
+                }
             continue;
         }
-        $imageCheck = true;
         $img["src"] = str_replace('data:image/', '', $img["src"]);
         $pos = strpos($img["src"], ";");
         $extension = substr($img["src"], 0, $pos);
@@ -322,27 +290,40 @@ if(isset($data["image"]))
         $type = 0;
         else
         $type = 1;
-        if(isset($img["thumnail"])&&$img["thumnail"]==1)
-        $thumnail=1;
-        else
-        $thumnail=0;
         $obj_list = array(
             'src' => $filename,
             'type' => $type,
             'houseid' => $data["id"],
             'created' => new DateTime(),
-            'thumnail' => $thumnail,
+            'thumnail' => 0,
             'userid' => $data["userid"]
         );
         $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
         array_push($insert,array(
             'image'=>$obj_list
         ));
-        array_push($imageTemp, $obj_list["id"]);
+        if( $type == 0)
+        {
+            array_push($imageTempStatus, $obj_list["id"]);
+            $imageCheckJuridical = true;
+        }else
+        {
+            array_push($imageTempJuridical, $obj_list["id"]);
+            $imageCheckStatus = true;
+        }
     }
 }
 
-
+for($i =0;$i<count($image_old);$i++)
+{
+    if($image_old[$i]["type"] == 1)
+    {
+        $imageCheckStatus = true;
+    }else
+    {
+        $imageCheckJuridical = true;
+    }
+}
 
 $result = $connector-> load($prefix."activehouses", "id = ".$data["id"]);
 $count = count($result);
@@ -367,14 +348,48 @@ if($count==1)
             array_push($dataChange,$dataRequests);
         }
     }
-    if($imageCheck==true||count($image_old)>0)
+    if($imageCheckStatus==true)
     {
         $dataRequests = array(
             "type"=>0,
             "userid"=>$data["userid"],
             "houseid"=>$data["id"],
             "objid"=>"image",
-            "content"=>json_encode($imageTemp),
+            "content"=>json_encode($imageTempStatus),
+        );
+        $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
+        array_push($dataChange,$dataRequests);
+    }
+    if($imageCheckJuridical == true)
+    {
+        $dataRequests = array(
+            "type"=>0,
+            "userid"=>$data["userid"],
+            "houseid"=>$data["id"],
+            "objid"=>"image",
+            "content"=>json_encode($imageTempJuridical),
+        );
+        $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
+        array_push($dataChange,$dataRequests);
+    }
+    if($isContact == true){
+        $dataRequests = array(
+            "type"=>0,
+            "userid"=>$data["userid"],
+            "houseid"=>$data["id"],
+            "objid"=>"contact",
+            "content"=>json_encode($data["contact"]),
+        );
+        $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
+        array_push($dataChange,$dataRequests);
+    }
+    if($isEquipment == true){
+        $dataRequests = array(
+            "type"=>0,
+            "userid"=>$data["userid"],
+            "houseid"=>$data["id"],
+            "objid"=>"equipment",
+            "content"=>json_encode($data["equipment"]),
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
         array_push($dataChange,$dataRequests);

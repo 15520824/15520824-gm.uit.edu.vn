@@ -86,12 +86,16 @@ export function setAction(data) {
 export function checkValueElement(element) {
     var input = element.getElementsByTagName("input");
     var textarea = element.getElementsByTagName("textarea");
+    var selectmenu = element.getElementsByClassName("absol-selectmenu");
     var result = [];
     for (var i = 0; i < input.length; i++) {
         result.push(input[i].value);
     }
     for (var i = 0; i < textarea.length; i++) {
         result.push(textarea[i].value);
+    }
+    for (var i = 0; i < selectmenu.length; i++) {
+        result.push(selectmenu[i].value);
     }
     return result;
 }

@@ -379,6 +379,8 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
             continue;
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
+            if (data[i].addressid == 0)
+                continue;
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].addressid];
             districtid = undefined;
@@ -418,10 +420,19 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         }
         result.child = [];
         var object;
+        var isImage
         for (var param in check) {
             object = {};
+            object["id"] = [];
+            isImage = false;
             for (var j = 0; j < check[param].length; j++) {
-                object[check[param][j].objid] = JSON.parse(check[param][j].content);
+                if (isImage == true && check[param][j].objid === "image")
+                    object[check[param][j].objid] = object[check[param][j].objid].concat(JSON.parse(check[param][j].content));
+                else
+                    object[check[param][j].objid] = JSON.parse(check[param][j].content);
+                if (check[param][j].objid === "image")
+                    isImage = true;
+                object["id"].push(check[param][j].id)
             }
             var x = Object.assign({}, data[i]);
             x = Object.assign(x, object);
@@ -460,23 +471,23 @@ ListRealtyRequest.prototype.merge = function(data, parent, index) {
         var frameview = mConfirmRequest.getView();
         self.parent.body.addChild(frameview);
         self.parent.body.activeFrame(frameview);
-        self.mergeDB(mConfirmRequest, data, parent, index);
-        mConfirmRequest.promiseEditDB.then(function(value) {
-            var loading = new loadingWheel();
-            moduleDatabase.getModule("activehouses").add(value).then(function(final) {
-                var valueFinal;
-                if (self.isCensorship) {
-                    valueFinal = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
-                    valueFinal = valueFinal[0];
-                } else {
-                    valueFinal = self.formatDataRow(moduleDatabase.getModule("activehouses").data);
-                }
+        // self.mergeDB(mConfirmRequest, data, parent, index);
+        // mConfirmRequest.promiseEditDB.then(function(value) {
+        //     var loading = new loadingWheel();
+        //     moduleDatabase.getModule("activehouses").add(value).then(function(final) {
+        //         var valueFinal;
+        //         if (self.isCensorship) {
+        //             valueFinal = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+        //             valueFinal = valueFinal[0];
+        //         } else {
+        //             valueFinal = self.formatDataRow(moduleDatabase.getModule("activehouses").data);
+        //         }
 
-                self.mTable.data = valueFinal;
-                self.HTinput.emit("change");
-                loading.disable();
-            });
-        })
+        //         self.mTable.data = valueFinal;
+        //         self.HTinput.emit("change");
+        //         loading.disable();
+        //     });
+        // })
     })
 }
 
@@ -569,7 +580,6 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
     var id;
     if (isChild !== undefined) {
         id = "Yêu cầu";
-        data.id = undefined;
     } else {
         id = data.id;
     }
@@ -582,7 +592,7 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
             }
         },
         {
-            value: data.id,
+            value: id,
             style: {
                 whiteSpace: "nowrap"
             }
@@ -623,6 +633,9 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
             functionClick: function() {
                 if (result.child && result.child.length > 0) {
                     this.merge([result].concat(result.child));
+                } else
+                if (isChild) {
+                    this.merge([isChild, result])
                 }
             }.bind(this)
         },

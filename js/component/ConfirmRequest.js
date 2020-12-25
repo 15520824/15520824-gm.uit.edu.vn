@@ -8,7 +8,7 @@ import MergeTool from 'mpot-merge-tool';
 import moduleDatabase from './ModuleDatabase';
 import { MapView } from "./MapView";
 import NewAccount from './NewAccount';
-import { reFormatNumber, formatFit, setAction } from './FormatFunction'
+import { reFormatNumber, formatFit, setAction, isEqual } from './FormatFunction'
 import { loadingWheel } from './FormatFunction';
 
 var _ = Fcore._;
@@ -197,6 +197,8 @@ ConfirmRequest.prototype.getView = function() {
         var containerImageJuridical = _({
             tag: "div"
         })
+        var imageStatus = [];
+        var imageJuridical = [];
         for (var j = 0; j < itemData.image.length; j++) {
             if (this.checkImage[itemData.image[j]].type == 1) {
                 var dataChild = _({
@@ -210,7 +212,7 @@ ConfirmRequest.prototype.getView = function() {
                         }
                     }]
                 });
-
+                imageStatus.push(itemData.image[j]);
                 containerImageStatus.appendChild(dataChild)
             } else {
                 var dataChild = _({
@@ -224,12 +226,13 @@ ConfirmRequest.prototype.getView = function() {
                         }
                     }, ]
                 })
+                imageJuridical.push(itemData.image[j]);
                 containerImageJuridical.appendChild(dataChild)
             }
 
         }
-        var x = { value: false, element: containerImageStatus };
-        var y = { value: false, element: containerImageJuridical };
+        var x = { value: false, element: containerImageStatus, data: imageStatus };
+        var y = { value: false, element: containerImageJuridical, data: imageJuridical };
         if (i == 0) {
             x.value = true;
             y.value = true;
@@ -245,6 +248,7 @@ ConfirmRequest.prototype.getView = function() {
             fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
             itemsAddress.push(fullAddress);
             checkAddress[fullAddress] = [itemData.lat, itemData.lng];
+            checkAddress[fullAddress].dataContent = itemData;
             if (i == 0) {
                 checkAddress[fullAddress].data = itemData;
                 element.addMoveMarker(checkAddress[fullAddress])
@@ -843,13 +847,13 @@ ConfirmRequest.prototype.getView = function() {
                 },
                 class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
                 props: {
+                    value: itemData.juridical,
                     items: arr
                 }
             }]
         });
         itemInputJuridical.push({ value: i + 1, element: tempInputValue });
     }
-
     var dataName = {
         type: 'text',
         name: 'Tên',
@@ -1067,37 +1071,18 @@ ConfirmRequest.prototype.getView = function() {
                 break;
             case "structure":
                 elementStructure.clearChild();
-                elementStructure.appendChild(event.nodePreviewData.item.simpleDetruct)
-                break;
-            case "equipments":
-                elementEquipments.clearChild();
-                var result = [];
-                var checkEquipment = [],
-                    valueTemp;
-                for (var i = 0; i < event.nodePreviewData.values.length; i++) {
-                    for (var j = 0; j < event.nodePreviewData.values[i].itemData.length; j++) {
-                        valueTemp = event.nodePreviewData.values[i].itemData[j];
-                        if (checkEquipment[valueTemp.equipmentid] === undefined)
-                            checkEquipment[valueTemp.equipmentid] = { equipmentid: valueTemp.equipmentid, content: parseInt(valueTemp.content) };
-                        else
-                            checkEquipment[valueTemp.equipmentid].content += parseInt(valueTemp.content);
-                    }
-                }
-                for (var param in checkEquipment) {
-                    result.push(checkEquipment[param]);
-                }
-                elementEquipments.appendChild(self.convenientView({ equipment: result }));
+                elementStructure.appendChild(event.nodePreviewData.value.simpleDetruct)
                 break;
             case "status-active":
-                var elementParent = event.nodePreviewData.item.element;
+                var elementParent = event.nodePreviewData.value.element;
                 while (elementParent && !elementParent.classList.contains("mpot-preview-body")) {
                     elementParent = elementParent.parentNode;
                 }
-                if (event.nodePreviewData.item.element.inputLease.checked === false) {
+                if (event.nodePreviewData.value.element.inputLease.checked === false) {
                     if (elementParent) {
                         elementParent.classList.add("displayNonePriceRent");
                     }
-                } else if (event.nodePreviewData.item.element.inputLease.checked === true) {
+                } else if (event.nodePreviewData.value.element.inputLease.checked === true) {
                     if (elementParent) {
                         elementParent.classList.remove("displayNonePriceRent");
                     }
@@ -1180,13 +1165,6 @@ ConfirmRequest.prototype.getView = function() {
                 id: "container-orther",
                 properties: [
                     dataEquipments,
-                    {
-                        type: 'constant',
-                        id: 'equipments-detail',
-                        changeid: 'equipments',
-                        action: 'const',
-                        element: elementEquipments
-                    }
                 ]
             },
             {
@@ -1677,7 +1655,7 @@ ConfirmRequest.prototype.getDataSave = function() {
     var data = this.myTool.getData().previewData.properties;
     var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
     var fitUpdate = 0;
-    var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
+    var inputFit = data[1].properties[1].properties[0].properties[2].value.element;
     if (inputFit.values.length !== 0)
         fitUpdate = inputFit.values.reduce(function(a, b) { return a + b; });
     var advanceDetruct = 0;
@@ -1686,18 +1664,13 @@ ConfirmRequest.prototype.getDataSave = function() {
     advanceDetruct += advanceDetructElement.advanceDetruct3.checked ? 100 : 0;
     advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
     var image = [];
-    var arrJuridical = data[3].properties[2].values;
+    var arrJuridical = data[3].properties[2].value.data;
+    var arrStatus = data[3].properties[1].value.data;
     for (var i = 0; i < arrJuridical.length; i++) {
-        image.push({ src: arrJuridical[i].id, copy: arrJuridical[i].copy, type: 0, userid: window.userid });
+        image.push(arrJuridical[i]);
     }
-
-    var arrStatus = data[3].properties[1].values;
-    console.log(arrStatus)
     for (var i = 0; i < arrStatus.length; i++) {
-        var thumnail = 0;
-        if (arrStatus[i].element.classList.contains("checked-pizo"))
-            thumnail = 1;
-        image.push({ src: arrStatus[i].id, copy: arrStatus[i].copy, type: 1, thumnail: thumnail, userid: window.userid });
+        image.push(arrStatus[i]);
     }
     var address, addressOld;
     var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
@@ -1717,7 +1690,7 @@ ConfirmRequest.prototype.getDataSave = function() {
         "Tây Bắc": 7,
         "Tây Nam": 1
     }
-    structure = data[1].properties[0].properties[5].value;
+    structure = data[1].properties[0].properties[5].value.value;
     direction = checkDetruct[data[1].properties[0].properties[7].value];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("name");
     type = checkType[data[1].properties[0].properties[8].value].id;
@@ -1728,8 +1701,8 @@ ConfirmRequest.prototype.getDataSave = function() {
     living = advanceDetructElement.inputLiving.value;
     toilet = advanceDetructElement.inputToilet.value;
     kitchen = advanceDetructElement.inputKitchen.value;
-    price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
-    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].childNodes[0].value;
+    price = data[1].properties[1].properties[0].properties[0].value.element.childNodes[0].value;
+    pricerent = data[1].properties[1].properties[0].properties[1].value.element.childNodes[0].childNodes[0].value;
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
@@ -1738,17 +1711,17 @@ ConfirmRequest.prototype.getDataSave = function() {
     if (addressData) {
         lat = addressData[0];
         lng = addressData[1];
-        addressReal = { id: addressData.data.addressid };
+        addressReal = addressData.dataContent.addressid;
     }
     if (addressDataOld)
-        addressRealOld = { id: addressDataOld.data.addressid_old };
+        addressRealOld = addressDataOld.data.addressid_old;
 
     address = addressData;
     addressOld = addressDataOld;
     content = data[0].properties[0].properties[4].value;
-    salestatus = data[0].properties[0].properties[1].item.element;
+    salestatus = data[0].properties[0].properties[1].value.element;
     salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
-    juridical = data[1].properties[1].properties[1].item.element.childNodes[0].value;
+    juridical = data[1].properties[1].properties[1].value.element.childNodes[0].value;
     var temp = {
         height: height,
         width: width,
@@ -1784,22 +1757,67 @@ ConfirmRequest.prototype.getDataSave = function() {
         temp.lng = lng;
     var arr = [];
     var containerEquipment = data[2].properties[1].element.childNodes[0].childNodes[0].childNodes[1];
+    console.log(data[2].properties[1].element)
     for (var i = 0; i < containerEquipment.childNodes.length; i++) {
         arr.push(containerEquipment.childNodes[i].getData());
     }
     temp.equipment = arr;
     var contact = [];
-    var containerContact = data[3].properties[0].values;
-    for (var i = 0; i < containerContact.length; i++) {
-        contact.push(containerContact[i].element.getData());
+    var containerContact = data[3].properties[0].value;
+
+    for (var i = 0; i < containerContact.element.childNodes.length; i++) {
+        contact.push(containerContact.element.childNodes[i].getData());
     }
     temp.contact = contact;
-    var arrID = [];
-    for (var i = 0; i < this.data.length; i++) {
-        arrID.push(this.data[i].original.id);
+    var arrIDSuccess = [];
+    var arrIDFail = [];
+    var object;
+    var checkIDRequest = moduleDatabase.getModule("modification_requests").getLibary("id");
+    for (var i = 1; i < this.data.length; i++) {
+        Loop: for (var j = 0; j < this.data[i].original.id.length; j++) {
+            object = checkIDRequest[this.data[i].original.id[j]];
+            if (object) {
+                var x = JSON.parse(object["content"]);
+                if (object["objid"] == "image") {
+                    if (x.length > 0) {
+                        if (this.checkImage[x[0]].type == 1) {
+                            if (arrStatus.length !== x.length) {
+                                arrIDFail.push(this.data[i].original.id[j]);
+                                continue Loop;
+                            } else
+                                for (var k = 0; k < x.length; k++) {
+                                    if (temp[object["objid"]].indexOf(x[k]) == -1) {
+                                        arrIDFail.push(this.data[i].original.id[j]);
+                                        continue Loop;
+                                    }
+                                }
+                        } else if (this.checkImage[x[0]].type == 0) {
+                            if (arrJuridical.length !== x.length) {
+                                arrIDFail.push(this.data[i].original.id[j]);
+                                continue Loop;
+                            } else
+                                for (var k = 0; k < x.length; k++) {
+                                    if (temp[object["objid"]].indexOf(x[k]) == -1) {
+                                        arrIDFail.push(this.data[i].original.id[j]);
+                                        continue Loop;
+                                    }
+                                }
+                        }
+
+                    }
+                    arrIDSuccess.push(this.data[i].original.id[j]);
+                } else
+                if (x == temp[object["objid"]] || isEqual(x, temp[object["objid"]])) {
+                    arrIDSuccess.push(this.data[i].original.id[j]);
+                } else
+                    arrIDFail.push(this.data[i].original.id[j]);
+            }
+        }
     }
-    temp.oldId = arrID;
-    console.log(temp)
+
+    temp.requestSuccess = arrIDSuccess;
+    temp.requestFail = arrIDFail;
+    console.log(temp);
     return temp;
 }
 

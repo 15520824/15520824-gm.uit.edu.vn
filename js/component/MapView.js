@@ -979,6 +979,8 @@ MapView.prototype.addMapHouse = function() {
                         for (var i = 0; i < data.length; i++) {
                             isAvailable = false;
                             Loop: for (var param in moduleDatabase.checkPermission) {
+                                if (data[i].addressid == 0)
+                                    continue;
                                 var object = JSON.parse(param);
                                 var address = self.checkAddress[data[i].addressid];
                                 districtid = undefined;

@@ -334,7 +334,6 @@ NewRealty.prototype.imageJuridical = function() {
 NewRealty.prototype.imageCurrentStaus = function() {
     var result = Object.assign({}, xmlModalDragManyFiles);
     result.enableClick = true;
-    result.enableCheckBox = true;
     result.setFormatData(function(data) {
         return {
             avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
@@ -2807,7 +2806,9 @@ NewRealty.prototype.contactItem = function(data) {
         typecontact.value = data.typecontact;
         note.value = data.note;
     }
-
+    if (this.isRequestEdit) {
+        $(".pizo-new-realty-contact-item-setting", temp).selfRemove();
+    }
     return temp;
 }
 

@@ -307,6 +307,12 @@ App.prototype.getPermisionOpenPage = function() {
     if (moduleDatabase.checkPermission == undefined) {
         moduleDatabase.checkPermission = [];
         moduleDatabase.checkPermission[0] = [];
+        moduleDatabase.isStaff = true;
+        moduleDatabase.isAdd = false;
+        moduleDatabase.isMerge = false;
+        moduleDatabase.isCall = false;
+        moduleDatabase.isConfirm = false;
+        moduleDatabase.isCancelConfirm = false;
         var arr = [];
         this.promisePermission = moduleDatabase.queryData("loadPermision.php", { userid: window.userid }, "privileges");
         arr.push(this.promisePermission);
@@ -344,17 +350,36 @@ App.prototype.getPermisionOpenPage = function() {
                 this.firstElement = [];
             var isRealty = false;
             for (var param in moduleDatabase.checkPermission) {
-                if (moduleDatabase.checkPermission[param].indexOf(57) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(58) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(59) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(60) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(61) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(62) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(63) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(64) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(65) != -1 &&
-                    moduleDatabase.checkPermission[param].indexOf(69) != -1) {
+                if (moduleDatabase.isStaff == true &&
+                    (moduleDatabase.checkPermission[param].indexOf(57) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(58) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(59) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(60) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(61) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(62) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(63) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(64) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(65) != -1 ||
+                        moduleDatabase.checkPermission[param].indexOf(69) != -1)) {
                     moduleDatabase.isStaff = false;
+                }
+                if (moduleDatabase.isAdd == false && moduleDatabase.checkPermission[param].indexOf(57) != -1) {
+                    moduleDatabase.isAdd = true;
+                }
+                if (moduleDatabase.isCall == false && moduleDatabase.checkPermission[param].indexOf(65) != -1) {
+                    moduleDatabase.isCall = true;
+                }
+                if (moduleDatabase.isMerge == false && moduleDatabase.checkPermission[param].indexOf(64) != -1) {
+                    moduleDatabase.isMerge = true;
+                }
+                if (moduleDatabase.isConfirm == false && moduleDatabase.checkPermission[param].indexOf(63) != -1) {
+                    moduleDatabase.isConfirm = true;
+                }
+                if (moduleDatabase.isCancelConfirm == false && moduleDatabase.checkPermission[param].indexOf(62) != -1) {
+                    moduleDatabase.isCancelConfirm = true;
+                }
+                if (moduleDatabase.isCancelConfirm == false && moduleDatabase.checkPermission[param].indexOf(62) != -1) {
+                    moduleDatabase.isCancelConfirm = true;
                 }
             }
             for (var param in moduleDatabase.checkPermission) {
