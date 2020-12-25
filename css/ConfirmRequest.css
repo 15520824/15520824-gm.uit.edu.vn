@@ -1,3 +1,53 @@
 .pizo-list-realty-confirm-request #preview-equipments .mpot-base-preview-content {
     display: block;
 }
+
+.pizo-list-realty-confirm-request #edit-equipments .mpot-choice-list .mpot-choice-value>span {
+    box-shadow: unset;
+    width: 100%;
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice-list {
+    display: block;
+    table-layout: unset;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice {
+    display: flex;
+    width: 100%;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice-value {
+    display: flex;
+    flex-grow: 2;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice>span {
+    display: flex;
+    flex-grow: 2;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice>span>div {
+    margin-right: 10px;
+    margin-top: 0;
+}
+
+.pizo-list-realty-confirm-request #edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
+    margin-top: 0;
+}
+
+.pizo-list-realty-confirm-request .pizo-new-realty-utility,
+.pizo-list-realty-confirm-request .pizo-new-realty-convenient,
+.pizo-list-realty-confirm-request .pizo-new-realty-juridical,
+.pizo-list-realty-confirm-request .pizo-new-realty-history,
+.pizo-list-realty-confirm-request .pizo-new-realty-contact,
+.pizo-list-realty-confirm-request .pizo-new-realty-image {
+    margin: 0;
+}
+
+.pizo-list-realty-confirm-request .mpot-choice-select-cell {
+    display: flex;
+    align-items: center;
+}
