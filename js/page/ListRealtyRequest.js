@@ -6,6 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import ConfirmRequest from '../component/ConfirmRequest';
 import MapRealty from './MapRealty';
+import { loadingWheel } from '../component/FormatFunction';
 
 
 import {
@@ -411,16 +412,21 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         var result = this.getDataRow(data[i]);
         result.original = data[i];
         check = [];
+        var isContinues = false;
         for (var j = 0; j < checkHouseRequest[data[i].id].length; j++) {
             var object = checkHouseRequest[data[i].id][j];
             if (check[object.created] == undefined)
                 check[object.created] = [];
-            if (object.status == 0)
+            if (object.status == 0) {
                 check[object.created].push(object);
+                isContinues = true;
+            }
         }
+        if (isContinues == false)
+            continue;
         result.child = [];
         var object;
-        var isImage
+        var isImage;
         for (var param in check) {
             object = {};
             object["id"] = [];
@@ -443,7 +449,7 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListRealtyRequest.prototype.merge = function(data, parent, index) {
+ListRealtyRequest.prototype.merge = function(data) {
     var self = this;
     var promiseAll = [];
     var arrTemp = [];
@@ -471,28 +477,21 @@ ListRealtyRequest.prototype.merge = function(data, parent, index) {
         var frameview = mConfirmRequest.getView();
         self.parent.body.addChild(frameview);
         self.parent.body.activeFrame(frameview);
-        // self.mergeDB(mConfirmRequest, data, parent, index);
-        // mConfirmRequest.promiseEditDB.then(function(value) {
-        //     var loading = new loadingWheel();
-        //     moduleDatabase.getModule("activehouses").add(value).then(function(final) {
-        //         var valueFinal;
-        //         if (self.isCensorship) {
-        //             valueFinal = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
-        //             valueFinal = valueFinal[0];
-        //         } else {
-        //             valueFinal = self.formatDataRow(moduleDatabase.getModule("activehouses").data);
-        //         }
+        mConfirmRequest.promiseEditDB.then(function(value) {
+            var loading = new loadingWheel();
+            moduleDatabase.getModule("modification_requests").update(value).then(function() {
+                loading.disable();
+                if (moduleDatabase.stackUpdateRequest) {
+                    moduleDatabase.getModule("activehouses").load().then(function(valueHouse) {
+                        for (var i = 0; i < moduleDatabase.stackUpdateRequest.length; i++) {
+                            moduleDatabase.stackUpdateRequest[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateRequest[i].formatDataRow(valueHouse));
+                        }
+                    })
+                }
+            })
+        })
 
-        //         self.mTable.data = valueFinal;
-        //         self.HTinput.emit("change");
-        //         loading.disable();
-        //     });
-        // })
     })
-}
-
-ListRealtyRequest.prototype.mergeDB = function() {
-
 }
 
 ListRealtyRequest.prototype.getDataRow = function(data, isChild) {

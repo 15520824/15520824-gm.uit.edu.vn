@@ -5,7 +5,7 @@ import "../../css/NewWard.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import moduleDatabase from '../component/ModuleDatabase';
-import {getIDCompair} from './FormatFunction';
+import { getIDCompair } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -15,278 +15,255 @@ function NewWard(data) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    
+
     this.textHeader = "Sửa ";
     this.data = data;
 
-    if(this.data ==undefined)
-    this.textHeader = "Thêm ";
-    
+    if (this.data == undefined)
+        this.textHeader = "Thêm ";
+
 }
 
-NewWard.prototype.setContainer = function(parent)
-{
+NewWard.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
 Object.defineProperties(NewWard.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 NewWard.prototype.constructor = NewWard;
 
-NewWard.prototype.getView = function (data) {
+NewWard.prototype.getView = function(data) {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-body-title-left",
-                        props: {
-                            innerHTML:  self.textHeader+"Phường xã"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-
-                                        self.rejectDB(self.getDataSave());
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.createPromise();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu và đóng" + '</span>'
-                                ]
-                            }
-                        ]
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: self.textHeader + "Phường xã"
                     }
-                ]
-            },
-        ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                            tag: "button",
+                            class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                    self.rejectDB(self.getDataSave());
+                                }
+                            },
+                            child: [
+                                '<span>' + "Đóng" + '</span>'
+                            ]
+                        },
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function (evt) {
+                        //             self.resolveDB(self.getDataSave());
+                        //             self.createPromise();
+                        //         }
+                        //     },
+                        //     child: [
+                        //     '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.resolveDB(self.getDataSave());
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+                                }
+                            },
+                            child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, ]
     });
 
     self.listStateElement = _({
-        tag:"selectmenu",
-        class:"pizo-new-state-container-nation-container-input",
-        props:{
-            enableSearch:true
+        tag: "selectmenu",
+        class: "pizo-new-state-container-nation-container-input",
+        props: {
+            enableSearch: true
         },
-        on:{
-            change:function(event){
+        on: {
+            change: function(event) {
                 var x = getIDCompair(this.value);
-                for(var i = 0;i<self.checkStateWard[x].length;i++)
-                {
-                    if(self.checkStateWard[x][i] == self.listWardElement.value)
-                    return;
+                for (var i = 0; i < self.checkStateWard[x].length; i++) {
+                    if (self.checkStateWard[x][i] == self.listWardElement.value)
+                        return;
                 }
-                if(self.checkStateWard[x][0]!==undefined)
-                self.listWardElement.value = self.checkStateWard[x][0].value;
+                if (self.checkStateWard[x][0] !== undefined)
+                    self.listWardElement.value = self.checkStateWard[x][0].value;
             }
         }
     });
     self.listWardElement = _({
-        tag:"selectmenu",
-        class:"pizo-new-ward-container-district-container-input",
-        props:{
-            enableSearch:true
+        tag: "selectmenu",
+        class: "pizo-new-ward-container-district-container-input",
+        props: {
+            enableSearch: true
         },
-        on:{
-            change:function(event){
+        on: {
+            change: function(event) {
                 var x = getIDCompair(this.value);
-                var checkid = self.checkState[self.checkWard[x].stateid].name+"_"+self.checkWard[x].stateid;
-                    self.listStateElement.value = checkid;
+                var checkid = self.checkState[self.checkWard[x].stateid].name + "_" + self.checkWard[x].stateid;
+                self.listStateElement.value = checkid;
             }
         }
     });
-    moduleDatabase.getModule("districts").load().then(function(listWard){
-        moduleDatabase.getModule("states").load().then(function(listState){
+    moduleDatabase.getModule("districts").load().then(function(listWard) {
+        moduleDatabase.getModule("states").load().then(function(listState) {
             self.setListParamState(listState);
             self.listStateElement.items = self.listState;
             self.setListParamWard(listWard);
             self.listWardElement.items = self.listWard;
-            if(self.data!==undefined)
-            {
-                self.listWardElement.value = self.checkWard[self.data.original.districtid].name+"_"+self.data.original.districtid;
+            if (self.data !== undefined) {
+                self.listWardElement.value = self.checkWard[self.data.original.districtid].name + "_" + self.data.original.districtid;
                 self.listWardElement.emit("change");
                 var x = getIDCompair(self.listWardElement.value);
-                var checkid = self.checkState[self.checkWard[x].stateid].name+"_"+self.checkWard[x].stateid;
-                    self.listStateElement.value = checkid;
+                var checkid = self.checkState[self.checkWard[x].stateid].name + "_" + self.checkWard[x].stateid;
+                self.listStateElement.value = checkid;
             }
         })
     })
 
     this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-realty-main"],
-            child:[
-                {
-                    tag:"div",
-                    class:["pizo-list-realty-main-result-control"],
-                    child:[
-                        {
-                            tag:"div",
-                            class:"pizo-new-state-container",
-                            child:[
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-name-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-name-container-label",
-                                            props:{
-                                                innerHTML:"Tên"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-ward-container-district-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-ward-container-district-container-label",
-                                            props:{
-                                                innerHTML:"Quận/Huyện"
-                                            }
-                                        },
-                                        self.listWardElement
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-nation-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-nation-container-label",
-                                            props:{
-                                                innerHTML:"Tỉnh/Thành phố"
-                                            }
-                                        },
-                                        self.listStateElement
-                                    ]
+        tag: "div",
+        class: ["pizo-list-realty-main"],
+        child: [{
+            tag: "div",
+            class: ["pizo-list-realty-main-result-control"],
+            child: [{
+                tag: "div",
+                class: "pizo-new-state-container",
+                child: [{
+                        tag: "div",
+                        class: "pizo-new-state-container-name-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-state-container-name-container-label",
+                                props: {
+                                    innerHTML: "Tên"
                                 }
-                            ]
-                        }
-                    ]
-                }
-            ]   
-        })
-        );
+                            },
+                            {
+                                tag: "input",
+                                class: ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-ward-container-district-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-ward-container-district-container-label",
+                                props: {
+                                    innerHTML: "Quận/Huyện"
+                                }
+                            },
+                            self.listWardElement
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-state-container-nation-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-state-container-nation-container-label",
+                                props: {
+                                    innerHTML: "Tỉnh/Thành phố"
+                                }
+                            },
+                            self.listStateElement
+                        ]
+                    }
+                ]
+            }]
+        }]
+    }));
     this.createPromise();
-    this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
+    this.name = $('input.pizo-new-state-container-name-container-input', this.$view);
     this.district = self.listWardElement;
-    
-    if(this.data!==undefined)
-    {
+
+    if (this.data !== undefined) {
         this.name.value = this.data.original.name;
     }
     return this.$view;
 }
 
-NewWard.prototype.setListParamWard = function(value)
-{
+NewWard.prototype.setListParamWard = function(value) {
     this.checkWard = moduleDatabase.getModule("districts").getLibary("id");
 
-    this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
-        return {text:data.name,value:data.name+"_"+data.id}
-    },true);
-    this.listWard = moduleDatabase.getModule("districts").getList("name",["name","id"]);
+    this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid", function(data) {
+        return { text: data.name, value: data.name + "_" + data.id }
+    }, true);
+    this.listWard = moduleDatabase.getModule("districts").getList("name", ["name", "id"]);
 }
 
-NewWard.prototype.setListParamState = function()
-{
+NewWard.prototype.setListParamState = function() {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
-    this.listState = moduleDatabase.getModule("states").getList("name",["name","id"]);
+    this.listState = moduleDatabase.getModule("states").getList("name", ["name", "id"]);
     this.isLoaded = true;
 }
 
 NewWard.prototype.getDataSave = function() {
-    
+
     var temp = {
-        id:this.data===undefined?undefined:this.data.original.id,
-        name:this.name.value,
-        districtid:getIDCompair(this.district.value)
+        id: this.data === undefined ? undefined : this.data.original.id,
+        name: this.name.value,
+        districtid: getIDCompair(this.district.value)
     }
-    if(this.data!==undefined)
-    temp.id = this.data.original.id;
+    if (this.data !== undefined)
+        temp.id = this.data.original.id;
     return temp;
 }
 
-NewWard.prototype.createPromise = function()
-{
+NewWard.prototype.createPromise = function() {
     var self = this;
-    if(this.data === undefined)
-    {
-        self.promiseAddDB = new Promise(function(resolve,reject){
+    if (this.data === undefined) {
+        self.promiseAddDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
 
-    }else
-    {
-        self.promiseEditDB = new Promise(function(resolve,reject){
+    } else {
+        self.promiseEditDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
-        
+
     }
 }
 
-NewWard.prototype.resetPromise = function(value)
-{
-    if(self.promiseAddDB!==undefined)
-    self.promiseAddDB = undefined;
-    if(self.promiseEditDB!==undefined)
-    self.promiseEditDB = undefined;
+NewWard.prototype.resetPromise = function(value) {
+    if (self.promiseAddDB !== undefined)
+        self.promiseAddDB = undefined;
+    if (self.promiseEditDB !== undefined)
+        self.promiseEditDB = undefined;
 }
 
-NewWard.prototype.refresh = function () {
+NewWard.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -294,7 +271,7 @@ NewWard.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewWard.prototype.setData = function (data) {
+NewWard.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -302,7 +279,7 @@ NewWard.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewWard.prototype.flushDataToView = function () {
+NewWard.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -317,7 +294,7 @@ NewWard.prototype.flushDataToView = function () {
     }
 };
 
-NewWard.prototype.start = function () {
+NewWard.prototype.start = function() {
 
 }
 

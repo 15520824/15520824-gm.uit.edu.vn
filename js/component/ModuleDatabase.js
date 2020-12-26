@@ -442,8 +442,8 @@ DataStructure.prototype.update = function(data, needChange = false) {
                     data.update = Object.assign({}, value.update);
                     data.delete = Object.assign({}, value.delete);
                 }
-                self.setFormatUpdate(value.data);
                 Object.assign(data, value.data);
+                self.setFormatUpdate(value.data);
                 var update = value["update"];
                 var insert = value["add"];
                 var deleteValue = value["delete"];
@@ -485,6 +485,8 @@ DataStructure.prototype.update = function(data, needChange = false) {
 
 DataStructure.prototype.setFormatUpdate = function(data) {
     var self = this;
+    if (data == undefined && data.id == undefined)
+        return;
     var temp = self.Libary["id"][data.id];
     for (var param in data) {
         if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {

@@ -15,211 +15,194 @@ function NewContact(data) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    
+
     this.textHeader = "Sửa ";
     this.data = data;
 
-    if(this.data ==undefined)
-    this.textHeader = "Thêm ";
-    
+    if (this.data == undefined)
+        this.textHeader = "Thêm ";
+
 }
 
-NewContact.prototype.setContainer = function(parent)
-{
+NewContact.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
 Object.defineProperties(NewContact.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 NewContact.prototype.constructor = NewContact;
 
-NewContact.prototype.getView = function () {
+NewContact.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-body-title-left",
-                        props: {
-                            innerHTML:  self.textHeader+"Quận/Huyện"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: self.textHeader + "Quận/Huyện"
+                    }
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                            tag: "button",
+                            class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                    self.rejectDB(self.getDataSave());
+                                }
+                            },
+                            child: [
+                                '<span>' + "Đóng" + '</span>'
+                            ]
+                        },
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function (evt) {
+                        //             var tempData = self.getDataSave();
+
+                        //             if(tempData!==undefined)
+                        //             {
+                        //                 self.resolveDB(tempData);
+                        //                 self.createPromise();
+                        //             }
+                        //         }
+                        //     },
+                        //     child: [
+                        //     '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    var tempData = self.getDataSave();
+                                    if (tempData !== undefined) {
+                                        self.resolveDB(self.getDataSave());
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
-
-                                        self.rejectDB(self.getDataSave());
                                     }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        var tempData = self.getDataSave();
-                                    
-                                        if(tempData!==undefined)
-                                        {
-                                            self.resolveDB(tempData);
-                                            self.createPromise();
-                                        }
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        var tempData = self.getDataSave();
-                                        if(tempData!==undefined)
-                                        {
-                                            self.resolveDB(self.getDataSave());
-                                            self.$view.selfRemove();
-                                            var arr = self.parent.body.getAllChild();
-                                            self.parent.body.activeFrame(arr[arr.length - 1]);
-                                        }
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu và đóng" + '</span>'
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-        ]
-    });
-
-    this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-realty-main"],
-            child:[
-                {
-                    tag:"div",
-                    class:["pizo-list-realty-main-result-control"],
-                    child:[
-                        {
-                            tag:"div",
-                            class:"pizo-new-contact-container",
-                            child:[
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-contact-container-name-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-contact-container-name-container-label",
-                                            props:{
-                                                innerHTML:"Tên"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:["pizo-new-contact-container-name-container-input","pizo-new-realty-dectruct-input"],
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-contact-container-email-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-contact-container-email-container-label",
-                                            props:{
-                                                innerHTML:"Email"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:"pizo-new-contact-container-email-container-input",
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-contact-container-phone-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-contact-container-phone-container-label",
-                                            props:{
-                                                innerHTML:"Số điện thoại"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:"pizo-new-contact-container-phone-container-input",
-                                            props:{
-                                                type:"number"
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-contact-container-type-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-contact-container-type-container-label",
-                                            props:{
-                                                innerHTML:"Tình trạng cuộc gọi"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-contact-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Còn hoạt động",value:1},
-                                                    {text:"Sai số", value:0},
-                                                    {text:"Gọi lại sau",value:2},
-                                                    {text:"Bỏ qua",value:3},
-                                                    {text:"Khóa máy",value:4}
-                                                ]
-                                            }
-                                        }
-                                    ]
                                 }
+                            },
+                            child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                             ]
                         }
                     ]
                 }
-            ]   
-        })
-        );
+            ]
+        }, ]
+    });
+
+    this.$view.addChild(_({
+        tag: "div",
+        class: ["pizo-list-realty-main"],
+        child: [{
+            tag: "div",
+            class: ["pizo-list-realty-main-result-control"],
+            child: [{
+                tag: "div",
+                class: "pizo-new-contact-container",
+                child: [{
+                        tag: "div",
+                        class: "pizo-new-contact-container-name-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-contact-container-name-container-label",
+                                props: {
+                                    innerHTML: "Tên"
+                                }
+                            },
+                            {
+                                tag: "input",
+                                class: ["pizo-new-contact-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-contact-container-email-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-contact-container-email-container-label",
+                                props: {
+                                    innerHTML: "Email"
+                                }
+                            },
+                            {
+                                tag: "input",
+                                class: "pizo-new-contact-container-email-container-input",
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-contact-container-phone-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-contact-container-phone-container-label",
+                                props: {
+                                    innerHTML: "Số điện thoại"
+                                }
+                            },
+                            {
+                                tag: "input",
+                                class: "pizo-new-contact-container-phone-container-input",
+                                props: {
+                                    type: "number"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-contact-container-type-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-contact-container-type-container-label",
+                                props: {
+                                    innerHTML: "Tình trạng cuộc gọi"
+                                }
+                            },
+                            {
+                                tag: "selectmenu",
+                                class: "pizo-new-contact-container-type-container-input",
+                                props: {
+                                    items: [
+                                        { text: "Còn hoạt động", value: 1 },
+                                        { text: "Sai số", value: 0 },
+                                        { text: "Gọi lại sau", value: 2 },
+                                        { text: "Bỏ qua", value: 3 },
+                                        { text: "Khóa máy", value: 4 }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }]
+        }]
+    }));
     this.createPromise();
-    this.name = $('input.pizo-new-contact-container-name-container-input',this.$view);
-    this.phone = $('input.pizo-new-contact-container-phone-container-input',this.$view);
-    this.type = $('div.pizo-new-contact-container-type-container-input',this.$view);
-    this.email = $('input.pizo-new-contact-container-email-container-input',this.$view);
-    
-    if(this.data!==undefined)
-    {
+    this.name = $('input.pizo-new-contact-container-name-container-input', this.$view);
+    this.phone = $('input.pizo-new-contact-container-phone-container-input', this.$view);
+    this.type = $('div.pizo-new-contact-container-type-container-input', this.$view);
+    this.email = $('input.pizo-new-contact-container-email-container-input', this.$view);
+
+    if (this.data !== undefined) {
         this.name.value = this.data.original.name;
         this.phone.value = this.data.original.phone;
         this.type.value = this.data.original.statusphone;
@@ -230,51 +213,46 @@ NewContact.prototype.getView = function () {
 
 NewContact.prototype.getDataSave = function() {
     var temp = {
-        name:this.name.value,
-        phone:this.phone.value,
-        statusphone:this.type.value,
-        email:this.email.value
+        name: this.name.value,
+        phone: this.phone.value,
+        statusphone: this.type.value,
+        email: this.email.value
     }
-    if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined||moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value]!==undefined)
-    {
+    if (moduleDatabase.getModule("users").getLibary("phone")[this.phone.value] !== undefined || moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value] !== undefined) {
         var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
         this.$view.addChild(deleteItem);
         return;
     }
-    if(this.data!==undefined)
-    temp.id = this.data.original.id;
+    if (this.data !== undefined)
+        temp.id = this.data.original.id;
     return temp;
 }
 
-NewContact.prototype.createPromise = function()
-{
+NewContact.prototype.createPromise = function() {
     var self = this;
-    if(this.data === undefined)
-    {
-        self.promiseAddDB = new Promise(function(resolve,reject){
+    if (this.data === undefined) {
+        self.promiseAddDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
 
-    }else
-    {
-        self.promiseEditDB = new Promise(function(resolve,reject){
+    } else {
+        self.promiseEditDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
-        
+
     }
 }
 
-NewContact.prototype.resetPromise = function(value)
-{
-    if(self.promiseAddDB!==undefined)
-    self.promiseAddDB = undefined;
-    if(self.promiseEditDB!==undefined)
-    self.promiseEditDB = undefined;
+NewContact.prototype.resetPromise = function(value) {
+    if (self.promiseAddDB !== undefined)
+        self.promiseAddDB = undefined;
+    if (self.promiseEditDB !== undefined)
+        self.promiseEditDB = undefined;
 }
 
-NewContact.prototype.refresh = function () {
+NewContact.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -282,7 +260,7 @@ NewContact.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewContact.prototype.setData = function (data) {
+NewContact.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -290,7 +268,7 @@ NewContact.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewContact.prototype.flushDataToView = function () {
+NewContact.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -305,7 +283,7 @@ NewContact.prototype.flushDataToView = function () {
     }
 };
 
-NewContact.prototype.start = function () {
+NewContact.prototype.start = function() {
 
 }
 

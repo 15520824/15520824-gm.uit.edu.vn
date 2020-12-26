@@ -36,7 +36,7 @@ function App() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     moduleDatabase.getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActivehouse.php"]);
-    moduleDatabase.getModule("modification_requests", ["load.php", "addModificationRequests.php", "update.php", "delete.php"])
+    moduleDatabase.getModule("modification_requests", ["load.php", "addModificationRequests.php", "updateModificationRequests.php", "delete.php"])
     moduleDatabase.getModule("inactivehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts", ["load.php", "add.php", "update.php", "deleteContact.php"]);
     moduleDatabase.getModule("users", ["load.php", "addUser.php", "updateUser.php", "deleteUser.php"]);
@@ -57,6 +57,7 @@ function App() {
     moduleDatabase.getModule("nations");
     moduleDatabase.getModule("type_activehouses");
     moduleDatabase.getModule("favourite", ["load.php", "addFavorite.php", "update.php", "deleteFavorite.php"]);
+    moduleDatabase.getModule("activehouses_note");
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -667,6 +668,9 @@ App.prototype.openPage = function(index) {
             //Yeu cau chinh sua
             var mListRealtyRequest = new ListRealtyRequest();
             mListRealtyRequest.attach(this);
+            if (moduleDatabase.stackUpdateRequest == undefined)
+                moduleDatabase.stackUpdateRequest = [];
+            moduleDatabase.stackUpdateRequest.push(mListRealtyRequest);
             var frameview = mListRealtyRequest.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);

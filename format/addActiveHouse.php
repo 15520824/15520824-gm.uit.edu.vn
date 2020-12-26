@@ -22,17 +22,18 @@ if (isset($_POST["name"])) {
     exit();
 }
 
-if(isset($_POST["userid"]))
-{
-    $userid = $_POST["userid"];
-}
-
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
 }else
 {
     echo "BAD_REQUEST (400)";
     exit();
+}
+
+if(isset($_POST["userid"]))
+{
+    $userid = $_POST["userid"];
+    $data["userid"] = $userid;
 }
 $index = "";
 $i = 0;
@@ -159,6 +160,7 @@ $data["addressid_old"] = 0;
 if(isset($data["oldId"]))
 {
     $oldId = $data["oldId"];
+    unset($data->oldId);
 }
 
 $data["modified"] = new DateTime();

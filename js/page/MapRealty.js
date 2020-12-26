@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MapRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatNumber, reFormatNumber, formatFit, loadingWheel } from '../component/FormatFunction'
+import { formatNumber, reFormatNumber, formatFit, loadingWheel, formatDate } from '../component/FormatFunction'
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -556,6 +556,7 @@ MapRealty.prototype.modalRealty = function() {
 }
 
 MapRealty.prototype.mediaItem = function(data, index) {
+    var self = this;
     var temp = _({
         tag: "li",
         class: ["media-stream-tile"],
@@ -563,10 +564,11 @@ MapRealty.prototype.mediaItem = function(data, index) {
             click: function(event) {
                 var arr = [];
                 for (var i = 0; i < data.length; i++) {
+                    var dataUser = self.checkUserID[data[i].userid];
                     arr.push({
                         index: i,
-                        avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
-                        userName: "Bùi Phạm Minh Thi",
+                        avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+                        userName: dataUser.name,
                         src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data[i].src,
                         date: data[i].created,
                         note: ""
@@ -674,10 +676,11 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                         if (!modal.image)
                             return;
                         for (var i = 0; i < modal.image.length; i++) {
+                            var dataUser = self.checkUserID[modal.image[i].userid];
                             arr.push({
                                 index: i,
-                                avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
-                                userName: "Bùi Phạm Minh Thi",
+                                avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+                                userName: dataUser.name,
                                 src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + modal.image[i].src,
                                 date: modal.image[i].created,
                                 note: ""
@@ -1286,7 +1289,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         }
 
     }
-    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
     if (arr.length > 0)
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             var m;
@@ -1301,6 +1304,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
             var arrTemp = [];
             var arrTemp2 = [];
             var k = 0;
+            var m = 0;
             for (var i = 0; i < values.length; i++) {
                 if (values[i].type == 1) {
                     arrTemp.push(values[i]);
@@ -1311,7 +1315,8 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                     k++;
                 } else if (values[i].type == 0) {
                     arrTemp2.push(values[i]);
-                    mediaContainer2.appendChild(self.mediaItem(arrTemp2, k));
+                    mediaContainer2.appendChild(self.mediaItem(arrTemp2, m));
+                    m++;
                 }
             }
             modal.image = arrTemp;
@@ -2843,15 +2848,72 @@ MapRealty.prototype.detailHouse = function(data) {
                 tag: "div",
                 class: "pizo-new-realty-dectruct-tab-ownership-history",
                 child: [{
-                    tag: "div",
-                    class: "pizo-new-realty-dectruct-tab",
-                    props: {
-                        innerHTML: "Ghi chú"
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-tab",
+                        props: {
+                            innerHTML: "Ghi chú"
+                        }
+                    },
+                    {
+                        tag: "div",
+                        class: "note-data",
+                        child: []
+                    },
+                    {
+                        tag: "div",
+                        class: "form-group",
+                        child: [{
+                                tag: "label",
+                                class: "message-support"
+                            },
+                            {
+                                tag: "textarea",
+                                class: "form-control",
+                                props: {
+                                    required: "",
+                                    placeholder: "Nhập ghi chú..."
+                                }
+                            },
+                            {
+                                tag: "button",
+                                class: ["btn", "btn-info", "btn-xs", "add-note-land"],
+                                props: {
+                                    innerHTML: "Thêm ghi chú"
+                                },
+                                on: {
+                                    click: function(event) {
+                                        var textarea = $("textarea.form-control", temp);
+                                        var value = {
+                                            userid: window.userid,
+                                            houseid: data.id,
+                                            content: textarea.value,
+                                            created: new Date()
+                                        }
+                                        textarea.value = "";
+                                        var loading = new loadingWheel();
+                                        moduleDatabase.getModule("activehouses_note").add(value).then(function() {
+                                            loading.disable();
+                                            temp.updateChat();
+                                        })
+                                    }
+                                }
+                            }
+                        ]
                     }
-                }]
-            }
+                ]
+            },
         ]
     })
+    var containerChat = $(".note-data", temp);
+    temp.updateChat = function() {
+        moduleDatabase.getModule("activehouses_note").load({ WHERE: [{ houseid: data.id }] }, true).then(function(value) {
+            containerChat.clearChild();
+            for (var i = 0; i < value.length; i++) {
+                containerChat.appendChild(self.noteChat(value[i]));
+            }
+        })
+    }
+    temp.updateChat();
     var inputHeight = $('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input', temp);
     var inputWidth = $('input.pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input', temp);
     var inputUnitHeight = unitHeight;
@@ -2929,8 +2991,53 @@ MapRealty.prototype.detailHouse = function(data) {
                 text += "</br>"
             }
             historical.innerHTML = text;
+            if (text != "")
+                historical.parentNode.style.margin = "10px";
         })
     }
+    return temp;
+}
+
+MapRealty.prototype.noteChat = function(data) {
+    var userData = this.checkUserID[data.userid];
+    var temp = _({
+        tag: "p",
+        child: [{
+                tag: "strong",
+                props: {
+                    innerHTML: userData.name
+                }
+            },
+            {
+                tag: "small",
+                props: {
+                    innerHTML: " MS( " + userData.id + " )"
+                }
+            },
+            {
+                tag: "small",
+                props: {
+                    innerHTML: "    "
+                }
+            },
+            {
+                tag: "span",
+                class: ["oi", "oi-timer"],
+                props: {
+                    innerHTML: formatDate(data.created, true, true, true, true, true)
+                }
+            },
+            {
+                tag: "br"
+            },
+            {
+                tag: "span",
+                props: {
+                    innerHTML: data.content
+                }
+            }
+        ]
+    })
     return temp;
 }
 
@@ -3212,10 +3319,10 @@ MapRealty.prototype.itemMap = function(marker) {
         }
 
     }
-    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
     if (arr.length > 0)
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
-            var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+            var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
             for (var i = 0; i < values.length; i++) {
                 if (values[i].thumnail == 1) {
                     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;

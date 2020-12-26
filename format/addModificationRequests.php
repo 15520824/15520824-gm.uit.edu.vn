@@ -225,19 +225,14 @@ if(isset($data["contact"]))
         }
         else
         {
-            if(!isset($contact[$i]["id"]))
-            {
-                $isContact = true;
-            }
+             $isContact = true;
         }
     }
 }
 
-
-
-for($i = 0 ;$i<$count_old;$i++)
+if(count($contact_old)>0)
 {
-    $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
+    $isContact = true;
 }
 
 $imageTempStatus = array();

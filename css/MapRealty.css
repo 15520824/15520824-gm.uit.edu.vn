@@ -477,7 +477,7 @@ a:visited {
 
 .list-card-brokerage {
     background: 0 0;
-    width: 100%;
+    width: calc(100% - 30px);
     padding-bottom: 10px;
     text-align: right;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
@@ -1566,11 +1566,88 @@ input[type="submit"] {
     min-height: 2em;
 }
 
-.pizo-new-realty-dectruct-tab-historical-progress-container {
+
+/* .pizo-new-realty-dectruct-tab-historical-progress-container {
     margin: 0.7143em;
     margin-bottom: 2.1429em;
-}
+} */
 
 .search-page-list-container.double-column-only.short-list-cards {
     position: relative;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.form-group .btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-xs {
+    padding: .25rem .5rem;
+    font-size: 10px;
+}
+
+.form-group .btn-info {
+    background: #1976d2;
+    border: 1px solid #1976d2;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
+    -webkit-transition: 0.2s ease-in;
+    -o-transition: 0.2s ease-in;
+    transition: 0.2s ease-in;
+    margin-top: 10px;
+    color: white;
+}
+
+.form-control {
+    color: #67757c;
+    min-height: 38px;
+    display: initial;
+}
+
+.form-control {
+    display: block;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.pizo-new-realty-dectruct.pizo-only-view textarea.form-control {
+    pointer-events: unset;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.note-data {
+    margin: 10px;
+}
+
+.note-data .oi-timer {
+    float: right;
 }

@@ -39,6 +39,7 @@ function ListRealty() {
     this.requestEdit = MapRealty.prototype.requestEdit;
     this.requestEditDB = MapRealty.prototype.requestEditDB;
     this.itemDisplayNone = MapRealty.prototype.itemDisplayNone;
+    this.noteChat = MapRealty.prototype.noteChat;
 
     moduleDatabase.getModule("users").load().then(function(value) {
         this.checkUser = moduleDatabase.getModule("users").getLibary("phone");

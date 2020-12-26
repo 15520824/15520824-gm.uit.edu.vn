@@ -80,19 +80,19 @@ MergeRealty.prototype.getView = function() {
                                 '<span>' + "Đóng" + '</span>'
                             ]
                         },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function(evt) {
-                                    self.resolveDB(self.getDataSave());
-                                    self.createPromise();
-                                }
-                            },
-                            child: [
-                                '<span>' + "Lưu" + '</span>'
-                            ]
-                        },
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function(evt) {
+                        //             self.resolveDB(self.getDataSave());
+                        //             self.createPromise();
+                        //         }
+                        //     },
+                        //     child: [
+                        //         '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
                         {
                             tag: "button",
                             class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],

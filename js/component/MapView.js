@@ -1291,7 +1291,7 @@ MapView.prototype.modalMiniRealty = function(data) {
         }
 
     }
-    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
     if (arr.length > 0)
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++) {

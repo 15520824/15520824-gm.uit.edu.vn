@@ -123,23 +123,23 @@ NewRealty.prototype.getView = function() {
                                 '<span>' + "Đóng" + '</span>'
                             ]
                         },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-save", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function(evt) {
-                                    var dataSave = self.getDataSave(true);
-                                    if (dataSave == false)
-                                        return;
-                                    self.resolveDB(dataSave);
-                                    self.data = dataSave;
-                                    self.createPromise();
-                                }
-                            },
-                            child: [
-                                '<span>' + "Lưu" + '</span>'
-                            ]
-                        },
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-save", "pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function(evt) {
+                        //             var dataSave = self.getDataSave(true);
+                        //             if (dataSave == false)
+                        //                 return;
+                        //             self.resolveDB(dataSave);
+                        //             self.data = dataSave;
+                        //             self.createPromise();
+                        //         }
+                        //     },
+                        //     child: [
+                        //         '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
                         {
                             tag: "button",
                             class: ["pizo-list-realty-button-save-close", "pizo-list-realty-button-element"],
@@ -197,7 +197,6 @@ NewRealty.prototype.getView = function() {
     self.requestEditButton = $("button.pizo-list-realty-button-request-edit", this.$view);
     if (this.isRequestEdit) {
         self.requestEditButton.style.display = "";
-        self.saveButton.style.display = "none";
         self.saveCloseButton.style.display = "none"
     }
     setTimeout(function() {
@@ -272,13 +271,15 @@ NewRealty.prototype.descView = function() {
 }
 
 NewRealty.prototype.imageJuridical = function() {
+    var self = this;
     var result = Object.assign({}, xmlModalDragManyFiles);
     result.enableClick = true;
 
     result.setFormatData(function(data) {
+        var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
-            userName: "Bùi Phạm Minh Thi",
+            avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+            userName: dataUser.name,
             src: data.src,
             date: data.created,
             note: ""
@@ -332,12 +333,14 @@ NewRealty.prototype.imageJuridical = function() {
 }
 
 NewRealty.prototype.imageCurrentStaus = function() {
+    var self = this;
     var result = Object.assign({}, xmlModalDragManyFiles);
     result.enableClick = true;
     result.setFormatData(function(data) {
+        var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
-            userName: "Bùi Phạm Minh Thi",
+            avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+            userName: dataUser.name,
             src: data.src,
             date: data.created,
             note: ""
@@ -470,7 +473,9 @@ NewRealty.prototype.itemAddress = function(data = { addressid: 0 }, lat, lng) {
                             temp.data = childNode.getDataCurrent();
                             childRemove.selfRemove();
                             if (temp.data.lat != undefined && temp.data.lng != undefined) {
-                                self.containerMap.addMoveMarker([temp.data.lat, temp.data.lng], false)
+                                var position = [temp.data.lat, temp.data.lng];
+                                position = data;
+                                self.containerMap.addMoveMarker(position, false)
                             }
                         }, temp.data)
                         childNode.addLatLng();
@@ -1901,7 +1906,7 @@ NewRealty.prototype.detructView = function() {
         advanceDetruct = parseInt(advanceDetruct / 10);
         this.advanceDetruct4.checked = advanceDetruct % 10 == 1 ? true : false;
         this.inputCensorship.checked = parseInt(original.censorship) == 1 ? true : false;
-        if (this.data !== undefined) {
+        if (this.data !== undefined && this.isRequestEdit != true) {
             this.containerCensorship.style.display = "";
         }
     }
@@ -1914,6 +1919,7 @@ NewRealty.prototype.setCensorship = function() {
 
 NewRealty.prototype.setRequestEdit = function() {
     this.isRequestEdit = true;
+    this.textHeader = "Yêu cầu chỉnh sửa";
 }
 
 NewRealty.prototype.getDataSave = function(isCheck = false) {

@@ -1,5 +1,6 @@
 .pizo-list-realty-confirm-request #preview-equipments .mpot-base-preview-content {
-    display: block;
+    display: flex;
+    flex-grow: 2;
 }
 
 .pizo-list-realty-confirm-request #edit-equipments .mpot-choice-list .mpot-choice-value>span {
@@ -50,4 +51,16 @@
 .pizo-list-realty-confirm-request .mpot-choice-select-cell {
     display: flex;
     align-items: center;
+}
+
+.pizo-list-realty-confirm-request #preview-equipments {
+    flex-grow: 2;
+}
+
+.pizo-list-realty-confirm-request #preview-equipments .mpot-base-preview-content>div {
+    width: 100%;
+}
+
+.pizo-list-realty-confirm-request #preview-equipments .pizo-new-realty-convenient-content-size {
+    margin-right: 0;
 }

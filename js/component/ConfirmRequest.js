@@ -80,19 +80,19 @@ ConfirmRequest.prototype.getView = function() {
                                 '<span>' + "Đóng" + '</span>'
                             ]
                         },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function(evt) {
-                                    self.resolveDB(self.getDataSave());
-                                    self.createPromise();
-                                }
-                            },
-                            child: [
-                                '<span>' + "Lưu" + '</span>'
-                            ]
-                        },
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function(evt) {
+                        //             self.resolveDB(self.getDataSave());
+                        //             self.createPromise();
+                        //         }
+                        //     },
+                        //     child: [
+                        //         '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
                         {
                             tag: "button",
                             class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
@@ -1672,7 +1672,6 @@ ConfirmRequest.prototype.getDataSave = function() {
     for (var i = 0; i < arrStatus.length; i++) {
         image.push(arrStatus[i]);
     }
-    var address, addressOld;
     var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
     width = data[1].properties[0].properties[0].element.wholeText;
     height = data[1].properties[0].properties[1].element.wholeText;
@@ -1715,9 +1714,6 @@ ConfirmRequest.prototype.getDataSave = function() {
     }
     if (addressDataOld)
         addressRealOld = addressDataOld.data.addressid_old;
-
-    address = addressData;
-    addressOld = addressDataOld;
     content = data[0].properties[0].properties[4].value;
     salestatus = data[0].properties[0].properties[1].value.element;
     salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
@@ -1755,20 +1751,15 @@ ConfirmRequest.prototype.getDataSave = function() {
         temp.lat = lat;
     if (lng)
         temp.lng = lng;
-    var arr = [];
-    var containerEquipment = data[2].properties[1].element.childNodes[0].childNodes[0].childNodes[1];
-    console.log(data[2].properties[1].element)
-    for (var i = 0; i < containerEquipment.childNodes.length; i++) {
-        arr.push(containerEquipment.childNodes[i].getData());
-    }
-    temp.equipment = arr;
+    var containerEquipment = data[2].properties[0].value.itemData;
+    temp.equipment = containerEquipment;
     var contact = [];
     var containerContact = data[3].properties[0].value;
-
     for (var i = 0; i < containerContact.element.childNodes.length; i++) {
         contact.push(containerContact.element.childNodes[i].getData());
     }
     temp.contact = contact;
+    temp.id = this.data[0].original.id;
     var arrIDSuccess = [];
     var arrIDFail = [];
     var object;
@@ -1817,7 +1808,6 @@ ConfirmRequest.prototype.getDataSave = function() {
 
     temp.requestSuccess = arrIDSuccess;
     temp.requestFail = arrIDFail;
-    console.log(temp);
     return temp;
 }
 

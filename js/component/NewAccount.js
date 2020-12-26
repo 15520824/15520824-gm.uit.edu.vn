@@ -99,23 +99,23 @@ NewAccount.prototype.getView = function(dataParent) {
                                 '<span>' + "Đóng" + '</span>'
                             ]
                         },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function(evt) {
-                                    var tempData = self.getDataSave();
+                        // {
+                        //     tag: "button",
+                        //     class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                        //     on: {
+                        //         click: function(evt) {
+                        //             var tempData = self.getDataSave();
 
-                                    if (tempData !== undefined) {
-                                        self.resolveDB(tempData);
-                                        self.createPromise();
-                                    }
-                                }
-                            },
-                            child: [
-                                '<span>' + "Lưu" + '</span>'
-                            ]
-                        },
+                        //             if (tempData !== undefined) {
+                        //                 self.resolveDB(tempData);
+                        //                 self.createPromise();
+                        //             }
+                        //         }
+                        //     },
+                        //     child: [
+                        //         '<span>' + "Lưu" + '</span>'
+                        //     ]
+                        // },
                         {
                             tag: "button",
                             class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
@@ -350,13 +350,12 @@ NewAccount.prototype.getView = function(dataParent) {
                     delete self.checkPermission[event.value] !== undefined;
                 }
                 if (event.value == this.activeValue) {
-                    if (this.values.length > 0)
-                    {
+                    if (this.values.length > 0) {
                         this.activeValue = this.values[0];
                         this.emit("activevaluechange");
                     }
                 }
-                
+
             }
         },
         props: {

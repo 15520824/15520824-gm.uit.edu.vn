@@ -645,13 +645,13 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.check = check;
     if (header.isSaveTheme) {
         result.isSaveTheme = header.isSaveTheme;
-        if (getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token) != undefined) {
-            var last = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token));
+        if (getCookie(result.isSaveTheme + "token_pizo_table_header" + window.userid) != undefined) {
+            var last = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_header" + window.userid));
             for (var param in last) {
                 if (typeof header[param] == 'object' && typeof header[param] == 'object')
                     Object.assign(header[param], last[param])
             }
-            result.arrSortHeader = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_sort" + window.token));
+            result.arrSortHeader = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_sort" + window.userid));
         }
     }
     if (header.attachScroll) {
@@ -1184,13 +1184,13 @@ tableView.prototype.changeRowIndex = function(index, spliceIndex) {
 }
 
 tableView.prototype.saveTheme = function() {
-    setCookie(this.isSaveTheme + "token_pizo_table_header" + window.token, JSON.stringify(this.header), 3);
+    setCookie(this.isSaveTheme + "token_pizo_table_header" + window.userid, JSON.stringify(this.header), 3);
     var arr = [];
     for (var i = 0; i < this.clone.length; i++) {
         arr.push(this.clone[i][0].id);
     }
     this.arrSortHeader = arr;
-    setCookie(this.isSaveTheme + "token_pizo_table_sort" + window.token, JSON.stringify(arr), 3);
+    setCookie(this.isSaveTheme + "token_pizo_table_sort" + window.userid, JSON.stringify(arr), 3);
 }
 
 tableView.prototype.getCellHeader = function(header, i) {
