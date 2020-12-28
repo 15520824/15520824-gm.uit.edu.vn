@@ -948,7 +948,6 @@ EditHelpContainer.prototype.editView = function(value, data, elementParam) {
 EditHelpContainer.prototype.editDB = function(mNewCategory, data, parent, index) {
     var self = this;
     mNewCategory.promiseEditDB.then(function(value) {
-        value.id = data.original.id;
         moduleDatabase.getModule("helps").update(value).then(function(result) {
             self.editView(value, data, parent, index);
         })
