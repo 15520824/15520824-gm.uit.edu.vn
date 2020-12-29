@@ -368,7 +368,9 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
         this.titleLabel.innerHTML = data.original.title;
         var text = data.original.fulltext;
         if (data.original.related) {
-            text += "<div style='border: 1px solid;'></div>" + data.original.related;
+            text += "<div style='border: 1px solid;'></div>";
+            text += "<h3>Bài liên quan</h3>";
+            text += data.original.related;
         }
         text += "<div style='width:100%;height:150px'></div>";
         this.containerView.innerHTML = text;
