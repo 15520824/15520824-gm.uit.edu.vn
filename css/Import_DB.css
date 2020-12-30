@@ -1,0 +1,24 @@
+.pizo-list-realty-import-db .pizo-list-realty-import-db-container {
+    display: block;
+    margin: 20px;
+}
+
+.pizo-list-realty-import-db span {
+    display: block;
+    margin-top: 10px;
+}
+
+.pizo-list-realty-import-db input {
+    display: block;
+    margin-top: 10px;
+}
+
+.pizo-list-realty-import-db textarea {
+    display: block;
+    margin-top: 10px;
+}
+
+.pizo-list-realty-import-db button {
+    display: block;
+    margin-top: 10px;
+}

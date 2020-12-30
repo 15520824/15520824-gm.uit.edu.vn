@@ -1,0 +1,32 @@
+[
+{"type":"header","version":"4.9.5","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"nhpizuvo__lands"},
+{"type":"table","name":"district","database":"nhpizuvo__lands","data":
+[
+{"district_id":"760","name":"1"},
+{"district_id":"761","name":"12"},
+{"district_id":"762","name":"Thủ Đức"},
+{"district_id":"763","name":"9"},
+{"district_id":"764","name":"Gò Vấp"},
+{"district_id":"765","name":"Bình Thạnh"},
+{"district_id":"766","name":"Tân Bình"},
+{"district_id":"767","name":"Tân Phú"},
+{"district_id":"768","name":"Phú Nhuận"},
+{"district_id":"769","name":"2"},
+{"district_id":"770","name":"3"},
+{"district_id":"771","name":"10"},
+{"district_id":"772","name":"11"},
+{"district_id":"773","name":"4"},
+{"district_id":"774","name":"5"},
+{"district_id":"775","name":"6"},
+{"district_id":"776","name":"8"},
+{"district_id":"777","name":"Bình Tân"},
+{"district_id":"778","name":"7"},
+{"district_id":"783","name":"Củ Chi"},
+{"district_id":"784","name":"Hóc Môn"},
+{"district_id":"785","name":"Bình Chánh"},
+{"district_id":"786","name":"Nhà Bè"},
+{"district_id":"787","name":"Cần Giờ"}
+]
+}
+]
