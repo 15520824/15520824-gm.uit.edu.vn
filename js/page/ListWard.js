@@ -170,6 +170,18 @@ ListWard.prototype.getView = function() {
                 '<span>' + "Thêm" + '</span>'
             ]
         }));
+        $("div.pizo-list-realty-button", this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+            on: {
+                click: function(evt) {
+                    self.deleteAll(self.mTable.getVisiable());
+                }
+            },
+            child: [
+                '<span>' + "Xóa toàn bộ trang hiện tại" + '</span>'
+            ]
+        }));
     }
 
     var docTypeMemuProps, token, functionX;
@@ -539,6 +551,19 @@ ListWard.prototype.delete = function(data, parent, index) {
         self.deleteDB(data, parent, index);
     })
 }
+
+ListWard.prototype.deleteAll = function(data) {
+    var loading = new loadingWheel();
+    var promiseAll = [];
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i].original.id)
+        promiseAll.push(moduleDatabase.getModule("wards").delete({ id: data[i].original.id }));
+    }
+    Promise.all(promiseAll).then(function() {
+        loading.disable();
+    })
+}
+
 
 ListWard.prototype.deleteView = function(parent, index) {
     var self = this;

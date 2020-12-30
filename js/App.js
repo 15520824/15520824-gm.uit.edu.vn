@@ -23,6 +23,7 @@ import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 import ListTypeActivehouse from './page/ListTypeActivehouse';
+import Import_DB from './page/Import_DB';
 import { getCookie, eraseCookie, setCookie } from './component/FormatFunction';
 
 import moduleDatabase from './component/ModuleDatabase';
@@ -314,6 +315,7 @@ App.prototype.getPermisionOpenPage = function() {
         moduleDatabase.isCall = false;
         moduleDatabase.isConfirm = false;
         moduleDatabase.isCancelConfirm = false;
+        moduleDatabase.isConfirmRequest = false;
         var arr = [];
         this.promisePermission = moduleDatabase.queryData("loadPermision.php", { userid: window.userid }, "privileges");
         arr.push(this.promisePermission);
@@ -379,8 +381,8 @@ App.prototype.getPermisionOpenPage = function() {
                 if (moduleDatabase.isCancelConfirm == false && moduleDatabase.checkPermission[param].indexOf(62) != -1) {
                     moduleDatabase.isCancelConfirm = true;
                 }
-                if (moduleDatabase.isCancelConfirm == false && moduleDatabase.checkPermission[param].indexOf(62) != -1) {
-                    moduleDatabase.isCancelConfirm = true;
+                if (moduleDatabase.isConfirmRequest == false && moduleDatabase.checkPermission[param].indexOf(69) != -1) {
+                    moduleDatabase.isConfirmRequest = true;
                 }
             }
             for (var param in moduleDatabase.checkPermission) {
@@ -507,7 +509,6 @@ App.prototype.getPermisionOpenPage = function() {
                                 text: "Upload hình",
                                 pageIndex: 73
                             })
-
                         this.firstElement.push({
                             text: "Thống kê",
                             pageIndex: 7,
@@ -518,7 +519,10 @@ App.prototype.getPermisionOpenPage = function() {
 
                     if (moduleDatabase.checkPermission[0].indexOf(51) != -1 ||
                         moduleDatabase.checkPermission[0].indexOf(52) != -1) {
-                        var menuZone = [];
+                        var menuZone = [{
+                            text: "Nhập dữ liệu từ db cữ",
+                            pageIndex: 91
+                        }];
                         this.firstElement.push({
                             text: "Nhập xuất dữ liệu",
                             pageIndex: 9,
@@ -542,8 +546,8 @@ App.prototype.getPermisionOpenPage = function() {
                 }
                 isRealty = true;
             }
-            if (isRealty === true)
-                this.firstElement.unshift({
+            if (isRealty === true) {
+                var Object = {
                     text: "Dự án",
                     pageIndex: 1,
                     items: [{
@@ -566,16 +570,16 @@ App.prototype.getPermisionOpenPage = function() {
                         //     text: "Cần gộp",
                         //     pageIndex: 15
                         // },
-                        {
-                            text: "Yêu cầu chỉnh sửa",
-                            pageIndex: 17
-                        },
-                        {
-                            text: "Bản đồ",
-                            pageIndex: 18
-                        }
                     ]
-                });
+                }
+                if (moduleDatabase.isConfirmRequest == true) {
+                    Object.items.push({
+                        text: "Yêu cầu chỉnh sửa",
+                        pageIndex: 17
+                    })
+                }
+                this.firstElement.unshift(Object);
+            }
             this.hMenu.items = this.firstElement;
         }.bind(this))
     }
@@ -763,6 +767,14 @@ App.prototype.openPage = function(index) {
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
             finalPage = mListTypeActivehouse;
+            break;
+        case 91:
+            var mImport_DB = new Import_DB();
+            mImport_DB.attach(this);
+            var frameview = mImport_DB.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+            finalPage = mImport_DB;
             break;
         case 10:
             var mListHelp = new ListHelp();

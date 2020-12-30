@@ -368,9 +368,7 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
         this.titleLabel.innerHTML = data.original.title;
         var text = data.original.fulltext;
         if (data.original.related) {
-            text += "<div style='border: 1px solid;'></div>";
-            text += "<h3>Bài liên quan</h3>";
-            text += data.original.related;
+            text += "<div style='border: 1px solid;'></div>" + data.original.related;
         }
         text += "<div style='width:100%;height:150px'></div>";
         this.containerView.innerHTML = text;
@@ -950,6 +948,7 @@ EditHelpContainer.prototype.editView = function(value, data, elementParam) {
 EditHelpContainer.prototype.editDB = function(mNewCategory, data, parent, index) {
     var self = this;
     mNewCategory.promiseEditDB.then(function(value) {
+        value.id = data.original.id;
         moduleDatabase.getModule("helps").update(value).then(function(result) {
             self.editView(value, data, parent, index);
         })

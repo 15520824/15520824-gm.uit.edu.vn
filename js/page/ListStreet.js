@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListStreet.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate, getGMT } from '../component/FormatFunction';
+import { formatDate, getGMT, loadingWheel } from '../component/FormatFunction';
 
 import moduleDatabase from '../component/ModuleDatabase';
 
@@ -169,6 +169,18 @@ ListStreet.prototype.getView = function() {
             },
             child: [
                 '<span>' + "Thêm" + '</span>'
+            ]
+        }));
+        $("div.pizo-list-realty-button", this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+            on: {
+                click: function(evt) {
+                    self.deleteAll(self.mTable.getVisiable());
+                }
+            },
+            child: [
+                '<span>' + "Xóa toàn bộ trang hiện tại" + '</span>'
             ]
         }));
     }
@@ -356,6 +368,7 @@ ListStreet.prototype.searchControlContent = function() {
         on: {
             change: function(event) {
                 if (this.value !== this.lastValue) {
+                    console.log([{ text: "Tất cả", value: 0 }].concat(self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)]))
                     self.listWardElement.items = [{ text: "Tất cả", value: 0 }].concat(self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)]);
                     self.listWardElement.emit('change');
                     var arr = [];
@@ -579,6 +592,18 @@ ListStreet.prototype.delete = function(data, parent, index) {
         self.deleteDB(data, parent, index);
     })
 }
+
+ListStreet.prototype.deleteAll = function(data) {
+    var loading = new loadingWheel();
+    var promiseAll = [];
+    for (var i = 0; i < data.length; i++) {
+        promiseAll.push(moduleDatabase.getModule("streets").delete({ id: data[i].original.id }));
+    }
+    Promise.all(promiseAll).then(function() {
+        loading.disable();
+    })
+}
+
 
 ListStreet.prototype.deleteView = function(parent, index) {
     var self = this;

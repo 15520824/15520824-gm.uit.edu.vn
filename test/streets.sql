@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 14, 2020 at 09:10 AM
+-- Generation Time: Dec 30, 2020 at 06:58 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.29
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `streets` (
   `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `wardid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101017 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101022 ;
 
 --
 -- Dumping data for table `streets`

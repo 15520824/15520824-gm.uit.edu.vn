@@ -797,6 +797,24 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     return result;
 }
 
+tableView.prototype.getVisiable = function() {
+    return this.getVisiableChild(this.data);
+}
+
+tableView.prototype.getVisiableChild = function(arr) {
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].visiable == true || arr[i].visiable == undefined) {
+            var x = Object.assign({}, arr[i]);
+            result.push(x);
+            if (arr[i].child) {
+                x.child = this.getVisiableChild(arr[i].child);
+            }
+        }
+    }
+    return result;
+}
+
 tableView.prototype.updateTableHeader = function() {
     this.updateTableOnlyHeader();
     if (this.isSaveTheme) {

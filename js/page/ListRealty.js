@@ -62,32 +62,32 @@ ListRealty.prototype.setCensorship = function() {
     this.isCensorship = true;
 }
 
-ListRealty.prototype.requestEdit = function(data) {
-    var self = this;
-    var mNewRealty = new NewRealty(data);
-    mNewRealty.attach(self.parent);
-    mNewRealty.setRequestEdit();
-    mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
-    var frameview = mNewRealty.getView();
-    self.parent.body.addChild(frameview);
-    self.parent.body.activeFrame(frameview);
-    self.requestEditDB(mNewRealty, data);
-}
+// ListRealty.prototype.requestEdit = function(data) {
+//     var self = this;
+//     var mNewRealty = new NewRealty(data);
+//     mNewRealty.attach(self.parent);
+//     mNewRealty.setRequestEdit();
+//     mNewRealty.setDataListAccount(self.listAccoutData);
+//     mNewRealty.setDataListContact(self.listContactData);
+//     var frameview = mNewRealty.getView();
+//     self.parent.body.addChild(frameview);
+//     self.parent.body.activeFrame(frameview);
+//     self.requestEditDB(mNewRealty, data);
+// }
 
-ListRealty.prototype.requestEditDB = function(mNewRealty, data) {
-    var self = this
-    mNewRealty.promiseEditDB.then(function(value) {
-        moduleDatabase.getModule("modification_requests").add(value).then(function(result) {
-            // self.editView(value, data);
-        })
-        mNewRealty.promiseEditDB = undefined;
-        setTimeout(function() {
-            if (mNewRealty.promiseEditDB !== undefined)
-                self.requestEditDB(mNewRealty, data);
-        }, 10);
-    })
-}
+// ListRealty.prototype.requestEditDB = function(mNewRealty, data) {
+//     var self = this
+//     mNewRealty.promiseEditDB.then(function(value) {
+//         moduleDatabase.getModule("modification_requests").add(value).then(function(result) {
+//             // self.editView(value, data);
+//         })
+//         mNewRealty.promiseEditDB = undefined;
+//         setTimeout(function() {
+//             if (mNewRealty.promiseEditDB !== undefined)
+//                 self.requestEditDB(mNewRealty, data);
+//         }, 10);
+//     })
+// }
 
 ListRealty.prototype.getView = function() {
     if (this.$view) return this.$view;

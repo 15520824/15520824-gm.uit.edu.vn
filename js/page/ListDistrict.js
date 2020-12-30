@@ -162,6 +162,18 @@ ListDistrict.prototype.getView = function() {
                 '<span>' + "Thêm" + '</span>'
             ]
         }));
+        $("div.pizo-list-realty-button", this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+            on: {
+                click: function(evt) {
+                    self.deleteAll(self.mTable.getVisiable());
+                }
+            },
+            child: [
+                '<span>' + "Xóa toàn bộ trang hiện tại" + '</span>'
+            ]
+        }));
     }
     var tabContainer = _({
         tag: "div",
@@ -495,6 +507,17 @@ ListDistrict.prototype.delete = function(data, parent, index) {
     this.$view.addChild(deleteItem);
     deleteItem.promiseComfirm.then(function() {
         self.deleteDB(data, parent, index);
+    })
+}
+
+ListDistrict.prototype.deleteAll = function(data) {
+    var loading = new loadingWheel();
+    var promiseAll = [];
+    for (var i = 0; i < data.length; i++) {
+        promiseAll.push(moduleDatabase.getModule("districts").delete({ id: data[i].original.id }));
+    }
+    Promise.all(promiseAll).then(function() {
+        loading.disable();
     })
 }
 

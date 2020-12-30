@@ -603,8 +603,10 @@ MapRealty.prototype.requestEdit = function(data) {
 MapRealty.prototype.requestEditDB = function(mNewRealty, data) {
     var self = this
     mNewRealty.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("modification_requests").add(value).then(function(result) {
             // self.editView(value, data);
+            loading.disable();
         })
         mNewRealty.promiseEditDB = undefined;
         setTimeout(function() {

@@ -302,10 +302,11 @@ ListRealtyRequest.prototype.getView = function() {
             }
 
         }
-        for (var i = 0; i < valueAddrAdd.length; i++) {
-            arr.push(connect);
-            arr.push({ id: valueAddrAdd[i].content });
-        }
+        if (valueAddrAdd)
+            for (var i = 0; i < valueAddrAdd.length; i++) {
+                arr.push(connect);
+                arr.push({ id: valueAddrAdd[i].content });
+            }
         moduleDatabase.getModule("addresses").load({ WHERE: arr }).then(function(valueAdr) {
             self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
             var connect = "";
@@ -415,9 +416,10 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         var isContinues = false;
         for (var j = 0; j < checkHouseRequest[data[i].id].length; j++) {
             var object = checkHouseRequest[data[i].id][j];
-            if (check[object.created] == undefined)
-                check[object.created] = [];
             if (object.status == 0) {
+                if (check[object.created] == undefined)
+                    check[object.created] = [];
+
                 check[object.created].push(object);
                 isContinues = true;
             }
@@ -434,8 +436,13 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
             for (var j = 0; j < check[param].length; j++) {
                 if (isImage == true && check[param][j].objid === "image")
                     object[check[param][j].objid] = object[check[param][j].objid].concat(JSON.parse(check[param][j].content));
-                else
-                    object[check[param][j].objid] = JSON.parse(check[param][j].content);
+                else {
+                    try {
+                        object[check[param][j].objid] = JSON.parse(check[param][j].content);
+                    } catch (error) {
+                        object[check[param][j].objid] = check[param][j].content;
+                    }
+                }
                 if (check[param][j].objid === "image")
                     isImage = true;
                 object["id"].push(check[param][j].id)
@@ -1063,9 +1070,11 @@ ListRealtyRequest.prototype.add = function(parent_id = 0, row) {
 
 ListRealtyRequest.prototype.addDB = function(mNewRealty, row) {
     var self = this;
+    var loading = new loadingWheel();
     mNewRealty.promiseAddDB.then(function(value) {
         moduleDatabase.getModule("activehouses").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewRealty.promiseAddDB = undefined;
         setTimeout(function() {
@@ -1110,10 +1119,12 @@ ListRealtyRequest.prototype.getDataEditFake = function(data) {
 
 ListRealtyRequest.prototype.editDB = function(mNewRealty, data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     mNewRealty.promiseEditDB.then(function(value) {
         moduleDatabase.getModule("activehouses").update(value).then(function(result) {
             result.created = data.original.created;
             self.editView(result, parent, index);
+            loading.disable();
         })
         mNewRealty.promiseEditDB = undefined;
         setTimeout(function() {

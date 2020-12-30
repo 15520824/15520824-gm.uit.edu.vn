@@ -319,13 +319,12 @@ for($i =0;$i<count($image_old);$i++)
         $imageCheckJuridical = true;
     }
 }
-
+$created = new DateTime();
 $result = $connector-> load($prefix."activehouses", "id = ".$data["id"]);
 $count = count($result);
 if($count==1)
 {
     $result = $result[0];
-    $dataChange = array();
     foreach($result as $param=>$value)
     {
         if($param == "created"||$param == "userid"||$param == "modified")
@@ -338,9 +337,10 @@ if($count==1)
                 "houseid"=>$data["id"],
                 "objid"=>$param,
                 "content"=>$data[$param],
+                "created"=>$created
             );
             $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
-            array_push($dataChange,$dataRequests);
+            array_push($insert,$dataRequests);
         }
     }
     if($imageCheckStatus==true)
@@ -351,9 +351,10 @@ if($count==1)
             "houseid"=>$data["id"],
             "objid"=>"image",
             "content"=>json_encode($imageTempStatus),
+            "created"=>$created
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
-        array_push($dataChange,$dataRequests);
+        array_push($insert,$dataRequests);
     }
     if($imageCheckJuridical == true)
     {
@@ -363,9 +364,10 @@ if($count==1)
             "houseid"=>$data["id"],
             "objid"=>"image",
             "content"=>json_encode($imageTempJuridical),
+            "created"=>$created
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
-        array_push($dataChange,$dataRequests);
+        array_push($insert,$dataRequests);
     }
     if($isContact == true){
         $dataRequests = array(
@@ -374,9 +376,10 @@ if($count==1)
             "houseid"=>$data["id"],
             "objid"=>"contact",
             "content"=>json_encode($data["contact"]),
+            "created"=>$created
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
-        array_push($dataChange,$dataRequests);
+        array_push($insert,$dataRequests);
     }
     if($isEquipment == true){
         $dataRequests = array(
@@ -385,15 +388,17 @@ if($count==1)
             "houseid"=>$data["id"],
             "objid"=>"equipment",
             "content"=>json_encode($data["equipment"]),
+            "created"=>$created
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
-        array_push($dataChange,$dataRequests);
+        array_push($insert,$dataRequests);
     }
 }
 
 echo "ok".EncodingClass::fromVariable(array(
-    'data'=>$dataChange,
-    'add'=>$insert,
+    'add'=>array(
+        'modification_requests'=> $insert
+        ),
     'update'=>$update
 ));
 

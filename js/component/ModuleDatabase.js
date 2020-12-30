@@ -485,11 +485,12 @@ DataStructure.prototype.update = function(data, needChange = false) {
 
 DataStructure.prototype.setFormatUpdate = function(data) {
     var self = this;
-    if (data == undefined && data.id == undefined)
+    if (data == undefined || data.id == undefined)
         return;
     var temp = self.Libary["id"][data.id];
     for (var param in data) {
         if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {
+            console.log(temp, data)
             if (temp[param] == data[param])
                 continue;
             self.Libary[param].deleteFunction(temp, param);
@@ -500,6 +501,7 @@ DataStructure.prototype.setFormatUpdate = function(data) {
             temp[param] = data[param];
     }
     for (var param in this.promisePart) {
+        console.log(param)
         if (generalOperator(temp, JSON.parse(param)) === true) {
             if (this.promisePart[param].data.indexOf(temp) === -1) {
                 this.promisePart[param].data.push(temp);

@@ -1032,9 +1032,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_2"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1051,9 +1051,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_3"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
 
                                             }
                                         ]
@@ -1071,9 +1071,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_4"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1137,9 +1137,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_6"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1156,9 +1156,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_7"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1175,9 +1175,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_8"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1241,9 +1241,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_10"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1260,9 +1260,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_11"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1279,9 +1279,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_12"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1397,9 +1397,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_14"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1416,9 +1416,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_15"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1435,9 +1435,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_16"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1501,9 +1501,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_18"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1520,9 +1520,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_19"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1539,9 +1539,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_20"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1605,9 +1605,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_22"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1624,9 +1624,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_23"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1643,9 +1643,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_24"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1709,9 +1709,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_26"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1728,9 +1728,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_27"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1747,9 +1747,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_28"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1813,9 +1813,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_30"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1832,9 +1832,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_31"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1851,9 +1851,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_32"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1917,9 +1917,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_34"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1936,9 +1936,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_35"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -1955,9 +1955,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_36"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2021,9 +2021,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_38"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2040,9 +2040,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_39"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2059,9 +2059,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_40"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2243,9 +2243,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_42"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2262,9 +2262,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_43"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2281,9 +2281,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_44"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2347,9 +2347,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_46"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2366,9 +2366,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_47"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },
@@ -2385,9 +2385,9 @@ NewAccount.prototype.getView = function(dataParent) {
                                             {
                                                 tag: "checkbox",
                                                 class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox", "checkbox_48"],
-                                                props: {
-                                                    disabled: true
-                                                }
+                                                // props: {
+                                                //     disabled: true
+                                                // }
                                             }
                                         ]
                                     },

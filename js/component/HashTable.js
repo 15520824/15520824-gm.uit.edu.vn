@@ -99,7 +99,8 @@ HashTable.prototype.hashVisiableAll = function(arr) {
 HashTable.prototype.getKey = function(key, index) {
     key = key.trim();
     if (key === "") {
-        this.hashVisiableAll(this.data)
+        this.hashVisiableAll(this.data);
+        this.data.isSearch = undefined;
         return;
     }
     var check = [];

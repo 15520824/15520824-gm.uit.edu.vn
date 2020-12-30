@@ -8,7 +8,7 @@ import MergeTool from 'mpot-merge-tool';
 import moduleDatabase from './ModuleDatabase';
 import { MapView } from "./MapView";
 import NewAccount from './NewAccount';
-import { reFormatNumber, formatFit, setAction, isEqual } from './FormatFunction'
+import { reFormatNumber, formatFit, setAction, isEqual, consoleWKT } from './FormatFunction'
 import { loadingWheel } from './FormatFunction';
 
 var _ = Fcore._;
@@ -251,6 +251,7 @@ ConfirmRequest.prototype.getView = function() {
             checkAddress[fullAddress].dataContent = itemData;
             if (i == 0) {
                 checkAddress[fullAddress].data = itemData;
+                console.log("xxxxxxxxxxxxx")
                 element.addMoveMarker(checkAddress[fullAddress])
             }
         }
@@ -1751,8 +1752,10 @@ ConfirmRequest.prototype.getDataSave = function() {
         temp.lat = lat;
     if (lng)
         temp.lng = lng;
-    var containerEquipment = data[2].properties[0].value.itemData;
-    temp.equipment = containerEquipment;
+    if (data[2].properties[0].value) {
+        temp.equipment = data[2].properties[0].value.itemData;
+    } else
+        temp.equipment = [];
     var contact = [];
     var containerContact = data[3].properties[0].value;
     for (var i = 0; i < containerContact.element.childNodes.length; i++) {

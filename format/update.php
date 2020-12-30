@@ -21,15 +21,35 @@ if (isset($_POST["name"])) {
     echo "BAD_REQUEST (400)";
     exit();
 }
-
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
+    if (isset($data["WHERE"])) {
+        $operator = $data["WHERE"];
+        $WHERE = generalOperator($operator);
+    }
+    
+    if (isset($data["ORDERING"])) {
+        $ORDERING=$data["ORDERING"];
+    }
+
 }else
 {
     echo "BAD_REQUEST (400)";
     exit();
 }
+
+if(isset($WHERE))
+{
+    $WHERE = " WHERE ".$WHERE;
+}
+
+if(isset($ORDERING))
+{
+    $ORDERING = " ORDER BY ".$ORDERING;
+}
+
 $result = $connector-> update($prefix.$tableName, $data);
+
 echo "ok".EncodingClass::fromVariable(array(
     'data'=>$data
 ));

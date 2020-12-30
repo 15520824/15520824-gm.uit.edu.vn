@@ -79,7 +79,10 @@ if ($result->num_rows > 0) {
         if(isset($check[$tableName][$row["id"]]))
         $data[$i++] = $row["id"];
         else
-        $data[$i++] = $row;
+        {
+            $row["id"] = intval($row["id"]);
+            $data[$i++] = $row;
+        }
     }
 } else {
 }
