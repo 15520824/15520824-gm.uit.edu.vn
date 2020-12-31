@@ -605,6 +605,10 @@ descViewImagePreview.prototype.resetImage = function(data) {
     }, 100);
 
     this.downloadButton.setAttribute("href", data.src);
+    if (data.downloadName !== undefined) {
+        this.downloadButton.setAttribute("download", data.downloadName);
+    } else
+        this.downloadButton.setAttribute("download", "");
     this.mainImage.parentNode.replaceChild(newMainImage, this.mainImage);
     this.mainImage = newMainImage;
 

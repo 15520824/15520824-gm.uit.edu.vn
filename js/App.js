@@ -49,8 +49,6 @@ function App() {
     moduleDatabase.getModule("states");
     moduleDatabase.getModule("districts");
     moduleDatabase.getModule("wards");
-    moduleDatabase.getModule("addresses");
-    moduleDatabase.getModule("addresses_user");
     moduleDatabase.getModule("equipments");
     moduleDatabase.getModule("departments", ["load.php", "add.php", "update.php", "deleteDepartment.php"]);
     moduleDatabase.getModule("positions");

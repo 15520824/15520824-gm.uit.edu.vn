@@ -45,7 +45,6 @@ if($WHERE!="")
     for($i=0;$i<count($dataDelete);$i++)
     {
         $connector->query("DELETE FROM ".$prefix."contact_link"." WHERE( userid = ".$dataDelete[$i]["id"].")");
-        $connector->query("DELETE FROM ".$prefix."addresses_user"." WHERE( id = ".$dataDelete[$i]["addressid"].")");
         $connector->query("DELETE FROM ".$prefix."privileges"." WHERE( userid = ".$dataDelete[$i]["id"].")");
     }
     $WHERE = " WHERE (".$WHERE.")";

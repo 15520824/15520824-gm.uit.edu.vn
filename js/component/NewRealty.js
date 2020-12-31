@@ -434,12 +434,7 @@ NewRealty.prototype.descViewImageThumnail = function(dataImage, index, promiseLa
     return temp;
 }
 
-NewRealty.prototype.itemAddress = function(data = { addressid: 0 }, lat, lng) {
-    var addressid;
-    if (data.addressid !== undefined)
-        addressid = data.addressid;
-    else
-        addressid = 0;
+NewRealty.prototype.itemAddress = function(data, lat, lng) {
     var self = this;
     var text = _({ text: "Địa chỉ" });
     var important = _({
@@ -501,33 +496,30 @@ NewRealty.prototype.itemAddress = function(data = { addressid: 0 }, lat, lng) {
         ]
     })
 
-    if (addressid != 0) {
-        var number = this.checkAddress[addressid].addressnumber;
-        var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
-        var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
-        $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
-        temp.data = {
-            id: data.id,
-            number: this.checkAddress[addressid].addressnumber,
-            street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
-            ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
-            district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
-            state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
-            lng: lng,
-            lat: lat,
+    temp.setAddressData = function(data, lat, lng) {
+        if (data.addressnumber && data.addressnumber != 0) {
+            var number = data.addressnumber;
+            var street = this.checkStreet[data.streetid].name;
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+            $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
+            temp.data = {
+                number: number,
+                street: street + "_" + data.streetid,
+                ward: ward + "_" + data.wardid,
+                district: district + "_" + this.checkWard[data.wardid].districtid,
+                state: state + "_" + this.checkDistrict[this.checkWard[data.wardid].districtid].stateid,
+                lng: lng,
+                lat: lat,
+            }
         }
-    }
+    }.bind(this);
+    temp.setAddressData(data, lat, lng)
     return temp;
 }
 
-NewRealty.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
-    var addressid;
-    if (data.addressid_old !== undefined)
-        addressid = data.addressid_old;
-    else
-        addressid = 0;
+NewRealty.prototype.itemAddressOld = function(data) {
     var text = _({ text: "Địa chỉ cũ" });
     var temp = _({
         tag: "div",
@@ -578,21 +570,25 @@ NewRealty.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
             }
         ]
     })
-    if (addressid != 0) {
-        var number = this.checkAddress[addressid].addressnumber;
-        var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
-        var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
-        $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
-        temp.data = {
-            number: this.checkAddress[addressid].addressnumber,
-            street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
-            ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
-            district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
-            state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid
+
+    temp.setAddressData = function(data) {
+        if (data.addressnumber_old && data.addressnumber_old != 0) {
+            var number = data.addressnumber_old;
+            var street = this.checkStreet[data.streetid_old].name;
+            var ward = this.checkWard[data.wardid_old].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
+            $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
+            temp.data = {
+                number: number,
+                street: street + "_" + data.streetid_old,
+                ward: ward + "_" + data.wardid_old,
+                district: district + "_" + this.checkWard[data.wardid_old].districtid,
+                state: state + "_" + this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid,
+            }
         }
-    }
+    }.bind(this);
+    temp.setAddressData(data)
     return temp;
 }
 
@@ -1996,70 +1992,39 @@ NewRealty.prototype.getDataSave = function(isCheck = false) {
     temp.contact = contact;
 
     if (this.addressCurrent.data !== undefined) {
-        var address = {};
         var data = this.addressCurrent.data;
 
         var lastIndex = data.ward.lastIndexOf("_");
         if (lastIndex === -1) {
-            address.ward = data.ward;
-            lastIndex = data.district.lastIndexOf("_");
-            if (lastIndex == -1) {
-                address.district = data.district;
-                lastIndex = data.state.lastIndexOf("_");
-                if (lastIndex == -1) {
-                    address.state = data.state;
-                } else {
-                    address.stateid = data.state.slice(lastIndex + 1);
-                }
-            } else
-                address.districtid = data.district.slice(lastIndex + 1);
+            alert("Lỗi dữ liệu phường xã vui lòng tải lại trang");
         } else
-            address.wardid = data.ward.slice(lastIndex + 1);
+            temp.wardid = data.ward.slice(lastIndex + 1);
 
         var lastIndex = data.street.lastIndexOf("_");
         if (lastIndex === -1)
-            address.street = data.street;
+            alert("Lỗi dữ liệu đường vui lòng tải lại trang");
         else
-            address.streetid = data.street.slice(lastIndex + 1);
+            temp.streetid = data.street.slice(lastIndex + 1);
 
-        address.number = data.number;
-
-        temp.lat = data.lat;
-        temp.lng = data.lng;
-
-        temp.addressid = address;
+        temp.addressnumber = data.number;
     }
 
     if (this.addressOld.data !== undefined) {
-        var address = {};
         var data = this.addressOld.data;
 
         var lastIndex = data.ward.lastIndexOf("_");
         if (lastIndex === -1) {
-            address.ward = data.ward;
-            lastIndex = data.district.lastIndexOf("_");
-            if (lastIndex == -1) {
-                address.district = data.district;
-                lastIndex = data.state.lastIndexOf("_");
-                if (lastIndex == -1) {
-                    address.state = data.state;
-                } else {
-                    address.stateid = data.state.slice(lastIndex + 1);
-                }
-            } else
-                address.districtid = data.district.slice(lastIndex + 1);
+            alert("Lỗi dữ liệu phường xã vui lòng tải lại trang");
         } else
-            address.wardid = data.ward.slice(lastIndex + 1);
+            temp.wardid_old = data.ward.slice(lastIndex + 1);
 
         var lastIndex = data.street.lastIndexOf("_");
         if (lastIndex === -1)
-            address.street = data.street;
+            alert("Lỗi dữ liệu đường vui lòng tải lại trang");
         else
-            address.streetid = data.street.slice(lastIndex + 1);
+            temp.streetid_old = data.street.slice(lastIndex + 1);
 
-        address.number = data.number;
-
-        temp.addressid_old = address;
+        temp.addressnumber_old = data.number;
     }
 
     if (this.data !== undefined) {

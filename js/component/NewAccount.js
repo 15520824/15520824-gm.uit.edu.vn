@@ -144,26 +144,18 @@ NewAccount.prototype.getView = function(dataParent) {
     })
     var address = this.itemAddressOld();
     if (this.data !== undefined) {
-        if (this.data.original.addressid != 0)
-            moduleDatabase.getModule("addresses_user").load({ WHERE: [{ id: self.data.original.addressid }] }).then(function(valueAdr) {
-                self.checkAddress = moduleDatabase.getModule("addresses_user").getLibary("id");
-                var connect = "";
-                var arr = [];
-                for (var i = 0; i < valueAdr.length; i++) {
-                    if (connect !== "")
-                        arr.push(connect);
-                    arr.push({ id: valueAdr[i].streetid });
-                    connect = "||";
-                }
-
-                moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
-                    self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                    self.checkState = moduleDatabase.getModule("states").getLibary("id");
-                    self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-                    self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
-                    address.setAddressData(self.data.original.addressid);
-                })
+        if (this.data.original.addressnumber != 0) {
+            var promiseAll = [];
+            promiseAll.push(moduleDatabase.getModule("streets").load({ WHERE: [{ id: this.data.original.streetid }] }));
+            promiseAll.push(moduleDatabase.getModule("wards").load({ WHERE: [{ id: this.data.original.wardid }] }));
+            Promise.all(promiseAll).then(function() {
+                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                self.checkState = moduleDatabase.getModule("states").getLibary("id");
+                self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+                self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+                address.setAddressData(self.data.original);
             })
+        }
     }
 
     var container;
@@ -2705,11 +2697,6 @@ NewAccount.prototype.getView = function(dataParent) {
 }
 
 NewAccount.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
-    var addressid;
-    if (data.addressid_old !== undefined)
-        addressid = data.addressid_old;
-    else
-        addressid = 0;
     var temp = _({
         tag: "div",
         class: ["pizo-new-account-container-address-container", "addressItemCheck"],
@@ -2754,24 +2741,23 @@ NewAccount.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
             }
         ]
     })
-    temp.setAddressData = function(addressid = 0) {
-        if (addressid != 0) {
-            var number = this.checkAddress[addressid].addressnumber;
-            var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
-            var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
-            var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
-            var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+    temp.setAddressData = function(data) {
+        if (data.addressnumber && data.addressnumber != 0) {
+            var number = data.addressnumber;
+            var street = this.checkStreet[data.streetid].name;
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
             $("input.pizo-new-account-container-address-container-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
             temp.data = {
-                number: this.checkAddress[addressid].addressnumber,
-                street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
-                ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
-                district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
-                state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid
+                number: number,
+                street: street + "_" + data.streetid,
+                ward: ward + "_" + data.wardid,
+                district: district + "_" + this.checkWard[data.wardid].districtid,
+                state: state + "_" + this.checkDistrict[this.checkWard[data.wardid].districtid].stateid
             }
         }
     }.bind(this);
-    temp.setAddressData(addressid);
     return temp;
 }
 
@@ -3021,35 +3007,21 @@ NewAccount.prototype.getDataSave = function() {
         }
     }
     if (this.address.data !== undefined) {
-        var address = {};
         var data = this.address.data;
 
         var lastIndex = data.ward.lastIndexOf("_");
         if (lastIndex === -1) {
-            address.ward = data.ward;
-            lastIndex = data.district.lastIndexOf("_");
-            if (lastIndex == -1) {
-                address.district = data.district;
-                lastIndex = data.state.lastIndexOf("_");
-                if (lastIndex == -1) {
-                    address.state = data.state;
-                } else {
-                    address.stateid = data.state.slice(lastIndex + 1);
-                }
-            } else
-                address.districtid = data.district.slice(lastIndex + 1);
+            alert("Lỗi dữ liệu phường xã vui lòng tải lại trang");
         } else
-            address.wardid = data.ward.slice(lastIndex + 1);
+            temp.wardid = data.ward.slice(lastIndex + 1);
 
         var lastIndex = data.street.lastIndexOf("_");
         if (lastIndex === -1)
-            address.street = data.street;
+            alert("Lỗi dữ liệu đường vui lòng tải lại trang");
         else
-            address.streetid = data.street.slice(lastIndex + 1);
+            temp.streetid = data.street.slice(lastIndex + 1);
 
-        address.number = data.number;
-
-        temp.addressid = address;
+        temp.addressnumber = data.number;
     }
     if (this.data !== undefined)
         temp.id = this.data.original.id;
