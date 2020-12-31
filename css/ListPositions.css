@@ -2,15 +2,16 @@ span.pizo-list-realty-page-allinput-input:empty:before {
     content: "\200b";
 }
 
-.pizo-list-position-list .sortTable tbody tr:hover td{
+.pizo-list-position-list .sortTable tbody tr:hover td {
     background-color: #BFBFBF;
 }
 
-.pizo-list-position-list .sortTable tbody tr.choice td{
-    background-color: #BFBFBF;
+.pizo-list-position-list .sortTable tbody tr.choice td {
+    background-color: #BFBFBF !important;
 }
 
-.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{
+.pizo-list-realty-main-result-control-child,
+.pizo-list-realty-main-result-control-child {
     flex-grow: 2;
     display: flex;
     /*display: -webkit-box;*/
@@ -20,10 +21,11 @@ span.pizo-list-realty-page-allinput-input:empty:before {
     position: relative;
 }
 
-.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{
-    top:0px;
+.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th,
+.pizo-list-realty-main-result-control .sortTableClone th {
+    top: 0px;
 }
 
-.list-linkChoice-container .container-sortTable{
+.list-linkChoice-container .container-sortTable {
     height: auto;
 }

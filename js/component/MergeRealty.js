@@ -176,7 +176,6 @@ MergeRealty.prototype.getView = function() {
 
     var arr = moduleDatabase.getModule("juridicals").getList("name", "id");
 
-    this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
     this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
     this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -312,12 +311,12 @@ MergeRealty.prototype.getView = function() {
                 itemImageJuridical.push(dataChild);
             }
         }
-        if (itemData.addressid != 0) {
-            number = this.checkAddress[itemData.addressid].addressnumber;
-            street = this.checkStreet[this.checkAddress[itemData.addressid].streetid].name;
-            ward = this.checkWard[this.checkAddress[itemData.addressid].wardid].name;
-            district = this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].name;
-            state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].stateid].name;
+        if (itemData && itemData.addressnumber !== "" && itemData.portion != 0) {
+            number = itemData.addressnumber;
+            street = this.checkStreet[itemData.streetid].name;
+            ward = this.checkWard[itemData.wardid].name;
+            district = this.checkDistrict[this.checkWard[itemData.wardid].districtid].name;
+            state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid].districtid].stateid].name;
             fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
             itemsAddress.push(fullAddress);
             checkAddress[fullAddress] = [itemData.lat, itemData.lng];
@@ -325,12 +324,12 @@ MergeRealty.prototype.getView = function() {
         }
 
         //Địa chỉ cũ
-        if (itemData.addressid_old != 0) {
-            number = this.checkAddress[itemData.addressid_old].addressnumber;
-            street = this.checkStreet[this.checkAddress[itemData.addressid_old].streetid].name;
-            ward = this.checkWard[this.checkAddress[itemData.addressid_old].wardid].name;
-            district = this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid_old].wardid].districtid].name;
-            state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid_old].wardid].districtid].stateid].name;
+        if (itemData && itemData.addressnumber_old != "") {
+            number = itemData.addressnumber_old;
+            street = this.checkStreet[itemData.streetid_old].name;
+            ward = this.checkWard[itemData.wardid_old].name;
+            district = this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].name;
+            state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].stateid].name;
             fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
             checkAddress[fullAddress] = {};
             checkAddress[fullAddress].data = itemData;

@@ -2742,7 +2742,7 @@ NewAccount.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
         ]
     })
     temp.setAddressData = function(data) {
-        if (data.addressnumber && data.addressnumber != 0) {
+        if (data && data.addressnumber && data.addressnumber != 0) {
             var number = data.addressnumber;
             var street = this.checkStreet[data.streetid].name;
             var ward = this.checkWard[data.wardid].name;

@@ -923,8 +923,6 @@ MapView.prototype.removeMapPolygonAround = function(cellLat, cellLng) {
 
 MapView.prototype.addMapHouse = function() {
     var self = this;
-    if (this.checkAddress == undefined)
-        this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     if (this.checkWard == undefined)
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
     if (this.checkDistrict == undefined)
@@ -979,14 +977,13 @@ MapView.prototype.addMapHouse = function() {
                         for (var i = 0; i < data.length; i++) {
                             isAvailable = false;
                             Loop: for (var param in moduleDatabase.checkPermission) {
-                                if (data[i].addressid == 0)
+                                if (data[i].portion == "" && data[i].addressnumber == "")
                                     continue;
                                 var object = JSON.parse(param);
-                                var address = self.checkAddress[data[i].addressid];
                                 districtid = undefined;
                                 stateid = undefined;
-                                if (address.wardid)
-                                    districtid = self.checkWard[address.wardid].districtid;
+                                if (data[i].wardid)
+                                    districtid = self.checkWard[data[i].wardid].districtid;
                                 if (districtid)
                                     stateid = self.checkDistrict[districtid].stateid;
                                 for (var objectParam in object) {
@@ -998,7 +995,7 @@ MapView.prototype.addMapHouse = function() {
                                         if (districtid !== object[objectParam])
                                             continue Loop;
                                     } else
-                                    if (object[objectParam] !== address[objectParam]) {
+                                    if (object[objectParam] !== data[i][objectParam]) {
                                         continue Loop;
                                     }
                                 }
@@ -1142,9 +1139,8 @@ MapView.prototype.addOrtherMarker = function(data) {
         };
         var label;
         if (self.isShowAddress === true) {
-            var checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
-            if (checkAddress[data.addressid])
-                label = checkAddress[data.addressid].addressnumber;
+            if (data.addressnumber)
+                label = data.addressnumber;
         } else if (self.isShowAddress === false) {
             if (this.isPrice == true) {
                 label = data.price + " tỉ";

@@ -275,6 +275,9 @@ ListPositions.prototype.getView = function() {
     moduleDatabase.getModule("departments").load().then(function(value) {
         var header = [{ type: "dragzone", style: { minWidth: "30px", width: "30px" } }, { value: 'Bộ phận', sort: true, style: { minWidth: "unset" }, functionClickAll: functionClickRow }, { value: 'Mã', sort: true, style: { minWidth: "100px", width: "100px" }, functionClickAll: functionClickRow }, { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px" } }];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+        self.mTable.addEventListener("dragdrop", function(event) {
+            console.log(event)
+        })
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch(tabInput);
 
@@ -331,7 +334,6 @@ ListPositions.prototype.getView = function() {
 
 ListPositions.prototype.formatDataRowPosition = function(data) {
     this.checkDepartment = moduleDatabase.getModule("positions").getLibary("department_id", this.getDataRowPosition.bind(this), true);
-    console.log(this.checkDepartment)
 }
 
 ListPositions.prototype.getDataRowPosition = function(data) {

@@ -381,14 +381,13 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
             continue;
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
-            if (data[i].addressid == 0)
+            if (data[i].addressnumber == "" && data[i].portion == "")
                 continue;
             var object = JSON.parse(param);
-            var address = self.checkAddress[data[i].addressid];
             districtid = undefined;
             stateid = undefined;
-            if (address.wardid)
-                districtid = self.checkWard[address.wardid].districtid;
+            if (data[i].wardid)
+                districtid = self.checkWard[data[i].wardid].districtid;
             if (districtid)
                 stateid = self.checkDistrict[districtid].stateid;
             for (var objectParam in object) {
@@ -400,7 +399,7 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
                     if (districtid !== object[objectParam])
                         continue Loop;
                 } else
-                if (object[objectParam] !== address[objectParam]) {
+                if (object[objectParam] !== data[i][objectParam]) {
                     continue Loop;
                 }
             }

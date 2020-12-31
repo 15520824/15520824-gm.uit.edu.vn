@@ -933,7 +933,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft, isSwipeRight) {
                                 if (this.isSwipeLeft[indexEvent].event !== undefined) {
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
-                                    var parent = me.elementParent;
+                                    var parent = me.getParentNode();
                                     this.isSwipeLeft[indexEvent].event(e, me, index, me.data, me, parent)
                                 }
                             }.bind(this, i, j)
@@ -1017,7 +1017,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft, isSwipeRight) {
                                 if (this.isSwipeRight[indexEvent].event !== undefined) {
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
-                                    var parent = me.elementParent;
+                                    var parent = me.getParentNode();
                                     this.isSwipeRight[indexEvent].event(e, me, index, me.data, me, parent)
                                 }
                             }.bind(this, i, j)
@@ -1125,7 +1125,7 @@ tableView.prototype.setUpSlip = function() {
         // functionClick(event, this, index, row.data, row, result);
         var index = e.detail.originalIndex;
         var me = self.bodyTable.childNodes[index];
-        var parent = me.elementParent;
+        var parent = me.getParentNode();
         // var tempIndex = index;
         index = parent.childrenNodes.indexOf(me);
         if (e.detail.direction === "left")
@@ -1137,29 +1137,21 @@ tableView.prototype.setUpSlip = function() {
 }
 
 tableView.prototype.changeRowIndex = function(index, spliceIndex) {
-    var self = this;
-    var result = self;
-    if (isNumeric(index) != true) {
-        var me = index;
-        index = -1;
-        for (var i = 0; i < self.bodyTable.childNodes.length; i++) {
-            if (self.bodyTable.childNodes[i] == me) {
-                index = i;
-                break;
-            }
-        }
-    } else
-        var me = self.bodyTable.childNodes[index];
+    var me = this.bodyTable.childNodes[index];
+    var self = me.getParentNode();
+    var elementReal = self.childrenNodes[spliceIndex];
+
 
     var tempIndex, tempSpliceIndex;
 
-    var elementReal = me.elementParent.childrenNodes[spliceIndex];
-
     var element = me;
     if (elementReal === undefined)
-        elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length - 1]);
-
-    result.bodyTable.insertBefore(element, elementReal);
+        elementReal = self.getElementNext(self.childrenNodes[self.childrenNodes.length - 1]);
+    if (elementReal != null) {
+        this.bodyTable.insertBefore(element, elementReal);
+    } else {
+        this.bodyTable.appendChild(element);
+    }
     if (element.classList.contains("more-child")) {
         element.classList.remove("more-child");
     }
@@ -1167,23 +1159,22 @@ tableView.prototype.changeRowIndex = function(index, spliceIndex) {
         var elementChild = element.getElementChild();
         if (elementChild.length !== 0) {
             for (var i = 0; i < elementChild.length; i++) {
-                result.bodyTable.insertBefore(elementChild[i], elementReal);
+                if (elementReal !== null) {
+                    this.bodyTable.insertBefore(elementChild[i], elementReal);
+                } else {
+                    this.bodyTable.appendChild(elementChild[i]);
+                }
             }
         }
     }
-
-    self = element.elementParent;
-    result = self;
+    var result = self;
     tempIndex = index;
     tempSpliceIndex = spliceIndex;
     index = self.childrenNodes.indexOf(element);
-    spliceIndex = self.childrenNodes.indexOf(elementReal);
-    if (result.data.child !== undefined) {
-        if (spliceIndex === -1)
-            spliceIndex = self.childrenNodes.length;
-        result.data.child = changeIndex(result.data.child, index, spliceIndex);
-    } else {
+    if (result.tagName === "DIV") {
         result.data = changeIndex(result.data, index, spliceIndex);
+    } else {
+        result.data.child = changeIndex(result.data.child, index, spliceIndex);
     }
 
     result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
@@ -1197,7 +1188,7 @@ tableView.prototype.changeRowIndex = function(index, spliceIndex) {
     }
     if (result.checkSpan !== undefined)
         result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
-    var event = new CustomEvent('dragdrop', { bubbles: true, detail: { event: event, me: me, index: tempIndex, spliceIndex: tempSpliceIndex, parent: self, dataSpliceIndex: spliceIndex, dataIndex: index, afterIndex: index = self.childrenNodes.indexOf(element) } });
+    var event = new CustomEvent('dragdrop', { bubbles: true, detail: { event: event, me: me, index: tempIndex, spliceIndex: tempSpliceIndex, parent: self, dataSpliceIndex: spliceIndex, dataIndex: index, afterIndex: self.childrenNodes.indexOf(element) } });
     self.dispatchEvent(event);
 }
 
@@ -3097,8 +3088,6 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             var element = cellIndex.parentNode;
 
             element.finalIndex = finalIndex;
-            element.elementParent = self;
-
         }(event, cell, result)
     } : undefined;
 
@@ -3106,7 +3095,6 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
         return function(event, cellIndex, self) {
             var element = cellIndex.getParentNode();
             delete element.finalIndex;
-            delete element.elementParent
         }(event, cell, result)
     } : undefined;
     if (BrowserDetector.isMobile) {

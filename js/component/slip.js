@@ -485,14 +485,15 @@ Slip.prototype = {
             if (element.childrenNodes.length != 0) {
                 element.setDisPlayNone();
             }
-            if (element.elementParent.tagName == "DIV") {
-                element.minDrag = element.elementParent.headerTable.offsetHeight;
+            var elementParent = element.getParentNode();
+            if (elementParent.tagName == "DIV") {
+                element.minDrag = elementParent.headerTable.offsetHeight;
             } else
-                element.minDrag = element.elementParent.offsetTop + element.elementParent.offsetHeight;
-            if (element.elementParent.tagName == "DIV") {
-                element.maxDrag = element.elementParent.childNodes[0].offsetHeight - element.offsetHeight;
+                element.minDrag = elementParent.offsetTop + elementParent.offsetHeight;
+            if (elementParent.tagName == "DIV") {
+                element.maxDrag = elementParent.childNodes[0].offsetHeight - element.offsetHeight;
             } else
-                element.maxDrag = element.elementParent.offsetTop + element.elementParent.getHeightChild();
+                element.maxDrag = elementParent.offsetTop + elementParent.getHeightChild();
 
 
             for (var i = 0; i < nodes.length; i++) {
@@ -542,7 +543,7 @@ Slip.prototype = {
                 this.target.node.style[transformJSPropertyName] = 'translate(0,' + move.y + 'px) ' + hwTopLayerMagicStyle + this.target.baseTransform.value;
                 this.target.node.moveY = move;
                 var height = this.target.height;
-                this.target.node.elementParent.childrenNodes.forEach(function(o) {
+                this.target.node.getParentNode().childrenNodes.forEach(function(o) {
                     // o = o.transformObject;
                     if (self.target.node !== o) {
                         o = o.transformObject;
@@ -608,7 +609,7 @@ Slip.prototype = {
                 onEnd: function() {
                     var move = this.target.node.moveY;
                     var i, spliceIndex;
-                    var arr = this.target.node.elementParent.childrenNodes;
+                    var arr = this.target.node.getParentNode().childrenNodes;
                     if (move === undefined || move.y === undefined) {
                         this.setState(this.states.idle);
                         return false;
@@ -628,10 +629,10 @@ Slip.prototype = {
                         }
                         spliceIndex = i + 1;
                     }
-                    if (spliceIndex == originalIndex) {
-                        this.setState(this.states.idle);
-                        return false;
-                    }
+                    // if (spliceIndex == originalIndex) {
+                    //     this.setState(this.states.idle);
+                    //     return false;
+                    // }
                     this.dispatch(this.target.node, 'reorder', {
                         spliceIndex: spliceIndex,
                         originalIndex: originalIndex,
