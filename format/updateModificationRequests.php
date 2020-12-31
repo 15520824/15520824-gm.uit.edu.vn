@@ -40,9 +40,6 @@ $i = 0;
 $insert = array();
 $update = array();
 
-if(!isset($data["addressid_old"]))
-$data["addressid_old"] = 0;
-
 if(isset($data["requestFail"]))
 {
     $requestFail = $data["requestFail"];

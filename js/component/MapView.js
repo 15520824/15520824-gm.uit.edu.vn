@@ -1291,6 +1291,9 @@ MapView.prototype.modalMiniRealty = function(data) {
     if (arr.length > 0)
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
+                if (values[i].type == 1) {
+                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                }
                 if (values[i].thumnail == 1) {
                     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
                     image.style.backgroundImage = `url(` + src + `)`;
@@ -1375,7 +1378,7 @@ MapView.prototype.addMoveMarker = function(position, changeInput = true) {
     } else
         changeInput = false;
 
-    if (this.currentMarker !== undefined && position.data == undefined) {
+    if (this.currentMarker !== undefined) {
         marker = this.currentMarker;
         self.transition(position, changeInput).then(function(value) {
             self.map.setCenter(new google.maps.LatLng(position[0], position[1]));

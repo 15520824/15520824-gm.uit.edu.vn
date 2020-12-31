@@ -490,7 +490,6 @@ DataStructure.prototype.setFormatUpdate = function(data) {
     var temp = self.Libary["id"][data.id];
     for (var param in data) {
         if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {
-            console.log(temp, data)
             if (temp[param] == data[param])
                 continue;
             self.Libary[param].deleteFunction(temp, param);

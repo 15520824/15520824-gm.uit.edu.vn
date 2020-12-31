@@ -200,7 +200,7 @@ ListRealtyRequest.prototype.getView = function() {
     Promise.all(arr).then(function(values) {
         var value = values[0];
         var checkObj = moduleDatabase.getModule("modification_requests").getLibary("objid", undefined, true);
-        var valueAddrAdd = checkObj["addressid"];
+        var valueAddrAdd = checkObj["streetid"];
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
         self.checkState = moduleDatabase.getModule("states").getLibary("id");
@@ -289,47 +289,43 @@ ListRealtyRequest.prototype.getView = function() {
         ];
         self.mTable = new tableView(header, [], true, true, 1);
         var arr = [];
-        var connect = "";
+        var connect = "||";
+
+
         for (var i = 0; i < value.length; i++) {
-            if (connect !== "")
-                arr.push(connect);
-            if (value[i].addressid != 0)
-                arr.push({ id: value[i].addressid });
-            connect = "||";
-            if (value[i].addressid_old && value[i].addressid_old != 0) {
-                arr.push(connect);
-                arr.push({ id: value[i].addressid_old });
+            if (value[i].streetid != 0) {
+                if (arr.length > 0) {
+                    arr.push(connect);
+                }
+                arr.push({ id: value[i].streetid });
+            }
+            if (value[i].streetid_old != 0) {
+                if (arr.length > 0) {
+                    arr.push(connect);
+                }
+                arr.push({ id: value[i].streetid_old });
             }
 
         }
-        if (valueAddrAdd)
-            for (var i = 0; i < valueAddrAdd.length; i++) {
+        for (var i = 0; i < valueAddrAdd.length; i++) {
+            if (arr.length > 0) {
                 arr.push(connect);
-                arr.push({ id: valueAddrAdd[i].content });
             }
-        moduleDatabase.getModule("addresses").load({ WHERE: arr }).then(function(valueAdr) {
-            self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
-            var connect = "";
-            var arr = [];
-            for (var i = 0; i < valueAdr.length; i++) {
-                if (connect !== "")
-                    arr.push(connect);
-                arr.push({ id: valueAdr[i].streetid });
-                connect = "||";
+            arr.push({ id: valueAddrAdd[i]["content"] })
+        }
+        console.log(arr)
+        moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+            self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+            if (self.isCensorship) {
+                value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+                value = value[0];
+            } else {
+                value = self.formatDataRow(value);
             }
-            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
-                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                if (self.isCensorship) {
-                    value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
-                    value = value[0];
-                } else {
-                    value = self.formatDataRow(value);
-                }
 
-                self.mTable.updateTable(undefined, value);
-                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-                self.mTable.addFilter(self.HTinput, 17);
-            })
+            self.mTable.updateTable(undefined, value);
+            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+            self.mTable.addFilter(self.HTinput, 17);
         })
 
         tabContainer.addChild(self.mTable);
@@ -427,27 +423,37 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
             continue;
         result.child = [];
         var object;
-        var isImage;
+        var imageStatus = [];
+        var imageJuridical = [];
+        var checkImage = moduleDatabase.getModule("image").getLibary("id");
+        for (var j = 0; j < data[i].image.length; j++) {
+            if (checkImage[data[i].image[j]].type == 1) {
+                imageStatus.push(data[i].image[j]);
+            } else if (checkImage[data[i].image[j]].type == 0) {
+                imageJuridical.push(data[i].image[j]);
+            }
+        }
+        console.log(imageStatus, imageStatus)
         for (var param in check) {
             object = {};
             object["id"] = [];
-            isImage = false;
             for (var j = 0; j < check[param].length; j++) {
-                if (isImage == true && check[param][j].objid === "image")
-                    object[check[param][j].objid] = object[check[param][j].objid].concat(JSON.parse(check[param][j].content));
-                else {
+                if (check[param][j].objid === "imageStatus") {
+                    imageStatus = JSON.parse(check[param][j].content);
+                } else if (check[param][j].objid === "imageJuridical") {
+                    imageJuridical = JSON.parse(check[param][j].content);
+                } else {
                     try {
                         object[check[param][j].objid] = JSON.parse(check[param][j].content);
                     } catch (error) {
                         object[check[param][j].objid] = check[param][j].content;
                     }
                 }
-                if (check[param][j].objid === "image")
-                    isImage = true;
                 object["id"].push(check[param][j].id)
             }
             var x = Object.assign({}, data[i]);
             x = Object.assign(x, object);
+            x.image = imageStatus.concat(imageJuridical);
             result.child.push(this.getDataRow(x, result));
         }
         temp.push(result);
@@ -567,14 +573,12 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
         else
             staus += " và còn cho thuê";
     }
-    if (data.addressid === undefined)
-        data.addressid = 0;
-    if (data.addressid != 0) {
-        var number = this.checkAddress[data.addressid].addressnumber;
-        var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
-        var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
+    if (data.portion != "" || data.addressnumber != "") {
+        var number = data.addressnumber;
+        var street = this.checkStreet[data.streetid].name;
+        var ward = this.checkWard[data.wardid].name;
+        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
     } else {
         var number = street = ward = district = state = "";
     }

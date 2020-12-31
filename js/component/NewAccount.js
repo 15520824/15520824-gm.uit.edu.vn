@@ -2696,7 +2696,7 @@ NewAccount.prototype.getView = function(dataParent) {
     return this.$view;
 }
 
-NewAccount.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
+NewAccount.prototype.itemAddressOld = function(data) {
     var temp = _({
         tag: "div",
         class: ["pizo-new-account-container-address-container", "addressItemCheck"],

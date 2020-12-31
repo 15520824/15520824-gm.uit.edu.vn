@@ -237,13 +237,13 @@ ConfirmRequest.prototype.getView = function() {
         }
         itemImageStaus.push(x);
         itemImageJuridical.push(y);
-        if (itemData.addressid != 0) {
+        if (itemData.portion !== "" || itemData.addressnumber !== "") {
             number = itemData.addressnumber;
             street = this.checkStreet[itemData.streetid].name;
             ward = this.checkWard[itemData.wardid].name;
             district = this.checkDistrict[this.checkWard[itemData.wardid].districtid].name;
             state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid].districtid].stateid].name;
-            fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
+            fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state + " (" + itemData.lat + ", " + itemData.lng + ")";
             itemsAddress.push(fullAddress);
             checkAddress[fullAddress] = [itemData.lat, itemData.lng];
             checkAddress[fullAddress].dataContent = itemData;
@@ -254,7 +254,7 @@ ConfirmRequest.prototype.getView = function() {
         }
 
         //Địa chỉ cũ
-        if (itemData.addressid_old != 0) {
+        if (itemData.addressnumber_old != "") {
             number = itemData.addressnumber;
             street = this.checkStreet[itemData.streetid].name;
             ward = this.checkWard[itemData.wardid].name;
@@ -1703,15 +1703,6 @@ ConfirmRequest.prototype.getDataSave = function() {
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
-    var addressReal;
-    var addressRealOld;
-    if (addressData) {
-        lat = addressData[0];
-        lng = addressData[1];
-        addressReal = addressData.dataContent.addressid;
-    }
-    if (addressDataOld)
-        addressRealOld = addressDataOld.data.addressid_old;
     content = data[0].properties[0].properties[4].value;
     salestatus = data[0].properties[0].properties[1].value.element;
     salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
@@ -1742,8 +1733,18 @@ ConfirmRequest.prototype.getDataSave = function() {
         juridical: juridical,
         image: image,
         censorship: 1,
-        addressid: addressReal,
-        addressid_old: addressRealOld
+    }
+    if (addressData) {
+        lat = addressData[0];
+        lng = addressData[1];
+        temp.streetid = addressData.dataContent.streetid;
+        temp.addressnumber = addressData.dataContent.addressnumber;
+        temp.wardid = addressData.dataContent.wardid;
+    }
+    if (addressDataOld) {
+        temp.streetid_old = addressData.dataContent.streetid_old;
+        temp.addressnumber_old = addressData.dataContent.addressnumber_old;
+        temp.wardid_old = addressData.dataContent.wardid_old;
     }
     if (lat)
         temp.lat = lat;
@@ -1768,7 +1769,11 @@ ConfirmRequest.prototype.getDataSave = function() {
         Loop: for (var j = 0; j < this.data[i].original.id.length; j++) {
             object = checkIDRequest[this.data[i].original.id[j]];
             if (object) {
-                var x = JSON.parse(object["content"]);
+                try {
+                    var x = JSON.parse(object["content"]);
+                } catch (error) {
+                    var x = object["content"];
+                }
                 if (object["objid"] == "image") {
                     if (x.length > 0) {
                         if (this.checkImage[x[0]].type == 1) {

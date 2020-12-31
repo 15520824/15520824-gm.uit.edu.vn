@@ -514,39 +514,28 @@ MapRealty.prototype.modalRealty = function() {
         for (var i = 0; i < value.length; i++) {
             if (connect !== "")
                 arr.push(connect);
-            arr.push({ id: value[i].data.addressid });
+            arr.push({ id: value[i].data.streetid });
             connect = "||";
-            if (value[i].data.addressid_old) {
+            if (value[i].data.streetid) {
                 arr.push(connect);
-                arr.push({ id: value[i].data.addressid_old });
+                arr.push({ id: value[i].data.streetid_old });
             }
         }
         if (arr.length > 0)
-            moduleDatabase.getModule("addresses").load({ WHERE: arr }).then(function(valueAdr) {
-                self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
-                var connect = "";
-                var arr = [];
-                for (var i = 0; i < valueAdr.length; i++) {
-                    if (connect !== "")
-                        arr.push(connect);
-                    arr.push({ id: valueAdr[i].streetid });
-                    connect = "||";
+            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                for (var i = 0; i < value.length; i++) {
+                    if (container.check[value[i].data.id] == undefined) {
+                        var x = this.itemMap(value[i]);
+                        container.check[value[i].data.id] = x;
+                    } else
+                        var x = container.check[value[i].data.id];
+                    x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
+
+                    container.appendChild(x);
+                    this.count.innerHTML = container.childNodes.length + " kết quả";
                 }
-                moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
-                    self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                    for (var i = 0; i < value.length; i++) {
-                        if (container.check[value[i].data.id] == undefined) {
-                            var x = this.itemMap(value[i]);
-                            container.check[value[i].data.id] = x;
-                        } else
-                            var x = container.check[value[i].data.id];
-                        x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
 
-                        container.appendChild(x);
-                        this.count.innerHTML = container.childNodes.length + " kết quả";
-                    }
-
-                }.bind(this))
             }.bind(this))
     }
     this.mapView.addEventListener("change-house", function() {
@@ -737,12 +726,12 @@ MapRealty.prototype.modalLargeRealty = function(data) {
     staticTabbar.value = "status";
     staticTabbar.emit("change");
     var fullAddress = "";
-    if (data.addressid != 0) {
-        var number = this.checkAddress[data.addressid].addressnumber;
-        var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
-        var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
+    if (data.addressnumber != "" || data.portion != "") {
+        var number = data.addressnumber;
+        var street = this.checkStreet[data.streetid].name;
+        var ward = this.checkWard[data.wardid].name;
+        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
         fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
     var statusIcon = _({
@@ -1296,13 +1285,16 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             var m;
             for (var i = 0; i < values.length; i++) {
+                m = i;
+                if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
+                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                }
                 if (values[i].thumnail == 1) {
                     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
-                    m = i;
-                    imageThumnail.setAttribute("src", src);
                     break;
                 }
             }
+            imageThumnail.setAttribute("src", src);
             var arrTemp = [];
             var arrTemp2 = [];
             var k = 0;
@@ -1938,12 +1930,12 @@ MapRealty.prototype.detailHouse = function(data) {
         priceRent.style.display = "none";
     }
     var fullAddressOld = "";
-    if (data.addressid_old && data.addressid_old != 0) {
-        var number = this.checkAddress[data.addressid_old].addressnumber;
-        var street = this.checkStreet[this.checkAddress[data.addressid_old].streetid].name;
-        var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].stateid].name;
+    if (data.addressnumber_old !== "") {
+        var number = data.addressnumber_old;
+        var street = this.checkStreet[data.streetid_old].name;
+        var ward = this.checkWard[data.wardid_old].name;
+        var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
         fullAddressOld = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
     var oldAddress = _({
@@ -3057,12 +3049,12 @@ MapRealty.prototype.itemMap = function(marker) {
     if (type !== undefined)
         type = type.name;
     var fullAddress = "";
-    if (data.addressid != 0) {
-        var number = this.checkAddress[data.addressid].addressnumber;
-        var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
-        var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
-        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
+    if (data.addressnumber != "" || data.portion != "") {
+        var number = data.addressnumber;
+        var street = this.checkStreet[data.streetid].name;
+        var ward = this.checkWard[data.wardid].name;
+        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
         fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
 
@@ -3324,8 +3316,10 @@ MapRealty.prototype.itemMap = function(marker) {
     var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
     if (arr.length > 0)
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
-            var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
             for (var i = 0; i < values.length; i++) {
+                if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
+                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                }
                 if (values[i].thumnail == 1) {
                     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
                     break;

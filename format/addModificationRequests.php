@@ -230,7 +230,7 @@ if($count==1)
             "type"=>0,
             "userid"=>$data["userid"],
             "houseid"=>$data["id"],
-            "objid"=>"image",
+            "objid"=>"imageStatus",
             "content"=>json_encode($imageTempStatus),
             "created"=>$created
         );
@@ -243,7 +243,7 @@ if($count==1)
             "type"=>0,
             "userid"=>$data["userid"],
             "houseid"=>$data["id"],
-            "objid"=>"image",
+            "objid"=>"imageJuridical",
             "content"=>json_encode($imageTempJuridical),
             "created"=>$created
         );

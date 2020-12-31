@@ -879,7 +879,7 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
         else
             staus += " và còn cho thuê";
     }
-    if (data.addressid != 0) {
+    if (data.addressnumber != "") {
         var number = data.addressnumber;
         var street = this.checkStreet[data.streetid].name;
         var ward = this.checkWard[data.wardid].name;

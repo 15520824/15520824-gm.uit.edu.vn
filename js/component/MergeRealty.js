@@ -1832,18 +1832,11 @@ MergeRealty.prototype.getDataSave = function() {
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
-    var addressReal;
-    var addressRealOld;
     if (addressData) {
         lat = addressData[0];
         lng = addressData[1];
-        addressReal = { id: addressData.data.addressid };
     }
-    if (addressDataOld)
-        addressRealOld = { id: addressDataOld.data.addressid_old };
 
-    address = addressData;
-    addressOld = addressDataOld;
     content = data[0].properties[0].properties[4].value;
     salestatus = data[0].properties[0].properties[1].value.element;
     salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
@@ -1874,8 +1867,18 @@ MergeRealty.prototype.getDataSave = function() {
         juridical: juridical,
         image: image,
         censorship: 1,
-        addressid: addressReal,
-        addressid_old: addressRealOld
+    }
+    if (addressData) {
+        lat = addressData[0];
+        lng = addressData[1];
+        temp.streetid = addressData.dataContent.streetid;
+        temp.addressnumber = addressData.dataContent.addressnumber;
+        temp.wardid = addressData.dataContent.wardid;
+    }
+    if (addressDataOld) {
+        temp.streetid_old = addressData.dataContent.streetid_old;
+        temp.addressnumber_old = addressData.dataContent.addressnumber_old;
+        temp.wardid_old = addressData.dataContent.wardid_old;
     }
     if (lat)
         temp.lat = lat;
