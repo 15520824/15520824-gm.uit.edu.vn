@@ -61,6 +61,9 @@ if(count($result)>0)
         "token"=>$token,
         "user"=>$result
     );
+    $dataUser = $result[0];
+    $dataUser["lastlogin"] = new DateTime();
+    $connector->update($prefix."users", $dataUser);
 }else
 $token = false;
 

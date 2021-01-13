@@ -76,8 +76,8 @@ if(isset($data["avatar"]))
 if (isset($data["password"])) {
     $data["password"]=md5($data["password"]."safe.Login.via.normal.HTTP"."000000");
 }
-$connector->query("DELETE FROM ".$prefix."privileges WHERE userid = ".$data["id"]);
 if (isset($data["permission"])) {
+    $connector->query("DELETE FROM ".$prefix."privileges WHERE userid = ".$data["id"]);
     foreach($data["permission"] as $param=>$value)
     {
         if($param === 0)
@@ -96,6 +96,7 @@ if (isset($data["permission"])) {
     }
 }
 unset($data["permission"]);
+$data["modified"] = new DateTime();
 $result = $connector-> update($prefix."users", $data);
 echo "ok".EncodingClass::fromVariable(array(
     'data'=>$data

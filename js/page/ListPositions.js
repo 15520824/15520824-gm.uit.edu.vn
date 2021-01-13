@@ -282,7 +282,8 @@ ListPositions.prototype.getView = function() {
         self.mTable.addInputSearch(tabInput);
 
         var header = [{ value: 'STT', type: "increase", sort: true, style: { minWidth: "50px", width: "50px" } }, { value: 'Mã', sort: true, style: { minWidth: "100px", width: "100px" } }, { value: 'Họ và tên', sort: true, style: { minWidth: "unset" } }, { value: 'Chức vụ', sort: true, style: { minWidth: "unset" } }, { value: 'Ghi chú', style: { minWidth: "unset" } }, { type: "detail", functionClickAll: functionClickMoreSencond, icon: "", dragElement: false, style: { width: "30px" } }];
-        self.mTablePosition = new tableView(header, [], false, true);
+        self.mTablePosition = new tableView(header, [], false, true, undefined, 999999);
+        self.mTablePosition.set
         contentContainer.addChild(self.mTablePosition);
 
         var promiseAll = [];
@@ -337,8 +338,7 @@ ListPositions.prototype.formatDataRowPosition = function(data) {
 }
 
 ListPositions.prototype.getDataRowPosition = function(data) {
-    var name;
-    console.log(this.checkAccount[data.id], data)
+    var name = "";
     if (this.checkAccount[data.id] == undefined)
         name = "";
     else {
@@ -360,6 +360,33 @@ ListPositions.prototype.getDataRowPosition = function(data) {
 ListPositions.prototype.formatDataRowAccount = function(data) {
     this.listAccoutData = data;
     this.checkAccount = moduleDatabase.getModule("users").getLibary("positionid");
+    // for (var param in this.checkAccount) {
+    //     for (var i = 0; i < this.checkAccount[param].length; i++) {
+    //         if (param == 5) {
+    //             moduleDatabase.getModule("positions").add({
+    //                 department_id: 84,
+    //                 code: "sale collaborator",
+    //                 name: "CTV Sale"
+    //             }).then(function() {
+    //                 console.log(arguments)
+    //                 moduleDatabase.getModule("users").update({
+    //                     id: arguments[0].id,
+    //                     positionid: arguments[1].id
+    //                 })
+    //             }.bind(this, this.checkAccount[param][i]))
+    //         }
+    //         // if (param == 2) {
+    //         //     moduleDatabase.getModule("positions").add({
+    //         //         department_id: 84,
+    //         //         code: "secretary",
+    //         //         name: "Thư ký"
+    //         //     }).then(function(result) {
+
+    //         //     })
+    //         // }
+    //     }
+    // }
+    // console.log(this.checkAccount)
 }
 
 ListPositions.prototype.formatDataRow = function(data) {
@@ -554,7 +581,6 @@ ListPositions.prototype.addDBPosition = function(mNewPosition, row) {
         delete value.username;
         var loading = new loadingWheel();
         moduleDatabase.getModule("positions").add(value).then(function(result) {
-
             value.id = result.id;
             if (value.username !== undefined) {
                 var x = {

@@ -655,7 +655,7 @@ ListRealty.prototype.getView = function() {
                 disabled: true
             }
         ];
-        header.isSaveTheme = "#19001080";
+        // header.isSaveTheme = "#19001080";
         if (moduleDatabase.isStaff === true) {
             header.attachSrcoll = true;
             header[2].hidden = true;

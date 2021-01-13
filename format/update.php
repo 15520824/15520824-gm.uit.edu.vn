@@ -48,6 +48,11 @@ if(isset($ORDERING))
     $ORDERING = " ORDER BY ".$ORDERING;
 }
 
+if(isset($data["modified"]))
+{
+    $data["modified"] = new DateTime();
+}
+
 $result = $connector-> update($prefix.$tableName, $data);
 
 echo "ok".EncodingClass::fromVariable(array(

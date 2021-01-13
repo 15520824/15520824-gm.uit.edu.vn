@@ -960,11 +960,39 @@ NewAccount.prototype.getView = function(dataParent) {
                         tag: "div",
                         class: "pizo-new-account-container-permission",
                         child: [{
-                                tag: "span",
-                                class: "pizo-new-account-container-prermission-label",
-                                props: {
-                                    innerHTML: "Quyền hệ thống"
-                                }
+                                tag: "div",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-new-account-container-prermission-label",
+                                        props: {
+                                            innerHTML: "Quyền hệ thống"
+                                        }
+                                    },
+                                    {
+                                        tag: "checkbox",
+                                        on: {
+                                            change: function(event) {
+                                                if (this.checked) {
+                                                    for (var i = 1; i < 56; i++) {
+                                                        var tempCheckbox = $("div.checkbox_" + (i), self.$view);
+                                                        tempCheckbox.checked = true;
+                                                    }
+                                                } else {
+                                                    for (var i = 1; i < 56; i++) {
+                                                        var tempCheckbox = $("div.checkbox_" + (i), self.$view);
+                                                        tempCheckbox.checked = false;
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        style: {
+                                            float: "right"
+                                        },
+                                        props: {
+                                            text: "Chọn tất cả"
+                                        }
+                                    }
+                                ]
                             },
                             {
                                 tag: "div",

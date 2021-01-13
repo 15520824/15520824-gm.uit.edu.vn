@@ -29,6 +29,13 @@ if (isset($_POST["data"])) {
     echo "BAD_REQUEST (400)";
     exit();
 }
+
+if(isset($_POST["userid"]))
+{
+    $userid = $_POST["userid"];
+    $data["userid"] = $userid;
+}
+
 $result = $connector-> insert($prefix.$tableName, $data);
 $data["id"] = $result;
 echo "ok".EncodingClass::fromVariable(array(

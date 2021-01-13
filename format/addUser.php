@@ -33,6 +33,12 @@ if (isset($_POST["data"])) {
 }
 
 
+if(isset($_POST["userid"]))
+{
+    $userid = $_POST["userid"];
+    $data["userid"] = $userid;
+}
+
 $index = "";
 $i = 0;
 $insert = array();

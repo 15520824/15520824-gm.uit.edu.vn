@@ -160,7 +160,7 @@ App.prototype.getView = function() {
                     this.prevEdit({ original: moduleDatabase.getModule("users").getLibary("id")[window.userid] });
                 break;
             case "logout":
-                moduleDatabase.queryData("deleteToken.php", { token: getCookie("token_pizo_phone"), userid: getCookie("userid_pizo_phone") }, "safe_login").then(function(value) {})
+                moduleDatabase.queryData("deleteToken.php", { token: getCookie("token_pizo_phone"), userid: window.userid }, "safe_login").then(function(value) {})
                 eraseCookie("token_pizo_phone");
                 eraseCookie("userid_pizo_phone");
                 window.token = undefined;
@@ -437,6 +437,11 @@ App.prototype.getPermisionOpenPage = function() {
                             menuZone.push({
                                 text: "Tiện nghi trong nhà",
                                 pageIndex: 31
+                            })
+                        if (moduleDatabase.checkPermission[0].indexOf(70) != -1)
+                            menuZone.push({
+                                text: "Tiện nghi trong nhà",
+                                pageIndex: 35
                             })
                         if (moduleDatabase.checkPermission[0].indexOf(37) != -1)
                             menuZone.push({
@@ -765,6 +770,14 @@ App.prototype.openPage = function(index) {
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
             finalPage = mListTypeActivehouse;
+            break;
+        case 35:
+            var mListPurpose = new ListPurpose();
+            mListPurpose.attach(this);
+            var frameview = mListPurpose.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+            finalPage = mListPurpose;
             break;
         case 91:
             var mImport_DB = new Import_DB();

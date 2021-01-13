@@ -309,8 +309,8 @@ ListAccount.prototype.getDataRow = function(data) {
         data.phone,
         data.email,
         name,
-        {},
-        parseInt(data.status) ? "Có" : "Không",
+        formatDate(data.lastlogin, true, true, true, true, true),
+        parseInt(data.status) == 1 ? "Có" : "Không",
         {}
     ]
     result.original = data;
