@@ -277,7 +277,7 @@ NewRealty.prototype.imageJuridical = function() {
     result.setFormatData(function(data) {
         var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+            avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
             userName: dataUser.name,
             src: data.src,
             date: data.created,
@@ -326,7 +326,7 @@ NewRealty.prototype.imageJuridical = function() {
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++)
                 if (values[i].type == 0)
-                    result.addFile(values[i], "https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
         })
     return temp;
 }
@@ -338,7 +338,7 @@ NewRealty.prototype.imageCurrentStaus = function() {
     result.setFormatData(function(data) {
         var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+            avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
             userName: dataUser.name,
             src: data.src,
             date: data.created,
@@ -385,7 +385,7 @@ NewRealty.prototype.imageCurrentStaus = function() {
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++)
                 if (values[i].type == 1)
-                    result.addFile(values[i], "https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
         })
     return temp;
 }

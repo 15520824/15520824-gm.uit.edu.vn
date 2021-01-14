@@ -192,7 +192,7 @@ MergeRealty.prototype.getView = function() {
     })
 
     var valueSimpleStructure, itemStructure = [];
-    var prefixImage = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
+    var prefixImage = moduleDatabase.imageAssetSrc;
     for (var i = 0; i < this.data.length; i++) {
         //Địa chỉ hiện tại
         itemData = this.data[i].original;

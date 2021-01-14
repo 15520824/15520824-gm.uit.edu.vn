@@ -2709,7 +2709,7 @@ NewAccount.prototype.getView = function(dataParent) {
         this.status.checked = parseInt(this.data.original.status) ? true : false;
         // this.permission.checked = parseInt(this.data.original.permission)?true:false;
         if (this.data.original.avatar !== "") {
-            this.avatar.src = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + this.data.original.avatar;
+            this.avatar.src = "moduleDatabase.imageAvatarSrc" + this.data.original.avatar;
         }
     } else {
         $("div.pizo-new-account-container-change-password", this.$view).style.display = "none";
@@ -2976,7 +2976,7 @@ NewAccount.prototype.setValueNull = function(object) {
 NewAccount.prototype.getDataSave = function() {
     this.sendButton.click();
     var avatar = this.avatar.src;
-    avatar = avatar.replace("https://lab.daithangminh.vn/home_co/pizo/assets/avatar/", "");
+    avatar = avatar.replace("moduleDatabase.imageAvatarSrc", "");
     var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
     if (vnf_regex.test(this.phone.value) == false) {
         var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");

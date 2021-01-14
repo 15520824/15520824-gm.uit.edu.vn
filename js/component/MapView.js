@@ -1292,10 +1292,10 @@ MapView.prototype.modalMiniRealty = function(data) {
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
                 if (values[i].type == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                 }
                 if (values[i].thumnail == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                     image.style.backgroundImage = `url(` + src + `)`;
                     break;
                 }

@@ -556,9 +556,9 @@ MapRealty.prototype.mediaItem = function(data, index) {
                     var dataUser = self.checkUserID[data[i].userid];
                     arr.push({
                         index: i,
-                        avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+                        avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
                         userName: dataUser.name,
-                        src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data[i].src,
+                        src: moduleDatabase.imageAssetSrc + data[i].src,
                         date: data[i].created,
                         note: ""
                     })
@@ -569,7 +569,7 @@ MapRealty.prototype.mediaItem = function(data, index) {
         child: [{
             tag: "img",
             attr: {
-                src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data[index].src
+                src: moduleDatabase.imageAssetSrc + data[index].src
             }
         }]
     }, )
@@ -670,9 +670,9 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                             var dataUser = self.checkUserID[modal.image[i].userid];
                             arr.push({
                                 index: i,
-                                avatar: "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + dataUser.avatar,
+                                avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
                                 userName: dataUser.name,
-                                src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + modal.image[i].src,
+                                src: moduleDatabase.imageAssetSrc + modal.image[i].src,
                                 date: modal.image[i].created,
                                 note: ""
                             })
@@ -1287,10 +1287,10 @@ MapRealty.prototype.modalLargeRealty = function(data) {
             for (var i = 0; i < values.length; i++) {
                 m = i;
                 if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                 }
                 if (values[i].thumnail == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                     break;
                 }
             }
@@ -3318,10 +3318,10 @@ MapRealty.prototype.itemMap = function(marker) {
         moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
                 if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                 }
                 if (values[i].thumnail == 1) {
-                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + values[i].src;
+                    src = moduleDatabase.imageAssetSrc + values[i].src;
                     break;
                 }
 
