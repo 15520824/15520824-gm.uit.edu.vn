@@ -68,7 +68,7 @@ NewEquipment.prototype.getView = function() {
                     tag: "span",
                     class: "pizo-body-title-left",
                     props: {
-                        innerHTML: self.textHeader + " tiện ích trong nhà"
+                        innerHTML: self.textHeader + " mục đích sỡ hữu"
                     }
                 },
                 {
@@ -124,18 +124,6 @@ NewEquipment.prototype.getView = function() {
         }, ]
     });
 
-    var data = moduleDatabase.getModule("equipments").data;
-    var libary = [];
-    var items = [];
-    for (var i = 0; i < data.length; i++) {
-        if (libary[data[i].type] === undefined) {
-            libary[data[i].type] = 1;
-            items.push({ text: data[i].type, value: data[i].type });
-        }
-    }
-    items.sort();
-    console.log(items);
-
     this.$view.addChild(_({
         tag: "div",
         class: ["pizo-list-realty-main"],
@@ -158,32 +146,6 @@ NewEquipment.prototype.getView = function() {
                             {
                                 tag: "input",
                                 class: ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"],
-                            }
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-new-state-container-type-container",
-                        child: [{
-                                tag: "span",
-                                class: "pizo-new-state-container-type-container-label",
-                                props: {
-                                    innerHTML: "Loại"
-                                }
-                            },
-                            {
-                                tag: "selectmenu",
-                                class: "pizo-new-state-container-type-container-input",
-                                style: {
-                                    padding: 0
-                                },
-                                props: {
-                                    items: [
-                                        { text: "Số lượng", value: 0 },
-                                        { text: "Có không", value: 1 },
-                                        //    {text:"Chú thích",value:2}
-                                    ]
-                                },
                             }
                         ]
                     },
@@ -223,7 +185,6 @@ NewEquipment.prototype.getView = function() {
     this.available = $('label.pizo-new-state-container-nation-container-input-switch', this.$view);
     if (this.data !== undefined) {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
         this.available.checked = this.data.original.available == 1 ? true : false;
     }
 
@@ -233,7 +194,6 @@ NewEquipment.prototype.getView = function() {
 NewEquipment.prototype.getDataSave = function() {
     var temp = {
         name: this.name.value,
-        type: this.type.value,
         available: this.available.checked === true ? 1 : 0
     }
     if (this.data !== undefined)

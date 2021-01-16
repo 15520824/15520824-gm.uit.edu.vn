@@ -565,6 +565,7 @@ ListRealty.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
+    arr.push(moduleDatabase.getModule("purpose").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
     Promise.all(arr).then(function(values) {
         var value = values[0];

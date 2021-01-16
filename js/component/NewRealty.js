@@ -888,6 +888,14 @@ NewRealty.prototype.detructView = function() {
             innerHTML: "*"
         }
     });
+    var dataTemp = moduleDatabase.getModule("purpose").data;
+    var purpose = [];
+    for (var i = 0; i < dataTemp.length; i++) {
+        dataTemp[i].id = parseInt(dataTemp[i].id)
+        if (dataTemp[i].available === 0)
+            continue;
+        purpose.push({ text: dataTemp[i].name, value: dataTemp[i].id, data: dataTemp[i] })
+    }
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -1137,12 +1145,7 @@ NewRealty.prototype.detructView = function() {
                                                     },
                                                     props: {
                                                         value: 0,
-                                                        items: [
-                                                            { text: "Chưa xác định", value: 0 },
-                                                            { text: "Đất trống", value: 1 },
-                                                            { text: "Cấp 4", value: 2 },
-                                                            { text: "Sẳn *", value: 3 },
-                                                        ]
+                                                        items: arr
                                                     }
                                                 }
                                             ]
@@ -1639,12 +1642,7 @@ NewRealty.prototype.detructView = function() {
                                 tag: "selectbox",
                                 class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
                                 props: {
-                                    items: [
-                                        { text: "Để ở", value: 1 },
-                                        { text: "Cho thuê", value: 10 },
-                                        { text: "Kinh doanh", value: 100 },
-                                        { text: "Làm văn phòng", value: 1000 },
-                                    ]
+                                    items: purpose
                                 }
                             }
                         ]

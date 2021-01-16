@@ -23,6 +23,7 @@ import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 import ListTypeActivehouse from './page/ListTypeActivehouse';
+import ListPurpose from './page/ListPurpose';
 import Import_DB from './page/Import_DB';
 import { getCookie, eraseCookie, setCookie } from './component/FormatFunction';
 
@@ -440,9 +441,9 @@ App.prototype.getPermisionOpenPage = function() {
                                 text: "Tiện nghi trong nhà",
                                 pageIndex: 31
                             })
-                        if (moduleDatabase.checkPermission[0].indexOf(70) != -1)
+                        // if (moduleDatabase.checkPermission[0].indexOf(70) != -1)
                             menuZone.push({
-                                text: "Tiện nghi trong nhà",
+                                text: "Mục đích sở hữu",
                                 pageIndex: 35
                             })
                         if (moduleDatabase.checkPermission[0].indexOf(37) != -1)
