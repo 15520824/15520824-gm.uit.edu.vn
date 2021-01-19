@@ -556,10 +556,7 @@ ListRealty.prototype.getView = function() {
     })
 
     var arr = [];
-    if (this.isCensorship === true)
-        arr.push(moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] }));
-    else
-        arr.push(moduleDatabase.getModule("activehouses").load());
+    var promise;
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("type_activehouses").load());
     arr.push(moduleDatabase.getModule("districts").load());
@@ -568,156 +565,162 @@ ListRealty.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("purpose").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
     Promise.all(arr).then(function(values) {
-        var value = values[0];
-        self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
-        self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-        self.checkState = moduleDatabase.getModule("states").getLibary("id");
-        var header = [{
-                type: "dragzone",
-                dragElement: false,
-                disabled: true
-            },
-            {
-                type: "check",
-                dragElement: false,
-                hidden: true,
-                disabled: true
-            }, {
-                value: 'MS',
-                sort: true,
-                style: {
-                    minWidth: "30px"
+        if (self.isCensorship === true)
+            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] });
+        else
+            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: {operator:">=", value:self.startDay.value }},"&&",{created: {operator:"<=", value:self.endDay.value }}] });
+            promise.then(function(value){
+            self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+            self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+            self.checkState = moduleDatabase.getModule("states").getLibary("id");
+            var header = [{
+                    type: "dragzone",
+                    dragElement: false,
+                    disabled: true
                 },
-                disableInput: true
-            }, 'Số nhà', {
-                value: 'Tên đường'
-            }, {
-                value: 'Phường/Xã'
-            }, {
-                value: 'Quận/Huyện'
-            }, {
-                value: 'Tỉnh/TP'
-            }, {
-                value: 'Ghi chú',
-                hidden: true,
-            }, {
-                value: 'Ngang',
-                sort: true,
-                style: {
-                    minWidth: "50px"
+                {
+                    type: "check",
+                    dragElement: false,
+                    hidden: true,
+                    disabled: true
+                }, {
+                    value: 'MS',
+                    sort: true,
+                    style: {
+                        minWidth: "30px"
+                    },
+                    disableInput: true
+                }, 'Số nhà', {
+                    value: 'Tên đường'
+                }, {
+                    value: 'Phường/Xã'
+                }, {
+                    value: 'Quận/Huyện'
+                }, {
+                    value: 'Tỉnh/TP'
+                }, {
+                    value: 'Ghi chú',
+                    hidden: true,
+                }, {
+                    value: 'Ngang',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Dài',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'DT',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Kết cấu'
+                }, {
+                    value: 'Hướng'
+                }, {
+                    value: 'Giá',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Giá m²',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Hiện trạng',
+                    disableInput: true,
+                    style: {
+                        minWidth: "85px"
+                    }
+                }, {
+                    value: 'Ngày tạo',
+                    sort: true
+                }, {
+                    value: 'Ngày cập nhật',
+                    sort: true
+                }, {
+                    type: "detail",
+                    functionClickAll: functionClickMore,
+                    dragElement: false,
+                    disabled: true
+                }, {
+                    hidden: true,
+                    disabled: true
                 }
-            }, {
-                value: 'Dài',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'DT',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Kết cấu'
-            }, {
-                value: 'Hướng'
-            }, {
-                value: 'Giá',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Giá m²',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Hiện trạng',
-                disableInput: true,
-                style: {
-                    minWidth: "85px"
-                }
-            }, {
-                value: 'Ngày tạo',
-                sort: true
-            }, {
-                value: 'Ngày cập nhật',
-                sort: true
-            }, {
-                type: "detail",
-                functionClickAll: functionClickMore,
-                dragElement: false,
-                disabled: true
-            }, {
-                hidden: true,
-                disabled: true
+            ];
+            header.isSaveTheme = "#19001080";
+            if (moduleDatabase.isStaff === true) {
+                header.attachSrcoll = true;
+                header[2].hidden = true;
+                header[2].disabled = true;
             }
-        ];
-        // header.isSaveTheme = "#19001080";
-        if (moduleDatabase.isStaff === true) {
-            header.attachSrcoll = true;
-            header[2].hidden = true;
-            header[2].disabled = true;
-        }
-        if (moduleDatabase.isAdd == false) {
-            saveButton.style.display = "none";
-        }
-        if (moduleDatabase.isMerge == false) {
-            mergeButton.style.display = "none";
-        }
-        if (moduleDatabase.isCall == false) {
-            callAgainButton.style.display = "none";
-        }
-        if (moduleDatabase.isConfirm == false) {
-            confirmButton.style.display = "none";
-        }
-        if (moduleDatabase.isCancelConfirm == false) {
-            cancelConfirmButton.style.display = "none";
-        }
-        self.mTable = new tableView(header, [], true, true, 1);
-        self.mTable.addInputSearchHeader();
-        var arr = [];
-        var connect = "||";
-        var arr = [];
-        for (var i = 0; i < value.length; i++) {
-            if (value[i].streetid !== 0) {
-                if (arr.length > 0)
-                    arr.push(connect);
-                arr.push({ id: value[i].streetid });
+            if (moduleDatabase.isAdd == false) {
+                saveButton.style.display = "none";
             }
-            if (value[i].streetid_old !== 0) {
-                if (arr.length > 0)
-                    arr.push(connect);
-                arr.push({ id: value[i].streetid_old });
+            if (moduleDatabase.isMerge == false) {
+                mergeButton.style.display = "none";
             }
-        }
-        moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
-            self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-            if (self.isCensorship) {
-                value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
-                value = value[0];
-            } else {
-                value = self.formatDataRow(value);
+            if (moduleDatabase.isCall == false) {
+                callAgainButton.style.display = "none";
             }
-            self.mTable.updateTable(undefined, value);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-            self.mTable.addRange(self.startDay, self.endDay, 17);
-            self.mTable.addRange(self.lowprice, self.highprice, 14);
-            self.mTable.addFilter(hiddenConfirm, 20);
-            self.mTable.addFilter(self.HTinput, 16);
-        })
+            if (moduleDatabase.isConfirm == false) {
+                confirmButton.style.display = "none";
+            }
+            if (moduleDatabase.isCancelConfirm == false) {
+                cancelConfirmButton.style.display = "none";
+            }
+            var arr = [];
+            var connect = "||";
+            var arr = [];
+            for (var i = 0; i < value.length; i++) {
+                if (value[i].streetid !== 0 && value[i].streetid !== null) {
+                    if (arr.length > 0)
+                        arr.push(connect);
+                    arr.push({ id: value[i].streetid });
+                }
+                if (value[i].streetid_old !== 0 && value[i].streetid_old !== null) {
+                    if (arr.length > 0)
+                        arr.push(connect);
+                    arr.push({ id: value[i].streetid_old });
+                }
+            }
+            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                console.log(self.checkStreet)
+                if (self.isCensorship) {
+                    value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+                    value = value[0];
+                } else {
+                    value = self.formatDataRow(value);
+                }
+                self.mTable = new tableView(header, value, true, true, 1);
+                console.log(value)
+                self.mTable.addInputSearchHeader();
+                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+                self.mTable.addRange(self.startDay, self.endDay, 17);
+                self.mTable.addRange(self.lowprice, self.highprice, 14);
+                self.mTable.addFilter(hiddenConfirm, 20);
+                self.mTable.addFilter(self.HTinput, 16);
+                tabContainer.addChild(self.mTable);
+            })
 
-        tabContainer.addChild(self.mTable);
-        moduleDatabase.getModule("users").load().then(function(value) {
-            self.formatDataRowAccount(value);
-        })
+            moduleDatabase.getModule("users").load().then(function(value) {
+                self.formatDataRowAccount(value);
+            })
 
-        moduleDatabase.getModule("contacts").load().then(function(value) {
-            self.formatDataRowContact(value);
-        })
+            moduleDatabase.getModule("contacts").load().then(function(value) {
+                self.formatDataRowContact(value);
+            })
+            })
     });
 
 
@@ -846,28 +849,28 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
         case 0:
             direction = "Chưa xác định";
             break;
-        case 6:
+        case 1:
             direction = "Đông";
             break;
-        case 4:
+        case 2:
             direction = "Tây";
             break;
-        case 2:
+        case 3:
             direction = "Nam";
             break;
-        case 8:
+        case 4:
             direction = "Bắc";
             break;
-        case 7:
+        case 5:
             direction = "Tây Bắc";
             break;
-        case 9:
+        case 6:
             direction = "Đông Bắc";
             break;
-        case 1:
+        case 7:
             direction = "Tây Nam";
             break;
-        case 3:
+        case 8:
             direction = "Đông Nam";
             break;
     }
@@ -881,11 +884,22 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
             staus += " và còn cho thuê";
     }
     if (data.addressnumber != "") {
+        var district = "";
+        var state = "";
         var number = data.addressnumber;
+        if(this.checkStreet[data.streetid])
         var street = this.checkStreet[data.streetid].name;
-        var ward = this.checkWard[data.wardid].name;
-        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        else
+        var street = "";
+        if(this.checkWard[data.wardid])
+        {
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        }
+        else
+        var ward = "";
+        
     } else {
         var number = street = ward = district = state = "";
     }
@@ -1200,13 +1214,13 @@ ListRealty.prototype.mergeFilterNone = function(data) {
 ListRealty.prototype.searchControlContent = function() {
     var startDay, endDay;
     var self = this;
-    var oneYearFromNow = new Date();
-    oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() - 1);
+    var oneMonthFromNow = new Date();
+    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() - 1);
     startDay = _({
         tag: 'calendar-input',
         data: {
             anchor: 'top',
-            value: oneYearFromNow,
+            value: oneMonthFromNow,
             maxDateLimit: new Date()
         },
         on: {

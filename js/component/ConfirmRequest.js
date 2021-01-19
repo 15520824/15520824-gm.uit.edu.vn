@@ -132,14 +132,14 @@ ConfirmRequest.prototype.getView = function() {
     var itemDirection = [];
     var checkDirection = {
         0: "Chưa xác định",
-        6: "Đông",
-        4: "Tây",
-        2: "Nam",
-        8: "Bắc",
-        9: "Đông Bắc",
-        3: "Đông Nam",
-        7: "Tây Bắc",
-        1: "Tây Nam"
+        1: "Đông",
+        2: "Tây",
+        3: "Nam",
+        4: "Bắc",
+        5: "Tây Bắc",
+        6: "Đông Bắc",
+        7: "Tây Nam",
+        8: "Đông Nam",
     }
     var itemType = [];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("id");
@@ -1321,8 +1321,8 @@ ConfirmRequest.prototype.contactItem = function(data) {
                         },
                         props: {
                             items: [
-                                { text: "Còn hoạt động", value: 1 },
-                                { text: "Sai số", value: 0 },
+                                { text: "Còn hoạt động", value: 0 },
+                                { text: "Sai số", value: 1 },
                                 { text: "Gọi lại sau", value: 2 },
                                 { text: "Bỏ qua", value: 3 },
                                 { text: "Khóa máy", value: 4 }

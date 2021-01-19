@@ -221,6 +221,7 @@ ListContact.prototype.getView = function() {
 
     Promise.all(arr).then(function(values) {
         var value = values[0];
+        console.log(value)
         var header = [
             { type: "increase", value: "#", style: { minWidth: "50px", width: "50px" } },
             { value: 'MS', sort: true, style: { minWidth: "50px", width: "50px" } },
@@ -285,10 +286,10 @@ ListContact.prototype.getDataRow = function(data) {
     var status;
     switch (parseInt(data.statusphone)) {
         case 0:
-            status = "Sai số";
+            status = "Bình thường";
             break;
         case 1:
-            status = "Còn hoạt động";
+            status = "Sai số";
             break;
         case 2:
             status = "Gọi lại sau";

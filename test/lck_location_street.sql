@@ -1,49 +1,4 @@
--- -- phpMyAdmin SQL Dump
--- -- version 5.0.0-alpha1
--- -- https://www.phpmyadmin.net/
--- --
--- -- Host: localhost
--- -- Generation Time: Jan 13, 2021 at 02:53 PM
--- -- Server version: 10.2.27-MariaDB
--- -- PHP Version: 7.2.24
 
--- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
--- SET AUTOCOMMIT = 0;
--- START TRANSACTION;
--- SET time_zone = "+00:00";
-
-
--- /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
--- /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
--- /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
--- /*!40101 SET NAMES utf8mb4 */;
-
--- --
--- -- Database: `admin_pizo`
--- --
-
--- -- --------------------------------------------------------
-
--- --
--- -- Table structure for table `streets`
--- --
-
--- CREATE TABLE `streets` (
---   `id` int(11) NOT NULL,
---   `name` varchar(255) DEFAULT NULL,
---   `name_ascii` varchar(255) DEFAULT NULL,
---   `location` varchar(255) DEFAULT NULL,
---   `ward_id` int(11) DEFAULT NULL,
---   `district_id` int(11) NOT NULL,
---   `user_id_created` int(11) DEFAULT NULL,
---   `created_at` datetime DEFAULT NULL,
---   `updated_at` datetime DEFAULT NULL,
---   `deleted_at` datetime DEFAULT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --
--- Dumping data for table `streets`
---
 
 INSERT INTO `streets` (`id`, `name`, `wardid`) VALUES
 (1, 'Pasteur', 26740),
@@ -5001,31 +4956,4 @@ INSERT INTO `streets` (`id`, `name`, `wardid`) VALUES
 (5496, 'Đoàn Thị Điểm', 27055),
 (5497, 'Nguyễn Trãi', 26749),
 (5498, 'Cao Thắng', 27157);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `streets`
---
--- ALTER TABLE `streets`
---   ADD PRIMARY KEY (`id`),
---   ADD KEY `ward_id` (`ward_id`),
---   ADD KEY `district_id` (`district_id`);
-
--- --
--- -- AUTO_INCREMENT for dumped tables
--- --
-
--- --
--- -- AUTO_INCREMENT for table `streets`
--- --
--- ALTER TABLE `streets`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5499;
--- COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 

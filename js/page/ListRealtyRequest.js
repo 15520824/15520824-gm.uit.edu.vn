@@ -539,28 +539,28 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
         case 0:
             direction = "Chưa xác định";
             break;
-        case 6:
+        case 1:
             direction = "Đông";
             break;
-        case 4:
+        case 2:
             direction = "Tây";
             break;
-        case 2:
+        case 3:
             direction = "Nam";
             break;
-        case 8:
+        case 4:
             direction = "Bắc";
             break;
-        case 7:
+        case 5:
             direction = "Tây Bắc";
             break;
-        case 9:
+        case 6:
             direction = "Đông Bắc";
             break;
-        case 1:
+        case 7:
             direction = "Tây Nam";
             break;
-        case 3:
+        case 8:
             direction = "Đông Nam";
             break;
     }

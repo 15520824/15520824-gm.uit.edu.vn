@@ -182,8 +182,8 @@ NewContact.prototype.getView = function() {
                                 class: "pizo-new-contact-container-type-container-input",
                                 props: {
                                     items: [
-                                        { text: "Còn hoạt động", value: 1 },
-                                        { text: "Sai số", value: 0 },
+                                        { text: "Còn hoạt động", value: 0 },
+                                        { text: "Sai số", value: 1 },
                                         { text: "Gọi lại sau", value: 2 },
                                         { text: "Bỏ qua", value: 3 },
                                         { text: "Khóa máy", value: 4 }

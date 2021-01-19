@@ -86,23 +86,23 @@ if($result)
             else
             {
                 $data[$i] = $row;
-                $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
-                $data[$i]["equipment"]=$equipment;
-                $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
-                $data[$i]["contact"]=$contact;
+                // $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
+                // $data[$i]["equipment"]=$equipment;
+                // $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
+                // $data[$i]["contact"]=$contact;
     
-                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." AND status=1 )");
-                $image = array();
-                if($imageresource)
-                    if ($imageresource->num_rows > 0) {
-                        while($rowResource = $imageresource->fetch_assoc())
-                        {
-                            array_push($image,$rowResource["id"]);
-                            array_push($imageAll,$rowResource);
+                // $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." AND status=1 )");
+                // $image = array();
+                // if($imageresource)
+                //     if ($imageresource->num_rows > 0) {
+                //         while($rowResource = $imageresource->fetch_assoc())
+                //         {
+                //             array_push($image,$rowResource["id"]);
+                //             array_push($imageAll,$rowResource);
                                 
-                        }
-                    }
-                $data[$i]["image"] = $image;
+                //         }
+                //     }
+                // $data[$i]["image"] = $image;
             }
             $i++;
         }
@@ -123,6 +123,5 @@ if(isset($isFirst))
 }
 
 echo "ok".EncodingClass::fromVariable($sendData);
-
 exit(0);
 ?>

@@ -308,26 +308,12 @@ NewRealty.prototype.imageJuridical = function() {
         ]
     })
     this.viewJuridical = result;
-    var arr = [];
-    var first = "";
-    if (this.data !== undefined) {
-        for (var i = 0; i < this.data.original.image.length; i++) {
-            if (first !== "")
-                arr.push(first);
-            arr.push({ id: parseInt(this.data.original.image[i]) })
-            if (first == "") {
-
-                first = "||";
-            }
-        }
-
-    }
-    if (arr.length > 0)
-        moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
-            for (var i = 0; i < values.length; i++)
-                if (values[i].type == 0)
-                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
-        })
+  
+    moduleDatabase.getModule("image").load({ WHERE: [{houseid:this.data.id}] }).then(function(values) {
+        for (var i = 0; i < values.length; i++)
+            if (values[i].type == 0)
+                result.addFile(values[i], moduleDatabase.imageAssetSrc);
+    })
     return temp;
 }
 
@@ -370,23 +356,12 @@ NewRealty.prototype.imageCurrentStaus = function() {
     var arr = [];
     var first = "";
     if (this.data !== undefined) {
-        for (var i = 0; i < this.data.original.image.length; i++) {
-            if (first !== "")
-                arr.push(first);
-            arr.push({ id: parseInt(this.data.original.image[i]) });
-            if (first == "") {
-
-                first = "||";
-            }
-        }
-
-    }
-    if (arr.length > 0)
-        moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{houseid:this.data.id}] }).then(function(values) {
             for (var i = 0; i < values.length; i++)
-                if (values[i].type == 1)
-                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
+            if (values[i].type == 1)
+            result.addFile(values[i], moduleDatabase.imageAssetSrc);
         })
+    }
     return temp;
 }
 
@@ -1145,7 +1120,12 @@ NewRealty.prototype.detructView = function() {
                                                     },
                                                     props: {
                                                         value: 0,
-                                                        items: arr
+                                                        items: [
+                                                            { text: "Chưa xác định", value: 0 },
+                                                            { text: "Đất trống", value: 1 },
+                                                            { text: "Cấp 4", value: 2 },
+                                                            { text: "Sẳn *", value: 3 },
+                                                        ]
                                                     }
                                                 }
                                             ]
@@ -1466,14 +1446,14 @@ NewRealty.prototype.detructView = function() {
                                             props: {
                                                 items: [
                                                     { text: "Chưa xác định", value: 0 },
-                                                    { text: "Đông", value: 6 },
-                                                    { text: "Tây", value: 4 },
-                                                    { text: "Nam", value: 2 },
-                                                    { text: "Bắc", value: 8 },
-                                                    { text: "Đông Bắc", value: 9 },
-                                                    { text: "Đông Nam", value: 3 },
-                                                    { text: "Tây Bắc", value: 7 },
-                                                    { text: "Tây Nam", value: 1 },
+                                                    { text: "Đông", value: 1 },
+                                                    { text: "Tây", value: 2 },
+                                                    { text: "Nam", value: 3 },
+                                                    { text: "Bắc", value: 4 },
+                                                    { text: "Tây Bắc", value: 5 },
+                                                    { text: "Đông Bắc", value: 6 },
+                                                    { text: "Tây Nam", value: 7 },
+                                                    { text: "Đông Nam", value: 8 },
                                                 ]
                                             }
                                         },
@@ -2187,24 +2167,24 @@ NewRealty.prototype.convenientView = function() {
         var value = [];
         var temp;
         var libary = moduleDatabase.getModule("equipments").getLibary("id");
-        for (var i = 0; i < this.data.original.equipment.length; i++) {
-            this.data.original.equipment[i].equipmentid = parseInt(this.data.original.equipment[i].equipmentid);
-            temp = libary[this.data.original.equipment[i].equipmentid];
-            temp.content = this.data.original.equipment[i].content;
-            value.push(this.data.original.equipment[i].equipmentid);
-            switch (parseInt(temp.type)) {
-                case 0:
-                    if (temp.available == 1)
-                        container.appendChild(self.itemCount(temp));
-                    else
+        moduleDatabase.getModule("house_equipments").load({WHERE:[{houseid:this.data.id}]}).then(function(values){
+            for(var i = 0;i<values.length;i++){
+                temp = libary[values[i]["equipmentid"]];
+                value.push(values[i]["equipmentid"]);
+                switch (parseInt(temp.type)) {
+                    case 0:
+                        if (temp.available == 1)
+                            container.appendChild(self.itemCount(temp));
+                        else
+                            container.appendChild(self.itemDisplayNone(temp));
+                        break;
+                    case 1:
                         container.appendChild(self.itemDisplayNone(temp));
-                    break;
-                case 1:
-                    container.appendChild(self.itemDisplayNone(temp));
-                    break;
+                        break;
+                }
             }
-        }
-        equipment.values = value;
+            equipment.values = value;
+        }.bind(this));
     }
 
     var temp = _({
@@ -2501,8 +2481,8 @@ NewRealty.prototype.contactItem = function(data) {
                         },
                         props: {
                             items: [
-                                { text: "Còn hoạt động", value: 1 },
-                                { text: "Sai số", value: 0 },
+                                { text: "Còn hoạt động", value: 0 },
+                                { text: "Sai số", value: 1 },
                                 { text: "Gọi lại sau", value: 2 },
                                 { text: "Bỏ qua", value: 3 },
                                 { text: "Khóa máy", value: 4 }
@@ -2729,8 +2709,24 @@ NewRealty.prototype.contactView = function() {
         ]
     })
     if (this.data !== undefined) {
-        for (var i = 0; i < this.data.original.contact.length; i++) {
-            containerContact.appendChild(this.contactItem(this.data.original.contact[i]));
+        {
+            moduleDatabase.getModule("contact_link").load({WHERE:[{houseid:this.data.id}]}).then(function(value){
+                for(var i = 0;i<value.length;i++)
+                {
+                    if(value["contactid"]!=0)
+                    moduleDatabase.getModule("contacts").load({WHERE:[{id:value["contactid"]}]}).then(function(valueChild){
+                        containerContact.appendChild(this.contactItem(valueChild));
+                    })
+                    else
+                    {
+                        moduleDatabase.getModule("users").load({WHERE:[{id:value["userid"]}]}).then(function(valueChild){
+                            containerContact.appendChild(this.contactItem(valueChild));
+                        })
+                    }
+                }
+               
+            })
+           
         }
     }
     this.containerContact = containerContact;

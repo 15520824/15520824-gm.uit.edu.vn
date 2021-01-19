@@ -24,8 +24,15 @@
                 {
                     foreach($where[$i] as $param=>$value)
                     {
+                        
                         if(is_array($value))
+                        {
+                            if(is_a($value["value"],'DateTime'))
+                            {
+                                $value["value"] = "'".$value["value"]->format('Y-m-d H:i:s')."'";
+                            }
                             $result.=$param.$value["operator"].strval($value["value"]);
+                        }
                         else
                             $result.=$param."=".strval($value);
                     }

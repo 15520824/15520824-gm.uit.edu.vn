@@ -1746,8 +1746,8 @@ MapRealty.prototype.contactItem = function(data) {
                         },
                         props: {
                             items: [
-                                { text: "Còn hoạt động", value: 1 },
-                                { text: "Sai số", value: 0 },
+                                { text: "Còn hoạt động", value: 0 },
+                                { text: "Sai số", value: 1 },
                                 { text: "Gọi lại sau", value: 2 },
                                 { text: "Bỏ qua", value: 3 },
                                 { text: "Khóa máy", value: 4 }
@@ -2617,14 +2617,14 @@ MapRealty.prototype.detailHouse = function(data) {
                                                     props: {
                                                         items: [
                                                             { text: "Chưa xác định", value: 0 },
-                                                            { text: "Đông", value: 6 },
-                                                            { text: "Tây", value: 4 },
-                                                            { text: "Nam", value: 2 },
-                                                            { text: "Bắc", value: 8 },
-                                                            { text: "Đông Bắc", value: 9 },
-                                                            { text: "Đông Nam", value: 3 },
-                                                            { text: "Tây Bắc", value: 7 },
-                                                            { text: "Tây Nam", value: 1 },
+                                                            { text: "Đông", value: 1 },
+                                                            { text: "Tây", value: 2 },
+                                                            { text: "Nam", value: 3 },
+                                                            { text: "Bắc", value: 4 },
+                                                            { text: "Tây Bắc", value: 5 },
+                                                            { text: "Đông Bắc", value: 6 },
+                                                            { text: "Tây Nam", value: 7 },
+                                                            { text: "Đông Nam", value: 8 },
                                                         ]
                                                     }
                                                 },
