@@ -881,7 +881,7 @@ tableView.prototype.updateTableOnlyHeader = function() {
             } else
                 check[i] = "hidden";
         }
-    if (headerElement = undefined) {
+    if (headerElement == undefined) {
         if (this.headerTable.childNodes[0])
             this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
         else
