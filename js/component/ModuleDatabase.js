@@ -500,7 +500,6 @@ DataStructure.prototype.setFormatUpdate = function(data) {
             temp[param] = data[param];
     }
     for (var param in this.promisePart) {
-        console.log(param)
         if (generalOperator(temp, JSON.parse(param)) === true) {
             if (this.promisePart[param].data.indexOf(temp) === -1) {
                 this.promisePart[param].data.push(temp);

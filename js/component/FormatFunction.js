@@ -152,6 +152,8 @@ export function getRealLength(arr) {
 
 export function generalOperator(data, WHERE) {
     var stringResult = operator(data, WHERE);
+    if (stringResult == "()")
+        return true;
     return eval(stringResult);
 }
 
@@ -174,12 +176,26 @@ export function equal(data, WHERE) {
         } else {
             for (var param in WHERE) {
                 if (typeof WHERE[param] === "object") {
-                    if (eval(data[param] + WHERE[param].operator + WHERE[param].value))
+                    var tempTime = WHERE[param].value;
+                    var tempTime1 = data[param];
+                    if (typeof WHERE[param].value.getMonth === 'function') {
+                        tempTime = WHERE[param].value.getTime();
+                        tempTime1 = new Date(data[param]);
+                        tempTime1 = tempTime1.getTime();
+                    }
+                    if (eval(tempTime1 + WHERE[param].operator + tempTime))
                         stringResult += true;
                     else
                         stringResult += false;
                 } else {
-                    if (data[param] == WHERE[param])
+                    var tempTime = WHERE[param];
+                    var tempTime1 = data[param];
+                    if (typeof WHERE[param].getMonth === 'function') {
+                        tempTime = WHERE[param].getTime();
+                        tempTime1 = new Date(data[param]);
+                        tempTime1 = tempTime1.getTime();
+                    }
+                    if (tempTime1 == tempTime1)
                         stringResult += true;
                     else
                         stringResult += false;

@@ -592,9 +592,15 @@ function captureMousePosition(event) {
 export function tableView(header = [], data = [], dragHorizontal = false, dragVertical = false, childIndex = 1, indexRow = 50) {
     var cell, row, check = [];
     var checkSpan = [];
-    var headerTable = _({
-        tag: "thead",
-    });
+    var headerTable;
+    if (header !== undefined) {
+        if (header.headerElement !== undefined) {
+            headerTable = header.headerElement;
+        } else
+            headerTable = _({
+                tag: "thead",
+            });
+    }
     var bodyTable = _({
         tag: "tbody"
     });
@@ -640,6 +646,10 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     }
     result.realTable = realTable;
     result.headerTable = headerTable;
+    if (header.headerElement !== undefined) {
+        result.headerElement = header.headerElement;
+        delete header.headerElement;
+    }
     result.bodyTable = bodyTable;
     Object.assign(result, tableView.prototype);
     result.check = check;
@@ -828,6 +838,7 @@ tableView.prototype.updateTableHeader = function() {
 }
 
 tableView.prototype.updateTableOnlyHeader = function() {
+    var headerElement = this.headerElement;
     var header = this.header;
     var result = this;
     var check = this.check;
@@ -844,9 +855,13 @@ tableView.prototype.updateTableOnlyHeader = function() {
             if (header[this.arrSortHeader[i]].hidden === false || header[this.arrSortHeader[i]].hidden === undefined) {
                 check[this.arrSortHeader[i]] = undefined;
                 result.clone[k] = [];
-                cell = result.getCellHeader(header[this.arrSortHeader[i]], this.arrSortHeader[i])
+                if (headerElement)
+                    cell = result.getCellHeader(header[this.arrSortHeader[i]], this.arrSortHeader[i], $('th#' + this.arrSortHeader[i], this))
+                else {
+                    cell = result.getCellHeader(header[this.arrSortHeader[i]], this.arrSortHeader[i])
+                    row.addChild(cell);
+                }
                 result.clone[k++].push(cell);
-                row.addChild(cell);
             } else
                 check[this.arrSortHeader[i]] = "hidden";
         }
@@ -855,16 +870,23 @@ tableView.prototype.updateTableOnlyHeader = function() {
             if (header[i].hidden === false || header[i].hidden === undefined) {
                 check[i] = undefined;
                 result.clone[k] = [];
-                cell = result.getCellHeader(header[i], i)
+                if (headerElement)
+                    cell = result.getCellHeader(header[i], i, $('th#' + i, this))
+                else {
+                    cell = result.getCellHeader(header[i], i)
+                    row.addChild(cell);
+                }
                 result.clone[k++].push(cell);
-                row.addChild(cell);
+
             } else
                 check[i] = "hidden";
         }
-    if (this.headerTable.childNodes[0])
-        this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
-    else
-        this.headerTable.appendChild(row);
+    if (headerElement = undefined) {
+        if (this.headerTable.childNodes[0])
+            this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
+        else
+            this.headerTable.appendChild(row);
+    }
 }
 
 tableView.prototype.getElementNext = function(element) {
@@ -1202,7 +1224,7 @@ tableView.prototype.saveTheme = function() {
     setCookie(this.isSaveTheme + "token_pizo_table_sort" + window.userid, JSON.stringify(arr), 3);
 }
 
-tableView.prototype.getCellHeader = function(header, i) {
+tableView.prototype.getCellHeader = function(header, i, cellTemp) {
     var value, style, classList, dragElement, cell, bonus;
     var result = this;
     var dragHorizontal = result.dragHorizontal;
@@ -1484,6 +1506,9 @@ tableView.prototype.getCellHeader = function(header, i) {
     }
     container.addChild(childUpDown);
     cell.container = container;
+    if (cellTemp) {
+        cellTemp.parentNode.replaceChild(cell, cellTemp);
+    }
     return cell;
 }
 
@@ -3310,6 +3335,7 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
         if (result.paginationElement !== undefined && result.paginationElement.reActive)
             result.paginationElement.reActive();
         result.realTable.parentNode.resetHash();
+        result.updatePagination();
     }
     if (result.numArrayFixLeft) {
         result.setArrayFix(result.numArrayFixLeft, true);

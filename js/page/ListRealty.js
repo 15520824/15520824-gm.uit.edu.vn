@@ -568,8 +568,8 @@ ListRealty.prototype.getView = function() {
         if (self.isCensorship === true)
             promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] });
         else
-            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: {operator:">=", value:self.startDay.value }},"&&",{created: {operator:"<=", value:self.endDay.value }}] });
-            promise.then(function(value){
+            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] });
+        promise.then(function(value) {
             self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
             self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
             self.checkState = moduleDatabase.getModule("states").getLibary("id");
@@ -588,8 +588,7 @@ ListRealty.prototype.getView = function() {
                     sort: true,
                     style: {
                         minWidth: "30px"
-                    },
-                    disableInput: true
+                    }
                 }, 'Số nhà', {
                     value: 'Tên đường'
                 }, {
@@ -657,7 +656,7 @@ ListRealty.prototype.getView = function() {
                     disabled: true
                 }
             ];
-            header.isSaveTheme = "#19001080";
+            // header.isSaveTheme = "#19001080";
             if (moduleDatabase.isStaff === true) {
                 header.attachSrcoll = true;
                 header[2].hidden = true;
@@ -695,7 +694,6 @@ ListRealty.prototype.getView = function() {
             }
             moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                console.log(self.checkStreet)
                 if (self.isCensorship) {
                     value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
                     value = value[0];
@@ -703,10 +701,9 @@ ListRealty.prototype.getView = function() {
                     value = self.formatDataRow(value);
                 }
                 self.mTable = new tableView(header, value, true, true, 1);
-                console.log(value)
                 self.mTable.addInputSearchHeader();
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-                self.mTable.addRange(self.startDay, self.endDay, 17);
+                // self.mTable.addRange(self.startDay, self.endDay, 17);
                 self.mTable.addRange(self.lowprice, self.highprice, 14);
                 self.mTable.addFilter(hiddenConfirm, 20);
                 self.mTable.addFilter(self.HTinput, 16);
@@ -720,11 +717,8 @@ ListRealty.prototype.getView = function() {
             moduleDatabase.getModule("contacts").load().then(function(value) {
                 self.formatDataRowContact(value);
             })
-            })
+        })
     });
-
-
-
 
     this.searchControl = this.searchControlContent();
 
@@ -742,6 +736,34 @@ ListRealty.prototype.getView = function() {
     return this.$view;
 }
 
+ListRealty.prototype.formatUpdateData = function(value) {
+    var self = this;
+    var arr = [];
+    var connect = "||";
+    var arr = [];
+    for (var i = 0; i < value.length; i++) {
+        if (value[i].streetid !== 0 && value[i].streetid !== null) {
+            if (arr.length > 0)
+                arr.push(connect);
+            arr.push({ id: value[i].streetid });
+        }
+        if (value[i].streetid_old !== 0 && value[i].streetid_old !== null) {
+            if (arr.length > 0)
+                arr.push(connect);
+            arr.push({ id: value[i].streetid_old });
+        }
+    }
+    moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+        self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+        if (self.isCensorship) {
+            value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+            value = value[0];
+        } else {
+            value = self.formatDataRow(value);
+        }
+        self.mTable.updateTable(undefined, value);
+    })
+}
 
 ListRealty.prototype.formatDataRowAccount = function(data) {
     this.listAccoutData = data;
@@ -887,19 +909,17 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
         var district = "";
         var state = "";
         var number = data.addressnumber;
-        if(this.checkStreet[data.streetid])
-        var street = this.checkStreet[data.streetid].name;
+        if (this.checkStreet[data.streetid])
+            var street = this.checkStreet[data.streetid].name;
         else
-        var street = "";
-        if(this.checkWard[data.wardid])
-        {
+            var street = "";
+        if (this.checkWard[data.wardid]) {
             var ward = this.checkWard[data.wardid].name;
             var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
             var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
-        }
-        else
-        var ward = "";
-        
+        } else
+            var ward = "";
+
     } else {
         var number = street = ward = district = state = "";
     }
@@ -1226,6 +1246,13 @@ ListRealty.prototype.searchControlContent = function() {
         on: {
             changed: function(date) {
                 endDay.minDateLimit = date;
+                var tempDate = new Date(date.getTime());;;
+                tempDate.setMonth(tempDate.getMonth() + 2);
+                if (endDay.value - tempDate > 0)
+                    endDay.value = tempDate;
+                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] }).then(function(value) {
+                    self.formatUpdateData(value);
+                });
             }
         }
     })
@@ -1239,8 +1266,14 @@ ListRealty.prototype.searchControlContent = function() {
         },
         on: {
             changed: function(date) {
-
                 startDay.maxDateLimit = date;
+                var tempDate = new Date(date.getTime());;
+                tempDate.setMonth(tempDate.getMonth() - 2);
+                if (startDay.value - tempDate > 0)
+                    startDay.value = tempDate;
+                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] }).then(function(value) {
+                    self.formatUpdateData(value);
+                });
             }
         }
     })

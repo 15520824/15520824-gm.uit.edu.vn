@@ -14,6 +14,7 @@ input {
 
 .pizo-app .container-sortTable {
     width: 100%;
+    overflow: unset;
 }
 
 body {

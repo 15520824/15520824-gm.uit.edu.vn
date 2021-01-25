@@ -556,7 +556,7 @@ MapRealty.prototype.mediaItem = function(data, index) {
                     var dataUser = self.checkUserID[data[i].userid];
                     arr.push({
                         index: i,
-                        avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
+                        avatar: moduleDatabase.imageAvatarSrc + dataUser.avatar,
                         userName: dataUser.name,
                         src: moduleDatabase.imageAssetSrc + data[i].src,
                         date: data[i].created,
@@ -670,7 +670,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                             var dataUser = self.checkUserID[modal.image[i].userid];
                             arr.push({
                                 index: i,
-                                avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
+                                avatar: moduleDatabase.imageAvatarSrc + dataUser.avatar,
                                 userName: dataUser.name,
                                 src: moduleDatabase.imageAssetSrc + modal.image[i].src,
                                 date: modal.image[i].created,

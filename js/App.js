@@ -58,8 +58,10 @@ function App() {
     moduleDatabase.getModule("type_activehouses");
     moduleDatabase.getModule("favourite", ["load.php", "addFavorite.php", "update.php", "deleteFavorite.php"]);
     moduleDatabase.getModule("activehouses_note");
+    moduleDatabase.imageAssetSrc = "https://pizo.vn/storage/uploads/";
+
     moduleDatabase.imageAvatarSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/";
-    moduleDatabase.imageAssetSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
+    // moduleDatabase.imageAssetSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -93,7 +95,7 @@ App.prototype.getView = function() {
                     window.token = getCookie("token_pizo_phone");
                     window.userid = getCookie("userid_pizo_phone");
                     moduleDatabase.getModule("users").setFormatLoad({ WHERE: [{ userid: getCookie("userid_pizo_phone") }] }, value);
-                    this.imageAvatar.src = "moduleDatabase.imageAvatarSrc" + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
+                    this.imageAvatar.src = moduleDatabase.imageAvatarSrc + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
                     this.nameAvatar.innerHTML = moduleDatabase.getModule("users").getLibary("id")[window.userid].name.split(" ").pop();
                     this.getPermisionOpenPage();
                 }
@@ -282,7 +284,7 @@ App.prototype.getView = function() {
     this.hMenu = $("div.pizo-header-menu", this.$view);
     this.refresh();
     if (this.enableAvatar) {
-        this.imageAvatar.src = "moduleDatabase.imageAvatarSrc" + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
+        this.imageAvatar.src = moduleDatabase.imageAvatarSrc + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
         this.nameAvatar.innerHTML = moduleDatabase.getModule("users").getLibary("id")[window.userid].name.split(" ").pop();
         this.enableAvatar = undefined;
     }
@@ -441,11 +443,11 @@ App.prototype.getPermisionOpenPage = function() {
                                 text: "Tiện nghi trong nhà",
                                 pageIndex: 31
                             })
-                        // if (moduleDatabase.checkPermission[0].indexOf(70) != -1)
-                            menuZone.push({
-                                text: "Mục đích sở hữu",
-                                pageIndex: 35
-                            })
+                            // if (moduleDatabase.checkPermission[0].indexOf(70) != -1)
+                        menuZone.push({
+                            text: "Mục đích sở hữu",
+                            pageIndex: 35
+                        })
                         if (moduleDatabase.checkPermission[0].indexOf(37) != -1)
                             menuZone.push({
                                 text: "Pháp lý",

@@ -308,8 +308,9 @@ NewRealty.prototype.imageJuridical = function() {
         ]
     })
     this.viewJuridical = result;
-  
-    moduleDatabase.getModule("image").load({ WHERE: [{houseid:this.data.id}] }).then(function(values) {
+
+    moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
+        console.log(values)
         for (var i = 0; i < values.length; i++)
             if (values[i].type == 0)
                 result.addFile(values[i], moduleDatabase.imageAssetSrc);
@@ -356,10 +357,10 @@ NewRealty.prototype.imageCurrentStaus = function() {
     var arr = [];
     var first = "";
     if (this.data !== undefined) {
-        moduleDatabase.getModule("image").load({ WHERE: [{houseid:this.data.id}] }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
             for (var i = 0; i < values.length; i++)
-            if (values[i].type == 1)
-            result.addFile(values[i], moduleDatabase.imageAssetSrc);
+                if (values[i].type == 1)
+                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
         })
     }
     return temp;
@@ -2167,8 +2168,8 @@ NewRealty.prototype.convenientView = function() {
         var value = [];
         var temp;
         var libary = moduleDatabase.getModule("equipments").getLibary("id");
-        moduleDatabase.getModule("house_equipments").load({WHERE:[{houseid:this.data.id}]}).then(function(values){
-            for(var i = 0;i<values.length;i++){
+        moduleDatabase.getModule("house_equipments").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
+            for (var i = 0; i < values.length; i++) {
                 temp = libary[values[i]["equipmentid"]];
                 value.push(values[i]["equipmentid"]);
                 switch (parseInt(temp.type)) {
@@ -2710,23 +2711,21 @@ NewRealty.prototype.contactView = function() {
     })
     if (this.data !== undefined) {
         {
-            moduleDatabase.getModule("contact_link").load({WHERE:[{houseid:this.data.id}]}).then(function(value){
-                for(var i = 0;i<value.length;i++)
-                {
-                    if(value["contactid"]!=0)
-                    moduleDatabase.getModule("contacts").load({WHERE:[{id:value["contactid"]}]}).then(function(valueChild){
-                        containerContact.appendChild(this.contactItem(valueChild));
-                    })
-                    else
-                    {
-                        moduleDatabase.getModule("users").load({WHERE:[{id:value["userid"]}]}).then(function(valueChild){
+            moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: this.data.id }] }).then(function(value) {
+                for (var i = 0; i < value.length; i++) {
+                    if (value["contactid"] != 0)
+                        moduleDatabase.getModule("contacts").load({ WHERE: [{ id: value["contactid"] }] }).then(function(valueChild) {
+                            containerContact.appendChild(this.contactItem(valueChild));
+                        })
+                    else {
+                        moduleDatabase.getModule("users").load({ WHERE: [{ id: value["userid"] }] }).then(function(valueChild) {
                             containerContact.appendChild(this.contactItem(valueChild));
                         })
                     }
                 }
-               
+
             })
-           
+
         }
     }
     this.containerContact = containerContact;
