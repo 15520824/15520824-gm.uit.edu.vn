@@ -24,6 +24,7 @@ import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 import ListTypeActivehouse from './page/ListTypeActivehouse';
 import ListPurpose from './page/ListPurpose';
+import ListUnit from './page/ListUnit';
 import Import_DB from './page/Import_DB';
 import { getCookie, eraseCookie, setCookie } from './component/FormatFunction';
 
@@ -58,9 +59,13 @@ function App() {
     moduleDatabase.getModule("type_activehouses");
     moduleDatabase.getModule("favourite", ["load.php", "addFavorite.php", "update.php", "deleteFavorite.php"]);
     moduleDatabase.getModule("activehouses_note");
+    moduleDatabase.getModule("purpose");
+    moduleDatabase.getModule("contact_link");
+    moduleDatabase.getModule("purpose_link");
     moduleDatabase.imageAssetSrc = "https://pizo.vn/storage/uploads/";
 
     moduleDatabase.imageAvatarSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/";
+    moduleDatabase.imageThumnail = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
     // moduleDatabase.imageAssetSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
 }
 
@@ -293,6 +298,8 @@ App.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
+    arr.push(moduleDatabase.getModule("purpose").load());
+    arr.push(moduleDatabase.getModule("unit_money").load());
     this.promiseAll = Promise.all(arr);
     this.promiseAll.then(function() {
         this.listParamPosition = moduleDatabase.getModule("positions").getList("name", "id");
@@ -447,6 +454,10 @@ App.prototype.getPermisionOpenPage = function() {
                         menuZone.push({
                             text: "Mục đích sở hữu",
                             pageIndex: 35
+                        })
+                        menuZone.push({
+                            text: "Đơn vị",
+                            pageIndex: 36
                         })
                         if (moduleDatabase.checkPermission[0].indexOf(37) != -1)
                             menuZone.push({
@@ -783,6 +794,14 @@ App.prototype.openPage = function(index) {
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
             finalPage = mListPurpose;
+            break;
+        case 36:
+            var mListUnit = new ListUnit();
+            mListUnit.attach(this);
+            var frameview = mListUnit.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+            finalPage = mListUnit;
             break;
         case 91:
             var mImport_DB = new Import_DB();

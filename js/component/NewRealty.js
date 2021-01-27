@@ -277,7 +277,7 @@ NewRealty.prototype.imageJuridical = function() {
     result.setFormatData(function(data) {
         var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
+            avatar: moduleDatabase.imageAvatarSrc + dataUser.avatar,
             userName: dataUser.name,
             src: data.src,
             date: data.created,
@@ -308,9 +308,7 @@ NewRealty.prototype.imageJuridical = function() {
         ]
     })
     this.viewJuridical = result;
-
-    moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
-        console.log(values)
+    moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
         for (var i = 0; i < values.length; i++)
             if (values[i].type == 0)
                 result.addFile(values[i], moduleDatabase.imageAssetSrc);
@@ -325,7 +323,7 @@ NewRealty.prototype.imageCurrentStaus = function() {
     result.setFormatData(function(data) {
         var dataUser = self.checkUserID[data.userid];
         return {
-            avatar: "moduleDatabase.imageAvatarSrc" + dataUser.avatar,
+            avatar: moduleDatabase.imageAvatarSrc + dataUser.avatar,
             userName: dataUser.name,
             src: data.src,
             date: data.created,
@@ -357,7 +355,7 @@ NewRealty.prototype.imageCurrentStaus = function() {
     var arr = [];
     var first = "";
     if (this.data !== undefined) {
-        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
             for (var i = 0; i < values.length; i++)
                 if (values[i].type == 1)
                     result.addFile(values[i], moduleDatabase.imageAssetSrc);
@@ -472,11 +470,19 @@ NewRealty.prototype.itemAddress = function(data, lat, lng) {
 
     temp.setAddressData = function(data, lat, lng) {
         if (data && data.addressnumber && data.addressnumber != 0) {
+            var ward = "",
+                district = "",
+                state = "";
             var number = data.addressnumber;
-            var street = this.checkStreet[data.streetid].name;
-            var ward = this.checkWard[data.wardid].name;
-            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+            if (this.checkStreet[data.streetid])
+                var street = this.checkStreet[data.streetid].name;
+            else
+                var street = "";
+            if (this.checkWard[data.wardid]) {
+                var ward = this.checkWard[data.wardid].name;
+                var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+                var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+            }
             $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
             temp.data = {
                 number: number,
@@ -792,6 +798,10 @@ NewRealty.prototype.detructView = function() {
         width.value = width.value * event.lastValue / event.value;
     })
     var self = this;
+    var unitMoney = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
+    unitMoney = [...unitMoney];
+    unitMoney.unshift({ text: "VND", value: 1 });
+
 
     var priceRent = _({
         tag: "div",
@@ -828,7 +838,7 @@ NewRealty.prototype.detructView = function() {
                         },
                         blur: function(event) {
                             this.value = reFormatNumber(this.value);
-                        }
+                        },
                     }
                 },
                 {
@@ -841,10 +851,8 @@ NewRealty.prototype.detructView = function() {
                         }
                     },
                     props: {
-                        items: [
-                            { text: "VND", value: 1 },
-                            { text: "USD", value: 23180 }
-                        ]
+                        value: 1,
+                        items: unitMoney
                     }
                 }
             ]
@@ -864,14 +872,10 @@ NewRealty.prototype.detructView = function() {
             innerHTML: "*"
         }
     });
-    var dataTemp = moduleDatabase.getModule("purpose").data;
-    var purpose = [];
-    for (var i = 0; i < dataTemp.length; i++) {
-        dataTemp[i].id = parseInt(dataTemp[i].id)
-        if (dataTemp[i].available === 0)
-            continue;
-        purpose.push({ text: dataTemp[i].name, value: dataTemp[i].id, data: dataTemp[i] })
-    }
+    var purpose = moduleDatabase.getModule("purpose").getList("name", "id");
+    var unitMoney1 = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
+    unitMoney1 = [...unitMoney1];
+    unitMoney1.unshift({ text: "VND", value: 1 });
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -1079,7 +1083,7 @@ NewRealty.prototype.detructView = function() {
 
                                                             var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                             var areaValueUnit = unit_Zone_all;
-                                                            inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
+                                                            inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / 1000;
                                                         }
                                                     },
                                                     attr: {
@@ -1560,7 +1564,7 @@ NewRealty.prototype.detructView = function() {
 
                                                     var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                     var areaValueUnit = unit_Zone_all;
-                                                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
+                                                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / 1000;
                                                 }
                                             }
                                         },
@@ -1574,10 +1578,8 @@ NewRealty.prototype.detructView = function() {
                                                 }
                                             },
                                             props: {
-                                                items: [
-                                                    { text: "tỉ", value: 1 },
-                                                    { text: "triệu", value: 1 / 1000 }
-                                                ]
+                                                value: 1,
+                                                items: unitMoney
                                             }
                                         }
                                     ]
@@ -1677,7 +1679,7 @@ NewRealty.prototype.detructView = function() {
         this.inputZoneAll.value = original.acreage;
         this.direction.value = original.direction;
         this.type.value = original.type;
-        this.inputFit.value = original.fit;
+        // this.inputFit.value = original.fit;
         this.inputWidthRoad.value = original.roadwidth;
         this.inputFloor.value = original.floor;
         this.inputBasement.value = original.basement;
@@ -1685,8 +1687,31 @@ NewRealty.prototype.detructView = function() {
         this.inputLiving.value = original.living;
         this.inputToilet.value = original.toilet;
         this.inputKitchen.value = original.kitchen;
-        this.inputPrice.value = original.price;
-        this.inputPriceRent.value = original.pricerent;
+
+
+        var min = Infinity;
+        var unitMin = 1;
+        for (var i = 0; i < unitMoney.length; i++) {
+            var tempValue = original.price / unitMoney[i].value;
+            if (tempValue > 1 && min > tempValue) {
+                min = tempValue;
+                unitMin = unitMoney[i].value;
+            }
+        }
+        this.inputUnitPrice.value = unitMin;
+        this.inputPrice.value = original.price / unitMin;
+        var min = Infinity;
+        var unitMin = 1;
+        for (var i = 0; i < unitMoney1.length; i++) {
+            var tempValue = original.pricerent / unitMoney1[i].value;
+            if (tempValue > 1 && min > tempValue) {
+                min = tempValue;
+                unitMin = unitMoney1[i].value;
+            }
+        }
+        console.log(original.pricerent)
+        this.inputPriceRentUnit.value = unitMin;
+        this.inputPriceRent.value = original.pricerent / unitMin;
         this.structure.value = original.structure;
         this.structure.emit("change");
         this.inputName.value = original.name;
@@ -1698,7 +1723,13 @@ NewRealty.prototype.detructView = function() {
         else
             this.priceRent.style.display = "";
         this.inputContent.value = original.content;
-        this.inputFit.values = formatFit(parseInt(original.fit));
+        moduleDatabase.getModule("purpose_link").load({ WHERE: [{ houseid: original.id }] }).then(function(values) {
+            var valueTemp = [];
+            for (var i = 0; i < values.length; i++) {
+                valueTemp.push(values[i].purposeid);
+            }
+            this.inputFit.values = valueTemp;
+        }.bind(this))
         this.inputPrice.emit("change");
         var advanceDetruct = this.data.original.advancedetruct;
         this.advanceDetruct1.checked = advanceDetruct % 10 ? true : false;
@@ -1727,9 +1758,7 @@ NewRealty.prototype.setRequestEdit = function() {
 }
 
 NewRealty.prototype.getDataSave = function(isCheck = false) {
-    var fitUpdate = 0;
-    if (this.inputFit.values.length !== 0)
-        fitUpdate = this.inputFit.values.reduce(function(a, b) { return a + b; });
+    var fitUpdate = this.inputFit.values;
     var advanceDetruct = 0;
     advanceDetruct += this.advanceDetruct1.checked ? 1 : 0;
     advanceDetruct += this.advanceDetruct2.checked ? 10 : 0;
@@ -2711,21 +2740,22 @@ NewRealty.prototype.contactView = function() {
     })
     if (this.data !== undefined) {
         {
-            moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: this.data.id }] }).then(function(value) {
-                for (var i = 0; i < value.length; i++) {
+            moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
+                for (var i = 0; i < values.length; i++) {
+                    var value = values[i]
                     if (value["contactid"] != 0)
                         moduleDatabase.getModule("contacts").load({ WHERE: [{ id: value["contactid"] }] }).then(function(valueChild) {
-                            containerContact.appendChild(this.contactItem(valueChild));
+                            console.log(valueChild)
+                            containerContact.appendChild(self.contactItem(valueChild));
                         })
                     else {
                         moduleDatabase.getModule("users").load({ WHERE: [{ id: value["userid"] }] }).then(function(valueChild) {
-                            containerContact.appendChild(this.contactItem(valueChild));
+                            containerContact.appendChild(self.contactItem(valueChild));
                         })
                     }
                 }
 
             })
-
         }
     }
     this.containerContact = containerContact;

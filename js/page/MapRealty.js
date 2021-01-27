@@ -728,10 +728,18 @@ MapRealty.prototype.modalLargeRealty = function(data) {
     var fullAddress = "";
     if (data.addressnumber != "" || data.portion != "") {
         var number = data.addressnumber;
-        var street = this.checkStreet[data.streetid].name;
-        var ward = this.checkWard[data.wardid].name;
-        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        var ward = "",
+            district = "",
+            state = "";
+        if (this.checkStreet[data.streetid])
+            var street = this.checkStreet[data.streetid].name;
+        else
+            var street = "";
+        if (data.wardid) {
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        }
         fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
     var statusIcon = _({
@@ -1266,27 +1274,13 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         }]
     })
 
-    var first = "";
-    var arr = [];
+    var src = moduleDatabase.imageThumnail;
     if (data !== undefined) {
-        for (var i = 0; i < data.image.length; i++) {
-            if (first !== "")
-                arr.push(first);
-            arr.push({ id: data.image[i] })
-            if (first == "") {
-
-                first = "||";
-            }
-        }
-
-    }
-    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
-    if (arr.length > 0)
-        moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: data.id }] }).then(function(values) {
             var m;
             for (var i = 0; i < values.length; i++) {
                 m = i;
-                if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
+                if (src == moduleDatabase.imageThumnail && values[i].type == 1) {
                     src = moduleDatabase.imageAssetSrc + values[i].src;
                 }
                 if (values[i].thumnail == 1) {
@@ -1314,7 +1308,9 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                 }
             }
             modal.image = arrTemp;
+            imageThumnail.setAttribute("src", src);
         })
+    }
     imageThumnail.setAttribute("src", src);
 
     var functionESC = function(event) {
@@ -3051,10 +3047,18 @@ MapRealty.prototype.itemMap = function(marker) {
     var fullAddress = "";
     if (data.addressnumber != "" || data.portion != "") {
         var number = data.addressnumber;
-        var street = this.checkStreet[data.streetid].name;
-        var ward = this.checkWard[data.wardid].name;
-        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        var ward = "",
+            district = "",
+            state = "";
+        if (this.checkStreet[data.streetid])
+            var street = this.checkStreet[data.streetid].name;
+        else
+            var street = "";
+        if (data.wardid) {
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        }
         fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
 
@@ -3299,25 +3303,11 @@ MapRealty.prototype.itemMap = function(marker) {
         checkButton.childNodes[0].innerHTML = "favorite";
         checkButton.check = true;
     }
-    var first = "";
-    var arr = [];
+    var src = moduleDatabase.imageThumnail;
     if (data !== undefined) {
-        for (var i = 0; i < data.image.length; i++) {
-            if (first !== "")
-                arr.push(first);
-            arr.push({ id: data.image[i] })
-            if (first == "") {
-
-                first = "||";
-            }
-        }
-
-    }
-    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
-    if (arr.length > 0)
-        moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: data.id }] }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
-                if (src == "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png" && values[i].type == 1) {
+                if (src == moduleDatabase.imageThumnail && values[i].type == 1) {
                     src = moduleDatabase.imageAssetSrc + values[i].src;
                 }
                 if (values[i].thumnail == 1) {
@@ -3328,6 +3318,7 @@ MapRealty.prototype.itemMap = function(marker) {
             }
             thumnail.setAttribute("src", src);
         })
+    }
     thumnail.setAttribute("src", src);
     var listener = google.maps.event.addListener(marker, 'click', function(event) {
             temp.click();

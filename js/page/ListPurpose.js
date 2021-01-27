@@ -69,7 +69,7 @@ ListPurpose.prototype.getView = function() {
                     tag: "span",
                     class: "pizo-body-title-left",
                     props: {
-                        innerHTML: "Quản lý tiện ích trong nhà"
+                        innerHTML: "Quản lý mục đích sở hữu"
                     }
                 },
                 {

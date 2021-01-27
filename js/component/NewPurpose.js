@@ -1,7 +1,7 @@
 import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewEquipment.css"
+import "../../css/NewPurpose.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import moduleDatabase from './ModuleDatabase';
@@ -9,7 +9,7 @@ import moduleDatabase from './ModuleDatabase';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewEquipment(data) {
+function NewPurpose(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -22,14 +22,14 @@ function NewEquipment(data) {
         this.textHeader = "Thêm ";
 }
 
-NewEquipment.prototype.setContainer = function(parent) {
+NewPurpose.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
-Object.defineProperties(NewEquipment.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewEquipment.prototype.constructor = NewEquipment;
+Object.defineProperties(NewPurpose.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewPurpose.prototype.constructor = NewPurpose;
 
-NewEquipment.prototype.getDataSave = function() {
+NewPurpose.prototype.getDataSave = function() {
 
     return {
         id: this.data === undefined ? undefined : this.data.original.id,
@@ -39,7 +39,7 @@ NewEquipment.prototype.getDataSave = function() {
     }
 }
 
-NewEquipment.prototype.createPromise = function() {
+NewPurpose.prototype.createPromise = function() {
     var self = this;
     if (this.data === undefined) {
         self.promiseAddDB = new Promise(function(resolve, reject) {
@@ -56,7 +56,7 @@ NewEquipment.prototype.createPromise = function() {
     }
 }
 
-NewEquipment.prototype.getView = function() {
+NewPurpose.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
@@ -181,7 +181,6 @@ NewEquipment.prototype.getView = function() {
     }));
     this.createPromise();
     this.name = $('input.pizo-new-state-container-name-container-input"', this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input', this.$view);
     this.available = $('label.pizo-new-state-container-nation-container-input-switch', this.$view);
     if (this.data !== undefined) {
         this.name.value = this.data.original.name;
@@ -191,7 +190,7 @@ NewEquipment.prototype.getView = function() {
     return this.$view;
 }
 
-NewEquipment.prototype.getDataSave = function() {
+NewPurpose.prototype.getDataSave = function() {
     var temp = {
         name: this.name.value,
         available: this.available.checked === true ? 1 : 0
@@ -201,7 +200,7 @@ NewEquipment.prototype.getDataSave = function() {
     return temp;
 }
 
-NewEquipment.prototype.refresh = function() {
+NewPurpose.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -209,7 +208,7 @@ NewEquipment.prototype.refresh = function() {
         this.setData(data);
 };
 
-NewEquipment.prototype.setData = function(data) {
+NewPurpose.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -217,7 +216,7 @@ NewEquipment.prototype.setData = function(data) {
         this.flushDataToView();
 };
 
-NewEquipment.prototype.flushDataToView = function() {
+NewPurpose.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -232,8 +231,8 @@ NewEquipment.prototype.flushDataToView = function() {
     }
 };
 
-NewEquipment.prototype.start = function() {
+NewPurpose.prototype.start = function() {
 
 }
 
-export default NewEquipment;
+export default NewPurpose;

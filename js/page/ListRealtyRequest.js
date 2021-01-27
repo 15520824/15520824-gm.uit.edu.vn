@@ -186,10 +186,7 @@ ListRealtyRequest.prototype.getView = function() {
     })
 
     var arr = [];
-    if (this.isCensorship === true)
-        arr.push(moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] }));
-    else
-        arr.push(moduleDatabase.getModule("activehouses").load());
+    var queryHouse = [];
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("type_activehouses").load());
     arr.push(moduleDatabase.getModule("districts").load());
@@ -198,143 +195,150 @@ ListRealtyRequest.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("juridicals").load());
     arr.push(moduleDatabase.getModule("modification_requests").load());
     Promise.all(arr).then(function(values) {
-        var value = values[0];
-        var checkObj = moduleDatabase.getModule("modification_requests").getLibary("objid", undefined, true);
-        var valueAddrAdd = checkObj["streetid"];
-        self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
-        self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-        self.checkState = moduleDatabase.getModule("states").getLibary("id");
-        var header = [{
-                type: "dragzone",
-                dragElement: false,
-                disabled: true
-            },
-            {
-                type: "check",
-                dragElement: false,
-                hidden: true,
-                disabled: true
-            }, {
-                value: 'MS',
-                sort: true,
-                style: {
-                    minWidth: "30px"
-                },
-                disableInput: true
-            }, 'Số nhà', {
-                value: 'Tên đường'
-            }, {
-                value: 'Phường/Xã'
-            }, {
-                value: 'Quận/Huyện'
-            }, {
-                value: 'Tỉnh/TP'
-            }, {
-                value: 'Ghi chú',
-                hidden: true,
-            }, {
-                value: 'Ngang',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Dài',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'DT',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Kết cấu'
-            }, {
-                value: 'Hướng'
-            }, {
-                value: 'Giá',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Giá m²',
-                sort: true,
-                style: {
-                    minWidth: "50px"
-                }
-            }, {
-                value: 'Hiện trạng',
-                disableInput: true,
-                style: {
-                    minWidth: "85px"
-                }
-            }, {
-                value: 'Ngày tạo',
-                sort: true
-            }, {
-                value: 'Ngày cập nhật',
-                sort: true
-            }, {
-                type: "detail",
-                functionClickAll: function() {
-                    console.log("click")
-                },
-                dragElement: false,
-                disabled: true
-            }
-        ];
-        self.mTable = new tableView(header, [], true, true, 1);
-        var arr = [];
-        var connect = "||";
-
-
-        for (var i = 0; i < value.length; i++) {
-            if (value[i].streetid != 0) {
-                if (arr.length > 0) {
-                    arr.push(connect);
-                }
-                arr.push({ id: value[i].streetid });
-            }
-            if (value[i].streetid_old != 0) {
-                if (arr.length > 0) {
-                    arr.push(connect);
-                }
-                arr.push({ id: value[i].streetid_old });
-            }
-
+        var checkHouseArr = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
+        for (var param in checkHouseArr) {
+            if (queryHouse.length > 0)
+                queryHouse.push("&&");
+            queryHouse.push({ id: param });
         }
-        for (var i = 0; i < valueAddrAdd.length; i++) {
-            if (arr.length > 0) {
-                arr.push(connect);
+        moduleDatabase.getModule("activehouses").load({ WHERE: queryHouse }).then(function(value) {
+            var checkObj = moduleDatabase.getModule("modification_requests").getLibary("objid", undefined, true);
+            var valueAddrAdd = checkObj["streetid"];
+            self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+            self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+            self.checkState = moduleDatabase.getModule("states").getLibary("id");
+            var header = [{
+                    type: "dragzone",
+                    dragElement: false,
+                    disabled: true
+                },
+                {
+                    type: "check",
+                    dragElement: false,
+                    hidden: true,
+                    disabled: true
+                }, {
+                    value: 'MS',
+                    sort: true,
+                    style: {
+                        minWidth: "30px"
+                    },
+                    disableInput: true
+                }, 'Số nhà', {
+                    value: 'Tên đường'
+                }, {
+                    value: 'Phường/Xã'
+                }, {
+                    value: 'Quận/Huyện'
+                }, {
+                    value: 'Tỉnh/TP'
+                }, {
+                    value: 'Ghi chú',
+                    hidden: true,
+                }, {
+                    value: 'Ngang',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Dài',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'DT',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Kết cấu'
+                }, {
+                    value: 'Hướng'
+                }, {
+                    value: 'Giá',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Giá m²',
+                    sort: true,
+                    style: {
+                        minWidth: "50px"
+                    }
+                }, {
+                    value: 'Hiện trạng',
+                    disableInput: true,
+                    style: {
+                        minWidth: "85px"
+                    }
+                }, {
+                    value: 'Ngày tạo',
+                    sort: true
+                }, {
+                    value: 'Ngày cập nhật',
+                    sort: true
+                }, {
+                    type: "detail",
+                    functionClickAll: function() {
+                        console.log("click")
+                    },
+                    dragElement: false,
+                    disabled: true
+                }
+            ];
+            self.mTable = new tableView(header, [], true, true, 1);
+            var arr = [];
+            var connect = "||";
+
+
+            for (var i = 0; i < value.length; i++) {
+                if (value[i].streetid != 0) {
+                    if (arr.length > 0) {
+                        arr.push(connect);
+                    }
+                    arr.push({ id: value[i].streetid });
+                }
+                if (value[i].streetid_old != 0) {
+                    if (arr.length > 0) {
+                        arr.push(connect);
+                    }
+                    arr.push({ id: value[i].streetid_old });
+                }
+
             }
-            arr.push({ id: valueAddrAdd[i]["content"] })
-        }
-        console.log(arr)
-        moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
-            self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-            if (self.isCensorship) {
-                value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
-                value = value[0];
-            } else {
-                value = self.formatDataRow(value);
-            }
+            if (valueAddrAdd)
+                for (var i = 0; i < valueAddrAdd.length; i++) {
+                    if (arr.length > 0) {
+                        arr.push(connect);
+                    }
+                    arr.push({ id: valueAddrAdd[i]["content"] })
+                }
+            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                if (self.isCensorship) {
+                    value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+                    value = value[0];
+                } else {
+                    value = self.formatDataRow(value);
+                }
 
-            self.mTable.updateTable(undefined, value);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-            self.mTable.addFilter(self.HTinput, 17);
-        })
+                self.mTable.updateTable(undefined, value);
+                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+                self.mTable.addFilter(self.HTinput, 17);
+            })
 
-        tabContainer.addChild(self.mTable);
-        moduleDatabase.getModule("users").load().then(function(value) {
-            self.formatDataRowAccount(value);
-        })
+            tabContainer.addChild(self.mTable);
+            moduleDatabase.getModule("users").load().then(function(value) {
+                self.formatDataRowAccount(value);
+            })
 
-        moduleDatabase.getModule("contacts").load().then(function(value) {
-            self.formatDataRowContact(value);
+            moduleDatabase.getModule("contacts").load().then(function(value) {
+                self.formatDataRowContact(value);
+            })
         })
     });
 
@@ -575,10 +579,18 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
     }
     if (data.portion != "" || data.addressnumber != "") {
         var number = data.addressnumber;
-        var street = this.checkStreet[data.streetid].name;
-        var ward = this.checkWard[data.wardid].name;
-        var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        var ward = "",
+            district = "",
+            state = "";
+        if (this.checkStreet[data.streetid])
+            var street = this.checkStreet[data.streetid].name;
+        else
+            var street = "";
+        if (data.wardid) {
+            var ward = this.checkWard[data.wardid].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+        }
     } else {
         var number = street = ward = district = state = "";
     }

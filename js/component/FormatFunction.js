@@ -175,30 +175,34 @@ export function equal(data, WHERE) {
             stringResult += operator(data, WHERE);
         } else {
             for (var param in WHERE) {
-                if (typeof WHERE[param] === "object") {
-                    var tempTime = WHERE[param].value;
-                    var tempTime1 = data[param];
-                    if (typeof WHERE[param].value.getMonth === 'function') {
-                        tempTime = WHERE[param].value.getTime();
-                        tempTime1 = new Date(data[param]);
-                        tempTime1 = tempTime1.getTime();
+                if (WHERE[param] !== null) {
+                    if (typeof WHERE[param] === "object") {
+                        var tempTime = WHERE[param].value;
+                        var tempTime1 = data[param];
+                        if (typeof WHERE[param].value.getMonth === 'function') {
+                            tempTime = WHERE[param].value.getTime();
+                            tempTime1 = new Date(data[param]);
+                            tempTime1 = tempTime1.getTime();
+                        }
+                        if (eval(tempTime1 + WHERE[param].operator + tempTime))
+                            stringResult += true;
+                        else
+                            stringResult += false;
+                    } else {
+                        var tempTime = WHERE[param];
+                        var tempTime1 = data[param];
+                        if (typeof WHERE[param] === 'object' && typeof WHERE[param].getMonth === 'function') {
+                            tempTime = WHERE[param].getTime();
+                            tempTime1 = new Date(data[param]);
+                            tempTime1 = tempTime1.getTime();
+                        }
+                        if (tempTime1 == tempTime1)
+                            stringResult += true;
+                        else
+                            stringResult += false;
                     }
-                    if (eval(tempTime1 + WHERE[param].operator + tempTime))
-                        stringResult += true;
-                    else
-                        stringResult += false;
                 } else {
-                    var tempTime = WHERE[param];
-                    var tempTime1 = data[param];
-                    if (typeof WHERE[param].getMonth === 'function') {
-                        tempTime = WHERE[param].getTime();
-                        tempTime1 = new Date(data[param]);
-                        tempTime1 = tempTime1.getTime();
-                    }
-                    if (tempTime1 == tempTime1)
-                        stringResult += true;
-                    else
-                        stringResult += false;
+                    stringResult += true;
                 }
             }
         }

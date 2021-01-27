@@ -2772,10 +2772,18 @@ NewAccount.prototype.itemAddressOld = function(data) {
     temp.setAddressData = function(data) {
         if (data && data.addressnumber && data.addressnumber != 0) {
             var number = data.addressnumber;
-            var street = this.checkStreet[data.streetid].name;
-            var ward = this.checkWard[data.wardid].name;
-            var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
-            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+            var ward = "",
+                district = "",
+                state = "";
+            if (this.checkStreet[data.streetid])
+                var street = this.checkStreet[data.streetid].name;
+            else
+                var street = "";
+            if (data.wardid) {
+                var ward = this.checkWard[data.wardid].name;
+                var district = this.checkDistrict[this.checkWard[data.wardid].districtid].name;
+                var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name;
+            }
             $("input.pizo-new-account-container-address-container-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
             temp.data = {
                 number: number,

@@ -20,6 +20,7 @@
 }
 
 .pizo-new-state-container-name-container-input,
+.pizo-new-state-container-unit-container-input,
 .pizo-new-state-container-type-container-input,
 .pizo-new-state-container-nation-container-input {
     border: solid 0.0714rem var(--color-input-color);

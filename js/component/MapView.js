@@ -961,7 +961,6 @@ MapView.prototype.addMapHouse = function() {
                 var queryData = [{ lat: { operator: ">", value: bottomLeft[0] } }, "&&", { lat: { operator: "<", value: topRight[0] } }, "&&",
                     { lng: { operator: ">", value: bottomLeft[1] } }, "&&", { lng: { operator: "<", value: topRight[1] } }
                 ];
-
                 if (self.currentMarker && self.currentMarker.data !== undefined && self.currentMarker.data.id !== undefined) {
                     queryData = [queryData];
                     queryData.push("&&");
@@ -1273,23 +1272,9 @@ MapView.prototype.modalMiniRealty = function(data) {
         }]
     })
     var image = $("div.mini-bubble-image", temp);
-    var first = "";
-    var arr = [];
+    var src = moduleDatabase.imageThumnail;
     if (data !== undefined) {
-        for (var i = 0; i < data.image.length; i++) {
-            if (first !== "")
-                arr.push(first);
-            arr.push({ id: parseInt(data.image[i]) })
-            if (first == "") {
-
-                first = "||";
-            }
-        }
-
-    }
-    var src = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
-    if (arr.length > 0)
-        moduleDatabase.getModule("image").load({ WHERE: arr }).then(function(values) {
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: data.id }] }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
                 if (values[i].type == 1) {
                     src = moduleDatabase.imageAssetSrc + values[i].src;
@@ -1300,10 +1285,10 @@ MapView.prototype.modalMiniRealty = function(data) {
                     break;
                 }
             }
+            image.style.backgroundImage = `url(` + src + `)`;
         })
+    }
     image.style.backgroundImage = `url(` + src + `)`;
-
-
     return temp;
 }
 
@@ -1400,7 +1385,7 @@ MapView.prototype.addMoveMarker = function(position, changeInput = true) {
             draggable: self.draggable,
             icon: image,
             title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
-            zIndex: 2
+            zIndex: 100
         });
         this.currentMarker = marker;
         if (position.data !== undefined) {
