@@ -222,6 +222,7 @@ MapRealty.prototype.getView = function() {
                         self.highprice.value = "";
                         self.priceQuery = undefined;
                     }
+                    console.log(queryAll)
                     self.mapView.setGeneralOperator(queryAll);
 
                 }
@@ -763,6 +764,8 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         case 11:
             statusIcon.style.color = "purple"
             break;
+        default:
+            statusIcon.style.color = "yellow"
     }
     self.buttonRange = _({
         tag: 'buttonrange',
@@ -1086,7 +1089,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                     tag: "span",
                                                                                     class: "ds-value",
                                                                                     props: {
-                                                                                        innerHTML: "VND " + data.price + " tỉ"
+                                                                                        innerHTML: "VND " + data.price / 1000000000 + " tỉ"
                                                                                     }
                                                                                 }]
                                                                             },
@@ -1474,23 +1477,26 @@ MapRealty.prototype.convenientView = function(data) {
         var value = [];
         var temp;
         var libary = moduleDatabase.getModule("equipments").getLibary("id");
-        for (var i = 0; i < data.equipment.length; i++) {
-            temp = libary[data.equipment[i].equipmentid];
-            temp.content = data.equipment[i].content;
-            value.push(data.equipment[i].equipmentid);
-            switch (parseInt(temp.type)) {
-                case 0:
-                    if (temp.available == 1)
-                        container.appendChild(self.itemCount(temp));
-                    else
+        moduleDatabase.getModule("house_equipments").load({ WHERE: [{ houseid: data.id }] }).then(function(values) {
+            for (var i = 0; i < values.length; i++) {
+                temp = libary[values[i].equipmentid];
+                temp.content = values[i].content;
+                value.push(values[i].equipmentid);
+                switch (parseInt(temp.type)) {
+                    case 0:
+                        if (temp.available == 1)
+                            container.appendChild(self.itemCount(temp));
+                        else
+                            container.appendChild(self.itemDisplayNone(temp));
+                        break;
+                    case 1:
                         container.appendChild(self.itemDisplayNone(temp));
-                    break;
-                case 1:
-                    container.appendChild(self.itemDisplayNone(temp));
-                    break;
+                        break;
+                }
             }
-        }
-        equipment.values = value;
+            equipment.values = value;
+        })
+
     }
 
     var temp = _({
@@ -1570,9 +1576,11 @@ MapRealty.prototype.contactView = function(data) {
         ]
     })
     if (data !== undefined) {
-        for (var i = 0; i < data.contact.length; i++) {
-            containerContact.appendChild(this.contactItem(data.contact[i]));
-        }
+        moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: data.id }] }).then(function(values) {
+            for (var i = 0; i < values.length; i++) {
+                containerContact.appendChild(self.contactItem(values[i]));
+            }
+        })
     }
     this.containerContact = containerContact;
 
@@ -1794,10 +1802,10 @@ MapRealty.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (data.contactid !== undefined && data.contactid !== 0) {
+        if (data.contactid !== undefined && data.contactid != 0) {
             temp.setInformation(self.checkContactID[data.contactid]);
         } else
-        if (data.userid !== undefined && data.userid !== 0) {
+        if (data.userid !== undefined && data.userid != 0) {
             temp.setInformation(self.checkUserID[data.userid]);
         } else {
             temp.setInformation(data);
@@ -1878,6 +1886,9 @@ MapRealty.prototype.detailHouse = function(data) {
         width.value = width.value * event.lastValue / event.value;
     })
     var self = this;
+    var unitMoney = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
+    unitMoney = [...unitMoney];
+    unitMoney.unshift({ text: "VND", value: 1 });
     var priceRent = _({
         tag: "div",
         class: "pizo-new-realty-dectruct-content-area-right",
@@ -1913,10 +1924,8 @@ MapRealty.prototype.detailHouse = function(data) {
                         }
                     },
                     props: {
-                        items: [
-                            { text: "VND", value: 1 },
-                            { text: "USD", value: 23180 }
-                        ]
+                        value: 1,
+                        items: unitMoney
                     }
                 }
             ]
@@ -1928,10 +1937,19 @@ MapRealty.prototype.detailHouse = function(data) {
     var fullAddressOld = "";
     if (data.addressnumber_old !== "") {
         var number = data.addressnumber_old;
-        var street = this.checkStreet[data.streetid_old].name;
-        var ward = this.checkWard[data.wardid_old].name;
-        var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
-        var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
+        var street = "";
+        var ward = "",
+            district = "",
+            state = "";
+        if (this.checkStreet[data.streetid_old])
+            street = this.checkStreet[data.streetid_old].name;
+        else
+            street = "";
+        if (this.checkWard[data.wardid_old]) {
+            var ward = this.checkWard[data.wardid_old].name;
+            var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
+            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
+        }
         fullAddressOld = number + " " + street + ", " + ward + ", " + district + ", " + state;
     }
     var oldAddress = _({
@@ -2017,6 +2035,10 @@ MapRealty.prototype.detailHouse = function(data) {
     if (fullDesc === "") {
         desc.style.display = "none";
     }
+    var purpose = moduleDatabase.getModule("purpose").getList("name", "id");
+    var unitMoney1 = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
+    unitMoney1 = [...unitMoney1];
+    unitMoney1.unshift({ text: "VND", value: 1 });
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-dectruct", "pizo-only-view"],
@@ -2737,10 +2759,8 @@ MapRealty.prototype.detailHouse = function(data) {
                                                         }
                                                     },
                                                     props: {
-                                                        items: [
-                                                            { text: "tỉ", value: 1 },
-                                                            { text: "triệu", value: 1 / 1000 }
-                                                        ]
+                                                        value: 1,
+                                                        items: unitMoney1
                                                     }
                                                 }
                                             ]
@@ -2786,12 +2806,7 @@ MapRealty.prototype.detailHouse = function(data) {
                                         tag: "selectbox",
                                         class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
                                         props: {
-                                            items: [
-                                                { text: "Để ở", value: 1 },
-                                                { text: "Cho thuê", value: 10 },
-                                                { text: "Kinh doanh", value: 100 },
-                                                { text: "Làm văn phòng", value: 1000 },
-                                            ]
+                                            items: purpose
                                         }
                                     }
                                 ]
@@ -2959,31 +2974,56 @@ MapRealty.prototype.detailHouse = function(data) {
         inputKitchen.value = original.kitchen;
         inputPrice.value = original.price;
         inputPriceRent.value = original.pricerent;
-        structure.value = original.structure;
-        structure.emit("change");
-        inputFit.values = formatFit(parseInt(original.fit));
-        inputPrice.emit("change");
-        var advanceDetruct = original.advancedetruct;
-        advanceDetruct1.checked = advanceDetruct % 10 ? true : false;
-        advanceDetruct = parseInt(advanceDetruct / 10);
-        advanceDetruct2.checked = advanceDetruct % 10 ? true : false;
-        advanceDetruct = parseInt(advanceDetruct / 10);
-        advanceDetruct3.checked = advanceDetruct % 10 ? true : false;
-        advanceDetruct = parseInt(advanceDetruct / 10);
-        advanceDetruct4.checked = advanceDetruct % 10 == 1 ? true : false;
-        moduleDatabase.getModule("activehouses_logs").load({
-            WHERE: [{ houseid: original.id }],
-            ORDERING: "created"
-        }).then(function(value) {
-            var text = "";
-            for (var i = value.length - 1; i >= 0; i--) {
-                text += value[i].log;
-                text += "</br>"
+
+
+        var min = Infinity;
+        var unitMin = 1;
+        for (var i = 0; i < unitMoney.length; i++) {
+            var tempValue = original.price / unitMoney[i].value;
+            if (tempValue > 1 && min > tempValue) {
+                min = tempValue;
+                unitMin = unitMoney[i].value;
             }
-            historical.innerHTML = text;
-            if (text != "")
-                historical.parentNode.style.margin = "10px";
-        })
+        }
+        inputUnitPrice.value = unitMin;
+        inputPrice.value = original.price / unitMin;
+        var min = Infinity;
+        var unitMin = 1;
+        for (var i = 0; i < unitMoney1.length; i++) {
+            var tempValue = original.pricerent / unitMoney1[i].value;
+            if (tempValue > 1 && min > tempValue) {
+                min = tempValue;
+                unitMin = unitMoney1[i].value;
+            }
+        }
+        inputPriceRentUnit.value = unitMin;
+        inputPriceRent.value = original.pricerent / unitMin;
+        inputPrice.emit("change");
+        // structure.value = original.structure;
+        // structure.emit("change");
+        // inputFit.values = formatFit(parseInt(original.fit));
+        // inputPrice.emit("change");
+        // var advanceDetruct = original.advancedetruct;
+        // advanceDetruct1.checked = advanceDetruct % 10 ? true : false;
+        // advanceDetruct = parseInt(advanceDetruct / 10);
+        // advanceDetruct2.checked = advanceDetruct % 10 ? true : false;
+        // advanceDetruct = parseInt(advanceDetruct / 10);
+        // advanceDetruct3.checked = advanceDetruct % 10 ? true : false;
+        // advanceDetruct = parseInt(advanceDetruct / 10);
+        // advanceDetruct4.checked = advanceDetruct % 10 == 1 ? true : false;
+        // moduleDatabase.getModule("activehouses_logs").load({
+        //     WHERE: [{ houseid: original.id }],
+        //     ORDERING: "created"
+        // }).then(function(value) {
+        //     var text = "";
+        //     for (var i = value.length - 1; i >= 0; i--) {
+        //         text += value[i].log;
+        //         text += "</br>"
+        //     }
+        //     historical.innerHTML = text;
+        //     if (text != "")
+        //         historical.parentNode.style.margin = "10px";
+        // })
     }
     return temp;
 }
@@ -3088,7 +3128,7 @@ MapRealty.prototype.itemMap = function(marker) {
         tag: "div",
         class: "list-card-price",
         props: {
-            innerHTML: "VND " + data.price + " tỉ"
+            innerHTML: "VND " + data.price / 1000000000 + " tỉ"
         }
     })
     var temp = _({

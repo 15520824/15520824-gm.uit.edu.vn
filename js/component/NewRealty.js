@@ -554,10 +554,19 @@ NewRealty.prototype.itemAddressOld = function(data) {
     temp.setAddressData = function(data) {
         if (data && data.addressnumber_old && data.addressnumber_old != 0) {
             var number = data.addressnumber_old;
-            var street = this.checkStreet[data.streetid_old].name;
-            var ward = this.checkWard[data.wardid_old].name;
-            var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
-            var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
+            var street = "";
+            var ward = "",
+                district = "",
+                state = "";
+            if (this.checkStreet[data.streetid_old])
+                street = this.checkStreet[data.streetid_old].name;
+            else
+                street = "";
+            if (this.checkWard[data.wardid_old]) {
+                var ward = this.checkWard[data.wardid_old].name;
+                var district = this.checkDistrict[this.checkWard[data.wardid_old].districtid].name;
+                var state = this.checkState[this.checkDistrict[this.checkWard[data.wardid_old].districtid].stateid].name;
+            }
             $("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
             temp.data = {
                 number: number,
@@ -1579,7 +1588,7 @@ NewRealty.prototype.detructView = function() {
                                             },
                                             props: {
                                                 value: 1,
-                                                items: unitMoney
+                                                items: unitMoney1
                                             }
                                         }
                                     ]

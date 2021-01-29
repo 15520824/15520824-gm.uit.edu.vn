@@ -1026,16 +1026,16 @@ MapView.prototype.setLabelContent = function(isPrice) {
         if (data) {
             for (var j = 0; j < data.length; j++) {
                 if (this.isPrice == true) {
-                    label = data[j].data.price + " tỉ";
+                    label = data[j].data.price / 1000000000 + " tỉ";
                 } else if (this.isPrice == false)
                     label = ((parseInt(data[j].data.pricerent) / 1000000) + " triệu");
                 else {
                     if (parseInt(data[j].data.salestatus / 10) == 1 ? true : false)
-                        label = data[j].data.price + " tỉ";
+                        label = data[j].data.price / 1000000000 + " tỉ";
                     else if (parseInt(data[j].data.salestatus % 10) == 1 ? true : false)
                         label = (parseInt(data[j].data.pricerent) / 1000000) + " triệu";
                     else if (data[j].data.price > 0)
-                        label = data[j].data.price + " tỉ";
+                        label = data[j].data.price / 1000000000 + " tỉ";
                     else if (data[j].data.pricerent > 0)
                         label = (parseInt(data[j].data.pricerent) / 1000000) + " triệu";
                 }
@@ -1092,15 +1092,15 @@ MapView.prototype.addOrtherMarker = function(data) {
                     else {
                         arr[j].setMap(self.map);
                         if (this.isPrice == true) {
-                            label = arr[j].data.price + " tỉ";
+                            label = arr[j].data.price / 1000000000 + " tỉ";
                         } else if (this.isPrice == false)
                             label = ((parseInt(arr[j].data.pricerent) / 1000000) + " triệu");
                         else if (parseInt(arr[j].data.salestatus / 10) == 1 ? true : false)
-                            label = arr[j].data.price + " tỉ";
+                            label = arr[j].data.price / 1000000000 + " tỉ";
                         else if (parseInt(arr[j].data.salestatus % 10) == 1 ? true : false)
                             label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
                         else if (arr[j].data.price > 0)
-                            label = arr[j].data.price + " tỉ";
+                            label = arr[j].data.price / 1000000000 + " tỉ";
                         else if (arr[j].data.pricerent > 0)
                             label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
                     }
@@ -1142,15 +1142,15 @@ MapView.prototype.addOrtherMarker = function(data) {
                 label = data.addressnumber;
         } else if (self.isShowAddress === false) {
             if (this.isPrice == true) {
-                label = data.price + " tỉ";
+                label = data.price / 1000000000 + " tỉ";
             } else if (this.isPrice == false)
                 label = ((parseInt(data.pricerent) / 1000000) + " triệu");
             else if (parseInt(data.salestatus / 10) == 1 ? true : false)
-                label = data.price + " tỉ";
+                label = data.price / 1000000000 + " tỉ";
             else if (parseInt(data.salestatus % 10) == 1 ? true : false)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
             else if (data.price > 0)
-                label = data.price + " tỉ";
+                label = data.price / 1000000000 + " tỉ";
             else if (data.pricerent > 0)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
         }
@@ -1336,6 +1336,10 @@ MapView.prototype.activeMap = function(center = [10.822500, 106.629104], zoom = 
             mapTypeIds: ['roadmap', 'satellite']
         }
     });
+    this.measureTool = new MeasureTool(map, {
+        contextMenu: false,
+        unit: MeasureTool.UnitTypeId.METRIC // metric, imperial, or nautical
+    });
     this.delay = 10;
     this.numDeltas = 50;
     this.draggable = false;
@@ -1345,9 +1349,11 @@ MapView.prototype.activeMap = function(center = [10.822500, 106.629104], zoom = 
 
 MapView.prototype.setCurrentLocation = function() {
     var geolocationDiv = document.createElement('div');
-    var geolocationControl = this.GeolocationControl(geolocationDiv, this.map);
-
+    var geolocationDiv1 = document.createElement('div');
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(geolocationDiv);
+    this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(geolocationDiv1);
+    var geolocationControl = this.GeolocationControl(geolocationDiv, this.map);
+    var geolocationControl1 = this.GeolocationControl1(geolocationDiv1, this.map);
 }
 
 MapView.prototype.setMoveMarkerWithCurrent = function(value) {
@@ -1488,7 +1494,6 @@ MapView.prototype.smoothZoom = function(max, cnt) {
 
 
 MapView.prototype.GeolocationControl = function(controlDiv) {
-
     // Set CSS for the control button
     var controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#444';
@@ -1515,6 +1520,70 @@ MapView.prototype.GeolocationControl = function(controlDiv) {
 
     // Setup the click event listeners to geolocate user
     google.maps.event.addDomListener(controlUI, 'click', this.geolocateMap.bind(this));
+}
+
+
+MapView.prototype.GeolocationControl1 = function(controlDiv) {
+    var controlUI1 = document.createElement('div');
+    controlUI1.style.backgroundColor = '#444';
+    controlUI1.style.borderStyle = 'solid';
+    controlUI1.style.borderWidth = '1px';
+    controlUI1.style.borderColor = 'white';
+    controlUI1.style.height = '28px';
+    controlUI1.style.marginTop = '5px';
+    controlUI1.style.marginRight = '5px';
+    controlUI1.style.cursor = 'pointer';
+    controlUI1.style.textAlign = 'center';
+    controlUI1.title = 'Click to draw acreage';
+    controlDiv.appendChild(controlUI1);
+
+    // Set CSS for the control text
+    var controlText1 = document.createElement('div');
+    controlText1.style.fontFamily = 'Arial,sans-serif';
+    controlText1.style.fontSize = '10px';
+    controlText1.style.color = 'white';
+    controlText1.style.paddingLeft = '10px';
+    controlText1.style.paddingRight = '10px';
+    controlText1.style.marginTop = '8px';
+    controlText1.innerHTML = 'Chọn để vẽ';
+    controlUI1.appendChild(controlText1);
+
+    var controlUI2 = document.createElement('div');
+    controlUI2.style.backgroundColor = '#444';
+    controlUI2.style.borderStyle = 'solid';
+    controlUI2.style.borderWidth = '1px';
+    controlUI2.style.borderColor = 'white';
+    controlUI2.style.height = '28px';
+    controlUI2.style.marginTop = '5px';
+    controlUI2.style.marginRight = '5px';
+    controlUI2.style.cursor = 'pointer';
+    controlUI2.style.textAlign = 'center';
+    controlUI2.title = 'Click to clear acreage';
+    controlDiv.appendChild(controlUI2);
+
+    // Set CSS for the control text
+    var controlText2 = document.createElement('div');
+    controlText2.style.fontFamily = 'Arial,sans-serif';
+    controlText2.style.fontSize = '10px';
+    controlText2.style.color = 'white';
+    controlText2.style.paddingLeft = '10px';
+    controlText2.style.paddingRight = '10px';
+    controlText2.style.marginTop = '8px';
+    controlText2.innerHTML = 'Chọn để xóa';
+    controlUI2.appendChild(controlText2);
+
+    controlUI2.style.display = "none";
+
+    google.maps.event.addDomListener(controlUI1, 'click', function() {
+        controlUI1.style.display = "none";
+        controlUI2.style.display = "";
+        this.measureTool.start();
+    }.bind(this));
+    google.maps.event.addDomListener(controlUI2, 'click', function() {
+        controlUI1.style.display = "";
+        controlUI2.style.display = "none";
+        this.measureTool.end();
+    }.bind(this));
 }
 
 MapView.prototype.geolocateMap = function() {
