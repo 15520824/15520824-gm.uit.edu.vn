@@ -970,6 +970,10 @@ MapView.prototype.addMapHouse = function() {
                     queryData.push("&&");
                     queryData.push({ censorship: 1 });
                 }
+                if (self.WHERE) {
+                    queryData.push("&&")
+                    queryData.push(self.WHERE)
+                }
                 moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
                     function(data) {
                         var isAvailable, districtid, stateid;

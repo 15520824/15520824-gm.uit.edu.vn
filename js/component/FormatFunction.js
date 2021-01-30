@@ -623,3 +623,16 @@ export function isVisiableColumn(dataAll, dataRow, current) {
     }
     return true;
 }
+
+export function isQueryMap(stackObject, query, dataStack) {
+    // var isStack = ["isStatus","isTimeCreate","isPriceRange"];
+    stackObject[dataStack] = query;
+    var result = [];
+    for (var param in stackObject) {
+        if (result.length > 0) {
+            result.push("&&");
+        }
+        result.push(stackObject[param]);
+    }
+    return result;
+}

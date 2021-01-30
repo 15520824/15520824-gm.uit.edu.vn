@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MapRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatNumber, reFormatNumber, formatFit, loadingWheel, formatDate } from '../component/FormatFunction'
+import { formatNumber, reFormatNumber, isQueryMap, loadingWheel, formatDate } from '../component/FormatFunction'
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -51,7 +51,6 @@ MapRealty.prototype.getView = function() {
     mapView.setCurrentLocation();
     mapView.setMoveMarkerWithCurrent(false);
     mapView.geolocateMap();
-    this.searchControl = this.searchControlContent();
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -193,191 +192,15 @@ MapRealty.prototype.getView = function() {
         this.checkequipment = moduleDatabase.getModule("equipments").getLibary("id");
         this.checkJuridical = moduleDatabase.getModule("juridicals").getLibary("id");
         this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getLibary("id");
-        var selectStatus = _({
-            tag: "selectmenu",
-            on: {
-                change: function() {
-                    var x = JSON.parse(this.value);
-                    var query;
-                    if (Array.isArray(x)) {
-                        if (x.length == 2)
-                            query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, ")"];
-                        else
-                            query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, "||", { salestatus: x[2] }, ")"];
-                    } else if (this.value == -1) {
-                        query = [];
-                    } else
-                        query = [{ salestatus: x }];
-                    if (this.value == "[10,11]" || this.value == "0") {
-                        self.mapView.setLabelContent(true);
-                    } else if (this.value == "[1,11]") {
-                        self.mapView.setLabelContent(false);
-                    } else if (this.value == "[1,10,11]") {
-                        self.mapView.setLabelContent()
-                    }
-                    self.statusQuery = query;
-                    var queryAll = self.statusQuery;
-                    if (self.priceQuery && self.priceQuery.length > 0) {
-                        self.lowprice.value = "";
-                        self.highprice.value = "";
-                        self.priceQuery = undefined;
-                    }
-                    console.log(queryAll)
-                    self.mapView.setGeneralOperator(queryAll);
+        this.searchControl = this.searchControlContent();
 
-                }
-            },
-            props: {
-                value: "[10,11]",
-                items: [
-                    // {
-                    //     text: "Tất cả",
-                    //     value: "[1,10,11]"
-                    // },
-                    {
-                        text: "Còn bán",
-                        value: "[10,11]"
-                    },
-                    {
-                        text: "Còn cho thuê",
-                        value: "[1,11]"
-                    },
-                    {
-                        text: "Ngừng giao dịch",
-                        value: "0"
-                    }
-                ]
-            }
-        })
         this.$view.addChild(_({
             tag: "div",
             class: ["pizo-list-plan-main"],
             style: {
                 flexDirection: "column"
             },
-            child: [{
-                    tag: "div",
-                    class: "pizo-list-realty-main-search-control-row",
-                    child: [{
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-price",
-                            child: [{
-                                tag: "div",
-                                class: "pizo-list-realty-main-search-control-row-HT",
-                                child: [{
-                                        tag: "span",
-                                        class: "pizo-list-realty-main-search-control-row-HT-label",
-                                        props: {
-                                            innerHTML: "Tình trạng"
-                                        }
-                                    },
-                                    {
-                                        tag: "div",
-                                        class: "pizo-list-realty-main-search-control-row-HT-input",
-                                        child: [selectStatus]
-                                    }
-                                ]
-                            }, ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-price",
-                            child: [{
-                                tag: "div",
-                                class: "pizo-list-realty-main-search-control-row-HT",
-                                child: [{
-                                        tag: "span",
-                                        class: "pizo-list-realty-main-search-control-row-price-label",
-                                        props: {
-                                            innerHTML: "Khoảng giá"
-                                        }
-                                    },
-                                    {
-                                        tag: "div",
-                                        class: "pizo-list-realty-main-search-control-row-price-input",
-                                        child: [{
-                                                tag: "input",
-                                                class: "pizo-list-realty-main-search-control-row-price-input-low",
-                                                props: {
-                                                    autocomplete: "off",
-                                                    placeholder: "đ Từ",
-                                                },
-                                                on: {
-                                                    input: function(event) {
-                                                        this.value = formatNumber(this.value);
-                                                    },
-                                                    change: function(event) {
-                                                        this.value = reFormatNumber(this.value);
-                                                        var queryAll = [];
-                                                        var query = [];
-                                                        if (self.mapView.isPrice == true) {
-                                                            if (self.lowprice.value != "")
-                                                                query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
-                                                            if (self.highprice.value != "")
-                                                                query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
-                                                        } else if (self.mapView.isPrice == false) {
-                                                            if (self.lowprice.value != "")
-                                                                query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
-                                                            if (self.highprice.value != "")
-                                                                query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
-                                                        }
-                                                        if (query.length == 2) {
-                                                            query.splice(1, 0, "&&");
-                                                        }
-                                                        self.priceQuery = query;
-                                                        if (self.statusQuery && self.statusQuery.length > 0) {
-                                                            queryAll = self.statusQuery.concat("&&");
-                                                        }
-                                                        queryAll = queryAll.concat(self.priceQuery);
-                                                        self.mapView.setGeneralOperator(queryAll);
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                tag: "input",
-                                                class: "pizo-list-realty-main-search-control-row-price-input-high",
-                                                props: {
-                                                    autocomplete: "off",
-                                                    placeholder: "đ Đến",
-                                                },
-                                                on: {
-                                                    input: function(event) {
-                                                        this.value = formatNumber(this.value);
-                                                    },
-                                                    change: function(event) {
-                                                        this.value = reFormatNumber(this.value);
-                                                        var queryAll = [];
-                                                        var query = [];
-                                                        if (self.mapView.isPrice == true) {
-                                                            if (self.lowprice.value != "")
-                                                                query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
-                                                            if (self.highprice.value != "")
-                                                                query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
-                                                        } else if (self.mapView.isPrice == false) {
-                                                            if (self.lowprice.value != "")
-                                                                query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
-                                                            if (self.highprice.value != "")
-                                                                query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
-                                                        }
-                                                        if (query.length == 2) {
-                                                            query.splice(1, 0, "&&");
-                                                        }
-                                                        self.priceQuery = query;
-                                                        if (self.statusQuery && self.statusQuery.length > 0) {
-                                                            queryAll = self.statusQuery.concat("&&");
-                                                        }
-                                                        queryAll = queryAll.concat(self.priceQuery);
-                                                        self.mapView.setGeneralOperator(queryAll);
-                                                    }
-                                                }
-                                            },
-                                        ]
-                                    }
-                                ]
-                            }]
-                        }
-                    ]
-                },
+            child: [
                 this.searchControl,
                 {
                     tag: "div",
@@ -393,9 +216,6 @@ MapRealty.prototype.getView = function() {
                 }
             ]
         }));
-        selectStatus.emit("change");
-        self.lowprice = $(".pizo-list-realty-main-search-control-row-price-input-low", self.$view);
-        self.highprice = $(".pizo-list-realty-main-search-control-row-price-input-high", self.$view);
     }.bind(this))
 
     moduleDatabase.getModule("users").load().then(function(value) {
@@ -3395,18 +3215,78 @@ function onRemove(element, callback) {
 
 MapRealty.prototype.searchControlContent = function() {
     var startDay, endDay;
+    var self = this;
+    this.stackQuery = {};
+    var selectStatus = _({
+        tag: "selectmenu",
+        on: {
+            change: function() {
+                var x = JSON.parse(this.value);
+                var query;
+                if (Array.isArray(x)) {
+                    if (x.length == 2)
+                        query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, ")"];
+                    else
+                        query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, "||", { salestatus: x[2] }, ")"];
+                } else if (this.value == -1) {
+                    query = [];
+                } else
+                    query = [{ salestatus: x }];
+                if (this.value == "[10,11]" || this.value == "0") {
+                    self.mapView.setLabelContent(true);
+                } else if (this.value == "[1,11]") {
+                    self.mapView.setLabelContent(false);
+                } else if (this.value == "[1,10,11]") {
+                    self.mapView.setLabelContent()
+                }
+                var queryAll = isQueryMap(self.stackQuery, query, "isStatus");
+                self.mapView.setGeneralOperator(queryAll);
 
+            }
+        },
+        props: {
+            value: "[10,11]",
+            items: [
+                // {
+                //     text: "Tất cả",
+                //     value: "[1,10,11]"
+                // },
+                {
+                    text: "Còn bán",
+                    value: "[10,11]"
+                },
+                {
+                    text: "Còn cho thuê",
+                    value: "[1,11]"
+                },
+                {
+                    text: "Ngừng giao dịch",
+                    value: "0"
+                }
+            ]
+        }
+    })
+
+    var oneMonthFromNow = new Date();
+    oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() - 1);
     startDay = _({
         tag: 'calendar-input',
         data: {
             anchor: 'top',
-            value: new Date(new Date().getFullYear(), 0, 1),
+            value: oneMonthFromNow,
             maxDateLimit: new Date()
         },
         on: {
-            changed: function(date) {
-
+            changed: function() {
+                var date = this.value;
                 endDay.minDateLimit = date;
+                var tempDate = new Date(date.getTime());;;
+                tempDate.setMonth(tempDate.getMonth() + 2);
+                if (endDay.value - tempDate > 0)
+                    endDay.value = tempDate;
+                var query = [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }];
+                var queryAll = isQueryMap(self.stackQuery, query, "isTimeCreate");
+                self.mapView.setGeneralOperator(queryAll);
             }
         }
     })
@@ -3419,12 +3299,21 @@ MapRealty.prototype.searchControlContent = function() {
             minDateLimit: new Date()
         },
         on: {
-            changed: function(date) {
-
+            changed: function() {
+                var date = this.value;
                 startDay.maxDateLimit = date;
+                var tempDate = new Date(date.getTime());;
+                tempDate.setMonth(tempDate.getMonth() - 2);
+                if (startDay.value - tempDate > 0)
+                    startDay.value = tempDate;
+                var query = [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }];
+                var queryAll = isQueryMap(self.stackQuery, query, "isTimeCreate");
+                self.mapView.setGeneralOperator(queryAll);
             }
         }
     })
+    var query = [{ created: { operator: ">=", value: new Date(startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(endDay.value.toDateString()) } }];
+    var queryAll = isQueryMap(self.stackQuery, query, "isTimeCreate");
     var content = _({
         tag: "div",
         class: "pizo-list-realty-main-search-control-container",
@@ -3437,16 +3326,40 @@ MapRealty.prototype.searchControlContent = function() {
             tag: "div",
             class: "pizo-list-realty-main-search-control-container-scroller",
             child: [{
-                    tag: "div",
-                    class: "pizo-list-realty-main-search-control-row",
-                    child: [{
+                tag: "div",
+                class: "pizo-list-realty-main-search-control-row",
+                child: [{
+                        tag: "div",
+                        class: "pizo-list-realty-main-search-control-row-price",
+                        child: [{
                             tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-date",
+                            class: "pizo-list-realty-main-search-control-row-HT",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-HT-label",
+                                    props: {
+                                        innerHTML: "Tình trạng"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-HT-input",
+                                    child: [selectStatus]
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-list-realty-main-search-control-row-date",
+                        child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-HT",
                             child: [{
                                     tag: "span",
                                     class: "pizo-list-realty-main-search-control-row-date-label",
                                     props: {
-                                        innerHTML: "Thời gian"
+                                        innerHTML: "Thời gian tạo"
                                     }
                                 },
                                 {
@@ -3458,10 +3371,14 @@ MapRealty.prototype.searchControlContent = function() {
                                     ]
                                 }
                             ]
-                        },
-                        {
+                        }]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-list-realty-main-search-control-row-price",
+                        child: [{
                             tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-price",
+                            class: "pizo-list-realty-main-search-control-row-HT",
                             child: [{
                                     tag: "span",
                                     class: "pizo-list-realty-main-search-control-row-price-label",
@@ -3476,249 +3393,86 @@ MapRealty.prototype.searchControlContent = function() {
                                             tag: "input",
                                             class: "pizo-list-realty-main-search-control-row-price-input-low",
                                             props: {
-                                                type: "number",
                                                 autocomplete: "off",
                                                 placeholder: "đ Từ",
+                                            },
+                                            on: {
+                                                input: function(event) {
+                                                    this.value = formatNumber(this.value);
+                                                },
+                                                change: function(event) {
+                                                    this.value = reFormatNumber(this.value);
+                                                    var queryAll = [];
+                                                    var query = [];
+                                                    if (self.mapView.isPrice == true) {
+                                                        if (self.lowprice.value != "")
+                                                            query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
+                                                        if (self.highprice.value != "")
+                                                            query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
+                                                    } else if (self.mapView.isPrice == false) {
+                                                        if (self.lowprice.value != "")
+                                                            query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
+                                                        if (self.highprice.value != "")
+                                                            query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
+                                                    }
+                                                    if (query.length == 2) {
+                                                        query.splice(1, 0, "&&");
+                                                    }
+                                                    var queryAll = isQueryMap(self.stackQuery, query, "isPriceRange");
+                                                    self.mapView.setGeneralOperator(queryAll);
+                                                }
                                             }
                                         },
                                         {
                                             tag: "input",
                                             class: "pizo-list-realty-main-search-control-row-price-input-high",
                                             props: {
-                                                type: "number",
                                                 autocomplete: "off",
                                                 placeholder: "đ Đến",
+                                            },
+                                            on: {
+                                                input: function(event) {
+                                                    this.value = formatNumber(this.value);
+                                                },
+                                                change: function(event) {
+                                                    this.value = reFormatNumber(this.value);
+                                                    var queryAll = [];
+                                                    var query = [];
+                                                    if (self.mapView.isPrice == true) {
+                                                        if (self.lowprice.value != "")
+                                                            query = [{ price: { operator: ">=", value: parseInt(self.lowprice.value) / 1000000000 } }];
+                                                        if (self.highprice.value != "")
+                                                            query.push({ price: { operator: "<=", value: parseInt(self.highprice.value) / 1000000000 } });
+                                                    } else if (self.mapView.isPrice == false) {
+                                                        if (self.lowprice.value != "")
+                                                            query.push({ pricerent: { operator: ">=", value: parseInt(self.lowprice.value) } });
+                                                        if (self.highprice.value != "")
+                                                            query.push({ pricerent: { operator: "<", value: parseInt(self.highprice.value) } });
+                                                    }
+                                                    if (query.length == 2) {
+                                                        query.splice(1, 0, "&&");
+                                                    }
+                                                    self.priceQuery = query;
+                                                    if (self.statusQuery && self.statusQuery.length > 0) {
+                                                        queryAll = self.statusQuery.concat("&&");
+                                                    }
+                                                    queryAll = queryAll.concat(self.priceQuery);
+                                                    self.mapView.setGeneralOperator(queryAll);
+                                                }
                                             }
                                         },
                                     ]
                                 }
                             ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-phone",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-phone-label",
-                                    props: {
-                                        innerHTML: "Số điện thoại"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-phone-input",
-                                    child: [{
-                                        tag: "input",
-                                        props: {
-                                            type: "number",
-                                            autocomplete: "off"
-                                        }
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-button",
-                            child: [{
-                                tag: "button",
-                                class: ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
-                                on: {
-                                    click: function(evt) {}
-                                },
-                                child: [
-                                    '<span>' + "Áp dụng" + '</span>'
-                                ]
-                            }]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-button",
-                            child: [{
-                                tag: "button",
-                                class: ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-                                on: {
-                                    click: function(evt) {
-                                        temp.reset();
-                                    }
-                                },
-                                child: [
-                                    '<span>' + "Thiết lập lại" + '</span>'
-                                ]
-                            }]
-                        },
-                    ]
-                },
-                {
-                    tag: "div",
-                    class: "pizo-list-realty-main-search-control-row",
-                    child: [{
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-MS",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-MS-label",
-                                    props: {
-                                        innerHTML: "Mã số"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-MS-input",
-                                    child: [{
-                                        tag: "input",
-                                        props: {
-                                            type: "number",
-                                            autocomplete: "off"
-                                        }
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-SN",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-SN-label",
-                                    props: {
-                                        innerHTML: "Số nhà"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-SN-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-TD",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-TD-label",
-                                    props: {
-                                        innerHTML: "Tên đường"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-TD-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-PX",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-PX-label",
-                                    props: {
-                                        innerHTML: "Phường/Xã"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-PX-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-QH",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-QH-label",
-                                    props: {
-                                        innerHTML: "Quận huyện"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-QH-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-TT",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-TT-label",
-                                    props: {
-                                        innerHTML: "Tỉnh/TP"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-TT-input",
-                                    child: [{
-                                        tag: "input"
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-HT",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-HT-label",
-                                    props: {
-                                        innerHTML: "Tình trạng"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-HT-input",
-                                    child: [{
-                                        tag: "selectmenu",
-                                        props: {
-                                            items: [{
-                                                    text: "Tất cả",
-                                                    value: 0
-                                                },
-                                                {
-                                                    text: "Còn bán",
-                                                    value: 1
-                                                },
-                                                {
-                                                    text: "Đã bán",
-                                                    value: 2
-                                                },
-                                                {
-                                                    text: "Ngưng bán",
-                                                    value: 3
-                                                },
-                                            ]
-                                        }
-                                    }]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+                        }]
+                    }
+                ]
+            }]
         }]
     });
     var temp = _({
         tag: "div",
         class: "pizo-list-realty-main-search-control",
-        style: {
-            display: "none"
-        },
         on: {
             click: function(event) {
                 this.hide();
@@ -3730,18 +3484,21 @@ MapRealty.prototype.searchControlContent = function() {
     })
 
     temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input', content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input', content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input', content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input', content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
-
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+    this.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+    this.phone = $('.pizo-list-realty-main-search-control-row-phone-input input', content);
+    this.MS = $('.pizo-list-realty-main-search-control-row-MS-input input', content);
+    this.SN = $('.pizo-list-realty-main-search-control-row-SN input', content);
+    this.TD = $('.pizo-list-realty-main-search-control-row-TD input', content);
+    this.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
+    this.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
+    this.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
+    this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
+    selectStatus.emit("change");
+    self.lowprice = $(".pizo-list-realty-main-search-control-row-price-input-low", self.$view);
+    self.highprice = $(".pizo-list-realty-main-search-control-row-price-input-high", self.$view);
     temp.show = function() {
         if (!temp.classList.contains("showTranslate"))
             temp.classList.add("showTranslate");
@@ -3766,19 +3523,20 @@ MapRealty.prototype.searchControlContent = function() {
 
     }
     temp.reset = function() {
-        content.timestart = new Date();
-        content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
+        this.timestart = new Date();
+        this.timeend = new Date();
+        this.lowprice.value = "";
+        this.highprice.value = "";
+        this.phone.value = "";
+        this.MS.value = "";
+        this.SN.value = "";
+        this.TD.value = "";
+        this.PX.value = "";
+        this.QH.value = "";
+        this.TT.value = "";
+        this.HT.value = 0;
     }
+
 
     return temp;
 }
