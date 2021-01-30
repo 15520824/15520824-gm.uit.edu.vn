@@ -1202,7 +1202,8 @@ MapView.prototype.addOrtherMarker = function(data) {
         };
         // var mouseOverInfoWindow = false, timeoutID;
         var infowindow = new google.maps.InfoWindow({
-            maxWidth: 350
+            maxWidth: 350,
+            disableAutoPan: true
         });
 
         marker.data = data;

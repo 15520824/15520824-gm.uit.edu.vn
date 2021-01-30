@@ -247,6 +247,7 @@ ListDistrict.prototype.getView = function() {
             { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px" } }
         ];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        self.mTable.setArrayFix(2, true)
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
         self.listParent.updateItemList(listParam);

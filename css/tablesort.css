@@ -126,7 +126,7 @@ table.sortTable>tbody>tr.hideTranslate.parent {
     background-color: #f5f5f5;
   } */
 
-table.sortTable .slip-reordering .container-view {
+table.sortTable .slip-reordering {
     z-index: 9999 !important;
 }
 
