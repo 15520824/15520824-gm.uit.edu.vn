@@ -645,7 +645,7 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
         structure,
         direction,
         { element: _({ text: data.price + " tỉ" }), value: data.price * 1000000000 },
-        data.price * 1000 / data.acreage + " triệu",
+        data.price / 1000000 / data.acreage + " triệu",
         { value: statusValue, element: _({ text: staus }) },
         { valuesearch: formatDate(data.created, true, true, true, true, true), element: _({ text: formatDate(data.created, true, true, true, true, true) }), valuesort: new Date(data.created), value: new Date(data.created) },
         { valuesearch: formatDate(data.created, true, true, true, true, true), element: _({ text: formatDate(data.modified, true, true, true, true, true) }), valuesort: new Date(data.modified), value: new Date(data.modified) },

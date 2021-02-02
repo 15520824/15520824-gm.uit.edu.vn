@@ -948,6 +948,8 @@ MapView.prototype.addMapHouse = function() {
     google.maps.event.addListener(self.map, "idle", function() {
         self.isDoneMarker = new Promise(function(resolve, reject) {
             var bounds = self.map.getBounds();
+            if (bounds == undefined)
+                return;
             var ne = bounds.getNorthEast(); // LatLng of the north-east corner
             var sw = bounds.getSouthWest();
 
@@ -977,6 +979,7 @@ MapView.prototype.addMapHouse = function() {
                 moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
                     function(data) {
                         var isAvailable, districtid, stateid;
+                        var arrayTemp = [];
                         for (var i = 0; i < data.length; i++) {
                             isAvailable = false;
                             Loop: for (var param in moduleDatabase.checkPermission) {
@@ -1008,8 +1011,16 @@ MapView.prototype.addMapHouse = function() {
                             }
                             if (isAvailable == false)
                                 continue;
-                            self.addOrtherMarker(data[i]);
+
+                            var xyz = self.addOrtherMarker(data[i]);
+
+                            for (var k = 0; k < xyz.length; k++) {
+                                arrayTemp.push(xyz[k]);
+                            }
                         }
+                        if (self.markerCluster)
+                            self.markerCluster.clearMarkers();
+                        self.markerCluster = new MarkerClusterer(self.map, arrayTemp, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
                         var event = new CustomEvent("change-house");
                         self.dispatchEvent(event);
                         resolve();
@@ -1065,36 +1076,47 @@ MapView.prototype.setLabelContent = function(isPrice) {
 }
 
 MapView.prototype.setGeneralOperator = function(WHERE) {
-    var data;
+    // var data;
     this.WHERE = WHERE;
-    for (var i = 0; i < this.currentHouse.length; i++) {
-        data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
-        if (data) {
-            for (var j = 0; j < data.length; j++) {
-                if (generalOperator(data[j].data, WHERE) == false) {
-                    data[j].setMap(null);
-                } else {
-                    data[j].setMap(this.map);
-                }
-            }
-        }
+    // for (var i = 0; i < this.currentHouse.length; i++) {
+    //     data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+    //     if (data) {
+    //         for (var j = 0; j < data.length; j++) {
+    //             if (generalOperator(data[j].data, WHERE) == false) {
+    //                 data[j].setMap(null);
+    //             } else {
+    //                 data[j].setMap(this.map);
+    //             }
+    //         }
+    //     }
+    // }
+    // var event = new CustomEvent("change-house");
+    // this.dispatchEvent(event);
+    new google.maps.event.trigger(this.map, 'idle');
+}
+
+MapView.prototype.checkHouseInArray = function(data, arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (data.id == arr[i].id)
+            return true
     }
-    var event = new CustomEvent("change-house");
-    this.dispatchEvent(event);
+    return false;
 }
 
 MapView.prototype.addOrtherMarker = function(data) {
     var self = this;
+    var result = [];
     var position = [data.lat, data.lng];
-    if (this.checkHouse[position[0]] !== undefined && this.checkHouse[position[0]][position[1]] !== undefined) {
+    if (this.checkHouse[position[0]] !== undefined && this.checkHouse[position[0]][position[1]] !== undefined && this.checkHouseInArray(data, this.checkHouse[position[0]][position[1]])) {
         var arr = this.checkHouse[position[0]][position[1]];
         for (var j = 0; j < arr.length; j++) {
-            if (arr[j].getMap() === null) {
-                if (self.WHERE) {
-                    if (generalOperator(arr[j].data, self.WHERE) == false)
-                        arr[j].setMap(null);
-                    else {
-                        arr[j].setMap(self.map);
+            if (self.WHERE) {
+                if (generalOperator(arr[j].data, self.WHERE) == false) {
+                    // arr[j].setMap(null);
+                } else {
+                    // arr[j].setMap(self.map);
+
+                    if (arr[j].getMap() === null) {
                         if (this.isPrice == true) {
                             label = arr[j].data.price / 1000000000 + " tỉ";
                         } else if (this.isPrice == false)
@@ -1107,27 +1129,30 @@ MapView.prototype.addOrtherMarker = function(data) {
                             label = arr[j].data.price / 1000000000 + " tỉ";
                         else if (arr[j].data.pricerent > 0)
                             label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
-                    }
-                    var labelContent = _({
-                        tag: "div",
-                        child: [{
-                                tag: "div",
-                                class: "arrow",
-                            },
-                            {
-                                tag: "div",
-                                class: "inner",
-                                props: {
-                                    innerHTML: label
+                        var labelContent = _({
+                            tag: "div",
+                            child: [{
+                                    tag: "div",
+                                    class: "arrow",
+                                },
+                                {
+                                    tag: "div",
+                                    class: "inner",
+                                    props: {
+                                        innerHTML: label
+                                    }
                                 }
-                            }
-                        ]
-                    })
-                    arr[j].set('labelContent', labelContent);
-                } else
-                    arr[j].setMap(self.map);
-                this.currentHouse.push(position);
+                            ]
+                        })
+                        arr[j].set('labelContent', labelContent);
+                    }
+                }
+                result.push(arr[j])
+            } else {
+                // arr[j].setMap(self.map);
+                result.push(arr[j])
             }
+            this.currentHouse.push(position);
         }
         var marker = arr;
     } else {
@@ -1146,15 +1171,15 @@ MapView.prototype.addOrtherMarker = function(data) {
                 label = data.addressnumber;
         } else if (self.isShowAddress === false) {
             if (this.isPrice == true) {
-                label = data.price / 1000000000 + " tỉ";
+                label = (data.price / 1000000000) + " tỉ";
             } else if (this.isPrice == false)
                 label = ((parseInt(data.pricerent) / 1000000) + " triệu");
             else if (parseInt(data.salestatus / 10) == 1 ? true : false)
-                label = data.price / 1000000000 + " tỉ";
+                label = (data.price / 1000000000) + " tỉ";
             else if (parseInt(data.salestatus % 10) == 1 ? true : false)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
             else if (data.price > 0)
-                label = data.price / 1000000000 + " tỉ";
+                label = (data.price / 1000000000) + " tỉ";
             else if (data.pricerent > 0)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
         }
@@ -1183,13 +1208,18 @@ MapView.prototype.addOrtherMarker = function(data) {
             labelClass: "labels",
             zIndex: 2,
         });
-        if (self.WHERE) {
-            if (generalOperator(data, self.WHERE) == false)
-                marker.setMap(null);
-            else
-                marker.setMap(self.map);
-        } else
-            marker.setMap(self.map);
+        // if (self.WHERE) {
+        //     // if (generalOperator(data, self.WHERE) == false) {
+        //     //     // marker.setMap(null);
+        //     // } else {
+        //     //     result.push(marker)
+        //     //         // marker.setMap(self.map);
+        //     // }
+        //     result.push(marker)
+        // } else {
+        //     // marker.setMap(self.map);
+        //     result.push(marker)
+        // }
         this.currentHouse.push(position);
         var imageHover = {
             url: "./assets/images/marker-green.png",
@@ -1228,14 +1258,11 @@ MapView.prototype.addOrtherMarker = function(data) {
         else
             this.checkHouse[position[0]][position[1]].push(marker);
         this.currentHouse.push(position);
+        result.push(marker)
     }
 
     self.isDoneMarker = true;
-    return this.currentHouse;
-}
-
-MapView.prototype.setFilter = function() {
-
+    return result;
 }
 
 MapView.prototype.modalMiniRealty = function(data) {
@@ -1256,7 +1283,7 @@ MapView.prototype.modalMiniRealty = function(data) {
                     child: [{
                             tag: "strong",
                             props: {
-                                innerHTML: "VND " + data.price + " tỉ"
+                                innerHTML: "VND " + data.price / 1000000000 + " tỉ"
                             }
                         },
                         {
@@ -1322,6 +1349,13 @@ MapView.prototype.removeMapHouseAround = function(cellLat, cellLng) {
                 arr[j].setMap(null);
             }
             this.currentHouse.splice(i, 1);
+        }
+    }
+    if (this.markerCluster) {
+        var arr = this.markerCluster.getMarkers();
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].getMap() !== null)
+                arr[i].setMap(null)
         }
     }
 }

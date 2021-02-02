@@ -10,7 +10,7 @@ import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
 import { descViewImagePreview } from '../component/ModuleImage';
 import NewRealty from '../component/NewRealty';
-import { unit_Long, unit_Zone, deleteQuestion } from '../component/ModuleView';
+import { unit_Long, unit_Zone, tableView } from '../component/ModuleView';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 var _ = Fcore._;
@@ -241,11 +241,10 @@ MapRealty.prototype.formatDataRowContact = function(data) {
 MapRealty.prototype.modalRealty = function() {
     var self = this;
 
-    var container = _({
-        tag: "ul",
-        class: ["photo-cards", "photo-cards_wow", "photo-cards_short"],
-        child: []
-    })
+    var container = new tableView([{}, {}], [], true, true, 1, 25);
+    container.classList = "photo-cards photo-cards_wow photo-cards_short";
+    container.headerTable.style.display = "none";
+    // container.setAttribute("class", []);
     var temp = _({
         tag: "div",
         class: ["search-page-list-container", "double-column-only", "short-list-cards"],
@@ -313,21 +312,21 @@ MapRealty.prototype.modalRealty = function() {
     container.check = [];
     this.count = $("span.result-count", temp);
     this.updateResult = function() {
-        var value = []
-        var cellLat, cellLng, arrTemp;
-        var k = 0;
-        for (var i = 0; i < this.mapView.currentHouse.length; i++) {
-            cellLat = this.mapView.currentHouse[i][0];
-            cellLng = this.mapView.currentHouse[i][1];
-            arrTemp = this.mapView.checkHouse[cellLat][cellLng];
-            for (var j = 0; j < arrTemp.length; j++) {
-                if (arrTemp[j].getMap() != null) {
-                    value.push(arrTemp[j]);
-                }
-                k++;
-            }
-        }
-        container.clearChild();
+        var value = this.mapView.markerCluster.getMarkers();
+        // var cellLat, cellLng, arrTemp;
+        // var k = 0;
+        // for (var i = 0; i < this.mapView.currentHouse.length; i++) {
+        //     cellLat = this.mapView.currentHouse[i][0];
+        //     cellLng = this.mapView.currentHouse[i][1];
+        //     arrTemp = this.mapView.checkHouse[cellLat][cellLng];
+        //     for (var j = 0; j < arrTemp.length; j++) {
+        //         if (arrTemp[j].getMap() != null) {
+        //             value.push(arrTemp[j]);
+        //         }
+        //         k++;
+        //     }
+        // }
+        // container.clearChild();
 
 
         var arr = [];
@@ -342,22 +341,35 @@ MapRealty.prototype.modalRealty = function() {
                 arr.push({ id: value[i].data.streetid_old });
             }
         }
+        var row = [];
         if (arr.length > 0)
             moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                var valueTable = [];
                 for (var i = 0; i < value.length; i++) {
                     if (container.check[value[i].data.id] == undefined) {
                         var x = this.itemMap(value[i]);
                         container.check[value[i].data.id] = x;
-                    } else
+                    } else {
                         var x = container.check[value[i].data.id];
+                    }
                     x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
 
-                    container.appendChild(x);
-                    this.count.innerHTML = container.childNodes.length + " kết quả";
+                    // container.appendChild(x);
+                    row.push({ element: x });
+                    if (row.length == 2) {
+                        valueTable.push(row);
+                        row = [];
+                    }
                 }
+                container.updateTable(undefined, valueTable);
+                this.count.innerHTML = value.length + " kết quả";
 
             }.bind(this))
+        else {
+            container.updateTable(undefined, []);
+            this.count.innerHTML = value.length + " kết quả";
+        }
     }
     this.mapView.addEventListener("change-house", function() {
         self.updateResult();
@@ -909,7 +921,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                     tag: "span",
                                                                                     class: "ds-value",
                                                                                     props: {
-                                                                                        innerHTML: "VND " + data.price / 1000000000 + " tỉ"
+                                                                                        innerHTML: "VND " + (data.price / 1000000000) + " tỉ"
                                                                                     }
                                                                                 }]
                                                                             },
@@ -2948,16 +2960,24 @@ MapRealty.prototype.itemMap = function(marker) {
         tag: "div",
         class: "list-card-price",
         props: {
-            innerHTML: "VND " + data.price / 1000000000 + " tỉ"
+            innerHTML: "VND " + (data.price / 1000000000) + " tỉ"
         }
     })
     var temp = _({
-        tag: "li",
+        tag: "div",
         on: {
             mouseover: function(event) {
+                if (marker.getMap() == null) {
+                    marker.setMap(self.mapView.map);
+                    marker.tempMap = true;
+                }
                 google.maps.event.trigger(marker, 'mouseover');
             },
             mouseout: function(event) {
+                if (marker.tempMap == true) {
+                    marker.setMap(null);
+                    marker.tempMap = false;
+                }
                 google.maps.event.trigger(marker, 'mouseout');
             },
             click: function(event) {
