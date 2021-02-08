@@ -976,8 +976,12 @@ MapView.prototype.addMapHouse = function() {
                     queryData.push("&&")
                     queryData.push(self.WHERE)
                 }
+                self.ramdom = new Date().getTime();
+                var timestamp = self.ramdom;
                 moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
                     function(data) {
+                        if (timestamp !== self.ramdom)
+                            return;
                         var isAvailable, districtid, stateid;
                         var arrayTemp = [];
                         for (var i = 0; i < data.length; i++) {
@@ -1021,6 +1025,8 @@ MapView.prototype.addMapHouse = function() {
                         if (self.markerCluster)
                             self.markerCluster.clearMarkers();
                         self.markerCluster = new MarkerClusterer(self.map, arrayTemp, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+                        if (self.map.getZoom() >= 20)
+                            self.markerCluster.setMap(null);
                         var event = new CustomEvent("change-house");
                         self.dispatchEvent(event);
                         resolve();
@@ -1114,8 +1120,6 @@ MapView.prototype.addOrtherMarker = function(data) {
                 if (generalOperator(arr[j].data, self.WHERE) == false) {
                     // arr[j].setMap(null);
                 } else {
-                    // arr[j].setMap(self.map);
-
                     if (arr[j].getMap() === null) {
                         if (this.isPrice == true) {
                             label = arr[j].data.price / 1000000000 + " tỉ";
@@ -1147,11 +1151,11 @@ MapView.prototype.addOrtherMarker = function(data) {
                         arr[j].set('labelContent', labelContent);
                     }
                 }
-                result.push(arr[j])
-            } else {
-                // arr[j].setMap(self.map);
-                result.push(arr[j])
+
             }
+            if (arr[j].getMap() == null)
+                arr[j].setMap(self.map);
+            result.push(arr[j])
             this.currentHouse.push(position);
         }
         var marker = arr;
@@ -1258,6 +1262,8 @@ MapView.prototype.addOrtherMarker = function(data) {
         else
             this.checkHouse[position[0]][position[1]].push(marker);
         this.currentHouse.push(position);
+        if (marker.getMap() == null)
+            marker.setMap(self.map);
         result.push(marker)
     }
 
@@ -1367,7 +1373,7 @@ MapView.prototype.activeDetail = function(detailView) {
     this.addMapHouse();
 }
 
-MapView.prototype.activeMap = function(center = [10.822500, 106.629104], zoom = 16) {
+MapView.prototype.activeMap = function(center = [10.822500, 106.629104], zoom = 20) {
     var map = new google.maps.Map(this.mapReplace, {
         zoom: zoom,
         center: new google.maps.LatLng(center[0], center[1]),
@@ -1401,6 +1407,7 @@ MapView.prototype.setMoveMarkerWithCurrent = function(value) {
 
 MapView.prototype.addMoveMarker = function(position, changeInput = true) {
     var self = this;
+    self.map.setOptions({ minZoom: 18 });
     var marker;
     if (self.detailView !== undefined) {
         if (changeInput)
@@ -1432,6 +1439,9 @@ MapView.prototype.addMoveMarker = function(position, changeInput = true) {
             title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
             zIndex: 100
         });
+        console.log(self.map)
+            // var panes = self.map.getPanes();
+            // panes.floatPane.appendChild(marker);
         this.currentMarker = marker;
         if (position.data !== undefined) {
             marker.data = position.data;

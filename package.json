@@ -1,31 +1,32 @@
 {
-  "name": "pizo",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --config webpack.config.js --host 127.0.0.1 --port 8080 --publicx",
-    "dist": "webpack --config webpack.config.js  --progress --profile --colors --mode production "
-  },
-  "author": "Pham Quoc Du Thien",
-  "license": "ISC",
-  "dependencies": {
-    "absol": "^1.15.20",
-    "absol-acomp": "^0.9.55",
-    "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
-    "babel-loader": "^8.2.2",
-    "babel-minify-webpack-plugin": "^0.3.1",
-    "css-loader": "^2.1.1",
-    "raw-loader": "^2.0.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
-  },
-  "private": true
+    "name": "pizo",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack-dev-server --config webpack.config.js --host 127.0.0.1 --port 8080 --publicx",
+        "dist": "webpack --config webpack.config.js  --progress --profile --colors --mode production "
+    },
+    "author": "Pham Quoc Du Thien",
+    "license": "ISC",
+    "dependencies": {
+        "@dxfom/dxf": "^0.0.1",
+        "absol": "^1.15.20",
+        "absol-acomp": "^0.9.55",
+        "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.10",
+        "babel-loader": "^8.2.2",
+        "babel-minify-webpack-plugin": "^0.3.1",
+        "css-loader": "^2.1.1",
+        "raw-loader": "^2.0.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    },
+    "private": true
 }

@@ -5,11 +5,13 @@ import "../../css/PlanningInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import { consoleWKT, loadingWheel, getGMT, formatDate, consoleWKTLine } from '../component/FormatFunction';
+import { parseDxfFileArrayBuffer } from '@dxfom/dxf/bundle.mjs'
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
 import { confirmQuestion } from '../component/ModuleView';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
+import GeoJSON from '../../dist/geojson.js'
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -30,21 +32,21 @@ Object.defineProperties(PlanningInformation.prototype, Object.getOwnPropertyDesc
 PlanningInformation.prototype.constructor = PlanningInformation;
 
 PlanningInformation.prototype.setUpDxfFile = function(fileText, loading) {
-    var parser = new DxfParser();
     var dxf = null;
     try {
-        dxf = parser.parseSync(fileText);
+        dxf = parseDxfFileArrayBuffer(fileText);
     } catch (err) {
         return console.error(err.stack);
     }
-
-    var wkt = GeoJSON.parse(dxf);
-    console.log(wkt);
-    var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-    window.dcel.extractLines();
-    var faces = dcel.internalFaces();
+    console.log(dxf)
+    var wkt;
+    GeoJSON.parse(dxf);
+    var center = new google.maps.LatLng(GeoJSON.LATITUDE, GeoJSON.LONGITUDE);
+    GeoJSON.extractLines();
+    var faces = GeoJSON.internalFaces();
     wkt = consoleWKT(faces);
-    var lines = consoleWKTLine(window.dcel.checkHedges);
+    // console.log(GeoJSON.dcel.checkHedges)
+    var lines = consoleWKTLine(GeoJSON.dcel.checkHedges);
     if (lines !== -1)
         this.addLine(lines);
     if (this.isVisiableLine === true)
@@ -60,6 +62,13 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loading) {
         strokeOpacity: 0.8,
         strokeWeight: 1,
     });
+    var dxf = {
+        HEADER: GeoJSON.HEADER,
+        ENTITIES: GeoJSON.stackNote,
+        BLOCKS: GeoJSON.BLOCKS,
+        TABLES: GeoJSON.TABLES
+    }
+    console.log(DxformSVG.createSvgString(dxf))
     console.timeEnd("dcel cost");
     loading.disable();
 }
@@ -135,7 +144,7 @@ PlanningInformation.prototype.getView = function() {
                     return;
                 var file = this.files[0];
                 var reader = new FileReader();
-                reader.readAsText(this.files[0]);
+                reader.readAsArrayBuffer(this.files[0]);
                 reader.onload = function(e) {
                     console.time("dcel cost");
                     console.log(file)

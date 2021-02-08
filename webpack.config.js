@@ -25,12 +25,14 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.js$/,
+                test: /\.m?js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                options: { presets: [
+                options: {
+                    presets: [
                         ['@babel/preset-env', { modules: false }]
-                    ] }
+                    ]
+                }
             },
             {
                 test: /\.(tpl|txt|xml|rels|svg|json)$/i,
