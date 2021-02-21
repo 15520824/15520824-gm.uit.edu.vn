@@ -77,6 +77,7 @@ if(isset($data["equipment"]))
             "content" => $equipment[$i]["content"],
         ));
     }
+    unset($data["equipment"]);
 }
 for($i = 0 ;$i<$count_old;$i++)
 {
@@ -146,6 +147,7 @@ if(isset($data["contact"]))
             ));
         }
     }
+    unset($data["contact"]);
 }
 
 
@@ -242,6 +244,7 @@ if(isset($data["image"]))
         ));
         $data["image"][$i] = $image_id;
     }
+    unset($data["image"]);
 }
 
 for($i = 0;$i<count($image_old);$i++)
@@ -264,6 +267,7 @@ if(isset($userid))
     );
     $connector->insert($prefix.'activehouses_logs', $logData);
 }
+
 $data["modified"] = new DateTime();
 $result = $connector-> update($prefix."activehouses", $data);
 

@@ -46,7 +46,7 @@ function Helmert_Z(X, Y, Z, DZ, X_rot, Y_rot, S) {
     var RadX_Rot = (X_rot / 3600) * (Math.PI / 180);
     var RadY_Rot = (Y_rot / 3600) * (Math.PI / 180);
     //Compute transformed Z coord
-    return  (-1 * X * RadY_Rot) + (Y * RadX_Rot) + Z + (Z * sfactor) + DZ;
+    return (-1 * X * RadY_Rot) + (Y * RadX_Rot) + Z + (Z * sfactor) + DZ;
 }
 
 
@@ -117,7 +117,7 @@ function XYZ_to_Long(X, Y) {
     if (X < 0 && Y >= 0) //longitude is in the E90 to E180 quadrant
         return ((Math.atan(Y / X)) * (180 / Math.PI)) + 180;
 
-    if (X < 0 && Y < 0)//longitude is in the E180 to W90 quadrant
+    if (X < 0 && Y < 0) //longitude is in the E180 to W90 quadrant
         return ((Math.atan(Y / X)) * (180 / Math.PI)) - 180;
 }
 
@@ -285,9 +285,9 @@ function Lat_Long_to_North(PHI, LAM, a, b, E0, N0, f0, PHI0, LAM0) {
     var i = m + N0;
     var II = (nu / 2) * (Math.sin(RadPHI)) * (Math.cos(RadPHI));
     var III = ((nu / 24) * (Math.sin(RadPHI)) * Math.pow((Math.cos(RadPHI)), 3)) * (5 - Math.pow((Math.tan(RadPHI)), 2) + (9 * eta2));
-    var IIIA = ((nu / 720) * (Math.sin(RadPHI)) * ((Math.cos(RadPHI)) /**/, 5)) * (61 - (58 * Math.pow((Math.tan(RadPHI)), 2)) + Math.pow((Math.tan(RadPHI)), 4));
+    var IIIA = ((nu / 720) * (Math.sin(RadPHI)) * ((Math.cos(RadPHI)) /**/ , 5)) * (61 - (58 * Math.pow((Math.tan(RadPHI)), 2)) + Math.pow((Math.tan(RadPHI)), 4));
 
-    return i + (Math.pow(p /**/, 2) * II) + (Math.pow(p /**/, 4) * III) + (Math.pow(p /**/, 6) * IIIA);
+    return i + (Math.pow(p /**/ , 2) * II) + (Math.pow(p /**/ , 4) * III) + (Math.pow(p /**/ , 6) * IIIA);
 
 }
 
@@ -313,7 +313,7 @@ function E_N_to_Lat(East, North, a, b, E0, N0, f0, PHI0, LAM0) {
     //Compute af0, bf0, e squared (e2), n and Et
     var af0 = a * f0;
     var bf0 = b * f0;
-    var e2 = (Math.pow(af0 /**/, 2) - Math.pow(bf0 /**/, 2)) / Math.pow(af0 /**/, 2);
+    var e2 = (Math.pow(af0 /**/ , 2) - Math.pow(bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2);
     var N = (af0 - bf0) / (af0 + bf0);
     var Et = East - E0;
 
@@ -321,16 +321,16 @@ function E_N_to_Lat(East, North, a, b, E0, N0, f0, PHI0, LAM0) {
     var PHId = InitialLat(North, N0, af0, RadPHI0, N, bf0);
 
     //Compute nu, rho and eta2 using value for PHId
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/, 2))));
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/, 2));
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/ , 2))));
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/ , 2));
     var eta2 = (nu / rho) - 1;
 
     //Compute Latitude
     var VII = (Math.tan(PHId)) / (2 * rho * nu);
-    var VIII = ((Math.tan(PHId)) / (24 * rho * Math.pow(nu /**/, 3))) * (5 + (3 * Math.pow((Math.tan(PHId)) /**/, 2)) + eta2 - (9 * eta2 * Math.pow((Math.tan(PHId)) /**/, 2)));
-    var IX = ((Math.tan(PHId)) / (720 * rho * Math.pow(nu /**/, 5))) * (61 + (90 * Math.pow((Math.tan(PHId)) /**/, 2)) + (45 * Math.pow((Math.tan(PHId)) /**/, 4)));
+    var VIII = ((Math.tan(PHId)) / (24 * rho * Math.pow(nu /**/ , 3))) * (5 + (3 * Math.pow((Math.tan(PHId)) /**/ , 2)) + eta2 - (9 * eta2 * Math.pow((Math.tan(PHId)) /**/ , 2)));
+    var IX = ((Math.tan(PHId)) / (720 * rho * Math.pow(nu /**/ , 5))) * (61 + (90 * Math.pow((Math.tan(PHId)) /**/ , 2)) + (45 * Math.pow((Math.tan(PHId)) /**/ , 4)));
 
-    return (180 / Math.PI) * (PHId - (Math.pow(Et /**/, 2) * VII) + (Math.pow(Et /**/, 4) * VIII) - (Math.pow(Et /**/, 6) * IX));
+    return (180 / Math.PI) * (PHId - (Math.pow(Et /**/ , 2) * VII) + (Math.pow(Et /**/ , 4) * VIII) - (Math.pow(Et /**/ , 6) * IX));
 }
 
 
@@ -356,7 +356,7 @@ function E_N_to_Long(East, North, a, b, E0, N0, f0, PHI0, LAM0) {
     //Compute af0, bf0, e squared (e2), n and Et
     var af0 = a * f0;
     var bf0 = b * f0;
-    var e2 = (Math.pow(af0 /**/, 2) - Math.pow(bf0 /**/, 2)) / Math.pow(af0 /**/, 2);
+    var e2 = (Math.pow(af0 /**/ , 2) - Math.pow(bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2);
     var N = (af0 - bf0) / (af0 + bf0)
     var Et = East - E0
 
@@ -364,17 +364,17 @@ function E_N_to_Long(East, North, a, b, E0, N0, f0, PHI0, LAM0) {
     var PHId = InitialLat(North, N0, af0, RadPHI0, N, bf0)
 
     //Compute nu, rho and eta2 using value for PHId
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/ , 2))
     var eta2 = (nu / rho) - 1
 
     //Compute Longitude
-    var X = Math.pow((Math.cos(PHId)) /**/, -1) / nu
-    var XI = (Math.pow((Math.cos(PHId)) /**/, -1) / (6 * Math.pow(nu /**/, 3))) * ((nu / rho) + (2 * Math.pow((Math.tan(PHId)) /**/, 2)))
-    var XII = (Math.pow((Math.cos(PHId)) /**/, -1) / (120 * Math.pow(nu /**/, 5))) * (5 + (28 * Math.pow((Math.tan(PHId)) /**/, 2)) + (24 * Math.pow((Math.tan(PHId)) /**/, 4)))
-    var XIIA = (Math.pow((Math.cos(PHId)) /**/, -1) / (5040 * Math.pow(nu /**/, 7))) * (61 + (662 * Math.pow((Math.tan(PHId)) /**/, 2)) + (1320 * Math.pow((Math.tan(PHId)) /**/, 4)) + (720 * Math.pow((Math.tan(PHId)) /**/, 6)))
+    var X = Math.pow((Math.cos(PHId)) /**/ , -1) / nu
+    var XI = (Math.pow((Math.cos(PHId)) /**/ , -1) / (6 * Math.pow(nu /**/ , 3))) * ((nu / rho) + (2 * Math.pow((Math.tan(PHId)) /**/ , 2)))
+    var XII = (Math.pow((Math.cos(PHId)) /**/ , -1) / (120 * Math.pow(nu /**/ , 5))) * (5 + (28 * Math.pow((Math.tan(PHId)) /**/ , 2)) + (24 * Math.pow((Math.tan(PHId)) /**/ , 4)))
+    var XIIA = (Math.pow((Math.cos(PHId)) /**/ , -1) / (5040 * Math.pow(nu /**/ , 7))) * (61 + (662 * Math.pow((Math.tan(PHId)) /**/ , 2)) + (1320 * Math.pow((Math.tan(PHId)) /**/ , 4)) + (720 * Math.pow((Math.tan(PHId)) /**/ , 6)))
 
-    return (180 / Math.PI) * (RadLAM0 + (Et * X) - (Math.pow(Et /**/, 3) * XI) + (Math.pow(Et /**/, 5) * XII) - (Math.pow(Et /**/, 7) * XIIA))
+    return (180 / Math.PI) * (RadLAM0 + (Et * X) - (Math.pow(Et /**/ , 3) * XI) + (Math.pow(Et /**/ , 5) * XII) - (Math.pow(Et /**/ , 7) * XIIA))
 }
 
 
@@ -431,10 +431,10 @@ function Marc(bf0, N, PHI0, PHI) {
         THIS FUNCTION IS ALSO USED ON IT'S OWN IN THE "Projection and Transformation Calculations.xls" SPREADSHEET
     */
 
-    return bf0 * (((1 + N + ((5 / 4) * Math.pow(N /**/, 2)) + ((5 / 4) * Math.pow(N /**/, 3))) * (PHI - PHI0))
-        - (((3 * N) + (3 * Math.pow(N /**/, 2)) + ((21 / 8) * Math.pow(N /**/, 3))) * (Math.sin(PHI - PHI0)) * (Math.cos(PHI + PHI0)))
-        + ((((15 / 8) * Math.pow(N /**/, 2)) + ((15 / 8) * Math.pow(N /**/, 3))) * (Math.sin(2 * (PHI - PHI0))) * (Math.cos(2 * (PHI + PHI0))))
-        - (((35 / 24) * Math.pow(N /**/, 3)) * (Math.sin(3 * (PHI - PHI0))) * (Math.cos(3 * (PHI + PHI0)))));
+    return bf0 * (((1 + N + ((5 / 4) * Math.pow(N /**/ , 2)) + ((5 / 4) * Math.pow(N /**/ , 3))) * (PHI - PHI0)) -
+        (((3 * N) + (3 * Math.pow(N /**/ , 2)) + ((21 / 8) * Math.pow(N /**/ , 3))) * (Math.sin(PHI - PHI0)) * (Math.cos(PHI + PHI0))) +
+        ((((15 / 8) * Math.pow(N /**/ , 2)) + ((15 / 8) * Math.pow(N /**/ , 3))) * (Math.sin(2 * (PHI - PHI0))) * (Math.cos(2 * (PHI + PHI0)))) -
+        (((35 / 24) * Math.pow(N /**/ , 3)) * (Math.sin(3 * (PHI - PHI0))) * (Math.cos(3 * (PHI + PHI0)))));
 }
 
 
@@ -457,20 +457,20 @@ function Lat_Long_to_C(PHI, LAM, LAM0, a, b, f0) {
     //'Compute af0, bf0 and e squared (e2)
     var af0 = a * f0
     var bf0 = b * f0
-    var e2 = (Math.pow(af0 /**/, 2) - Math.pow(bf0 /**/, 2)) / Math.pow(af0 /**/, 2)
+    var e2 = (Math.pow(af0 /**/ , 2) - Math.pow(bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2)
 
     //'Compute nu, rho, eta2 and p
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(RadPHI)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(RadPHI)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(RadPHI)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(RadPHI)) /**/ , 2))
     eta2 = (nu / rho) - 1
     var p = RadLAM - RadLAM0
 
     //'Compute Convergence
     var XIII = Math.sin(RadPHI)
-    var XIV = ((Math.sin(RadPHI) * Math.pow((Math.cos(RadPHI)) /**/, 2)) / 3) * (1 + (3 * eta2) + (2 * Math.pow(eta2 /**/, 2)))
-    var XV = ((Math.sin(RadPHI) * Math.pow((Math.cos(RadPHI)) /**/, 4)) / 15) * (2 - Math.pow((Math.tan(RadPHI)) /**/, 2))
+    var XIV = ((Math.sin(RadPHI) * Math.pow((Math.cos(RadPHI)) /**/ , 2)) / 3) * (1 + (3 * eta2) + (2 * Math.pow(eta2 /**/ , 2)))
+    var XV = ((Math.sin(RadPHI) * Math.pow((Math.cos(RadPHI)) /**/ , 4)) / 15) * (2 - Math.pow((Math.tan(RadPHI)) /**/ , 2))
 
-    return (180 / Math.PI) * ((p * XIII) + (Math.pow(p /**/, 3) * XIV) + (Math.pow(p /**/, 5) * XV))
+    return (180 / Math.PI) * ((p * XIII) + (Math.pow(p /**/ , 3) * XIV) + (Math.pow(p /**/ , 5) * XV))
 
 }
 
@@ -495,7 +495,7 @@ function E_N_to_C(East, North, a, b, E0, N0, f0, PHI0) {
     // 'Compute af0, bf0, e squared (e2), n and Et
     var af0 = a * f0
     var bf0 = b * f0
-    var e2 = (Math.pow(af0 /**/, 2) - Math.pow(bf0 /**/, 2)) / Math.pow(af0 /**/, 2)
+    var e2 = (Math.pow(af0 /**/ , 2) - Math.pow(bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2)
     var N = (af0 - bf0) / (af0 + bf0)
     var Et = East - E0
 
@@ -503,16 +503,16 @@ function E_N_to_C(East, North, a, b, E0, N0, f0, PHI0) {
     var PHId = InitialLat(North, N0, af0, RadPHI0, N, bf0)
 
     // 'Compute nu, rho and eta2 using value for PHId
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/ , 2))
     var eta2 = (nu / rho) - 1
 
     // 'Compute Convergence
     var XVI = (Math.tan(PHId)) / nu
-    var XVII = ((Math.tan(PHId)) / (3 * Math.pow(nu /**/, 3))) * (1 + Math.pow((Math.tan(PHId)) /**/, 2) - eta2 - Math.pow(2 * (eta2 /**/, 2)))
-    var XVIII = ((Math.tan(PHId)) / (15 * Math.pow(nu /**/, 5))) * (2 + (5 * Math.pow((Math.tan(PHId)) /**/, 2)) + (3 * Math.pow((Math.tan(PHId)) /**/, 4)))
+    var XVII = ((Math.tan(PHId)) / (3 * Math.pow(nu /**/ , 3))) * (1 + Math.pow((Math.tan(PHId)) /**/ , 2) - eta2 - Math.pow(2 * (eta2 /**/ , 2)))
+    var XVIII = ((Math.tan(PHId)) / (15 * Math.pow(nu /**/ , 5))) * (2 + (5 * Math.pow((Math.tan(PHId)) /**/ , 2)) + (3 * Math.pow((Math.tan(PHId)) /**/ , 4)))
 
-    return (180 / Math.PI) * ((Et * XVI) - (Math.pow(Et /**/, 3) * XVII) + (Math.pow(Et /**/, 5) * XVIII))
+    return (180 / Math.PI) * ((Et * XVI) - (Math.pow(Et /**/ , 3) * XVII) + (Math.pow(Et /**/ , 5) * XVIII))
 }
 
 
@@ -535,19 +535,19 @@ function Lat_Long_to_LSF(PHI, LAM, LAM0, a, b, f0) {
     // 'Compute af0, bf0 and e squared (e2)
     var af0 = a * f0
     var bf0 = b * f0
-    var e2 = (Math.pow(af0 /**/, 2) - (bf0 /**/, 2)) / Math.pow(af0 /**/, 2)
+    var e2 = (Math.pow(af0 /**/ , 2) - (bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2)
 
     // 'Compute nu, rho, eta2 and p
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(RadPHI)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(RadPHI)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(RadPHI)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(RadPHI)) /**/ , 2))
     var eta2 = (nu / rho) - 1
     var p = RadLAM - RadLAM0
 
     // 'Compute local scale factor
-    var XIX = (Math.pow(Math.cos(RadPHI) /**/, 2) / 2) * (1 + eta2)
-    var XX = (Math.pow(Math.cos(RadPHI) /**/, 4) / 24) * (5 - (4 * Math.pow((Math.tan(RadPHI)) /**/, 2)) + (14 * eta2) - (28 * Math.pow((Math.tan(RadPHI * eta2)) /**/, 2)))
+    var XIX = (Math.pow(Math.cos(RadPHI) /**/ , 2) / 2) * (1 + eta2)
+    var XX = (Math.pow(Math.cos(RadPHI) /**/ , 4) / 24) * (5 - (4 * Math.pow((Math.tan(RadPHI)) /**/ , 2)) + (14 * eta2) - (28 * Math.pow((Math.tan(RadPHI * eta2)) /**/ , 2)))
 
-    return f0 * (1 + (Math.pow(p /**/, 2) * XIX) + (Math.pow(p /**/, 4) * XX))
+    return f0 * (1 + (Math.pow(p /**/ , 2) * XIX) + (Math.pow(p /**/ , 4) * XX))
 
 }
 
@@ -571,7 +571,7 @@ function E_N_to_LSF(East, North, a, b, E0, N0, f0, PHI0) {
     // 'Compute af0, bf0, e squared (e2), n and Et
     var af0 = a * f0
     var bf0 = b * f0
-    var e2 = (Math.pow(af0 /**/, 2) - (bf0 /**/, 2)) / Math.pow(af0 /**/, 2)
+    var e2 = (Math.pow(af0 /**/ , 2) - (bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2)
     var N = (af0 - bf0) / (af0 + bf0)
     var Et = East - E0
 
@@ -579,15 +579,15 @@ function E_N_to_LSF(East, North, a, b, E0, N0, f0, PHI0) {
     var PHId = InitialLat(North, N0, af0, RadPHI0, N, bf0)
 
     // 'Compute nu, rho and eta2 using value for PHId
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/ , 2))
     var eta2 = (nu / rho) - 1
 
     // 'Compute local scale factor
     var XXI = 1 / (2 * rho * nu)
-    var XXII = (1 + (4 * eta2)) / (24 * Math.pow(rho /**/, 2) * (nu /**/, 2))
+    var XXII = (1 + (4 * eta2)) / (24 * Math.pow(rho /**/ , 2) * (nu /**/ , 2))
 
-    return f0 * (1 + (Math.pow(Et /**/, 2) * XXI) + (Math.pow(Et /**/, 4) * XXII))
+    return f0 * (1 + (Math.pow(Et /**/ , 2) * XXI) + (Math.pow(Et /**/ , 4) * XXII))
 }
 
 
@@ -612,7 +612,7 @@ function E_N_to_t_minus_T(AtEast, AtNorth, ToEast, ToNorth, a, b, E0, N0, f0, PH
     // 'Compute af0, bf0, e squared (e2), n and Nm (Northing of mid point)
     var af0 = a * f0
     var bf0 = b * f0
-    var e2 = (Math.pow(af0 /**/, 2) - Math.pow(bf0 /**/, 2)) / Math.pow(af0 /**/, 2)
+    var e2 = (Math.pow(af0 /**/ , 2) - Math.pow(bf0 /**/ , 2)) / Math.pow(af0 /**/ , 2)
     var N = (af0 - bf0) / (af0 + bf0)
     var Nm = (AtNorth + ToNorth) / 2
 
@@ -620,8 +620,8 @@ function E_N_to_t_minus_T(AtEast, AtNorth, ToEast, ToNorth, a, b, E0, N0, f0, PH
     var PHId = InitialLat(Nm, N0, af0, RadPHI0, N, bf0)
 
     // 'Compute nu, rho and eta2 using value for PHId
-    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/, 2))))
-    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/, 2))
+    var nu = af0 / (Math.sqrt(1 - (e2 * Math.pow((Math.sin(PHId)) /**/ , 2))))
+    var rho = (nu * (1 - e2)) / (1 - Math.pow(e2 * (Math.sin(PHId)) /**/ , 2))
 
     // 'Compute (t-T)
     var XXIII = 1 / (6 * nu * rho)
@@ -657,8 +657,7 @@ function TrueAzimuth(AtEast, AtNorth, ToEast, ToNorth, a, b, E0, N0, f0, PHI0) {
             GridBearing = 180
         else
             GridBearing = 0
-    }
-    else {
+    } else {
 
         var Ratio = Diffn / Diffe
         var GridAngle = (180 / Math.PI) * Math.atan(Ratio)
@@ -671,8 +670,8 @@ function TrueAzimuth(AtEast, AtNorth, ToEast, ToNorth, a, b, E0, N0, f0, PHI0) {
 
     EndOfComputeBearing:
 
-    // 'Compute convergence
-    var Convergence = E_N_to_C(AtEast, AtNorth, a, b, E0, N0, f0, PHI0)
+        // 'Compute convergence
+        var Convergence = E_N_to_C(AtEast, AtNorth, a, b, E0, N0, f0, PHI0)
 
     // 'Compute (t-T) correction
     var t_minus_T = E_N_to_t_minus_T(AtEast, AtNorth, ToEast, ToNorth, a, b, E0, N0, f0, PHI0)
@@ -706,7 +705,7 @@ var slieu = {
     X_Rotation: -0.00928836,
     Y_Rotation: 0.0198,
     Z_Rotation: -0.00427372,
-    Range: function (name) {
+    Range: function(name) {
         return this[name]
     }
 };
@@ -724,7 +723,7 @@ function NBT_to_VN2000_X(Latitude, longitude, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var VN2000X, VN2000Y, VN2000H
-    // ' Lay cac thong so co ban cua VN2000
+        // ' Lay cac thong so co ban cua VN2000
     var a = slieu.Range("a")
     var b = slieu.Range("b")
     var F = slieu.Range("f")
@@ -742,19 +741,19 @@ function NBT_to_VN2000_X(Latitude, longitude, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // ' Lat long H to XYZ WGS84
+        // ' Lat long H to XYZ WGS84
     X = Lat_Long_H_to_X(Latitude, longitude, Height, a, b)
     Y = Lat_Long_H_to_Y(Latitude, longitude, Height, a, b)
     Z = Lat_H_to_Z(Latitude, Height, a, b)
-    // 'XYZ to X1Y1Z1 VN2000
+        // 'XYZ to X1Y1Z1 VN2000
     X1 = Helmert_X(X, Y, Z, DX, Y_rot, Z_rot, S)
     Y1 = Helmert_Y(X, Y, Z, DY, X_rot, Z_rot, S)
     Z1 = Helmert_Z(X, Y, Z, DZ, X_rot, Y_rot, S)
-    // 'X1Y1Z1 to Lat Long H VN2000
+        // 'X1Y1Z1 to Lat Long H VN2000
     B1 = XYZ_to_Lat(X1, Y1, Z1, a, b)
     L1 = XYZ_to_Long(X1, Y1)
     H1 = XYZ_to_H(X1, Y1, Z1, a, b)
-    // 'Lat Long H to E N
+        // 'Lat Long H to E N
     VN2000Y = Lat_Long_to_East(B1, L1, a, b, E0, muichieu, VTruc, KTtruc)
     VN2000X = Lat_Long_to_North(B1, L1, a, b, E0, N0, muichieu, VTruc, KTtruc)
     VN2000H = H1
@@ -775,7 +774,7 @@ function NBT_to_VN2000_Y(Latitude, longitude, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var VN2000X, VN2000Y, VN2000H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
     a = slieu.Range("a")
     b = slieu.Range("b")
     F = slieu.Range("f")
@@ -792,19 +791,19 @@ function NBT_to_VN2000_Y(Latitude, longitude, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // Lat long H to XYZ WGS84
+        // Lat long H to XYZ WGS84
     X = Lat_Long_H_to_X(Latitude, longitude, Height, a, b)
     Y = Lat_Long_H_to_Y(Latitude, longitude, Height, a, b)
     Z = Lat_H_to_Z(Latitude, Height, a, b)
-    //XYZ to X1Y1Z1 VN2000
+        //XYZ to X1Y1Z1 VN2000
     X1 = Helmert_X(X, Y, Z, DX, Y_rot, Z_rot, S)
     Y1 = Helmert_Y(X, Y, Z, DY, X_rot, Z_rot, S)
     Z1 = Helmert_Z(X, Y, Z, DZ, X_rot, Y_rot, S)
-    //X1Y1Z1 to Lat Long H VN2000
+        //X1Y1Z1 to Lat Long H VN2000
     B1 = XYZ_to_Lat(X1, Y1, Z1, a, b)
     L1 = XYZ_to_Long(X1, Y1)
     H1 = XYZ_to_H(X1, Y1, Z1, a, b)
-    //Lat Long H to E N
+        //Lat Long H to E N
     VN2000Y = Lat_Long_to_East(B1, L1, a, b, E0, muichieu, VTruc, KTtruc)
     VN2000X = Lat_Long_to_North(B1, L1, a, b, E0, N0, muichieu, VTruc, KTtruc)
     VN2000H = H1
@@ -828,7 +827,7 @@ function NBT_to_VN2000_Z(Latitude, longitude, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var VN2000X, VN2000Y, VN2000H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
 
     a = slieu.Range("a")
     b = slieu.Range("b")
@@ -846,19 +845,19 @@ function NBT_to_VN2000_Z(Latitude, longitude, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // Lat long H to XYZ WGS84
+        // Lat long H to XYZ WGS84
     X = Lat_Long_H_to_X(Latitude, longitude, Height, a, b)
     Y = Lat_Long_H_to_Y(Latitude, longitude, Height, a, b)
     Z = Lat_H_to_Z(Latitude, Height, a, b)
-    //XYZ to X1Y1Z1 VN2000
+        //XYZ to X1Y1Z1 VN2000
     X1 = Helmert_X(X, Y, Z, DX, Y_rot, Z_rot, S)
     Y1 = Helmert_Y(X, Y, Z, DY, X_rot, Z_rot, S)
     Z1 = Helmert_Z(X, Y, Z, DZ, X_rot, Y_rot, S)
-    //X1Y1Z1 to Lat Long H VN2000
+        //X1Y1Z1 to Lat Long H VN2000
     B1 = XYZ_to_Lat(X1, Y1, Z1, a, b)
     L1 = XYZ_to_Long(X1, Y1)
     H1 = XYZ_to_H(X1, Y1, Z1, a, b)
-    //Lat Long H to E N
+        //Lat Long H to E N
     VN2000Y = Lat_Long_to_East(B1, L1, a, b, E0, muichieu, VTruc, KTtruc)
     VN2000X = Lat_Long_to_North(B1, L1, a, b, E0, N0, muichieu, VTruc, KTtruc)
     VN2000H = H1
@@ -880,7 +879,7 @@ function NBT_to_WGS84_Lat(North, East, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var WGS84Lat, WGS84Long, WGS84H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
 
     a = slieu.Range("a")
     b = slieu.Range("b")
@@ -888,7 +887,7 @@ function NBT_to_WGS84_Lat(North, East, Height) {
     if (b == 0) b = a * (1 - F)
     KTtruc = slieu.Range("LAM0")
     VTruc = slieu.Range("PHI0")
-    
+
     E0 = slieu.Range("E0")
     N0 = slieu.Range("N0")
     muichieu = slieu.Range("F0")
@@ -899,24 +898,24 @@ function NBT_to_WGS84_Lat(North, East, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // E N to Lat Long VN2000
+        // E N to Lat Long VN2000
     B1 = E_N_to_Lat(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     L1 = E_N_to_Long(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     H1 = Height
-    // Lat long H to XYZ VN2000
+        // Lat long H to XYZ VN2000
     X1 = Lat_Long_H_to_X(B1, L1, Height, a, b)
     Y1 = Lat_Long_H_to_Y(B1, L1, Height, a, b)
     Z1 = Lat_H_to_Z(B1, L1, a, b)
-    //X1Y1Z1 to XYZ WGS84
+        //X1Y1Z1 to XYZ WGS84
     X = Helmert_X(X1, Y1, Z1, DX, Y_rot, Z_rot, S)
     Y = Helmert_Y(X1, Y1, Z1, DY, X_rot, Z_rot, S)
     Z = Helmert_Z(X1, Y1, Z1, DX, X_rot, Y_rot, S)
-    //XYZ to Lat Long H WGS84
+        //XYZ to Lat Long H WGS84
     WGS84Lat = XYZ_to_Lat(X, Y, Z, a, b)
     WGS84Long = XYZ_to_Long(X, Y)
     WGS84H = XYZ_to_H(X, Y, Z, a, b)
 
-    return WGS84Lat - 2.90417781181418E-03 - 0.00006/5
+    return WGS84Lat - 2.90417781181418E-03 - 0.00006 / 5
 
 }
 
@@ -932,7 +931,7 @@ function NBT_to_WGS84_Long(North, East, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var WGS84Lat, WGS84Long, WGS84H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
 
     a = slieu.Range("a")
     b = slieu.Range("b")
@@ -940,7 +939,7 @@ function NBT_to_WGS84_Long(North, East, Height) {
     if (b == 0) b = a * (1 - F)
     KTtruc = slieu.Range("LAM0")
     VTruc = slieu.Range("PHI0")
-    
+
     E0 = slieu.Range("E0")
     N0 = slieu.Range("N0")
     muichieu = slieu.Range("F0")
@@ -951,24 +950,24 @@ function NBT_to_WGS84_Long(North, East, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // E N to Lat Long VN2000
+        // E N to Lat Long VN2000
     B1 = E_N_to_Lat(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     L1 = E_N_to_Long(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     H1 = Height
-    // Lat long H to XYZ VN2000
+        // Lat long H to XYZ VN2000
     X1 = Lat_Long_H_to_X(B1, L1, Height, a, b)
     Y1 = Lat_Long_H_to_Y(B1, L1, Height, a, b)
     Z1 = Lat_H_to_Z(B1, L1, a, b)
-    //X1Y1Z1 to XYZ WGS84
+        //X1Y1Z1 to XYZ WGS84
     X = Helmert_X(X1, Y1, Z1, DX, Y_rot, Z_rot, S)
     Y = Helmert_Y(X1, Y1, Z1, DY, X_rot, Z_rot, S)
     Z = Helmert_Z(X1, Y1, Z1, DX, X_rot, Y_rot, S)
-    //XYZ to Lat Long H WGS84
+        //XYZ to Lat Long H WGS84
     WGS84Lat = XYZ_to_Lat(X, Y, Z, a, b)
     WGS84Long = XYZ_to_Long(X, Y)
     WGS84H = XYZ_to_H(X, Y, Z, a, b)
 
-    return WGS84Long + 3.76088254250817E-03 - 0.00013*1.8
+    return WGS84Long + 3.76088254250817E-03 - 0.00013 * 1.8
 }
 
 function NBT_to_WGS84_Long_Lat(North, East, Height) {
@@ -983,7 +982,7 @@ function NBT_to_WGS84_Long_Lat(North, East, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var WGS84Lat, WGS84Long, WGS84H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
 
     a = slieu.Range("a")
     b = slieu.Range("b")
@@ -991,7 +990,7 @@ function NBT_to_WGS84_Long_Lat(North, East, Height) {
     if (b == 0) b = a * (1 - F)
     KTtruc = slieu.Range("LAM0")
     VTruc = slieu.Range("PHI0")
-    
+
     E0 = slieu.Range("E0")
     N0 = slieu.Range("N0")
     muichieu = slieu.Range("F0")
@@ -1002,23 +1001,23 @@ function NBT_to_WGS84_Long_Lat(North, East, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // E N to Lat Long VN2000
+        // E N to Lat Long VN2000
     B1 = E_N_to_Lat(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     L1 = E_N_to_Long(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     H1 = Height
-    // Lat long H to XYZ VN2000
+        // Lat long H to XYZ VN2000
     X1 = Lat_Long_H_to_X(B1, L1, Height, a, b)
     Y1 = Lat_Long_H_to_Y(B1, L1, Height, a, b)
     Z1 = Lat_H_to_Z(B1, L1, a, b)
-    //X1Y1Z1 to XYZ WGS84
+        //X1Y1Z1 to XYZ WGS84
     X = Helmert_X(X1, Y1, Z1, DX, Y_rot, Z_rot, S)
     Y = Helmert_Y(X1, Y1, Z1, DY, X_rot, Z_rot, S)
     Z = Helmert_Z(X1, Y1, Z1, DX, X_rot, Y_rot, S)
-    //XYZ to Lat Long H WGS84
+        //XYZ to Lat Long H WGS84
     WGS84Lat = XYZ_to_Lat(X, Y, Z, a, b)
     WGS84Long = XYZ_to_Long(X, Y)
     WGS84H = XYZ_to_H(X, Y, Z, a, b)
-    return [WGS84Long + 3.76088254250817E-03 - 0.00013*1.8, WGS84Lat - 2.90417781181418E-03 - 0.00006/2]
+    return [WGS84Long + 3.76088254250817E-03 - 0.00013 * 1.8, WGS84Lat - 2.90417781181418E-03 - 0.00006 / 2]
 
 }
 
@@ -1034,7 +1033,7 @@ function NBT_to_WGS84_H(North, East, Height) {
     var X1, Y1, Z1
     var B1, L1, H1
     var WGS84Lat, WGS84Long, WGS84H
-    // Lay cac thong so co ban cua VN2000
+        // Lay cac thong so co ban cua VN2000
     a = slieu.Range("a")
     b = slieu.Range("b")
     F = slieu.Range("f")
@@ -1051,19 +1050,19 @@ function NBT_to_WGS84_H(North, East, Height) {
     Y_rot = slieu.Range("Y_Rotation")
     Z_rot = slieu.Range("Z_Rotation")
     S = slieu.Range("Scale")
-    // E N to Lat Long VN2000
+        // E N to Lat Long VN2000
     B1 = E_N_to_Lat(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     L1 = E_N_to_Long(East, North, a, b, E0, N0, muichieu, VTruc, KTtruc)
     H1 = Height
-    // Lat long H to XYZ VN2000
+        // Lat long H to XYZ VN2000
     X1 = Lat_Long_H_to_X(B1, L1, Height, a, b)
     Y1 = Lat_Long_H_to_Y(B1, L1, Height, a, b)
     Z1 = Lat_H_to_Z(B1, L1, a, b)
-    //X1Y1Z1 to XYZ WGS84
+        //X1Y1Z1 to XYZ WGS84
     X = Helmert_X(X1, Y1, Z1, DX, Y_rot, Z_rot, S)
     Y = Helmert_Y(X1, Y1, Z1, DY, X_rot, Z_rot, S)
     Z = Helmert_Z(X1, Y1, Z1, DX, X_rot, Y_rot, S)
-    //XYZ to Lat Long H WGS84
+        //XYZ to Lat Long H WGS84
     WGS84Lat = XYZ_to_Lat(X, Y, Z, a, b)
     WGS84Long = XYZ_to_Long(X, Y)
     WGS84H = XYZ_to_H(X, Y, Z, a, b)

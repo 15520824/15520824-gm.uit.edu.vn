@@ -163,18 +163,18 @@ GeoJSON.defaults = {
 // GeoJSON.rotation = 90;
 var fls = false;
 
-function ConvertGeo(y, x, z = 0) {
+GeoJSON.ConvertGeo = function(y, x) {
     y = eval(y);
     x = eval(x);
-    // var target = GeoJSON.TABLES.viewPort.viewPorts[0].viewTarget;
-    // var center = GeoJSON.TABLES.viewPort.viewPorts[0].center;
-    var centerLatLng = new LatLng(GeoJSON.HEADER.$LATITUDE, GeoJSON.HEADER.$LONGITUDE);
+    // var target = this.TABLES.viewPort.viewPorts[0].viewTarget;
+    // var center = this.TABLES.viewPort.viewPorts[0].center;
     if (!fls) {
+        var centerLatLng = new LatLng(this.HEADER.$LATITUDE, this.HEADER.$LONGITUDE);
         fls = true;
         console.log(centerLatLng);
     }
-    y -= GeoJSON.mapPoint.y;
-    x -= GeoJSON.mapPoint.x;
+    y -= this.mapPoint.y;
+    x -= this.mapPoint.x;
     // var newPos - 
     // var nY = x;
     // var nX = -y;
@@ -183,10 +183,10 @@ function ConvertGeo(y, x, z = 0) {
     var nX1 = -nY;
     var nY1 = nX;
 
-    nX1 += GeoJSON.HEADER.VN2000_X;
-    nY1 += GeoJSON.HEADER.VN2000_Y;
+    nX1 += this.HEADER.VN2000_X;
+    nY1 += this.HEADER.VN2000_Y;
     // var nLatLng = centerLatLng.moveByMetter(nY-4, nX); 
-    var result = rotation_point(GeoJSON.HEADER.VN2000_X, GeoJSON.HEADER.VN2000_Y, -eval(getGroupCodeValue(GeoJSON.HEADER.$NORTHDIRECTION, 40)), nX1, nY1);
+    var result = rotation_point(this.HEADER.VN2000_X, this.HEADER.VN2000_Y, -eval(getGroupCodeValue(this.HEADER.$NORTHDIRECTION, 40)), nX1, nY1);
     nX1 = result[0];
     nY1 = result[1];
     // result = [NBT_to_WGS84_Long(nX1, nY1, 0),NBT_to_WGS84_Lat(nX1, nY1, 0)];
@@ -246,8 +246,8 @@ GeoJSON.parse = function(objects, params, callback) {
                 }
         }
 
-        this.EXTMIN = ConvertGeo(getGroupCodeValue(this.HEADER.$EXTMIN, 20), getGroupCodeValue(this.HEADER.$EXTMIN, 10));
-        this.EXTMAX = ConvertGeo(getGroupCodeValue(this.HEADER.$EXTMAX, 20), getGroupCodeValue(this.HEADER.$EXTMAX, 10));
+        this.EXTMIN = this.ConvertGeo(getGroupCodeValue(this.HEADER.$EXTMIN, 20), getGroupCodeValue(this.HEADER.$EXTMIN, 10));
+        this.EXTMAX = this.ConvertGeo(getGroupCodeValue(this.HEADER.$EXTMAX, 20), getGroupCodeValue(this.HEADER.$EXTMAX, 10));
     }
     if (objects.TABLES !== undefined) {
         this.TABLES = objects.TABLES;
@@ -284,7 +284,45 @@ GeoJSON.parse = function(objects, params, callback) {
 // Helper functions
 var geoms = { Point: ['POINT'], MultiPoint: [], LineString: ['LINE', 'LWPOLYLINE', 'SPLINE', 'POLYLINE'], MultiLineString: [], Polygon: [], MultiPolygon: [], GeoJSON: [] },
     geomAttrs = [],
-    geoInput = { OLEFRAME: '', OLE2FRAME: '', ACAD_PROXY_ENTITY: '', POINT: '', ARC: '', POLYLINE: [10, 20], ARCALIGNEDTEXT: '', RAY: '', ATTDEF: '', REGION: '', ATTRIB: '', RTEXT: '', BODY: '', SEQEND: '', CIRCLE: '', SHAPE: '', DIMENSION: '', SOLID: '', ELLIPSE: '', SPLINE: { controlPoints: ['x', 'y'] }, HATCH: '', TEXT: '', IMAGE: '', TOLERANCE: '', INSERT: "", TRACE: '', VERTEX: ['x', 'y'], LINE: [10, 20], VIEWPORT: '', LWPOLYLINE: [10, 20], WIPEOUT: '', MLINE: '', XLINE: '', MTEXT: '' };
+    geoInput = {
+        OLEFRAME: '',
+        OLE2FRAME: '',
+        ACAD_PROXY_ENTITY: '',
+        POINT: '',
+        ARC: '',
+        POLYLINE: [10, 20],
+        ARCALIGNEDTEXT: '',
+        RAY: '',
+        ATTDEF: '',
+        REGION: '',
+        ATTRIB: '',
+        RTEXT: '',
+        BODY: '',
+        SEQEND: '',
+        CIRCLE: '',
+        SHAPE: '',
+        DIMENSION: '',
+        SOLID: '',
+        ELLIPSE: '',
+        SPLINE: [10, 20],
+        HATCH: '',
+        TEXT: '',
+        IMAGE: '',
+        TOLERANCE: '',
+        INSERT: "",
+        TRACE: '',
+        VERTEX: [10, 20],
+        LINE: [
+            [10, 11],
+            [20, 21]
+        ],
+        VIEWPORT: '',
+        LWPOLYLINE: [10, 20],
+        WIPEOUT: '',
+        MLINE: '',
+        XLINE: '',
+        MTEXT: ''
+    };
 geoInput["3DSOLID"] = '';
 geoInput["3DFACE"] = '';
 // Adds default settings to user-specified params
@@ -347,11 +385,26 @@ GeoJSON.getFeature = function(args) {
 GeoJSON.buildGeom = function(item, params) {
     for (var param in params) {
         if (param == "LineString") {
-            var x = getGroupCodeValues(item, params[param][0]);
-            var y = getGroupCodeValues(item, params[param][1]);
+            var x;
+            if (Array.isArray(params[param][0])) {
+                x = [];
+                for (var i = 0; i < params[param][0].length; i++) {
+                    x.push(getGroupCodeValue(item, params[param][0][i]));
+                }
+            } else
+                x = getGroupCodeValues(item, params[param][0]);
+
+            var y;
+            if (Array.isArray(params[param][1])) {
+                y = [];
+                for (var i = 0; i < params[param][1].length; i++) {
+                    y.push(getGroupCodeValue(item, params[param][1][i]));
+                }
+            } else
+                y = getGroupCodeValues(item, params[param][1]);
             var min = x.length < y.length ? x.length : y.length;
             for (var i = 1; i < min; i++) {
-                this.dcel.stackLine([ConvertGeo(y[i], x[i]), ConvertGeo(y[i - 1], x[i - 1])]);
+                this.dcel.stackLine([this.ConvertGeo(y[i], x[i]), this.ConvertGeo(y[i - 1], x[i - 1])]);
             }
         }
     }

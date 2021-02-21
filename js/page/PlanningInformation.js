@@ -12,6 +12,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 import { confirmQuestion } from '../component/ModuleView';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 import GeoJSON from '../../dist/geojson.js'
+import DxformSVG from '../../dist/dxform.js'
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -23,6 +24,7 @@ function PlanningInformation() {
     this.loadConfig();
     this.hash = [];
 }
+
 
 PlanningInformation.prototype.setContainer = function(parent) {
     this.parent = parent;
@@ -40,6 +42,7 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loading) {
     }
     console.log(dxf)
     var wkt;
+
     GeoJSON.parse(dxf);
     var center = new google.maps.LatLng(GeoJSON.LATITUDE, GeoJSON.LONGITUDE);
     GeoJSON.extractLines();
@@ -62,16 +65,22 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loading) {
         strokeOpacity: 0.8,
         strokeWeight: 1,
     });
-    var dxf = {
-        HEADER: GeoJSON.HEADER,
-        ENTITIES: GeoJSON.stackNote,
-        BLOCKS: GeoJSON.BLOCKS,
-        TABLES: GeoJSON.TABLES
-    }
-    console.log(DxformSVG.createSvgString(dxf))
+    // var dxf = {
+    //     HEADER: GeoJSON.HEADER,
+    //     ENTITIES: GeoJSON.stackNote,
+    //     BLOCKS: GeoJSON.BLOCKS,
+    //     TABLES: GeoJSON.TABLES
+    // }
+    // var stringContainingXMLSource = DxformSVG.createSvgString(dxf);
+    // var parser = new DOMParser();
+    // var mySVG = parser.parseFromString(stringContainingXMLSource, "image/svg+xml");
+    // this.addSVG(mySVG);
+    // console.log(mySVG)
     console.timeEnd("dcel cost");
     loading.disable();
 }
+
+
 
 PlanningInformation.prototype.showHideLine = function() {
     if (this.lines)
@@ -946,6 +955,36 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
         this.createHashRow(polygon, this.hash);
     }
     return toReturn;
+}
+
+PlanningInformation.prototype.addSVG = function(svgPath, x = 0, y = 0, z = 0, k = 0, sum = 0) {
+    for (var i = 0; i < svgPath.childNodes.length; i++) {
+        switch (svgPath.childNodes[i].tagName) {
+            case "text":
+                x++;
+                break;
+            case "line":
+                y++;
+                break;
+            case "path":
+                z++;
+                break;
+            case "ellipse":
+                k++;
+                break;
+            default:
+                sum++;
+        }
+        if (svgPath.childNodes[i].childNodes) {
+            var temp = this.addSVG(svgPath.childNodes[i], x, y, z, k, sum)
+            x += temp[0];
+            y += temp[1];
+            z += temp[2];
+            k += temp[3];
+            sum += temp[4];
+        }
+    }
+    return [x, y, z, k, sum];
 }
 
 PlanningInformation.prototype.addLine = function(lines) {

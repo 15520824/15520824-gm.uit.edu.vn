@@ -567,8 +567,11 @@ ListRealty.prototype.getView = function() {
     Promise.all(arr).then(function(values) {
         if (self.isCensorship === true)
             promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] });
-        else
-            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] });
+        else {
+            var x = new Date(self.endDay.value.toDateString());
+            x.setDate(x.getDate() + 1);
+            promise = moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: x } }] });
+        }
         promise.then(function(value) {
             self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
             self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -1250,7 +1253,9 @@ ListRealty.prototype.searchControlContent = function() {
                 tempDate.setMonth(tempDate.getMonth() + 2);
                 if (endDay.value - tempDate > 0)
                     endDay.value = tempDate;
-                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] }).then(function(value) {
+                var x = new Date(self.endDay.value.toDateString());
+                x.setDate(x.getDate() + 1);
+                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: x } }] }).then(function(value) {
                     self.formatUpdateData(value);
                 });
             }
@@ -1271,7 +1276,9 @@ ListRealty.prototype.searchControlContent = function() {
                 tempDate.setMonth(tempDate.getMonth() - 2);
                 if (startDay.value - tempDate > 0)
                     startDay.value = tempDate;
-                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: new Date(self.endDay.value.toDateString()) } }] }).then(function(value) {
+                var x = new Date(self.endDay.value.toDateString());
+                x.setDate(x.getDate() + 1);
+                moduleDatabase.getModule("activehouses").load({ WHERE: [{ created: { operator: ">=", value: new Date(self.startDay.value.toDateString()) } }, "&&", { created: { operator: "<=", value: x } }] }).then(function(value) {
                     self.formatUpdateData(value);
                 });
             }

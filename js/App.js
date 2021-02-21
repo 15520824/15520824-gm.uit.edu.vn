@@ -12,7 +12,6 @@ import ListStreet from './page/ListStreet';
 import ListState from './page/ListState';
 import ListDistrict from './page/ListDistrict';
 import PlanningInformation from './page/PlanningInformation';
-import NoteInformation from './page/NoteInformation';
 import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';

@@ -80,6 +80,7 @@ if(isset($data["equipment"]))
             "content" => $equipment[$i]["content"],
         ));
     }
+    unset($data["equipment"]);
 }
 
 for($i = 0 ;$i<$count_old;$i++)
@@ -149,6 +150,7 @@ if(isset($data["contact"]))
             ));
         }
     }
+    unset($data["contact"]);
 }
 
 for($i = 0 ;$i<$count_old;$i++)
@@ -257,6 +259,7 @@ if(isset($data["image"]))
         ));
         $data["image"][$i] = $obj_list["id"];
     }
+    unset($data["image"]);
 }
 
 for($i = 0;$i<count($image_old);$i++)
@@ -269,6 +272,13 @@ for($i = 0;$i<count($image_old);$i++)
       }
 }
 $delete = array();
+
+if(isset($data["oldId"]))
+{
+    $oldId = $data["oldId"];
+    unset($data->oldId);
+}
+
 if(isset($oldId))
 {
     $mergeData = array();

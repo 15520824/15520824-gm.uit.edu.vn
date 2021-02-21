@@ -308,11 +308,12 @@ NewRealty.prototype.imageJuridical = function() {
         ]
     })
     this.viewJuridical = result;
-    moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
-        for (var i = 0; i < values.length; i++)
-            if (values[i].type == 0)
-                result.addFile(values[i], moduleDatabase.imageAssetSrc);
-    })
+    if (this.data)
+        moduleDatabase.getModule("image").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
+            for (var i = 0; i < values.length; i++)
+                if (values[i].type == 0)
+                    result.addFile(values[i], moduleDatabase.imageAssetSrc);
+        })
     return temp;
 }
 
@@ -2169,7 +2170,10 @@ NewRealty.prototype.convenientView = function() {
     }
     var container = _({
         tag: "div",
-        class: "pizo-new-realty-dectruct-content-area-size"
+        class: "pizo-new-realty-dectruct-content-area-size",
+        style: {
+            marginRight: "10px"
+        }
     })
     var equipment = _({
         tag: "selectbox",
@@ -2206,7 +2210,8 @@ NewRealty.prototype.convenientView = function() {
         var value = [];
         var temp;
         var libary = moduleDatabase.getModule("equipments").getLibary("id");
-        moduleDatabase.getModule("house_equipments").load({ WHERE: [{ houseid: this.data.id }] }).then(function(values) {
+        console.log(this.data)
+        moduleDatabase.getModule("house_equipments").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
             for (var i = 0; i < values.length; i++) {
                 temp = libary[values[i]["equipmentid"]];
                 value.push(values[i]["equipmentid"]);
@@ -2572,10 +2577,10 @@ NewRealty.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (data.contactid !== undefined && data.contactid !== 0) {
+        if (data.contactid !== undefined && data.contactid != 0) {
             temp.setInformation(self.checkContactID[data.contactid]);
         } else
-        if (data.userid !== undefined && data.userid !== 0) {
+        if (data.userid !== undefined && data.userid != 0) {
             temp.setInformation(self.checkUserID[data.userid]);
         } else {
             temp.setInformation(data);
@@ -2588,7 +2593,7 @@ NewRealty.prototype.contactItem = function(data) {
         }
         temp.data = data;
         if (data.statusphone === undefined)
-            statusphone.value = 1
+            statusphone.value = 0
         else
             statusphone.value = data.statusphone;
         phone.value = data.phone;
@@ -2599,7 +2604,7 @@ NewRealty.prototype.contactItem = function(data) {
     }
     temp.setOpenForm = function(data) {
         temp.data = data;
-        statusphone.value = 1;
+        statusphone.value = 0;
         name.removeAttribute("disabled");
         statusphone.style.pointerEvents = "unset";
         statusphone.style.backgroundColor = "unset";
@@ -2751,17 +2756,18 @@ NewRealty.prototype.contactView = function() {
         {
             moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: this.data.original.id }] }).then(function(values) {
                 for (var i = 0; i < values.length; i++) {
-                    var value = values[i]
-                    if (value["contactid"] != 0)
-                        moduleDatabase.getModule("contacts").load({ WHERE: [{ id: value["contactid"] }] }).then(function(valueChild) {
-                            console.log(valueChild)
-                            containerContact.appendChild(self.contactItem(valueChild));
-                        })
-                    else {
-                        moduleDatabase.getModule("users").load({ WHERE: [{ id: value["userid"] }] }).then(function(valueChild) {
-                            containerContact.appendChild(self.contactItem(valueChild));
-                        })
-                    }
+                    var value = values[i];
+                    containerContact.appendChild(self.contactItem(value));
+                    // if (value["contactid"] != 0)
+                    //     moduleDatabase.getModule("contacts").load({ WHERE: [{ id: value["contactid"] }] }).then(function(valueChild) {
+                    //         containerContact.appendChild(self.contactItem(valueChild));
+                    //     })
+                    // else {
+                    //     moduleDatabase.getModule("users").load({ WHERE: [{ id: value["userid"] }] }).then(function(valueChild) {
+                    //         console.log(valueChild)
+                    //         containerContact.appendChild(self.contactItem(valueChild));
+                    //     })
+                    // }
                 }
 
             })
