@@ -2833,7 +2833,7 @@ tableView.prototype.checkChildCheckBox = function(data, indexCheckBox) {
             data[i][indexCheckBox]["value"] = false;
             arr.push(data[i]);
         }
-        if (data[i].child.length > 0)
+        if (data[i].child && data[i].child.length > 0)
             arr.concat(this.checkChildCheckBox(data[i].child, indexCheckBox));
     }
     return arr;

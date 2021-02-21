@@ -193,9 +193,12 @@ MergeRealty.prototype.getView = function() {
 
     var valueSimpleStructure, itemStructure = [];
     var prefixImage = moduleDatabase.imageAssetSrc;
+
+    var arrPurpose = moduleDatabase.getModule("purpose").getList("name", "id");
+
     for (var i = 0; i < this.data.length; i++) {
         //Địa chỉ hiện tại
-        itemData = this.data[i].original;
+        itemData = this.data[i];
         for (var j = 0; j < itemData.image.length; j++) {
             if (this.checkImage[itemData.image[j]].type == 1) {
                 var dataChild = {
@@ -414,7 +417,6 @@ MergeRealty.prototype.getView = function() {
 
         sumFloorarea += parseFloat(itemData.floorarea);
         itemFloorarea.push(itemData.floorarea);
-
         var advanceDetruct = itemData.advancedetruct;
         var advanceDetruct1 = advanceDetruct % 10 ? true : false;
         advanceDetruct = parseInt(advanceDetruct / 10);
@@ -810,13 +812,8 @@ MergeRealty.prototype.getView = function() {
             tag: "selectbox",
             class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
             props: {
-                items: [
-                    { text: "Để ở", value: 1 },
-                    { text: "Cho thuê", value: 10 },
-                    { text: "Kinh doanh", value: 100 },
-                    { text: "Làm văn phòng", value: 1000 },
-                ],
-                values: formatFit(parseInt(itemData.fit))
+                items: arrPurpose,
+                values: itemData.purpose
             }
         })
         itemInputFit.push({ value: i + 1, element: tempInputFit });
@@ -931,7 +928,6 @@ MergeRealty.prototype.getView = function() {
     itemLandarea.push(sumLandarea);
     itemFloorarea.push(sumFloorarea);
     itemRoadWidth.push(sumRoadWidth);
-
 
     var dataName = {
         type: 'text',
@@ -1819,7 +1815,10 @@ MergeRealty.prototype.getDataSave = function() {
     structure = data[1].properties[0].properties[5].value.value;
     direction = checkDetruct[data[1].properties[0].properties[7].value];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("name");
-    type = checkType[data[1].properties[0].properties[8].value].id;
+    if (checkType[data[1].properties[0].properties[8].value])
+        type = checkType[data[1].properties[0].properties[8].value].id;
+    else
+        type = 0;
     roadwidth = data[1].properties[0].properties[9].value;
     floor = advanceDetructElement.inputFloor.value;
     basement = advanceDetructElement.inputBasement.value;
@@ -1871,14 +1870,14 @@ MergeRealty.prototype.getDataSave = function() {
     if (addressData) {
         lat = addressData[0];
         lng = addressData[1];
-        temp.streetid = addressData.dataContent.streetid;
-        temp.addressnumber = addressData.dataContent.addressnumber;
-        temp.wardid = addressData.dataContent.wardid;
+        temp.streetid = addressData.data.streetid;
+        temp.addressnumber = addressData.data.addressnumber;
+        temp.wardid = addressData.data.wardid;
     }
     if (addressDataOld) {
-        temp.streetid_old = addressData.dataContent.streetid_old;
-        temp.addressnumber_old = addressData.dataContent.addressnumber_old;
-        temp.wardid_old = addressData.dataContent.wardid_old;
+        temp.streetid_old = addressData.data.streetid_old;
+        temp.addressnumber_old = addressData.data.addressnumber_old;
+        temp.wardid_old = addressData.data.wardid_old;
     }
     if (lat)
         temp.lat = lat;
@@ -1898,7 +1897,7 @@ MergeRealty.prototype.getDataSave = function() {
     temp.contact = contact;
     var arrID = [];
     for (var i = 0; i < this.data.length; i++) {
-        arrID.push(this.data[i].original.id);
+        arrID.push(this.data[i].id);
     }
     temp.oldId = arrID;
     console.log(temp)

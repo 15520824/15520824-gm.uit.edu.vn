@@ -196,10 +196,14 @@ ListRealtyRequest.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("modification_requests").load());
     Promise.all(arr).then(function(values) {
         var checkHouseArr = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
+
         for (var param in checkHouseArr) {
-            if (queryHouse.length > 0)
-                queryHouse.push("&&");
-            queryHouse.push({ id: param });
+
+            if (!isNaN(param)) {
+                if (queryHouse.length > 0)
+                    queryHouse.push("||");
+                queryHouse.push({ id: param });
+            }
         }
         moduleDatabase.getModule("activehouses").load({ WHERE: queryHouse }).then(function(value) {
             var checkObj = moduleDatabase.getModule("modification_requests").getLibary("objid", undefined, true);
@@ -294,7 +298,8 @@ ListRealtyRequest.prototype.getView = function() {
             var arr = [];
             var connect = "||";
 
-
+            var arrTemp = [];
+            var firstOperator = "";
             for (var i = 0; i < value.length; i++) {
                 if (value[i].streetid != 0) {
                     if (arr.length > 0) {
@@ -308,7 +313,13 @@ ListRealtyRequest.prototype.getView = function() {
                     }
                     arr.push({ id: value[i].streetid_old });
                 }
-
+                var dataTemp = value[i]
+                if (dataTemp) {
+                    if (firstOperator == "||")
+                        arrTemp.push(firstOperator);
+                    arrTemp.push({ houseid: dataTemp.id })
+                    firstOperator = "||";
+                }
             }
             if (valueAddrAdd)
                 for (var i = 0; i < valueAddrAdd.length; i++) {
@@ -317,7 +328,10 @@ ListRealtyRequest.prototype.getView = function() {
                     }
                     arr.push({ id: valueAddrAdd[i]["content"] })
                 }
-            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
+            var promiseAll = [];
+            promiseAll.push(moduleDatabase.getModule("streets").load({ WHERE: arr }));
+            promiseAll.push(moduleDatabase.getModule("image").load({ WHERE: arrTemp }))
+            Promise.all(promiseAll).then(function(valueStr) {
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
                 if (self.isCensorship) {
                     value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
@@ -429,15 +443,18 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         var object;
         var imageStatus = [];
         var imageJuridical = [];
-        var checkImage = moduleDatabase.getModule("image").getLibary("id");
-        for (var j = 0; j < data[i].image.length; j++) {
-            if (checkImage[data[i].image[j]].type == 1) {
-                imageStatus.push(data[i].image[j]);
-            } else if (checkImage[data[i].image[j]].type == 0) {
-                imageJuridical.push(data[i].image[j]);
+        var checkImage = moduleDatabase.getModule("image").getLibary("houseid", undefined, true);
+        checkImage = checkImage[data[i].id];
+        if (checkImage)
+            for (var j = 0; j < checkImage.length; j++) {
+                if (checkImage[j].status == 0)
+                    continue;
+                if (checkImage[checkImage[j]].type == 1) {
+                    imageStatus.push(checkImage[j]);
+                } else if (checkImage[checkImage[j]].type == 0) {
+                    imageJuridical.push(checkImage[j]);
+                }
             }
-        }
-        console.log(imageStatus, imageStatus)
         for (var param in check) {
             object = {};
             object["id"] = [];
@@ -469,24 +486,8 @@ ListRealtyRequest.prototype.merge = function(data) {
     var self = this;
     var promiseAll = [];
     var arrTemp = [];
-    var check = [];
     var firstOperator = "";
-    var dataTemp;
-    for (var i = 0; i < data.length; i++) {
-        dataTemp = data[i].original;
-        if (dataTemp.image)
-            for (var j = 0; j < dataTemp.image.length; j++) {
-                if (check[dataTemp.image[j]] !== undefined)
-                    continue;
-                if (firstOperator == "||")
-                    arrTemp.push(firstOperator);
-                arrTemp.push({ id: dataTemp.image[j] })
-                firstOperator = "||";
-                check[dataTemp.image[j]] = 1;
-            }
 
-    }
-    promiseAll.push(moduleDatabase.getModule("image").load({ WHERE: arrTemp }));
     Promise.all(promiseAll).then(function() {
         var mConfirmRequest = new ConfirmRequest(data);
         mConfirmRequest.attach(self.parent);

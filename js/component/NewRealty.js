@@ -886,6 +886,10 @@ NewRealty.prototype.detructView = function() {
     var unitMoney1 = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
     unitMoney1 = [...unitMoney1];
     unitMoney1.unshift({ text: "VND", value: 1 });
+
+    var unitMoney2 = moduleDatabase.getModule("unit_money").getList("name", "coefficient");
+    unitMoney2 = [...unitMoney2];
+    unitMoney2.unshift({ text: "VND", value: 1 });
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -1090,10 +1094,23 @@ NewRealty.prototype.detructView = function() {
                                                             var inputValue = $("input.pizo-new-realty-detruct-content-price-per", temp);
                                                             var price = $('input.pizo-new-realty-detruct-content-price', temp);
                                                             var priceUnit = $('div.pizo-new-realty-detruct-content-price-unit', temp);
-
+                                                            var inputPricePerUnit = $('div.pizo-new-realty-detruct-content-price-per-unit', temp);
                                                             var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                             var areaValueUnit = unit_Zone_all;
-                                                            inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / 1000;
+                                                            inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / inputPricePerUnit.value;
+
+                                                            var min = Infinity;
+                                                            var unitMin = 1;
+                                                            var valueTemp = inputValue.value * inputPricePerUnit.value;
+                                                            for (var i = 0; i < unitMoney2.length; i++) {
+                                                                var tempValue = valueTemp / unitMoney2[i].value;
+                                                                if (tempValue > 1 && min > tempValue) {
+                                                                    min = tempValue;
+                                                                    unitMin = unitMoney1[i].value;
+                                                                }
+                                                            }
+                                                            inputPricePerUnit.value = unitMin;
+                                                            inputValue.value = valueTemp / unitMin;
                                                         }
                                                     },
                                                     attr: {
@@ -1567,14 +1584,28 @@ NewRealty.prototype.detructView = function() {
                                                 value: 0
                                             },
                                             on: {
+
                                                 change: function(event) {
                                                     var inputValue = $("input.pizo-new-realty-detruct-content-price-per", temp);
                                                     var price = $('input.pizo-new-realty-detruct-content-price', temp);
                                                     var priceUnit = $('div.pizo-new-realty-detruct-content-price-unit', temp)
-
+                                                    var inputPricePerUnit = $('div.pizo-new-realty-detruct-content-price-per-unit', temp);
                                                     var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                     var areaValueUnit = unit_Zone_all;
-                                                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / 1000;
+                                                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) / inputPricePerUnit.value;
+
+                                                    var min = Infinity;
+                                                    var unitMin = 1;
+                                                    var valueTemp = inputValue.value * inputPricePerUnit.value;
+                                                    for (var i = 0; i < unitMoney2.length; i++) {
+                                                        var tempValue = valueTemp / unitMoney2[i].value;
+                                                        if (tempValue > 1 && min > tempValue) {
+                                                            min = tempValue;
+                                                            unitMin = unitMoney1[i].value;
+                                                        }
+                                                    }
+                                                    inputPricePerUnit.value = unitMin;
+                                                    inputValue.value = valueTemp / unitMin;
                                                 }
                                             }
                                         },
@@ -1614,6 +1645,20 @@ NewRealty.prototype.detructView = function() {
                                             attr: {
                                                 disabled: ""
                                             }
+                                        },
+                                        {
+                                            tag: "selectmenu",
+                                            class: "pizo-new-realty-detruct-content-price-per-unit",
+                                            on: {
+                                                change: function(event) {
+                                                    var price = $('input.pizo-new-realty-detruct-content-price-per', temp);
+                                                    price.value = price.value * event.lastValue / event.value;
+                                                }
+                                            },
+                                            props: {
+                                                value: 1,
+                                                items: unitMoney2
+                                            }
                                         }
                                     ]
                                 }]
@@ -1644,6 +1689,7 @@ NewRealty.prototype.detructView = function() {
             }
         ]
     })
+
     this.inputHeight = $('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input', temp);
     this.inputWidth = $('input.pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input', temp);
     this.inputUnitHeight = unitHeight;
@@ -1679,6 +1725,9 @@ NewRealty.prototype.detructView = function() {
     this.advanceDetruct2 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-2", temp);
     this.advanceDetruct3 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-3", temp);
     this.advanceDetruct4 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-4", temp);
+
+    this.inputPricePer = $("input.pizo-new-realty-detruct-content-price-per", temp);
+    this.inputPricePerUnit = $("div.pizo-new-realty-detruct-content-price-per-unit", temp);
 
     if (this.data !== undefined) {
         var original = this.data.original;
@@ -1719,9 +1768,9 @@ NewRealty.prototype.detructView = function() {
                 unitMin = unitMoney1[i].value;
             }
         }
-        console.log(original.pricerent)
         this.inputPriceRentUnit.value = unitMin;
         this.inputPriceRent.value = original.pricerent / unitMin;
+
         this.structure.value = original.structure;
         this.structure.emit("change");
         this.inputName.value = original.name;
@@ -1741,6 +1790,7 @@ NewRealty.prototype.detructView = function() {
             this.inputFit.values = valueTemp;
         }.bind(this))
         this.inputPrice.emit("change");
+
         var advanceDetruct = this.data.original.advancedetruct;
         this.advanceDetruct1.checked = advanceDetruct % 10 ? true : false;
         advanceDetruct = parseInt(advanceDetruct / 10);

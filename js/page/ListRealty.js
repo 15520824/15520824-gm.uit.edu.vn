@@ -1817,25 +1817,67 @@ ListRealty.prototype.merge = function(data, parent, index) {
     var arrTemp = [];
     var firstOperator = "";
     var dataTemp;
+    var arrDataMerge = [];
+    var checkArrDataMerge = [];
+    var tempDataMerge;
     for (var i = 0; i < data.length; i++) {
         dataTemp = data[i].original
-        if (dataTemp.image)
-            for (var j = 0; j < dataTemp.image.length; j++) {
-                if (firstOperator == "||")
-                    arrTemp.push(firstOperator);
-                arrTemp.push({ id: dataTemp.image[j] })
-                firstOperator = "||";
-            }
-
+        if (dataTemp) {
+            if (firstOperator == "||")
+                arrTemp.push(firstOperator);
+            arrTemp.push({ houseid: dataTemp.id })
+            firstOperator = "||";
+        }
+        tempDataMerge = Object.assign({}, data[i].original);
+        tempDataMerge.image = [];
+        tempDataMerge.contact = [];
+        tempDataMerge.equipment = [];
+        tempDataMerge.purpose = [];
+        checkArrDataMerge[tempDataMerge.id] = tempDataMerge;
+        arrDataMerge.push(tempDataMerge);
     }
-    promiseAll.push(moduleDatabase.getModule("image").load({ WHERE: arrTemp }));
+    var promise1 = moduleDatabase.getModule("image").load({ WHERE: arrTemp });
+    promiseAll.push(promise1);
+    promise1.then(function(values) {
+        for (var j = 0; j < values.length; j++) {
+            if (checkArrDataMerge[values[j].houseid])
+                checkArrDataMerge[values[j].houseid].image.push(values[j].id);
+        }
+    })
+
+    var promise2 = moduleDatabase.getModule("contact_link").load({ WHERE: arrTemp });
+    promiseAll.push(promise2);
+    promise2.then(function(values) {
+        for (var j = 0; j < values.length; j++) {
+            if (checkArrDataMerge[values[j].houseid])
+                checkArrDataMerge[values[j].houseid].contact.push(values[j]);
+        }
+    })
+
+    var promise3 = moduleDatabase.getModule("house_equipments").load({ WHERE: arrTemp });
+    promiseAll.push(promise3);
+    promise3.then(function(values) {
+        for (var j = 0; j < values.length; j++) {
+            if (checkArrDataMerge[values[j].houseid])
+                checkArrDataMerge[values[j].houseid].equipment.push(values[j]);
+        }
+    })
+
+    var promise4 = moduleDatabase.getModule("purpose_link").load({ WHERE: arrTemp });
+    promiseAll.push(promise4);
+    promise4.then(function(values) {
+        for (var j = 0; j < values.length; j++) {
+            if (checkArrDataMerge[values[j].houseid])
+                checkArrDataMerge[values[j].houseid].purpose.push(values[j].id);
+        }
+    })
+
     Promise.all(promiseAll).then(function() {
-        var mMergeRealty = new MergeRealty(data);
+        var mMergeRealty = new MergeRealty(arrDataMerge);
         mMergeRealty.attach(self.parent);
         var frameview = mMergeRealty.getView();
         self.parent.body.addChild(frameview);
         self.parent.body.activeFrame(frameview);
-        self.mergeDB(mMergeRealty, data, parent, index);
         mMergeRealty.promiseEditDB.then(function(value) {
             var loading = new loadingWheel();
             moduleDatabase.getModule("activehouses").add(value).then(function(final) {
@@ -1855,9 +1897,6 @@ ListRealty.prototype.merge = function(data, parent, index) {
     })
 }
 
-ListRealty.prototype.mergeDB = function(mMergeRealty, data, parent, index) {
-
-}
 
 ListRealty.prototype.mergeView = function(value, data, parent, index) {
 
