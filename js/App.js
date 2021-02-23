@@ -65,7 +65,8 @@ function App() {
 
     moduleDatabase.imageAvatarSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/";
     moduleDatabase.imageThumnail = "https://lab.daithangminh.vn/home_co/pizo/assets/images/thumnail.png";
-    // moduleDatabase.imageAssetSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
+    console.log(moduleDatabase)
+        // moduleDatabase.imageAssetSrc = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));

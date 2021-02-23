@@ -1098,7 +1098,70 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                 //        ]
                                                 //    }
                                             ]
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
+                                            child: [{
+                                                tag: "div",
+                                                class: "pizo-new-realty-dectruct-tab-ownership-history",
+                                                child: [{
+                                                        tag: "div",
+                                                        class: "pizo-new-realty-dectruct-tab",
+                                                        props: {
+                                                            innerHTML: "Ghi chú"
+                                                        }
+                                                    },
+                                                    {
+                                                        tag: "div",
+                                                        class: "note-data",
+                                                        child: []
+                                                    },
+                                                    {
+                                                        tag: "div",
+                                                        class: "form-group",
+                                                        child: [{
+                                                                tag: "label",
+                                                                class: "message-support"
+                                                            },
+                                                            {
+                                                                tag: "textarea",
+                                                                class: "form-control",
+                                                                props: {
+                                                                    required: "",
+                                                                    placeholder: "Nhập ghi chú..."
+                                                                }
+                                                            },
+                                                            {
+                                                                tag: "button",
+                                                                class: ["btn", "btn-info", "btn-xs", "add-note-land"],
+                                                                props: {
+                                                                    innerHTML: "Thêm ghi chú"
+                                                                },
+                                                                on: {
+                                                                    click: function(event) {
+                                                                        var textarea = $("textarea.form-control", temp);
+                                                                        var value = {
+                                                                            userid: window.userid,
+                                                                            houseid: data.id,
+                                                                            content: textarea.value,
+                                                                            created: new Date()
+                                                                        }
+                                                                        textarea.value = "";
+                                                                        var loading = new loadingWheel();
+                                                                        moduleDatabase.getModule("activehouses_note").add(value).then(function() {
+                                                                            loading.disable();
+                                                                            modal.updateChat();
+                                                                        })
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }, ]
                                         }
+
                                     ]
                                 }]
                             }
@@ -1108,6 +1171,17 @@ MapRealty.prototype.modalLargeRealty = function(data) {
             }]
         }]
     })
+
+    var containerChat = $(".note-data", modal);
+    modal.updateChat = function() {
+        moduleDatabase.getModule("activehouses_note").load({ WHERE: [{ houseid: data.id }] }, true).then(function(value) {
+            containerChat.clearChild();
+            for (var i = 0; i < value.length; i++) {
+                containerChat.appendChild(self.noteChat(value[i]));
+            }
+        })
+    }
+    modal.updateChat();
 
     var src = moduleDatabase.imageThumnail;
     if (data !== undefined) {
@@ -2654,12 +2728,14 @@ MapRealty.prototype.detailHouse = function(data) {
                 tag: "div",
                 class: "pizo-new-realty-dectruct-tab-ownership-history",
                 child: [{
-                    tag: "div",
-                    class: "pizo-new-realty-dectruct-tab",
-                    props: {
-                        innerHTML: "Lịch sử sở hữu"
-                    }
-                }]
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-tab",
+                        props: {
+                            innerHTML: "Lịch sử sở hữu"
+                        },
+                    },
+                    this.possessionHistory(data)
+                ]
             },
             {
                 tag: "div",
@@ -2681,76 +2757,9 @@ MapRealty.prototype.detailHouse = function(data) {
                     }
                 ]
             },
-            {
-                tag: "div",
-                class: "pizo-new-realty-dectruct-tab-ownership-history",
-                child: [{
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-tab",
-                        props: {
-                            innerHTML: "Ghi chú"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "note-data",
-                        child: []
-                    },
-                    {
-                        tag: "div",
-                        class: "form-group",
-                        child: [{
-                                tag: "label",
-                                class: "message-support"
-                            },
-                            {
-                                tag: "textarea",
-                                class: "form-control",
-                                props: {
-                                    required: "",
-                                    placeholder: "Nhập ghi chú..."
-                                }
-                            },
-                            {
-                                tag: "button",
-                                class: ["btn", "btn-info", "btn-xs", "add-note-land"],
-                                props: {
-                                    innerHTML: "Thêm ghi chú"
-                                },
-                                on: {
-                                    click: function(event) {
-                                        var textarea = $("textarea.form-control", temp);
-                                        var value = {
-                                            userid: window.userid,
-                                            houseid: data.id,
-                                            content: textarea.value,
-                                            created: new Date()
-                                        }
-                                        textarea.value = "";
-                                        var loading = new loadingWheel();
-                                        moduleDatabase.getModule("activehouses_note").add(value).then(function() {
-                                            loading.disable();
-                                            temp.updateChat();
-                                        })
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
         ]
     })
-    var containerChat = $(".note-data", temp);
-    temp.updateChat = function() {
-        moduleDatabase.getModule("activehouses_note").load({ WHERE: [{ houseid: data.id }] }, true).then(function(value) {
-            containerChat.clearChild();
-            for (var i = 0; i < value.length; i++) {
-                containerChat.appendChild(self.noteChat(value[i]));
-            }
-        })
-    }
-    temp.updateChat();
+
     var inputHeight = $('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input', temp);
     var inputWidth = $('input.pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input', temp);
     var inputUnitHeight = unitHeight;
@@ -2857,6 +2866,150 @@ MapRealty.prototype.detailHouse = function(data) {
         //         historical.parentNode.style.margin = "10px";
         // })
     }
+    return temp;
+}
+
+MapRealty.prototype.possessionHistory = function(data) {
+    var container = _({
+        tag: "ul",
+        class: "tl"
+    })
+    var temp = _({
+        tag: "div",
+        class: "history-tl-container",
+        child: [
+            container
+        ]
+    })
+    var promiseAll = [];
+    var promise1 = moduleDatabase.getModule("contacts").load();
+    promiseAll.push(promise1);
+    var promise2 = moduleDatabase.getModule("users").load();
+    promiseAll.push(promise2);
+    var promise3 = moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: data.id }], ORDERING: "created" });
+    promiseAll.push(promise3);
+    Promise.all(promiseAll).then(function(current) {
+        current = current[2];
+        if (current && current.length > 0)
+            current = current[0];
+        var varTemp = this.possessionHistoryNode(current);
+        if (varTemp)
+            container.appendChild(varTemp);
+        var promise3 = moduleDatabase.getModule("possession_history").load({ WHERE: [{ houseid: data.id }] });
+        promise3.then(function(values) {
+            for (var i = 0; i < values.length; i++) {
+                var varTemp = this.possessionHistoryNode(values[i]);
+                if (varTemp)
+                    container.appendChild(varTemp);
+            }
+            if (container.childNodes.length == 0)
+                temp.style.display = "none";
+        }.bind(this))
+    }.bind(this))
+    return temp;
+}
+
+MapRealty.prototype.possessionHistoryNode = function(data) {
+    console.log(data)
+    var checkUser = moduleDatabase.getModule("users").getLibary("id");
+    var checkContact = moduleDatabase.getModule("contacts").getLibary("id");
+    var name = "",
+        phone = "",
+        status = "Tình trạng: ",
+        ownership = "Quan hệ sở hữu: "
+    if (data.userid != 0) {
+        var user = checkUser[data.userid];
+        if (user) {
+            name = user.name;
+            phone = user.phone;
+            status += "còn hoạt động";
+            switch (eval(data.typecontact)) {
+                case 0:
+                    ownership += "Chưa xác định"
+                    break;
+                case 1:
+                    ownership += "Môi giới"
+                    break;
+                case 2:
+                    ownership += "Chủ nhà"
+                    break;
+                case 3:
+                    ownership += "Họ hàng"
+                    break;
+
+            }
+        }
+    } else
+    if (data.contactid != 0) {
+        var user = checkContact[data.contactid];
+        if (user) {
+            name = user.name;
+            phone = user.phone;
+            switch (eval(user.statusphone)) {
+                case 0:
+                    status += "còn hoạt động"
+                    break;
+                case 1:
+                    status += "sai số"
+                    break;
+                case 2:
+                    status += "gọi lại sau"
+                    break;
+                case 3:
+                    status += "bỏ qua"
+                    break;
+                case 4:
+                    status += "khóa máy"
+                    break;
+
+            }
+            switch (eval(data.typecontact)) {
+                case 0:
+                    ownership += "Chưa xác định"
+                    break;
+                case 1:
+                    ownership += "Môi giới"
+                    break;
+                case 2:
+                    ownership += "Chủ nhà"
+                    break;
+                case 3:
+                    ownership += "Họ hàng"
+                    break;
+            }
+        }
+    }
+    var temp = _({
+        tag: "li",
+        class: "tl-item",
+        atr: {
+            ngRepeat: "item in retailer_history"
+        },
+        child: [{
+                tag: "div",
+                class: "timestamp",
+                props: {
+                    innerHTML: formatDate(data.created, false, false, true, true, true) + "<br>" + formatDate(data.created, true, true, false, false, false)
+                }
+            },
+            {
+                tag: "div",
+                class: "item-title",
+                props: {
+                    innerHTML: name + " ( " + phone + " )"
+                }
+            },
+            {
+                tag: "div",
+                class: "item-detail",
+                props: {
+                    innerHTML: ownership + "<br>" + status + "<br>" + data.note
+                }
+            }
+        ]
+    })
+    if (!user)
+        return undefined;
     return temp;
 }
 

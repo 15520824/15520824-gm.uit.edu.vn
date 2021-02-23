@@ -254,7 +254,7 @@ NewRealty.prototype.descView = function() {
                         class: "pizo-new-realty-desc-infomation-cell",
                         child: [
                             self.juridicalView(),
-                            self.historyView(),
+                            // self.historyView(),
                             self.imageJuridical(),
                         ]
                     }
@@ -1855,7 +1855,7 @@ NewRealty.prototype.getDataSave = function(isCheck = false) {
         acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
         direction: this.direction.value,
         type: this.type.value,
-        fit: fitUpdate,
+        purpose: fitUpdate,
         roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
         floor: this.inputFloor.value,
         basement: this.inputBasement.value,

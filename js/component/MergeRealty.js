@@ -1794,7 +1794,6 @@ MergeRealty.prototype.getDataSave = function() {
             thumnail = 1;
         image.push({ src: arrStatus[i].id, copy: arrStatus[i].copy, type: 1, thumnail: thumnail, userid: window.userid });
     }
-    var address, addressOld;
     var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
     width = data[1].properties[0].properties[0].element.wholeText;
     height = data[1].properties[0].properties[1].element.wholeText;
@@ -1848,7 +1847,7 @@ MergeRealty.prototype.getDataSave = function() {
         acreage: acreage,
         direction: direction,
         type: type,
-        fit: fitUpdate,
+        purpose: fitUpdate,
         roadwidth: roadwidth,
         floor: floor,
         basement: basement,
@@ -1900,7 +1899,6 @@ MergeRealty.prototype.getDataSave = function() {
         arrID.push(this.data[i].id);
     }
     temp.oldId = arrID;
-    console.log(temp)
     return temp;
 }
 

@@ -186,6 +186,9 @@ ConfirmRequest.prototype.getView = function() {
 
     var valueSimpleStructure, itemStructure = [];
     var prefixImage = moduleDatabase.imageAssetSrc;
+
+    var arrPurpose = moduleDatabase.getModule("purpose").getList("name", "id");
+
     for (var i = 0; i < this.data.length; i++) {
         //Địa chỉ hiện tại
         itemData = this.data[i].original;
@@ -738,13 +741,8 @@ ConfirmRequest.prototype.getView = function() {
             tag: "selectbox",
             class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
             props: {
-                items: [
-                    { text: "Để ở", value: 1 },
-                    { text: "Cho thuê", value: 10 },
-                    { text: "Kinh doanh", value: 100 },
-                    { text: "Làm văn phòng", value: 1000 },
-                ],
-                values: formatFit(parseInt(itemData.fit))
+                items: arrPurpose,
+                values: itemData.purpose
             }
         })
         itemInputFit.push({ value: i + 1, element: tempInputFit });
@@ -1715,7 +1713,7 @@ ConfirmRequest.prototype.getDataSave = function() {
         acreage: acreage,
         direction: direction,
         type: type,
-        fit: fitUpdate,
+        purpose: fitUpdate,
         roadwidth: roadwidth,
         floor: floor,
         basement: basement,

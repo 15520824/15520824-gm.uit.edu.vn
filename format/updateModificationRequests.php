@@ -101,12 +101,51 @@ for($i = 0 ;$i<$count_old;$i++)
     $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
 }
 
+if(isset($data["purpose"]))
+{
+    $purpose = $data["purpose"];
+    $purpose_old = $connector->load($prefix."purpose_link","houseid = ".$data["id"]);
+    $count = count($purpose);
+    $count_old = count($purpose_old);
+    $continue = false;
+    for($i = 0;$i<$count;$i++)
+    {
+        for($j = 0;$j<$count_old;$j++)
+        {
+            if($purpose[$i]==$purpose_old[$j]["purposeid"])
+            {
+                array_splice($purpose_old,$j,1);
+                $j--;
+                $count_old--;
+                $continue = true;
+                break;
+            }
+        }
+        if($continue === true)
+        {
+            $continue = false;
+            continue;
+        }
+        $connector->insert($prefix."purpose_link",array(
+            "purposeid" => $purpose[$i],
+            "houseid" => $data["id"],
+        ));
+    }
+}
+
+for($i = 0 ;$i<$count_old;$i++)
+{
+    $connector->query( "DELETE FROM ".$prefix."purpose_link  WHERE (id = ".$purpose_old[$i]["id"].")");
+}
+
 if(isset($data["contact"]))
 {
     $contact = $data["contact"];
-    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"]);
+    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"],'created');
     $count = count($contact);
     $count_old = count($contact_old);
+    if($count_old>0)
+        $firstContact = $contact_old[0];
     $continue = false;
     for($i = 0;$i<$count;$i++)
     {
@@ -168,6 +207,8 @@ if(isset($data["contact"]))
 for($i = 0 ;$i<$count_old;$i++)
 {
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
+    if($firstContact["id"] == $contact_old[$i]["id"])
+    $connector->insert($prefix.'possession_history',$firstContact);
 }
 
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);

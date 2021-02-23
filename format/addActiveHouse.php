@@ -88,12 +88,53 @@ for($i = 0 ;$i<$count_old;$i++)
     $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
 }
 
+if(isset($data["purpose"]))
+{
+    $purpose = $data["purpose"];
+    $purpose_old = $connector->load($prefix."purpose_link","houseid = ".$data["id"]);
+    $count = count($purpose);
+    $count_old = count($purpose_old);
+    $continue = false;
+    for($i = 0;$i<$count;$i++)
+    {
+        for($j = 0;$j<$count_old;$j++)
+        {
+            if($purpose[$i]==$purpose_old[$j]["purposeid"])
+            {
+                array_splice($purpose_old,$j,1);
+                $j--;
+                $count_old--;
+                $continue = true;
+                break;
+            }
+        }
+        if($continue === true)
+        {
+            $continue = false;
+            continue;
+        }
+        $connector->insert($prefix."purpose_link",array(
+            "purposeid" => $purpose[$i],
+            "houseid" => $data["id"],
+        ));
+    }
+    unset($data["purpose"]);
+}
+
+for($i = 0 ;$i<$count_old;$i++)
+{
+    $connector->query( "DELETE FROM ".$prefix."purpose_link  WHERE (id = ".$purpose_old[$i]["id"].")");
+}
+
+
 if(isset($data["contact"]))
 {
     $contact = $data["contact"];
-    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"]);
+    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"],'created');
     $count = count($contact);
     $count_old = count($contact_old);
+    if($count_old>0)
+        $firstContact = $contact_old[0];
     $continue = false;
     for($i = 0;$i<$count;$i++)
     {
@@ -156,6 +197,8 @@ if(isset($data["contact"]))
 for($i = 0 ;$i<$count_old;$i++)
 {
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
+    if($firstContact["id"] == $contact_old[$i]["id"])
+     $connector->insert($prefix.'possession_history',$firstContact);
 }
 
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
@@ -299,37 +342,54 @@ if(isset($oldId))
             array_push($delete,array(
                 'activehouses'=>$new
             ));
+            $connector->query("DELETE FROM ".$prefix."contact_link"." WHERE( houseid = ".$oldId[$i].")");
+            $connector->query("DELETE FROM ".$prefix."house_equipments"." WHERE( houseid = ".$oldId[$i].")");
+            $connector->query("DELETE FROM ".$prefix."purpose_link"." WHERE( houseid = ".$oldId[$i].")");
+            $connector->query("DELETE FROM ".$prefix."possession_history"." WHERE( houseid = ".$oldId[$i].")");
+            $connector->query("DELETE FROM ".$prefix."activehouses_note"." WHERE( houseid = ".$oldId[$i].")");
+            $connector->query("DELETE FROM ".$prefix."modification_requests"." WHERE( houseid = ".$oldId[$i].")");
+
+            $image_old = $connector->load($prefix."image","houseid = ".$oldId[$i]);
+            for($i = 0;$i<count($image_old);$i++)
+            {
+                if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
+                    unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                    $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
+                } else {
+                    echo 'Could not delete '.$filename.', file does not exist';
+                }
+            }
             $connector->query("DELETE FROM ".$prefix."activehouses WHERE id =".$oldId[$i]);
-            $tempData["previousid"] = $oldId[$i];
-            unset($tempData["id"]);
-            $tempData["id"] = $connector->insert($prefix."inactivehouses",$tempData);
-            array_push($insert,array(
-                'inactivehouses'=>$tempData
-            ));
+            // unset($tempData["id"]);
+            // $tempData["previousid"] = $oldId[$i];
+            // $tempData["id"] = $connector->insert($prefix."inactivehouses",$tempData);
+            // array_push($insert,array(
+            //     'inactivehouses'=>$tempData
+            // ));
         }
     }
-    if(isset($userid));
-    {
-        $log = "Được gộp vào thời gian ".date("H:i:s d-m-Y"); ;
-        $logData = array(
-            'log' => $log,
-            'houseid' => $data["id"],
-            'userid' => $userid,
-        );
-        $connector->insert($prefix.'activehouses_logs', $logData);
-    }
+    // if(isset($userid));
+    // {
+    //     $log = "Được gộp vào thời gian ".date("H:i:s d-m-Y"); ;
+    //     $logData = array(
+    //         'log' => $log,
+    //         'houseid' => $data["id"],
+    //         'userid' => $userid,
+    //     );
+    //     $connector->insert($prefix.'activehouses_logs', $logData);
+    // }
 }else
 {
-    if(isset($userid))
-    {
-        $log = "Được tạo vào thời gian ".date("H:i:s d-m-Y");
-        $logData = array(
-            'log' => $log,
-            'houseid' => $data["id"],
-            'userid' => $userid,
-        );
-        $connector->insert($prefix.'activehouses_logs', $logData);
-    }
+    // if(isset($userid))
+    // {
+    //     $log = "Được tạo vào thời gian ".date("H:i:s d-m-Y");
+    //     $logData = array(
+    //         'log' => $log,
+    //         'houseid' => $data["id"],
+    //         'userid' => $userid,
+    //     );
+    //     $connector->insert($prefix.'activehouses_logs', $logData);
+    // }
 }
 $result = array(
     'delete'=>$delete,

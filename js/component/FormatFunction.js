@@ -184,6 +184,19 @@ export function equal(data, WHERE) {
                             tempTime1 = new Date(data[param]);
                             tempTime1 = tempTime1.getTime();
                         }
+                        if (typeof data[param].getMonth === 'function') {
+                            tempTime = data[param].getTime();
+                            tempTime1 = new Date(WHERE[param].value);
+                            tempTime1 = tempTime1.getTime();
+                        }
+                        if (typeof tempTime == "string" && !isNaN(Date.parse(tempTime))) {
+                            tempTime = new Date(tempTime);
+                            tempTime = tempTime.getTime();
+                        }
+                        if (typeof tempTime1 == "string" && !isNaN(Date.parse(tempTime1))) {
+                            tempTime1 = new Date(tempTime1);
+                            tempTime1 = tempTime1.getTime();
+                        }
                         if (eval(tempTime1 + WHERE[param].operator + tempTime))
                             stringResult += true;
                         else
@@ -194,6 +207,19 @@ export function equal(data, WHERE) {
                         if (typeof WHERE[param] === 'object' && typeof WHERE[param].getMonth === 'function') {
                             tempTime = WHERE[param].getTime();
                             tempTime1 = new Date(data[param]);
+                            tempTime1 = tempTime1.getTime();
+                        }
+                        if (typeof data[param].getMonth === 'function') {
+                            tempTime = data[param].getTime();
+                            tempTime1 = new Date(WHERE[param]);
+                            tempTime1 = tempTime1.getTime();
+                        }
+                        if (typeof tempTime == "string" && !isNaN(Date.parse(tempTime))) {
+                            tempTime = new Date(tempTime);
+                            tempTime = tempTime.getTime();
+                        }
+                        if (typeof tempTime1 == "string" && !isNaN(Date.parse(tempTime1))) {
+                            tempTime1 = new Date(tempTime1);
                             tempTime1 = tempTime1.getTime();
                         }
                         if (tempTime1 == tempTime1)

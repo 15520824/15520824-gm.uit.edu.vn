@@ -206,6 +206,7 @@ ListRealtyRequest.prototype.getView = function() {
             }
         }
         moduleDatabase.getModule("activehouses").load({ WHERE: queryHouse }).then(function(value) {
+
             var checkObj = moduleDatabase.getModule("modification_requests").getLibary("objid", undefined, true);
             var valueAddrAdd = checkObj["streetid"];
             self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
@@ -300,14 +301,17 @@ ListRealtyRequest.prototype.getView = function() {
 
             var arrTemp = [];
             var firstOperator = "";
+            var tempDataMerge;
+            self.checkArrDataMerge = [];
+            var checkArrDataMerge = self.checkArrDataMerge;
             for (var i = 0; i < value.length; i++) {
-                if (value[i].streetid != 0) {
+                if (value[i].streetid != 0 && value[i].streetid != null) {
                     if (arr.length > 0) {
                         arr.push(connect);
                     }
                     arr.push({ id: value[i].streetid });
                 }
-                if (value[i].streetid_old != 0) {
+                if (value[i].streetid_old != 0 && value[i].streetid_old != null) {
                     if (arr.length > 0) {
                         arr.push(connect);
                     }
@@ -320,17 +324,63 @@ ListRealtyRequest.prototype.getView = function() {
                     arrTemp.push({ houseid: dataTemp.id })
                     firstOperator = "||";
                 }
+                tempDataMerge = Object.assign({}, value[i]);
+                tempDataMerge.image = [];
+                tempDataMerge.contact = [];
+                tempDataMerge.equipment = [];
+                tempDataMerge.purpose = [];
+                checkArrDataMerge[tempDataMerge.id] = tempDataMerge;
             }
             if (valueAddrAdd)
                 for (var i = 0; i < valueAddrAdd.length; i++) {
-                    if (arr.length > 0) {
-                        arr.push(connect);
+                    if (valueAddrAdd[i]["content"] != null && valueAddrAdd[i]["content"] != 0) {
+                        if (arr.length > 0) {
+                            arr.push(connect);
+                        }
+                        arr.push({ id: valueAddrAdd[i]["content"] })
                     }
-                    arr.push({ id: valueAddrAdd[i]["content"] })
                 }
+
             var promiseAll = [];
+            console.log(arr)
             promiseAll.push(moduleDatabase.getModule("streets").load({ WHERE: arr }));
-            promiseAll.push(moduleDatabase.getModule("image").load({ WHERE: arrTemp }))
+
+            var promise1 = moduleDatabase.getModule("image").load({ WHERE: arrTemp });
+            promiseAll.push(promise1);
+            promise1.then(function(values) {
+                for (var j = 0; j < values.length; j++) {
+                    if (checkArrDataMerge[values[j].houseid])
+                        checkArrDataMerge[values[j].houseid].image.push(values[j].id);
+                }
+            })
+
+            var promise2 = moduleDatabase.getModule("contact_link").load({ WHERE: arrTemp });
+            promiseAll.push(promise2);
+            promise2.then(function(values) {
+                for (var j = 0; j < values.length; j++) {
+                    if (checkArrDataMerge[values[j].houseid])
+                        checkArrDataMerge[values[j].houseid].contact.push(values[j]);
+                }
+            })
+
+            var promise3 = moduleDatabase.getModule("house_equipments").load({ WHERE: arrTemp });
+            promiseAll.push(promise3);
+            promise3.then(function(values) {
+                for (var j = 0; j < values.length; j++) {
+                    if (checkArrDataMerge[values[j].houseid])
+                        checkArrDataMerge[values[j].houseid].equipment.push(values[j]);
+                }
+            })
+
+            var promise4 = moduleDatabase.getModule("purpose_link").load({ WHERE: arrTemp });
+            promiseAll.push(promise4);
+            promise4.then(function(values) {
+                for (var j = 0; j < values.length; j++) {
+                    if (checkArrDataMerge[values[j].houseid])
+                        checkArrDataMerge[values[j].houseid].purpose.push(values[j].id);
+                }
+            })
+
             Promise.all(promiseAll).then(function(valueStr) {
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
                 if (self.isCensorship) {
@@ -391,17 +441,21 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
     var check;
     var checkHouseRequest = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
     for (var i = 0; i < data.length; i++) {
+        console.log(data[i])
         if (checkHouseRequest[data[i].id] == undefined)
             continue;
+
+        var dataHouse = self.checkArrDataMerge[data[i].id];
+        console.log(dataHouse)
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
-            if (data[i].addressnumber == "" && data[i].portion == "")
+            if (dataHouse.addressnumber == "" && dataHouse.portion == "")
                 continue;
             var object = JSON.parse(param);
             districtid = undefined;
             stateid = undefined;
-            if (data[i].wardid)
-                districtid = self.checkWard[data[i].wardid].districtid;
+            if (dataHouse.wardid)
+                districtid = self.checkWard[dataHouse.wardid].districtid;
             if (districtid)
                 stateid = self.checkDistrict[districtid].stateid;
             for (var objectParam in object) {
@@ -413,7 +467,7 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
                     if (districtid !== object[objectParam])
                         continue Loop;
                 } else
-                if (object[objectParam] !== data[i][objectParam]) {
+                if (object[objectParam] !== dataHouse[objectParam]) {
                     continue Loop;
                 }
             }
@@ -423,12 +477,12 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         }
         if (isAvailable == false)
             continue;
-        var result = this.getDataRow(data[i]);
-        result.original = data[i];
+        var result = this.getDataRow(dataHouse);
+        result.original = dataHouse;
         check = [];
         var isContinues = false;
-        for (var j = 0; j < checkHouseRequest[data[i].id].length; j++) {
-            var object = checkHouseRequest[data[i].id][j];
+        for (var j = 0; j < checkHouseRequest[dataHouse.id].length; j++) {
+            var object = checkHouseRequest[dataHouse.id][j];
             if (object.status == 0) {
                 if (check[object.created] == undefined)
                     check[object.created] = [];
@@ -444,7 +498,7 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
         var imageStatus = [];
         var imageJuridical = [];
         var checkImage = moduleDatabase.getModule("image").getLibary("houseid", undefined, true);
-        checkImage = checkImage[data[i].id];
+        checkImage = checkImage[dataHouse.id];
         if (checkImage)
             for (var j = 0; j < checkImage.length; j++) {
                 if (checkImage[j].status == 0)
@@ -472,21 +526,20 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
                 }
                 object["id"].push(check[param][j].id)
             }
-            var x = Object.assign({}, data[i]);
+            var x = Object.assign({}, dataHouse);
             x = Object.assign(x, object);
             x.image = imageStatus.concat(imageJuridical);
             result.child.push(this.getDataRow(x, result));
         }
         temp.push(result);
     }
+    console.log(temp)
     return temp;
 }
 
 ListRealtyRequest.prototype.merge = function(data) {
     var self = this;
     var promiseAll = [];
-    var arrTemp = [];
-    var firstOperator = "";
 
     Promise.all(promiseAll).then(function() {
         var mConfirmRequest = new ConfirmRequest(data);
@@ -583,6 +636,7 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
         var ward = "",
             district = "",
             state = "";
+        console.log(this.checkStreet, data.streetid)
         if (this.checkStreet[data.streetid])
             var street = this.checkStreet[data.streetid].name;
         else

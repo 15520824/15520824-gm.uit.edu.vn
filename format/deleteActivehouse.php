@@ -47,6 +47,10 @@ if($WHERE!="")
     {
         $connector->query("DELETE FROM ".$prefix."contact_link"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
         $connector->query("DELETE FROM ".$prefix."house_equipments"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+        $connector->query("DELETE FROM ".$prefix."purpose_link"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+        $connector->query("DELETE FROM ".$prefix."possession_history"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+        $connector->query("DELETE FROM ".$prefix."activehouses_note"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+        $connector->query("DELETE FROM ".$prefix."modification_requests"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
 
         $image_old = $connector->load($prefix."image","houseid = ".$dataDelete[$i]["id"]);
         for($i = 0;$i<count($image_old);$i++)

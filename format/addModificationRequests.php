@@ -69,15 +69,51 @@ if(isset($data["equipment"]))
     }
 }
 
-for($i = 0 ;$i<$count_old;$i++)
+if(count($contact_old)>0)
 {
-    $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
+    $isEquipment = true;
 }
+
+$isPurpose = false;
+if(isset($data["purpose"]))
+{
+    $purpose = $data["purpose"];
+    $purpose_old = $connector->load($prefix."purpose_link","houseid = ".$data["id"]);
+    $count = count($purpose);
+    $count_old = count($purpose_old);
+    $continue = false;
+    for($i = 0;$i<$count;$i++)
+    {
+        for($j = 0;$j<$count_old;$j++)
+        {
+            if($purpose[$i]==$purpose_old[$j]["purposeid"])
+            {
+                array_splice($purpose_old,$j,1);
+                $j--;
+                $count_old--;
+                $continue = true;
+                break;
+            }
+        }
+        if($continue === true)
+        {
+            $continue = false;
+            continue;
+        }
+        $isPurpose = true;
+    }
+}
+
+if(count($purpose_old)>0)
+{
+    $isPurpose = true;
+}
+
 $isContact = false;
 if(isset($data["contact"]))
 {
     $contact = $data["contact"];
-    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"]);
+    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"],'created');
     $count = count($contact);
     $count_old = count($contact_old);
     $continue = false;
@@ -269,6 +305,18 @@ if($count==1)
             "houseid"=>$data["id"],
             "objid"=>"equipment",
             "content"=>json_encode($data["equipment"]),
+            "created"=>$created
+        );
+        $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);
+        array_push($insert,$dataRequests);
+    }
+    if($isPurpose == true){
+        $dataRequests = array(
+            "type"=>0,
+            "userid"=>$data["userid"],
+            "houseid"=>$data["id"],
+            "objid"=>"purpose",
+            "content"=>json_encode($data["purpose"]),
             "created"=>$created
         );
         $dataRequests["id"] = $connector-> insert($prefix."modification_requests", $dataRequests);

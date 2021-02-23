@@ -40,6 +40,8 @@ function ListRealty() {
     this.requestEditDB = MapRealty.prototype.requestEditDB;
     this.itemDisplayNone = MapRealty.prototype.itemDisplayNone;
     this.noteChat = MapRealty.prototype.noteChat;
+    this.possessionHistory = MapRealty.prototype.possessionHistory;
+    this.possessionHistoryNode = MapRealty.prototype.possessionHistoryNode;
 
     moduleDatabase.getModule("users").load().then(function(value) {
         this.checkUser = moduleDatabase.getModule("users").getLibary("phone");
@@ -785,6 +787,7 @@ ListRealty.prototype.formatDataRow = function(data) {
     var stateid;
     var isAvailable;
     var isCensorshipFalse;
+    var isDetail;
     var checkFavourite;
     if (this.isFavourite === true) {
         checkFavourite = moduleDatabase.getModule("favourite").getLibary("houseid");
@@ -792,6 +795,7 @@ ListRealty.prototype.formatDataRow = function(data) {
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         isCensorshipFalse = false;
+        isDetail = false
         Loop: for (var param in moduleDatabase.checkPermission) {
             if (data[i].addressnumber == "" && data[i].portion == "")
                 continue;
@@ -821,6 +825,9 @@ ListRealty.prototype.formatDataRow = function(data) {
             if (moduleDatabase.checkPermission[param].indexOf(63) !== -1) {
                 isCensorshipFalse = true;
             }
+            if (moduleDatabase.checkPermission[param].indexOf(67) !== -1) {
+                isDetail = true;
+            }
         }
         if (isAvailable == false)
             continue;
@@ -828,7 +835,7 @@ ListRealty.prototype.formatDataRow = function(data) {
             if (checkFavourite[data[i].id] == undefined)
                 continue;
         }
-        var result = this.getDataRow(data[i], isCensorshipFalse);
+        var result = this.getDataRow(data[i], isCensorshipFalse, isDetail);
         result.original = data[i];
         if (check[data[i].parent_id] !== undefined) {
             if (check[data[i].parent_id].child === undefined)
@@ -841,7 +848,8 @@ ListRealty.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
+ListRealty.prototype.getDataRow = function(data, isCensorshipFalse, isDetail) {
+    var self = this;
     var structure;
     switch (parseInt(data.structure)) {
         case 0:
@@ -936,6 +944,31 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
     if (statusValue == 12) {
         statusValue = [2, 11];
     }
+    var MS = {
+        value: data.id,
+        style: {
+            whiteSpace: "nowrap"
+        }
+    };
+    if (isDetail == true) {
+        MS.element = _({
+            tag: "a",
+            props: {
+                innerHTML: data.id
+            },
+            style: {
+                color: "#007bff",
+                textDecoration: "none",
+                backgroundColor: "transparent",
+                cursor: "pointer"
+            },
+            on: {
+                click: function(event) {
+                    document.body.appendChild(self.modalLargeRealty(data));
+                }
+            }
+        })
+    }
     var result = [
         {},
         {
@@ -944,12 +977,7 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
                 console.log(arguments[4][0].value, arguments[1].childNodes[0].childNodes[0].checked)
             }
         },
-        {
-            value: data.id,
-            style: {
-                whiteSpace: "nowrap"
-            }
-        },
+        MS,
         number,
         street,
         ward,
