@@ -209,7 +209,7 @@ export function equal(data, WHERE) {
                             tempTime1 = new Date(data[param]);
                             tempTime1 = tempTime1.getTime();
                         }
-                        if (typeof data[param].getMonth === 'function') {
+                        if (data[param] !== null && typeof data[param] === 'object' && typeof data[param].getMonth === 'function') {
                             tempTime = data[param].getTime();
                             tempTime1 = new Date(WHERE[param]);
                             tempTime1 = tempTime1.getTime();

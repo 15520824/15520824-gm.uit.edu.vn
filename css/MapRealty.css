@@ -766,7 +766,7 @@ ul {
 
 @media screen and (min-width: 768px) {
     .media-stream {
-        max-width: calc(100vw - 600px);
+        max-width: calc(100vw - 1100px);
     }
 }
 
@@ -1002,10 +1002,16 @@ ul {
 
 @media only screen and (min-width: 768px) {
     .ds-container .ds-data-col.ds-data-col-data-forward {
-        -ms-flex-preferred-size: 500px;
-        flex-basis: 500px;
-        max-width: 500px;
+        -ms-flex-preferred-size: 1000px;
+        flex-basis: 1000px;
+        max-width: 1000px;
     }
+}
+
+.ds-data-col-container{
+    display: flex;
+    width: 100%;
+    height: calc(100% - 51px);
 }
 
 .ds-container .ds-chip {
@@ -1496,7 +1502,11 @@ input[type="submit"] {
 
 .home-details-content .image-tabcontainer .absol-static-tabbar-button {
     width: 50%;
-    min-width: 400px;
+    min-width: 370px;
+}
+
+.home-details-content .image-tabcontainer{
+    min-width: 740px;
 }
 
 .image-tabcontainer .absol-static-tabbar-button:hover {

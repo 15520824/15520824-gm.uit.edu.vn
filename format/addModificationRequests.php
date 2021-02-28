@@ -67,12 +67,13 @@ if(isset($data["equipment"]))
         }
         $isEquipment = true;
     }
+    if(count($equipment_old)>0)
+    {
+        $isEquipment = true;
+    }
 }
 
-if(count($contact_old)>0)
-{
-    $isEquipment = true;
-}
+
 
 $isPurpose = false;
 if(isset($data["purpose"]))
@@ -102,12 +103,13 @@ if(isset($data["purpose"]))
         }
         $isPurpose = true;
     }
+    if(count($purpose_old)>0)
+    {
+        $isPurpose = true;
+    }
 }
 
-if(count($purpose_old)>0)
-{
-    $isPurpose = true;
-}
+
 
 $isContact = false;
 if(isset($data["contact"]))
@@ -145,12 +147,13 @@ if(isset($data["contact"]))
              $isContact = true;
         }
     }
+    if(count($contact_old)>0)
+    {
+        $isContact = true;
+    }
 }
 
-if(count($contact_old)>0)
-{
-    $isContact = true;
-}
+
 
 $imageTempStatus = array();
 $imageTempJuridical = array();
@@ -197,6 +200,28 @@ if(isset($data["image"]))
         if (!$success){
             echo "Unable to save the file.";
             exit();
+        }else
+        {
+            // information of second server
+            $ftp_server = "103.1.238.95";
+            // name file in serverA that you want to store file in serverB
+            $file = UPLOAD_DIR .$filename;
+            $remote_file = UPLOAD_DIR .$filename;
+
+            // set up basic connection
+            $conn_id = ftp_connect($ftp_server);
+
+            $ftp_user_name = 'root';
+            $ftp_user_pass = 'Mp4hRj5PfC19';
+            // login with username and password
+            $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+
+            // upload a file
+            if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+                unlink($file);
+            } else {
+                // echo "There was a problem while uploading $file\n";
+            }
         }
         if($img["type"]==0)
         $type = 0;

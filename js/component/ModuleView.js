@@ -2200,6 +2200,10 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
                 }
             }
             var isCheckRow = 0;
+            if(data == undefined)
+            {
+                console.log(i,j,arr)
+            }
             if (data.rowspan !== undefined) {
                 for (var l = i + 1; l < i + data.rowspan; l++) {
                     if (checkSpan[l] === undefined)

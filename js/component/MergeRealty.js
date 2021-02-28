@@ -10,6 +10,7 @@ import { MapView } from "./MapView";
 import NewAccount from '../component/NewAccount';
 import { reFormatNumber, formatFit } from './FormatFunction'
 import { loadingWheel } from './FormatFunction';
+import NewContact from '../component/NewContact'
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -148,7 +149,7 @@ MergeRealty.prototype.getView = function() {
     }
     var itemType = [];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("id");
-    var number, street, ward, district, state, fullAddress;
+  
     this.checkAddressName = []
     var checkAddress = this.checkAddressName;
     this.checkAddressData = checkAddress;
@@ -186,10 +187,10 @@ MergeRealty.prototype.getView = function() {
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     })
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
-        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
-    })
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    //     self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    // })
 
     var valueSimpleStructure, itemStructure = [];
     var prefixImage = moduleDatabase.imageAssetSrc;
@@ -314,6 +315,7 @@ MergeRealty.prototype.getView = function() {
                 itemImageJuridical.push(dataChild);
             }
         }
+        var number = "", street = "", ward = "", district = "", state ="", fullAddress = "";
         if (itemData && itemData.addressnumber !== "" && itemData.portion != 0) {
             number = itemData.addressnumber;
             street = this.checkStreet[itemData.streetid].name;
@@ -325,14 +327,17 @@ MergeRealty.prototype.getView = function() {
             checkAddress[fullAddress] = [itemData.lat, itemData.lng];
             checkAddress[fullAddress].data = itemData;
         }
-
+        var number = "", street = "", ward = "", district = "", state ="", fullAddress = "";
         //Địa chỉ cũ
         if (itemData && itemData.addressnumber_old != "") {
             number = itemData.addressnumber_old;
+            if(this.checkStreet[itemData.streetid_old])
             street = this.checkStreet[itemData.streetid_old].name;
-            ward = this.checkWard[itemData.wardid_old].name;
-            district = this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].name;
-            state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].stateid].name;
+            if(this.checkWard[itemData.wardid_old]){
+                ward = this.checkWard[itemData.wardid_old].name;
+                district = this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].name;
+                state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].stateid].name;
+            }
             fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
             checkAddress[fullAddress] = {};
             checkAddress[fullAddress].data = itemData;
@@ -341,8 +346,8 @@ MergeRealty.prototype.getView = function() {
 
         itemName.push(itemData.name);
 
-        var inputSell = parseInt(itemData.salestatus % 10) == 1 ? true : false;
-        var inputLease = parseInt(itemData.salestatus / 10) == 1 ? true : false;
+        var inputSell = parseInt(itemData.status % 10);
+        var inputLease = parseInt(itemData.status / 10);
         var tempStatus = _({
             tag: "div",
             class: "pizo-new-realty-desc-detail-row",
@@ -359,14 +364,20 @@ MergeRealty.prototype.getView = function() {
                                 tag: "span",
                                 class: "pizo-new-realty-desc-detail-row-cell-menu-1-span",
                                 props: {
-                                    innerHTML: "Còn bán"
+                                    innerHTML: "Bán"
                                 }
                             },
                             {
-                                tag: "checkbox",
+                                tag: "selectmenu",
                                 class: "pizo-new-realty-desc-detail-row-menu-1-checkbox",
-                                props: {
-                                    checked: inputSell
+                                props:{
+                                    items:[
+                                        {text:"Chưa xác định",value:0},
+                                        {text:"Còn bán",value:1},
+                                        {text:"Đã bán",value:2},
+                                        {text:"Ngưng bán",value:3},
+                                    ],
+                                    value:inputSell
                                 }
                             }
                         ]
@@ -382,14 +393,20 @@ MergeRealty.prototype.getView = function() {
                                 tag: "span",
                                 class: "pizo-new-realty-desc-detail-row-cell-menu-2-span",
                                 props: {
-                                    innerHTML: "Còn cho thuê"
+                                    innerHTML: "Thuê"
                                 }
                             },
                             {
-                                tag: "checkbox",
+                                tag: "selectmenu",
                                 class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
-                                props: {
-                                    checked: inputLease
+                                props:{
+                                    items:[
+                                        {text:"Chưa xác định",value:0},
+                                        {text:"Còn thuê",value:1},
+                                        {text:"Đã thuê",value:2},
+                                        {text:"Ngưng thuê",value:3},
+                                    ],
+                                    value:inputLease
                                 },
                             }
                         ]
@@ -1142,21 +1159,21 @@ MergeRealty.prototype.getView = function() {
     myTool.editor.on("nodechange", function(event) {
         switch (event.nodePreviewData.id) {
             case "address":
-                if (checkAddress[event.nodePreviewData.value])
-                    element.addMoveMarker(checkAddress[event.nodePreviewData.value])
+                if (checkAddress[event.nodePreviewData.item])
+                    element.addMoveMarker(checkAddress[event.nodePreviewData.item])
                 break;
             case "structure":
                 elementStructure.clearChild();
-                elementStructure.appendChild(event.nodePreviewData.value.simpleDetruct)
+                elementStructure.appendChild(event.nodePreviewData.item.simpleDetruct)
                 break;
             case "equipments":
                 elementEquipments.clearChild();
                 var result = [];
                 var checkEquipment = [],
                     valueTemp;
-                for (var i = 0; i < event.nodePreviewData.values.length; i++) {
-                    for (var j = 0; j < event.nodePreviewData.values[i].itemData.length; j++) {
-                        valueTemp = event.nodePreviewData.values[i].itemData[j];
+                for (var i = 0; i < event.nodePreviewData.items.length; i++) {
+                    for (var j = 0; j < event.nodePreviewData.items[i].itemData.length; j++) {
+                        valueTemp = event.nodePreviewData.items[i].itemData[j];
                         if (checkEquipment[valueTemp.equipmentid] === undefined)
                             checkEquipment[valueTemp.equipmentid] = { equipmentid: valueTemp.equipmentid, content: parseInt(valueTemp.content) };
                         else
@@ -1169,15 +1186,15 @@ MergeRealty.prototype.getView = function() {
                 elementEquipments.appendChild(self.convenientView({ equipment: result }));
                 break;
             case "status-active":
-                var elementParent = event.nodePreviewData.value.element;
+                var elementParent = event.nodePreviewData.item.element;
                 while (elementParent && !elementParent.classList.contains("mpot-preview-body")) {
                     elementParent = elementParent.parentNode;
                 }
-                if (event.nodePreviewData.value.element.inputLease.checked === false) {
+                if (event.nodePreviewData.item.element.inputLease.value != 1) {
                     if (elementParent) {
                         elementParent.classList.add("displayNonePriceRent");
                     }
-                } else if (event.nodePreviewData.value.element.inputLease.checked === true) {
+                } else if (event.nodePreviewData.item.element.inputLease.value != 1) {
                     if (elementParent) {
                         elementParent.classList.remove("displayNonePriceRent");
                     }
@@ -1409,25 +1426,19 @@ MergeRealty.prototype.contactItem = function(data) {
                                     })
                                     return;
                                 }
-                                if (self.checkContact === undefined) {
-                                    var element = this;
-                                    moduleDatabase.getModule("contacts").load().then(function() {
-                                        setTimeout(function() {
-                                            element.emit("change");
-                                        }, 10)
-                                    })
-                                    return;
-                                }
-                                if (self.checkUser[this.value] !== undefined || self.checkContact[this.value] !== undefined) {
-                                    if (self.checkUser[this.value] !== undefined) {
-                                        var tempValue = self.checkUser[this.value];
-                                        temp.setInformation(tempValue);
-                                    } else {
-                                        var tempValue = self.checkContact[this.value];
-                                        temp.setInformation(tempValue);
-                                    }
+                                if (self.checkUser[this.value] !== undefined) {
+                                    var tempValue = self.checkUser[this.value];
+                                    temp.setInformation(tempValue);
                                 } else {
-                                    temp.setOpenForm();
+                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
+                                        if(value.length>0){
+                                            var tempValue = value[0];
+                                            temp.setInformation(tempValue);
+                                        }else
+                                        {
+                                            tempValue.setOpenForm()
+                                        }
+                                    })
                                 }
                             }
                         }
@@ -1483,17 +1494,11 @@ MergeRealty.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (self.checkContactID === undefined) {
-            var element = this;
-            moduleDatabase.getModule("contacts").load().then(function() {
-                setTimeout(function() {
-                    element.checkContact(data);
-                }, 10)
-            })
-            return;
-        }
         if (data.contactid !== undefined && data.contactid !== 0) {
-            temp.setInformation(self.checkContactID[data.contactid]);
+            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+                var tempValue = value[0];
+                temp.setInformation(tempValue);
+            })
         } else
         if (data.userid !== undefined && data.userid !== 0) {
             temp.setInformation(self.checkUserID[data.userid]);
@@ -1773,7 +1778,7 @@ MergeRealty.prototype.getDataSave = function() {
     var data = this.myTool.getData().previewData.properties;
     var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
     var fitUpdate = 0;
-    var inputFit = data[1].properties[1].properties[0].properties[2].value.element;
+    var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
     if (inputFit.values.length !== 0)
         fitUpdate = inputFit.values.reduce(function(a, b) { return a + b; });
     var advanceDetruct = 0;
@@ -1794,7 +1799,7 @@ MergeRealty.prototype.getDataSave = function() {
             thumnail = 1;
         image.push({ src: arrStatus[i].id, copy: arrStatus[i].copy, type: 1, thumnail: thumnail, userid: window.userid });
     }
-    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
+    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, status, structure, pricerent, juridical, lat, lng;
     width = data[1].properties[0].properties[0].element.wholeText;
     height = data[1].properties[0].properties[1].element.wholeText;
     acreage = data[1].properties[0].properties[2].element.wholeText;
@@ -1811,7 +1816,7 @@ MergeRealty.prototype.getDataSave = function() {
         "Tây Bắc": 7,
         "Tây Nam": 1
     }
-    structure = data[1].properties[0].properties[5].value.value;
+    structure = data[1].properties[0].properties[5].item.value;
     direction = checkDetruct[data[1].properties[0].properties[7].value];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("name");
     if (checkType[data[1].properties[0].properties[8].value])
@@ -1825,8 +1830,8 @@ MergeRealty.prototype.getDataSave = function() {
     living = advanceDetructElement.inputLiving.value;
     toilet = advanceDetructElement.inputToilet.value;
     kitchen = advanceDetructElement.inputKitchen.value;
-    price = data[1].properties[1].properties[0].properties[0].value.element.childNodes[0].value;
-    pricerent = data[1].properties[1].properties[0].properties[1].value.element.childNodes[0].childNodes[0].value;
+    price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
+    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].childNodes[0].value;
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
@@ -1836,9 +1841,9 @@ MergeRealty.prototype.getDataSave = function() {
     }
 
     content = data[0].properties[0].properties[4].value;
-    salestatus = data[0].properties[0].properties[1].value.element;
-    salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
-    juridical = data[1].properties[1].properties[1].value.element.childNodes[0].value;
+    status = data[0].properties[0].properties[1].item.element;
+    status = status.inputLease.value * 10 + status.inputSell.value;
+    juridical = data[1].properties[1].properties[1].item.element.childNodes[0].value;
     var temp = {
         height: height,
         width: width,
@@ -1858,7 +1863,7 @@ MergeRealty.prototype.getDataSave = function() {
         price: price,
         name: name,
         content: content,
-        salestatus: salestatus,
+        status: status,
         structure: structure,
         pricerent: pricerent,
         advancedetruct: advanceDetruct,

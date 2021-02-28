@@ -1503,10 +1503,10 @@ MarkerClusterer.prototype.isMarkerInBounds_ = function(marker, bounds) {
     }
     var position = marker.getPosition();
     var minX, maxX, minY, maxY;
-    minX = bounds[this.b].i;
-    maxX = bounds[this.b].j;
-    minY = bounds[this.a].i;
-    maxY = bounds[this.a].j;
+    minX = bounds[this.b].g;
+    maxX = bounds[this.b].i;
+    minY = bounds[this.a].g;
+    maxY = bounds[this.a].i;
     while (0 > maxY)
         maxY += 180;
     maxY += 180;

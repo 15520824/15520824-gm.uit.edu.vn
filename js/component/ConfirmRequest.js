@@ -179,10 +179,10 @@ ConfirmRequest.prototype.getView = function() {
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     })
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
-        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
-    })
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    //     self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    // })
 
     var valueSimpleStructure, itemStructure = [];
     var prefixImage = moduleDatabase.imageAssetSrc;
@@ -271,8 +271,8 @@ ConfirmRequest.prototype.getView = function() {
 
         itemName.push(itemData.name);
 
-        var inputSell = parseInt(itemData.salestatus % 10) == 1 ? true : false;
-        var inputLease = parseInt(itemData.salestatus / 10) == 1 ? true : false;
+        var inputSell = parseInt(itemData.status % 10) == 1 ? true : false;
+        var inputLease = parseInt(itemData.status / 10) == 1 ? true : false;
         var tempStatus = _({
             tag: "div",
             class: "pizo-new-realty-desc-detail-row",
@@ -1062,23 +1062,23 @@ ConfirmRequest.prototype.getView = function() {
     myTool.editor.on("nodechange", function(event) {
         switch (event.nodePreviewData.id) {
             case "address":
-                if (checkAddress[event.nodePreviewData.value])
-                    element.addMoveMarker(checkAddress[event.nodePreviewData.value])
+                if (checkAddress[event.nodePreviewData.item])
+                    element.addMoveMarker(checkAddress[event.nodePreviewData.item])
                 break;
             case "structure":
                 elementStructure.clearChild();
-                elementStructure.appendChild(event.nodePreviewData.value.simpleDetruct)
+                elementStructure.appendChild(event.nodePreviewData.item.simpleDetruct)
                 break;
             case "status-active":
-                var elementParent = event.nodePreviewData.value.element;
+                var elementParent = event.nodePreviewData.item.element;
                 while (elementParent && !elementParent.classList.contains("mpot-preview-body")) {
                     elementParent = elementParent.parentNode;
                 }
-                if (event.nodePreviewData.value.element.inputLease.checked === false) {
+                if (event.nodePreviewData.item.element.inputLease.value != 1) {
                     if (elementParent) {
                         elementParent.classList.add("displayNonePriceRent");
                     }
-                } else if (event.nodePreviewData.value.element.inputLease.checked === true) {
+                } else if (event.nodePreviewData.item.element.inputLease.value != 1) {
                     if (elementParent) {
                         elementParent.classList.remove("displayNonePriceRent");
                     }
@@ -1288,25 +1288,19 @@ ConfirmRequest.prototype.contactItem = function(data) {
                                     })
                                     return;
                                 }
-                                if (self.checkContact === undefined) {
-                                    var element = this;
-                                    moduleDatabase.getModule("contacts").load().then(function() {
-                                        setTimeout(function() {
-                                            element.emit("change");
-                                        }, 10)
-                                    })
-                                    return;
-                                }
-                                if (self.checkUser[this.value] !== undefined || self.checkContact[this.value] !== undefined) {
-                                    if (self.checkUser[this.value] !== undefined) {
-                                        var tempValue = self.checkUser[this.value];
-                                        temp.setInformation(tempValue);
-                                    } else {
-                                        var tempValue = self.checkContact[this.value];
-                                        temp.setInformation(tempValue);
-                                    }
+                                if (self.checkUser[this.value] !== undefined) {
+                                    var tempValue = self.checkUser[this.value];
+                                    temp.setInformation(tempValue);
                                 } else {
-                                    temp.setOpenForm();
+                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
+                                        if(value.length>0){
+                                            var tempValue = value[0];
+                                            temp.setInformation(tempValue);
+                                        }else
+                                        {
+                                            tempValue.setOpenForm()
+                                        }
+                                    })
                                 }
                             }
                         }
@@ -1362,17 +1356,12 @@ ConfirmRequest.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (self.checkContactID === undefined) {
-            var element = this;
-            moduleDatabase.getModule("contacts").load().then(function() {
-                setTimeout(function() {
-                    element.checkContact(data);
-                }, 10)
-            })
-            return;
-        }
+       
         if (data.contactid !== undefined && data.contactid !== 0) {
-            temp.setInformation(self.checkContactID[data.contactid]);
+            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+                var tempValue = value[0];
+                temp.setInformation(tempValue);
+            })
         } else
         if (data.userid !== undefined && data.userid !== 0) {
             temp.setInformation(self.checkUserID[data.userid]);
@@ -1651,7 +1640,7 @@ ConfirmRequest.prototype.getDataSave = function() {
     var data = this.myTool.getData().previewData.properties;
     var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
     var fitUpdate = 0;
-    var inputFit = data[1].properties[1].properties[0].properties[2].value.element;
+    var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
     if (inputFit.values.length !== 0)
         fitUpdate = inputFit.values.reduce(function(a, b) { return a + b; });
     var advanceDetruct = 0;
@@ -1668,7 +1657,7 @@ ConfirmRequest.prototype.getDataSave = function() {
     for (var i = 0; i < arrStatus.length; i++) {
         image.push(arrStatus[i]);
     }
-    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
+    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, status, structure, pricerent, juridical, lat, lng;
     width = data[1].properties[0].properties[0].element.wholeText;
     height = data[1].properties[0].properties[1].element.wholeText;
     acreage = data[1].properties[0].properties[2].element.wholeText;
@@ -1685,7 +1674,7 @@ ConfirmRequest.prototype.getDataSave = function() {
         "Tây Bắc": 7,
         "Tây Nam": 1
     }
-    structure = data[1].properties[0].properties[5].value.value;
+    structure = data[1].properties[0].properties[5].item.value;
     direction = checkDetruct[data[1].properties[0].properties[7].value];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("name");
     type = checkType[data[1].properties[0].properties[8].value].id;
@@ -1696,15 +1685,15 @@ ConfirmRequest.prototype.getDataSave = function() {
     living = advanceDetructElement.inputLiving.value;
     toilet = advanceDetructElement.inputToilet.value;
     kitchen = advanceDetructElement.inputKitchen.value;
-    price = data[1].properties[1].properties[0].properties[0].value.element.childNodes[0].value;
-    pricerent = data[1].properties[1].properties[0].properties[1].value.element.childNodes[0].childNodes[0].value;
+    price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
+    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].childNodes[0].value;
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
     content = data[0].properties[0].properties[4].value;
-    salestatus = data[0].properties[0].properties[1].value.element;
-    salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
-    juridical = data[1].properties[1].properties[1].value.element.childNodes[0].value;
+    status = data[0].properties[0].properties[1].item.element;
+    status = (status.inputLease.checked == true ? 1 : 0) * 10 + (status.inputSell.checked == true ? 1 : 0);
+    juridical = data[1].properties[1].properties[1].item.element.childNodes[0].value;
     var temp = {
         height: height,
         width: width,
@@ -1724,7 +1713,7 @@ ConfirmRequest.prototype.getDataSave = function() {
         price: price,
         name: name,
         content: content,
-        salestatus: salestatus,
+        status: status,
         structure: structure,
         pricerent: pricerent,
         advancedetruct: advanceDetruct,
@@ -1749,7 +1738,7 @@ ConfirmRequest.prototype.getDataSave = function() {
     if (lng)
         temp.lng = lng;
     if (data[2].properties[0].value) {
-        temp.equipment = data[2].properties[0].value.itemData;
+        temp.equipment = data[2].properties[0].item.itemData;
     } else
         temp.equipment = [];
     var contact = [];

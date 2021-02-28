@@ -162,18 +162,18 @@ ListDistrict.prototype.getView = function() {
                 '<span>' + "Thêm" + '</span>'
             ]
         }));
-        $("div.pizo-list-realty-button", this.$view).appendChild(_({
-            tag: "button",
-            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-            on: {
-                click: function(evt) {
-                    self.deleteAll(self.mTable.getVisiable());
-                }
-            },
-            child: [
-                '<span>' + "Xóa toàn bộ trang hiện tại" + '</span>'
-            ]
-        }));
+        // $("div.pizo-list-realty-button", this.$view).appendChild(_({
+        //     tag: "button",
+        //     class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        //     on: {
+        //         click: function(evt) {
+        //             self.deleteAll(self.mTable.getVisiable());
+        //         }
+        //     },
+        //     child: [
+        //         '<span>' + "Xóa toàn bộ trang hiện tại" + '</span>'
+        //     ]
+        // }));
     }
     var tabContainer = _({
         tag: "div",

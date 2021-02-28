@@ -229,7 +229,7 @@ ListAccount.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
-    arr.push(moduleDatabase.getModule("contacts").load());
+    // arr.push(moduleDatabase.getModule("contacts").load());
     Promise.all(arr).then(function(values) {
         var value = values[0];
         var listParam = values[1];

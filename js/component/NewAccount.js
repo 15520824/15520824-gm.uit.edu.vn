@@ -437,6 +437,36 @@ NewAccount.prototype.getView = function(dataParent) {
                                                     props: {
                                                         type: "number"
                                                     },
+                                                    on:{
+                                                        change:function(e){
+                                                            var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+                                                            if (vnf_regex.test(this.value) == false) {
+                                                                var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+                                                                self.$view.addChild(deleteItem);
+                                                                self.isPhone = false;
+                                                                
+                                                            }else
+                                                            if (moduleDatabase.getModule("users").getLibary("phone")[this.value] !== undefined) {
+                                                                var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
+                                                                self.$view.addChild(deleteItem);
+                                                                self.isPhone = false;
+                                                            }else
+                                                            moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(){
+                                                                if(arguments[1].length>0){
+                                                                    var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
+                                                                    self.$view.addChild(deleteItem);
+                                                                }
+                                                                if(self.phone.value == arguments[0])
+                                                                {
+                                                                    self.isPhone = false;
+                                                                }
+                                                            }.bind(null,this.value))
+                                                            self.isPhone = true;
+                                                        }
+                                                    }
+                                                },
+                                                {
+
                                                 }
                                             ]
                                         }]
@@ -2985,19 +3015,6 @@ NewAccount.prototype.getDataSave = function() {
     this.sendButton.click();
     var avatar = this.avatar.src;
     avatar = avatar.replace(moduleDatabase.imageAvatarSrc, "");
-    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-    if (vnf_regex.test(this.phone.value) == false) {
-        var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
-        this.$view.addChild(deleteItem);
-        return;
-    }
-    if (this.data == undefined) {
-        if (moduleDatabase.getModule("users").getLibary("phone")[this.phone.value] !== undefined || moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value] !== undefined) {
-            var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
-            this.$view.addChild(deleteItem);
-            return;
-        }
-    }
     for (var i = 0; i < this.selectPermission.values.length; i++) {
         this.selectPermission.activeValue = this.selectPermission.values[i];
         this.selectPermission.emit("activevaluechange")
@@ -3032,6 +3049,11 @@ NewAccount.prototype.getDataSave = function() {
         status: this.status.checked ? 1 : 0,
         permission: permission,
         avatar: avatar
+    }
+    if(this.isPhone == false){
+        var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+        this.$view.addChild(deleteItem);
+        return;
     }
     if (this.containerPassword.style.display == "unset") {
         if (this.newPassWord.value == "" || this.newPassWord.value !== this.confirmPassWord.value) {

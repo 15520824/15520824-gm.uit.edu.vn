@@ -56,7 +56,8 @@ if($WHERE!="")
         for($i = 0;$i<count($image_old);$i++)
         {
             if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
-                unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                // unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                file_get_contents('https://pizo.vn/storage/uploads/delete_second_server.php?file='.UPLOAD_DIR.$image_old[$i]["src"].'&some_security_token=*I}|AL[ar:%06oJ^{rD+xR/S8bfH>2wsy*).{LMZMK2]os[8%h{$W+gnrj{ZJD');
                 $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
               } else {
                 echo 'Could not delete '.$filename.', file does not exist';

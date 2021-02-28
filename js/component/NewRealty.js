@@ -217,10 +217,10 @@ NewRealty.prototype.descView = function() {
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     })
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
-        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
-    })
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    //     self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    // })
     this.containerMap = _({
         tag: "div"
     })
@@ -626,6 +626,9 @@ NewRealty.prototype.descViewdetail = function() {
                 child: [{
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-size-zone",
+                        style:{
+                          width:"calc(30% - 1.0714rem)"  
+                        },
                         child: [{
                             tag: "div",
                             class: "pizo-new-realty-desc-detail-row",
@@ -646,6 +649,9 @@ NewRealty.prototype.descViewdetail = function() {
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-size-zone",
+                        style:{
+                            width:"calc(70% - 1.0714rem)"  
+                        },
                         child: [{
                             tag: "div",
                             class: "pizo-new-realty-desc-detail-row",
@@ -673,12 +679,20 @@ NewRealty.prototype.descViewdetail = function() {
                                                 tag: "span",
                                                 class: "pizo-new-realty-desc-detail-row-cell-menu-1-span",
                                                 props: {
-                                                    innerHTML: "Còn bán"
+                                                    innerHTML: "Bán"
                                                 }
                                             },
                                             {
-                                                tag: "checkbox",
-                                                class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                tag: "selectmenu",
+                                                class: "pizo-new-realty-desc-detail-row-menu-1-checkbox",
+                                                props:{
+                                                    items:[
+                                                        {text:"Chưa xác định",value:0},
+                                                        {text:"Còn bán",value:1},
+                                                        {text:"Đã bán",value:2},
+                                                        {text:"Ngưng bán",value:3},
+                                                    ],
+                                                }
                                             }
                                         ]
                                     }]
@@ -693,15 +707,23 @@ NewRealty.prototype.descViewdetail = function() {
                                                 tag: "span",
                                                 class: "pizo-new-realty-desc-detail-row-cell-menu-2-span",
                                                 props: {
-                                                    innerHTML: "Còn cho thuê"
+                                                    innerHTML: "Thuê"
                                                 }
                                             },
                                             {
-                                                tag: "checkbox",
+                                                tag: "selectmenu",
                                                 class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
+                                                props:{
+                                                    items:[
+                                                        {text:"Chưa xác định",value:0},
+                                                        {text:"Còn thuê",value:1},
+                                                        {text:"Đã thuê",value:2},
+                                                        {text:"Ngưng thuê",value:3},
+                                                    ]
+                                                },
                                                 on: {
                                                     change: function(event) {
-                                                        if (this.checked == false)
+                                                        if (this.value != 1)
                                                             self.priceRent.style.display = "none";
                                                         else
                                                             self.priceRent.style.display = "";
@@ -1774,9 +1796,10 @@ NewRealty.prototype.detructView = function() {
         this.structure.value = original.structure;
         this.structure.emit("change");
         this.inputName.value = original.name;
-        var checkStatus = parseInt(original.salestatus);
-        this.inputLease.checked = parseInt(checkStatus / 10) == 1 ? true : false;
-        this.inputSell.checked = parseInt(checkStatus % 10) == 1 ? true : false;
+        var checkStatus = parseInt(original.status);
+        console.log(checkStatus)
+        this.inputLease.value = parseInt(checkStatus / 10);
+        this.inputSell.value = parseInt(checkStatus % 10);
         if (this.inputLease.checked == false)
             this.priceRent.style.display = "none";
         else
@@ -1866,7 +1889,7 @@ NewRealty.prototype.getDataSave = function(isCheck = false) {
         price: this.inputPrice.value * this.inputUnitPrice.value,
         name: this.inputName.value,
         content: this.inputContent.value,
-        salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
+        status: (this.inputLease.value) * 10 + (this.inputSell.value),
         structure: this.structure.value,
         pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
         advancedetruct: advanceDetruct,
@@ -1942,7 +1965,7 @@ NewRealty.prototype.getDataSave = function(isCheck = false) {
             return false;
         }
 
-        if (temp.salestatus == 0 && temp.id !== undefined) {
+        if (temp.status == 0 && temp.id !== undefined) {
             alert("Vui lòng nhập thông tin hiện trạng");
             this.inputLease.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
             return false;
@@ -2544,26 +2567,22 @@ NewRealty.prototype.contactItem = function(data) {
                                     })
                                     return;
                                 }
-                                if (self.checkContact === undefined) {
-                                    var element = this;
-                                    moduleDatabase.getModule("contacts").load().then(function() {
-                                        setTimeout(function() {
-                                            element.emit("change");
-                                        }, 10)
-                                    })
-                                    return;
-                                }
-                                if (self.checkUser[this.value] !== undefined || self.checkContact[this.value] !== undefined) {
-                                    if (self.checkUser[this.value] !== undefined) {
-                                        var tempValue = self.checkUser[this.value];
-                                        temp.setInformation(tempValue);
-                                    } else {
-                                        var tempValue = self.checkContact[this.value];
-                                        temp.setInformation(tempValue);
-                                    }
+
+                                if (self.checkUser[this.value] !== undefined) {
+                                    var tempValue = self.checkUser[this.value];
+                                    temp.setInformation(tempValue);
                                 } else {
-                                    temp.setOpenForm();
+                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
+                                        if(value.length>0){
+                                            var tempValue = value[0];
+                                            temp.setInformation(tempValue);
+                                        }else
+                                        {
+                                            tempValue.setOpenForm()
+                                        }
+                                    })
                                 }
+
                             }
                         }
                     },
@@ -2618,17 +2637,11 @@ NewRealty.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (self.checkContactID === undefined) {
-            var element = this;
-            moduleDatabase.getModule("contacts").load().then(function() {
-                setTimeout(function() {
-                    element.checkContact(data);
-                }, 10)
-            })
-            return;
-        }
         if (data.contactid !== undefined && data.contactid != 0) {
-            temp.setInformation(self.checkContactID[data.contactid]);
+            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+                var tempValue = value[0];
+                temp.setInformation(tempValue);
+            })
         } else
         if (data.userid !== undefined && data.userid != 0) {
             temp.setInformation(self.checkUserID[data.userid]);

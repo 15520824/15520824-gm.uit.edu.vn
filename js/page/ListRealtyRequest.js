@@ -45,10 +45,10 @@ function ListRealtyRequest() {
         this.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     }.bind(this))
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        this.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
-        this.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
-    }.bind(this))
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     this.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    //     this.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    // }.bind(this))
 }
 
 ListRealtyRequest.prototype.setContainer = function(parent) {
@@ -193,7 +193,7 @@ ListRealtyRequest.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
-    arr.push(moduleDatabase.getModule("modification_requests").load());
+    arr.push(moduleDatabase.getModule("modification_requests").load({WHERE:[{status:0}]}));
     Promise.all(arr).then(function(values) {
         var checkHouseArr = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
 
@@ -400,9 +400,9 @@ ListRealtyRequest.prototype.getView = function() {
                 self.formatDataRowAccount(value);
             })
 
-            moduleDatabase.getModule("contacts").load().then(function(value) {
-                self.formatDataRowContact(value);
-            })
+            // moduleDatabase.getModule("contacts").load().then(function(value) {
+            //     self.formatDataRowContact(value);
+            // })
         })
     });
 
@@ -623,14 +623,21 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
             break;
     }
     var staus = "";
-    if (parseInt(data.salestatus) % 10 == 1)
+    var statusValue = [];
+    if (parseInt(data.status) % 10 == 1)
+    {
         staus += "Còn bán";
-    if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+        statusValue.push(1);
+    }
+    if (parseInt(parseInt(data.status) / 10) == 1) {
         if (staus == "")
             staus += "Còn cho thuê";
         else
             staus += " và còn cho thuê";
+        statusValue.push(10);
     }
+    if(statusValue.length == 0)
+        statusValue.push(2);
     if (data.portion != "" || data.addressnumber != "") {
         var number = data.addressnumber;
         var ward = "",
@@ -648,10 +655,6 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
         }
     } else {
         var number = street = ward = district = state = "";
-    }
-    var statusValue = parseInt(data.salestatus) + 1;
-    if (statusValue == 12) {
-        statusValue = [2, 11];
     }
     var id;
     if (isChild !== undefined) {
@@ -793,15 +796,15 @@ ListRealtyRequest.prototype.searchControlContent = function() {
                                                     },
                                                     {
                                                         text: "Còn bán",
-                                                        value: 2
+                                                        value: 1
                                                     },
                                                     {
                                                         text: "Còn cho thuê",
-                                                        value: 11
+                                                        value: 10
                                                     },
                                                     {
                                                         text: "Ngừng giao dịch",
-                                                        value: 1
+                                                        value: 2
                                                     }
                                                 ]
                                             }
@@ -1131,7 +1134,7 @@ ListRealtyRequest.prototype.add = function(parent_id = 0, row) {
     if (this.isCensorship === true)
         mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
+    // mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
@@ -1169,7 +1172,7 @@ ListRealtyRequest.prototype.edit = function(data, parent, index) {
     if (this.isCensorship === true)
         mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
+    // mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
@@ -1180,7 +1183,7 @@ ListRealtyRequest.prototype.getDataEditFake = function(data) {
     var self = this;
     var mNewRealty = new NewRealty(data);
     mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
+    // mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     var temp = mNewRealty.getDataSave();
     temp.image = data.original.image;

@@ -279,6 +279,28 @@ if(isset($data["image"]))
         if (!$success){
             echo "Unable to save the file.";
             exit();
+        }else
+        {
+            // information of second server
+            $ftp_server = "103.1.238.95";
+            // name file in serverA that you want to store file in serverB
+            $file = UPLOAD_DIR .$filename;
+            $remote_file = UPLOAD_DIR .$filename;
+
+            // set up basic connection
+            $conn_id = ftp_connect($ftp_server);
+
+            $ftp_user_name = 'root';
+            $ftp_user_pass = 'Mp4hRj5PfC19';
+            // login with username and password
+            $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+
+            // upload a file
+            if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+                unlink($file);
+            } else {
+                // echo "There was a problem while uploading $file\n";
+            }
         }
         if($img["type"]==0)
         $type = 0;
@@ -307,8 +329,9 @@ if(isset($data["image"]))
 
 for($i = 0;$i<count($image_old);$i++)
 {
-    if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
-        unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+    if (file_exists(UPLOAD_DIR.$image_old[$i]["src"])) {
+        // unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+        file_get_contents('https://pizo.vn/storage/uploads/delete_second_server.php?file='.UPLOAD_DIR.$image_old[$i]["src"].'&some_security_token=*I}|AL[ar:%06oJ^{rD+xR/S8bfH>2wsy*).{LMZMK2]os[8%h{$W+gnrj{ZJD');
         $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
       } else {
         echo 'Could not delete '.$filename.', file does not exist';
@@ -352,8 +375,9 @@ if(isset($oldId))
             $image_old = $connector->load($prefix."image","houseid = ".$oldId[$i]);
             for($i = 0;$i<count($image_old);$i++)
             {
-                if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
-                    unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                if (file_exists(UPLOAD_DIR.$image_old[$i]["src"])) {
+                    // unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                    file_get_contents('https://pizo.vn/storage/uploads/delete_second_server.php?file='.UPLOAD_DIR.$image_old[$i]["src"].'&some_security_token=*I}|AL[ar:%06oJ^{rD+xR/S8bfH>2wsy*).{LMZMK2]os[8%h{$W+gnrj{ZJD');
                     $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
                 } else {
                     echo 'Could not delete '.$filename.', file does not exist';

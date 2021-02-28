@@ -150,10 +150,10 @@ MapRealty.prototype.getView = function() {
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     })
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
-        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
-    });
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    //     self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    // });
     var startDay, endDay;
     var oneYearFromNow = new Date();
     oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() - 1);
@@ -222,9 +222,9 @@ MapRealty.prototype.getView = function() {
         self.formatDataRowAccount(value);
     })
 
-    moduleDatabase.getModule("contacts").load().then(function(value) {
-        self.formatDataRowContact(value);
-    })
+    // moduleDatabase.getModule("contacts").load().then(function(value) {
+    //     self.formatDataRowContact(value);
+    // })
 
     return this.$view;
 }
@@ -415,7 +415,7 @@ MapRealty.prototype.requestEdit = function(data) {
     mNewRealty.attach(self.parent);
     mNewRealty.setRequestEdit();
     mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
+    // mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
@@ -444,7 +444,7 @@ MapRealty.prototype.edit = function(data) {
     var mNewRealty = new NewRealty(data);
     mNewRealty.attach(self.parent);
     mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
+    // mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
@@ -474,9 +474,9 @@ MapRealty.prototype.editView = function(value, data) {
 MapRealty.prototype.modalLargeRealty = function(data) {
     var self = this;
     var staus = "";
-    if (parseInt(data.salestatus) % 10 == 1)
+    if (parseInt(data.status) % 10 == 1)
         staus += "Còn bán";
-    if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+    if (parseInt(parseInt(data.status) / 10) == 1) {
         if (staus == "")
             staus += "Còn cho thuê";
         else
@@ -583,7 +583,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         }
     });
 
-    switch (parseInt(data.salestatus)) {
+    switch (parseInt(data.status)) {
         case 0:
             statusIcon.style.color = "yellow"
             break;
@@ -900,165 +900,240 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                     }]
                                                 },
                                                 {
-                                                    tag: "div",
-                                                    class: "ds-chip",
-                                                    child: [{
-                                                        tag: "div",
-                                                        class: "ds-home-details-chip",
-                                                        child: [{
-                                                                tag: "div",
-                                                                class: "ds-summary-row-container",
-                                                                child: [{
+                                                    tag:"div",
+                                                    class:"ds-data-col-container",
+                                                    child:[
+                                                        {
+                                                            tag: "div",
+                                                            class: ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
+                                                            child:[
+                                                                {
                                                                     tag: "div",
-                                                                    class: "ds-summary-row-content",
+                                                                    class: "ds-chip",
                                                                     child: [{
                                                                         tag: "div",
-                                                                        class: "ds-summary-row",
+                                                                        class: "ds-home-details-chip",
                                                                         child: [{
-                                                                                tag: "h3",
-                                                                                class: "ds-price",
+                                                                                tag: "div",
+                                                                                class: "ds-summary-row-container",
                                                                                 child: [{
-                                                                                    tag: "span",
-                                                                                    class: "ds-value",
-                                                                                    props: {
-                                                                                        innerHTML: "VND " + (data.price / 1000000000) + " tỉ"
-                                                                                    }
+                                                                                    tag: "div",
+                                                                                    class: "ds-summary-row-content",
+                                                                                    child: [{
+                                                                                        tag: "div",
+                                                                                        class: "ds-summary-row",
+                                                                                        child: [{
+                                                                                                tag: "h3",
+                                                                                                class: "ds-price",
+                                                                                                child: [{
+                                                                                                    tag: "span",
+                                                                                                    class: "ds-value",
+                                                                                                    props: {
+                                                                                                        innerHTML: "VND " + (data.price / 1000000000) + " tỉ"
+                                                                                                    }
+                                                                                                }]
+                                                                                            },
+                                                                                            {
+                                                                                                tag: "header",
+                                                                                                class: "ds-bed-bath-living-area-header",
+                                                                                                child: [{
+                                                                                                    tag: "h3",
+                                                                                                    class: ["ds-bed-bath-living-area-container"],
+                                                                                                    child: [{
+                                                                                                            tag: "span",
+                                                                                                            class: "ds-bed-bath-living-area",
+                                                                                                            child: [{
+                                                                                                                    tag: "span",
+                                                                                                                    props: {
+                                                                                                                        innerHTML: data.width
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    tag: "span",
+                                                                                                                    class: "ds-summary-row-label-secondary",
+                                                                                                                    props: {
+                                                                                                                        innerHTML: "m"
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag: "span",
+                                                                                                            class: "ds-vertical-divider",
+                                                                                                            props: {
+                                                                                                                innerHTML: "x"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag: "button",
+                                                                                                            class: ["TriggerText-sc-139r5uq-0", "jfjsxZ", "TooltipPopper-io290n-0", "sc-jlyJG", "eVrWvb"],
+                                                                                                            child: [{
+                                                                                                                tag: "span",
+                                                                                                                class: "ds-bed-bath-living-area",
+                                                                                                                child: [{
+                                                                                                                        tag: "span",
+                                                                                                                        props: {
+                                                                                                                            innerHTML: data.height
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        tag: "span",
+                                                                                                                        class: "ds-summary-row-label-secondary",
+                                                                                                                        props: {
+                                                                                                                            innerHTML: "m"
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ]
+                
+                                                                                                            }]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag: "span",
+                                                                                                            class: "ds-vertical-divider",
+                                                                                                            props: {
+                                                                                                                innerHTML: "|"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag: "span",
+                                                                                                            class: "ds-bed-bath-living-area",
+                                                                                                            child: [{
+                                                                                                                    tag: "span",
+                                                                                                                    props: {
+                                                                                                                        innerHTML: data.acreage
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    tag: "span",
+                                                                                                                    class: "ds-summary-row-label-secondary",
+                                                                                                                    props: {
+                                                                                                                        innerHTML: "m²"
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }]
+                                                                                            }
+                                                                                        ]
+                                                                                    }]
                                                                                 }]
                                                                             },
                                                                             {
-                                                                                tag: "header",
-                                                                                class: "ds-bed-bath-living-area-header",
+                                                                                tag: "div",
+                                                                                class: "ds-price-change-address-row",
                                                                                 child: [{
-                                                                                    tag: "h3",
-                                                                                    class: ["ds-bed-bath-living-area-container"],
+                                                                                    tag: "header",
                                                                                     child: [{
+                                                                                        tag: "h1",
+                                                                                        class: "ds-address-container",
+                                                                                        child: [{
                                                                                             tag: "span",
-                                                                                            class: "ds-bed-bath-living-area",
-                                                                                            child: [{
-                                                                                                    tag: "span",
-                                                                                                    props: {
-                                                                                                        innerHTML: data.width
-                                                                                                    }
-                                                                                                },
-                                                                                                {
-                                                                                                    tag: "span",
-                                                                                                    class: "ds-summary-row-label-secondary",
-                                                                                                    props: {
-                                                                                                        innerHTML: "m"
-                                                                                                    }
-                                                                                                }
-                                                                                            ]
-                                                                                        },
-                                                                                        {
-                                                                                            tag: "span",
-                                                                                            class: "ds-vertical-divider",
                                                                                             props: {
-                                                                                                innerHTML: "x"
+                                                                                                innerHTML: fullAddress
                                                                                             }
-                                                                                        },
-                                                                                        {
-                                                                                            tag: "button",
-                                                                                            class: ["TriggerText-sc-139r5uq-0", "jfjsxZ", "TooltipPopper-io290n-0", "sc-jlyJG", "eVrWvb"],
-                                                                                            child: [{
+                                                                                        }]
+                                                                                    }]
+                                                                                }]
+                                                                            },
+                                                                            {
+                                                                                tag: "div",
+                                                                                class: ["sc-hIVACf", "eiqksm", "ds-chip-removable-content"],
+                                                                                style: {
+                                                                                    visibility: "visible",
+                                                                                    height: "19px",
+                                                                                    opacity: 1
+                                                                                },
+                                                                                child: [{
+                                                                                    tag: "p",
+                                                                                    class: ["Text-aiai24-0", "StyledParagraph-sc-18ze78a-0", "dDDkWA", "sc-fgfRvd", "hmPfMB"],
+                                                                                    child: [{
+                                                                                        tag: "span",
+                                                                                        class: ["sc-likbZx", "ccUlrP", "ds-status-details"],
+                                                                                        child: [
+                                                                                            statusIcon,
+                                                                                            {
                                                                                                 tag: "span",
-                                                                                                class: "ds-bed-bath-living-area",
-                                                                                                child: [{
-                                                                                                        tag: "span",
-                                                                                                        props: {
-                                                                                                            innerHTML: data.height
-                                                                                                        }
-                                                                                                    },
-                                                                                                    {
-                                                                                                        tag: "span",
-                                                                                                        class: "ds-summary-row-label-secondary",
-                                                                                                        props: {
-                                                                                                            innerHTML: "m"
-                                                                                                        }
-                                                                                                    }
-                                                                                                ]
-
-                                                                                            }]
-                                                                                        },
-                                                                                        {
-                                                                                            tag: "span",
-                                                                                            class: "ds-vertical-divider",
-                                                                                            props: {
-                                                                                                innerHTML: "|"
-                                                                                            }
-                                                                                        },
-                                                                                        {
-                                                                                            tag: "span",
-                                                                                            class: "ds-bed-bath-living-area",
-                                                                                            child: [{
-                                                                                                    tag: "span",
-                                                                                                    props: {
-                                                                                                        innerHTML: data.acreage
-                                                                                                    }
-                                                                                                },
-                                                                                                {
-                                                                                                    tag: "span",
-                                                                                                    class: "ds-summary-row-label-secondary",
-                                                                                                    props: {
-                                                                                                        innerHTML: "m²"
-                                                                                                    }
+                                                                                                props: {
+                                                                                                    innerHTML: staus
                                                                                                 }
-                                                                                            ]
-                                                                                        }
-                                                                                    ]
+                                                                                            }
+                                                                                        ]
+                                                                                    }]
                                                                                 }]
                                                                             }
                                                                         ]
                                                                     }]
-                                                                }]
-                                                            },
-                                                            {
-                                                                tag: "div",
-                                                                class: "ds-price-change-address-row",
-                                                                child: [{
-                                                                    tag: "header",
-                                                                    child: [{
-                                                                        tag: "h1",
-                                                                        class: "ds-address-container",
-                                                                        child: [{
-                                                                            tag: "span",
-                                                                            props: {
-                                                                                innerHTML: fullAddress
-                                                                            }
-                                                                        }]
-                                                                    }]
-                                                                }]
-                                                            },
-                                                            {
-                                                                tag: "div",
-                                                                class: ["sc-hIVACf", "eiqksm", "ds-chip-removable-content"],
-                                                                style: {
-                                                                    visibility: "visible",
-                                                                    height: "19px",
-                                                                    opacity: 1
                                                                 },
+                                                                self.buttonRange,
+                                                                self.detailHouseView,
+                                                            ]
+                                                        },
+                                                        {
+                                                            tag: "div",
+                                                            class: ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
+                                                            child: [{
+                                                                tag: "div",
+                                                                class: "pizo-new-realty-dectruct-tab-ownership-history",
                                                                 child: [{
-                                                                    tag: "p",
-                                                                    class: ["Text-aiai24-0", "StyledParagraph-sc-18ze78a-0", "dDDkWA", "sc-fgfRvd", "hmPfMB"],
-                                                                    child: [{
-                                                                        tag: "span",
-                                                                        class: ["sc-likbZx", "ccUlrP", "ds-status-details"],
-                                                                        child: [
-                                                                            statusIcon,
+                                                                        tag: "div",
+                                                                        class: "pizo-new-realty-dectruct-tab",
+                                                                        props: {
+                                                                            innerHTML: "Ghi chú"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        tag: "div",
+                                                                        class: "note-data",
+                                                                        child: []
+                                                                    },
+                                                                    {
+                                                                        tag: "div",
+                                                                        class: "form-group",
+                                                                        child: [{
+                                                                                tag: "label",
+                                                                                class: "message-support"
+                                                                            },
                                                                             {
-                                                                                tag: "span",
+                                                                                tag: "textarea",
+                                                                                class: "form-control",
                                                                                 props: {
-                                                                                    innerHTML: staus
+                                                                                    required: "",
+                                                                                    placeholder: "Nhập ghi chú..."
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                tag: "button",
+                                                                                class: ["btn", "btn-info", "btn-xs", "add-note-land"],
+                                                                                props: {
+                                                                                    innerHTML: "Thêm ghi chú"
+                                                                                },
+                                                                                on: {
+                                                                                    click: function(event) {
+                                                                                        var textarea = $("textarea.form-control", temp);
+                                                                                        var value = {
+                                                                                            userid: window.userid,
+                                                                                            houseid: data.id,
+                                                                                            content: textarea.value,
+                                                                                            created: new Date()
+                                                                                        }
+                                                                                        textarea.value = "";
+                                                                                        var loading = new loadingWheel();
+                                                                                        moduleDatabase.getModule("activehouses_note").add(value).then(function() {
+                                                                                            loading.disable();
+                                                                                            modal.updateChat();
+                                                                                        })
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         ]
-                                                                    }]
-                                                                }]
-                                                            }
-                                                        ]
-                                                    }]
-                                                },
-                                                self.buttonRange,
-                                                self.detailHouseView,
+                                                                    }
+                                                                ]
+                                                            }, ]
+                                                        }
+                                                    ]
+                                                }
+                                               
                                                 //    {
                                                 //        tag:"div",
                                                 //        class:"ds-buttons",
@@ -1099,68 +1174,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                 //    }
                                             ]
                                         },
-                                        {
-                                            tag: "div",
-                                            class: ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
-                                            child: [{
-                                                tag: "div",
-                                                class: "pizo-new-realty-dectruct-tab-ownership-history",
-                                                child: [{
-                                                        tag: "div",
-                                                        class: "pizo-new-realty-dectruct-tab",
-                                                        props: {
-                                                            innerHTML: "Ghi chú"
-                                                        }
-                                                    },
-                                                    {
-                                                        tag: "div",
-                                                        class: "note-data",
-                                                        child: []
-                                                    },
-                                                    {
-                                                        tag: "div",
-                                                        class: "form-group",
-                                                        child: [{
-                                                                tag: "label",
-                                                                class: "message-support"
-                                                            },
-                                                            {
-                                                                tag: "textarea",
-                                                                class: "form-control",
-                                                                props: {
-                                                                    required: "",
-                                                                    placeholder: "Nhập ghi chú..."
-                                                                }
-                                                            },
-                                                            {
-                                                                tag: "button",
-                                                                class: ["btn", "btn-info", "btn-xs", "add-note-land"],
-                                                                props: {
-                                                                    innerHTML: "Thêm ghi chú"
-                                                                },
-                                                                on: {
-                                                                    click: function(event) {
-                                                                        var textarea = $("textarea.form-control", temp);
-                                                                        var value = {
-                                                                            userid: window.userid,
-                                                                            houseid: data.id,
-                                                                            content: textarea.value,
-                                                                            created: new Date()
-                                                                        }
-                                                                        textarea.value = "";
-                                                                        var loading = new loadingWheel();
-                                                                        moduleDatabase.getModule("activehouses_note").add(value).then(function() {
-                                                                            loading.disable();
-                                                                            modal.updateChat();
-                                                                        })
-                                                                    }
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }, ]
-                                        }
+                                      
 
                                     ]
                                 }]
@@ -1699,17 +1713,11 @@ MapRealty.prototype.contactItem = function(data) {
             })
             return;
         }
-        if (self.checkContactID === undefined) {
-            var element = this;
-            moduleDatabase.getModule("contacts").load().then(function() {
-                setTimeout(function() {
-                    element.checkContact(data);
-                }, 10)
-            })
-            return;
-        }
         if (data.contactid !== undefined && data.contactid != 0) {
-            temp.setInformation(self.checkContactID[data.contactid]);
+            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+                var tempValue = value[0];
+                temp.setInformation(tempValue);
+            })
         } else
         if (data.userid !== undefined && data.userid != 0) {
             temp.setInformation(self.checkUserID[data.userid]);
@@ -1837,7 +1845,7 @@ MapRealty.prototype.detailHouse = function(data) {
             ]
         }]
     });
-    if (data.salestatus / 10 < 1) {
+    if (data.status / 10 < 1) {
         priceRent.style.display = "none";
     }
     var fullAddressOld = "";
@@ -2731,7 +2739,7 @@ MapRealty.prototype.detailHouse = function(data) {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-tab",
                         props: {
-                            innerHTML: "Lịch sử sở hữu"
+                            innerHTML: "Tiến trình lịch sử"
                         },
                     },
                     this.possessionHistory(data)
@@ -2744,18 +2752,15 @@ MapRealty.prototype.detailHouse = function(data) {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-tab",
                         props: {
-                            innerHTML: "Tiến trình lịch sử"
+                            innerHTML: "Lịch sử sở hữu"
                         }
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-tab-historical-progress-container",
-                        child: [{
-                            tag: "span",
-                            class: "pizo-new-realty-dectruct-tab-historical-progress-label",
-                        }]
+                ],
+                on:{
+                    click:function(){
+                        
                     }
-                ]
+                }
             },
         ]
     })
@@ -2869,6 +2874,8 @@ MapRealty.prototype.detailHouse = function(data) {
     return temp;
 }
 
+// MapRealty.prototype
+
 MapRealty.prototype.possessionHistory = function(data) {
     var container = _({
         tag: "ul",
@@ -2882,35 +2889,52 @@ MapRealty.prototype.possessionHistory = function(data) {
         ]
     })
     var promiseAll = [];
-    var promise1 = moduleDatabase.getModule("contacts").load();
-    promiseAll.push(promise1);
     var promise2 = moduleDatabase.getModule("users").load();
     promiseAll.push(promise2);
     var promise3 = moduleDatabase.getModule("contact_link").load({ WHERE: [{ houseid: data.id }], ORDERING: "created" });
     promiseAll.push(promise3);
+    var promiseTemp = [];
     Promise.all(promiseAll).then(function(current) {
-        current = current[2];
+        current = current[1];
         if (current && current.length > 0)
             current = current[0];
-        var varTemp = this.possessionHistoryNode(current);
-        if (varTemp)
-            container.appendChild(varTemp);
-        var promise3 = moduleDatabase.getModule("possession_history").load({ WHERE: [{ houseid: data.id }] });
-        promise3.then(function(values) {
+        var promise5 =  moduleDatabase.getModule("contacts").load({WHERE:[{id:current.contactid}]});
+            promiseTemp.push(promise5)
+        promise5.then(function(tempValue){
+            var varTemp = this.possessionHistoryNode(tempValue);
+            if (varTemp)
+                container.appendChild(varTemp);
+        }.bind(this,current))
+        // var varTemp = this.possessionHistoryNode(current);
+        // if (varTemp)
+        //     container.appendChild(varTemp);
+        var promise4 = moduleDatabase.getModule("possession_history").load({ WHERE: [{ houseid: data.id }] });
+        promise4.then(function(values) {
             for (var i = 0; i < values.length; i++) {
-                var varTemp = this.possessionHistoryNode(values[i]);
-                if (varTemp)
-                    container.appendChild(varTemp);
+                if(values[i].contactid!=0){
+                    var promise6 = moduleDatabase.getModule("contacts").load({WHERE:[{id:values[i].contactid}]});
+                    promiseTemp.push(promise6)
+                    promise6.then(function(tempValue){
+                        var varTemp = this.possessionHistoryNode(tempValue);
+                        if (varTemp)
+                            container.appendChild(varTemp);
+                    }.bind(this,value[i]))
+                }else{
+                    var varTemp = this.possessionHistoryNode(values[i]);
+                    if (varTemp)
+                        container.appendChild(varTemp);
+                }
             }
-            if (container.childNodes.length == 0)
-                temp.style.display = "none";
+            Promise.all(promiseTemp).then(function(){
+                // if (container.childNodes.length <= 1)
+                //     container.style.display = "none";
+            })
         }.bind(this))
     }.bind(this))
     return temp;
 }
 
 MapRealty.prototype.possessionHistoryNode = function(data) {
-    console.log(data)
     var checkUser = moduleDatabase.getModule("users").getLibary("id");
     var checkContact = moduleDatabase.getModule("contacts").getLibary("id");
     var name = "",
@@ -3095,7 +3119,7 @@ MapRealty.prototype.itemMap = function(marker) {
         }
     });
 
-    switch (parseInt(data.salestatus)) {
+    switch (parseInt(data.status)) {
         case 0:
             statusIcon.style.color = "yellow"
             break;
@@ -3398,19 +3422,17 @@ MapRealty.prototype.searchControlContent = function() {
                 var query;
                 if (Array.isArray(x)) {
                     if (x.length == 2)
-                        query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, ")"];
+                        query = ["(", { status: x[0] }, "||", { status: x[1] }, ")"];
                     else
-                        query = ["(", { salestatus: x[0] }, "||", { salestatus: x[1] }, "||", { salestatus: x[2] }, ")"];
+                        query = ["(", { status: x[0] }, "||", { status: x[1] }, "||", { status: x[2] }, "||", { status: x[3] }, ")"];
                 } else if (this.value == -1) {
                     query = [];
                 } else
-                    query = [{ salestatus: x }];
-                if (this.value == "[10,11]" || this.value == "0") {
-                    self.mapView.setLabelContent(true);
-                } else if (this.value == "[1,11]") {
+                    query = [{ status: x }];
+                if (this.value == "[10,11]" ) {
                     self.mapView.setLabelContent(false);
-                } else if (this.value == "[1,10,11]") {
-                    self.mapView.setLabelContent()
+                } else if (this.value == "[1,11,21,31]" || this.value == "0") {
+                    self.mapView.setLabelContent(true);
                 }
                 var queryAll = isQueryMap(self.stackQuery, query, "isStatus");
                 self.mapView.setGeneralOperator(queryAll);
@@ -3418,7 +3440,7 @@ MapRealty.prototype.searchControlContent = function() {
             }
         },
         props: {
-            value: "[10,11]",
+            value: "[1,11,21,31]",
             items: [
                 // {
                 //     text: "Tất cả",
@@ -3426,11 +3448,11 @@ MapRealty.prototype.searchControlContent = function() {
                 // },
                 {
                     text: "Còn bán",
-                    value: "[10,11]"
+                    value: "[1,11,21,31]"
                 },
                 {
                     text: "Còn cho thuê",
-                    value: "[1,11]"
+                    value: "[11,10]"
                 },
                 {
                     text: "Ngừng giao dịch",

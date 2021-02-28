@@ -1051,9 +1051,9 @@ MapView.prototype.setLabelContent = function(isPrice) {
                 } else if (this.isPrice == false)
                     label = ((parseInt(data[j].data.pricerent) / 1000000) + " triệu");
                 else {
-                    if (parseInt(data[j].data.salestatus / 10) == 1 ? true : false)
+                    if (parseInt(data[j].data.status / 10) == 1 ? true : false)
                         label = data[j].data.price / 1000000000 + " tỉ";
-                    else if (parseInt(data[j].data.salestatus % 10) == 1 ? true : false)
+                    else if (parseInt(data[j].data.status % 10) == 1 ? true : false)
                         label = (parseInt(data[j].data.pricerent) / 1000000) + " triệu";
                     else if (data[j].data.price > 0)
                         label = data[j].data.price / 1000000000 + " tỉ";
@@ -1125,9 +1125,9 @@ MapView.prototype.addOrtherMarker = function(data) {
                             label = arr[j].data.price / 1000000000 + " tỉ";
                         } else if (this.isPrice == false)
                             label = ((parseInt(arr[j].data.pricerent) / 1000000) + " triệu");
-                        else if (parseInt(arr[j].data.salestatus / 10) == 1 ? true : false)
+                        else if (parseInt(arr[j].data.status / 10) == 1 ? true : false)
                             label = arr[j].data.price / 1000000000 + " tỉ";
-                        else if (parseInt(arr[j].data.salestatus % 10) == 1 ? true : false)
+                        else if (parseInt(arr[j].data.status % 10) == 1 ? true : false)
                             label = (parseInt(arr[j].data.pricerent) / 1000000) + " triệu";
                         else if (arr[j].data.price > 0)
                             label = arr[j].data.price / 1000000000 + " tỉ";
@@ -1178,9 +1178,9 @@ MapView.prototype.addOrtherMarker = function(data) {
                 label = (data.price / 1000000000) + " tỉ";
             } else if (this.isPrice == false)
                 label = ((parseInt(data.pricerent) / 1000000) + " triệu");
-            else if (parseInt(data.salestatus / 10) == 1 ? true : false)
+            else if (parseInt(data.status / 10) == 1 ? true : false)
                 label = (data.price / 1000000000) + " tỉ";
-            else if (parseInt(data.salestatus % 10) == 1 ? true : false)
+            else if (parseInt(data.status % 10) == 1 ? true : false)
                 label = (parseInt(data.pricerent) / 1000000) + " triệu";
             else if (data.price > 0)
                 label = (data.price / 1000000000) + " tỉ";
