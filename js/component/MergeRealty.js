@@ -149,7 +149,7 @@ MergeRealty.prototype.getView = function() {
     }
     var itemType = [];
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("id");
-  
+
     this.checkAddressName = []
     var checkAddress = this.checkAddressName;
     this.checkAddressData = checkAddress;
@@ -315,7 +315,12 @@ MergeRealty.prototype.getView = function() {
                 itemImageJuridical.push(dataChild);
             }
         }
-        var number = "", street = "", ward = "", district = "", state ="", fullAddress = "";
+        var number = "",
+            street = "",
+            ward = "",
+            district = "",
+            state = "",
+            fullAddress = "";
         if (itemData && itemData.addressnumber !== "" && itemData.portion != 0) {
             number = itemData.addressnumber;
             street = this.checkStreet[itemData.streetid].name;
@@ -327,13 +332,18 @@ MergeRealty.prototype.getView = function() {
             checkAddress[fullAddress] = [itemData.lat, itemData.lng];
             checkAddress[fullAddress].data = itemData;
         }
-        var number = "", street = "", ward = "", district = "", state ="", fullAddress = "";
+        var number = "",
+            street = "",
+            ward = "",
+            district = "",
+            state = "",
+            fullAddress = "";
         //Địa chỉ cũ
         if (itemData && itemData.addressnumber_old != "") {
             number = itemData.addressnumber_old;
-            if(this.checkStreet[itemData.streetid_old])
-            street = this.checkStreet[itemData.streetid_old].name;
-            if(this.checkWard[itemData.wardid_old]){
+            if (this.checkStreet[itemData.streetid_old])
+                street = this.checkStreet[itemData.streetid_old].name;
+            if (this.checkWard[itemData.wardid_old]) {
                 ward = this.checkWard[itemData.wardid_old].name;
                 district = this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].name;
                 state = this.checkState[this.checkDistrict[this.checkWard[itemData.wardid_old].districtid].stateid].name;
@@ -370,14 +380,14 @@ MergeRealty.prototype.getView = function() {
                             {
                                 tag: "selectmenu",
                                 class: "pizo-new-realty-desc-detail-row-menu-1-checkbox",
-                                props:{
-                                    items:[
-                                        {text:"Chưa xác định",value:0},
-                                        {text:"Còn bán",value:1},
-                                        {text:"Đã bán",value:2},
-                                        {text:"Ngưng bán",value:3},
+                                props: {
+                                    items: [
+                                        { text: "Chưa xác định", value: 0 },
+                                        { text: "Còn bán", value: 1 },
+                                        { text: "Đã bán", value: 2 },
+                                        { text: "Ngưng bán", value: 3 },
                                     ],
-                                    value:inputSell
+                                    value: inputSell
                                 }
                             }
                         ]
@@ -399,14 +409,14 @@ MergeRealty.prototype.getView = function() {
                             {
                                 tag: "selectmenu",
                                 class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
-                                props:{
-                                    items:[
-                                        {text:"Chưa xác định",value:0},
-                                        {text:"Còn thuê",value:1},
-                                        {text:"Đã thuê",value:2},
-                                        {text:"Ngưng thuê",value:3},
+                                props: {
+                                    items: [
+                                        { text: "Chưa xác định", value: 0 },
+                                        { text: "Còn thuê", value: 1 },
+                                        { text: "Đã thuê", value: 2 },
+                                        { text: "Ngưng thuê", value: 3 },
                                     ],
-                                    value:inputLease
+                                    value: inputLease
                                 },
                             }
                         ]
@@ -1430,13 +1440,12 @@ MergeRealty.prototype.contactItem = function(data) {
                                     var tempValue = self.checkUser[this.value];
                                     temp.setInformation(tempValue);
                                 } else {
-                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
-                                        if(value.length>0){
+                                    moduleDatabase.getModule("contacts").load({ WHERE: [{ phone: this.value }] }).then(function(value) {
+                                        if (value.length > 0) {
                                             var tempValue = value[0];
                                             temp.setInformation(tempValue);
-                                        }else
-                                        {
-                                            tempValue.setOpenForm()
+                                        } else {
+                                            temp.setOpenForm()
                                         }
                                     })
                                 }
@@ -1495,7 +1504,7 @@ MergeRealty.prototype.contactItem = function(data) {
             return;
         }
         if (data.contactid !== undefined && data.contactid !== 0) {
-            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+            moduleDatabase.getModule("contacts").load({ WHERE: [{ id: data.contactid }] }).then(function(value) {
                 var tempValue = value[0];
                 temp.setInformation(tempValue);
             })

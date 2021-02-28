@@ -230,7 +230,7 @@ ListRealty.prototype.getView = function() {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
-                    this.ortherData = self.browserFilter(self.mTable.data);
+                    // this.ortherData = self.browserFilter(self.mTable.data);
                     hiddenConfirm.value = "censorship0";
                     hiddenConfirm.emit("change");
                 }
@@ -972,7 +972,7 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse, isDetail) {
             staus += " và còn cho thuê";
         statusValue.push(10);
     }
-    if(statusValue.length == 0)
+    if (statusValue.length == 0)
         statusValue.push(2);
     if (data.addressnumber != "") {
         var district = "";
@@ -1026,8 +1026,8 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse, isDetail) {
         })
     }
     var content = data.content;
-    if(content == null)
-    content = "";
+    if (content == null)
+        content = "";
     var result = [
         {},
         {
@@ -1186,6 +1186,7 @@ ListRealty.prototype.browserFilter = function(data) {
         final.splice.apply(final, [0, 0].concat(result[param]));
     }
     data.ortherFilter = true;
+    console.log(final)
     return final;
 }
 
@@ -1873,25 +1874,24 @@ ListRealty.prototype.editView = function(value, parent, index) {
 
 ListRealty.prototype.delete = function(data, parent, index) {
     var self = this;
-    if(Array.isArray(data)){
+    if (Array.isArray(data)) {
         var name = ""
-        for(var i = data.length-1;i>=0;i--)
-        {
-            if(name !== "")
-            name+=",";
-            name+=data[i].id;    
+        for (var i = data.length - 1; i >= 0; i--) {
+            if (name !== "")
+                name += ",";
+            name += data[i].id;
         }
         var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + name);
-    }else
-    var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.id);
+    } else
+        var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.id);
     this.$view.addChild(deleteItem);
     deleteItem.promiseComfirm.then(function() {
-        if(Array.isArray(data)){
-            for(var i = data.length-1;i>=0;i--){
+        if (Array.isArray(data)) {
+            for (var i = data.length - 1; i >= 0; i--) {
                 self.deleteDB(data[i]);
             }
-        }else
-        self.deleteDB(data, parent, index);
+        } else
+            self.deleteDB(data, parent, index);
     })
 }
 
@@ -1908,8 +1908,7 @@ ListRealty.prototype.deleteDB = function(data, parent, index) {
         phpFile = self.phpUpdateContent;
     var loading = new loadingWheel();
     moduleDatabase.getModule("activehouses").delete({ id: data.id }).then(function(value) {
-        if(parent!==undefined&&index!==undefined)
-        {
+        if (parent !== undefined && index !== undefined) {
             self.deleteView(parent, index);
         }
         loading.disable();

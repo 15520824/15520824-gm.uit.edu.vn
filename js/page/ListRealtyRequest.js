@@ -193,7 +193,7 @@ ListRealtyRequest.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
-    arr.push(moduleDatabase.getModule("modification_requests").load({WHERE:[{status:0}]}));
+    arr.push(moduleDatabase.getModule("modification_requests").load({ WHERE: [{ status: 0 }] }));
     Promise.all(arr).then(function(values) {
         var checkHouseArr = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
 
@@ -342,9 +342,7 @@ ListRealtyRequest.prototype.getView = function() {
                 }
 
             var promiseAll = [];
-            console.log(arr)
             promiseAll.push(moduleDatabase.getModule("streets").load({ WHERE: arr }));
-
             var promise1 = moduleDatabase.getModule("image").load({ WHERE: arrTemp });
             promiseAll.push(promise1);
             promise1.then(function(values) {
@@ -389,7 +387,7 @@ ListRealtyRequest.prototype.getView = function() {
                 } else {
                     value = self.formatDataRow(value);
                 }
-
+                console.log(value)
                 self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
                 self.mTable.addFilter(self.HTinput, 17);
@@ -441,12 +439,10 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
     var check;
     var checkHouseRequest = moduleDatabase.getModule("modification_requests").getLibary("houseid", undefined, true);
     for (var i = 0; i < data.length; i++) {
-        console.log(data[i])
         if (checkHouseRequest[data[i].id] == undefined)
             continue;
 
         var dataHouse = self.checkArrDataMerge[data[i].id];
-        console.log(dataHouse)
         isAvailable = false;
         Loop: for (var param in moduleDatabase.checkPermission) {
             if (dataHouse.addressnumber == "" && dataHouse.portion == "")
@@ -503,9 +499,9 @@ ListRealtyRequest.prototype.formatDataRow = function(data) {
             for (var j = 0; j < checkImage.length; j++) {
                 if (checkImage[j].status == 0)
                     continue;
-                if (checkImage[checkImage[j]].type == 1) {
+                if (checkImage[j].type == 1) {
                     imageStatus.push(checkImage[j]);
-                } else if (checkImage[checkImage[j]].type == 0) {
+                } else if (checkImage[j].type == 0) {
                     imageJuridical.push(checkImage[j]);
                 }
             }
@@ -624,8 +620,7 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
     }
     var staus = "";
     var statusValue = [];
-    if (parseInt(data.status) % 10 == 1)
-    {
+    if (parseInt(data.status) % 10 == 1) {
         staus += "Còn bán";
         statusValue.push(1);
     }
@@ -636,14 +631,13 @@ ListRealtyRequest.prototype.getDataRow = function(data, isChild) {
             staus += " và còn cho thuê";
         statusValue.push(10);
     }
-    if(statusValue.length == 0)
+    if (statusValue.length == 0)
         statusValue.push(2);
     if (data.portion != "" || data.addressnumber != "") {
         var number = data.addressnumber;
         var ward = "",
             district = "",
             state = "";
-        console.log(this.checkStreet, data.streetid)
         if (this.checkStreet[data.streetid])
             var street = this.checkStreet[data.streetid].name;
         else

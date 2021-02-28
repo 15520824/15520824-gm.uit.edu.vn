@@ -900,14 +900,12 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                     }]
                                                 },
                                                 {
-                                                    tag:"div",
-                                                    class:"ds-data-col-container",
-                                                    child:[
-                                                        {
+                                                    tag: "div",
+                                                    class: "ds-data-col-container",
+                                                    child: [{
                                                             tag: "div",
                                                             class: ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
-                                                            child:[
-                                                                {
+                                                            child: [{
                                                                     tag: "div",
                                                                     class: "ds-chip",
                                                                     child: [{
@@ -984,7 +982,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                                                         }
                                                                                                                     }
                                                                                                                 ]
-                
+
                                                                                                             }]
                                                                                                         },
                                                                                                         {
@@ -1110,7 +1108,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                 },
                                                                                 on: {
                                                                                     click: function(event) {
-                                                                                        var textarea = $("textarea.form-control", temp);
+                                                                                        var textarea = $("textarea.form-control", modal);
                                                                                         var value = {
                                                                                             userid: window.userid,
                                                                                             houseid: data.id,
@@ -1133,7 +1131,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                         }
                                                     ]
                                                 }
-                                               
+
                                                 //    {
                                                 //        tag:"div",
                                                 //        class:"ds-buttons",
@@ -1174,7 +1172,7 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                 //    }
                                             ]
                                         },
-                                      
+
 
                                     ]
                                 }]
@@ -1714,7 +1712,7 @@ MapRealty.prototype.contactItem = function(data) {
             return;
         }
         if (data.contactid !== undefined && data.contactid != 0) {
-            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+            moduleDatabase.getModule("contacts").load({ WHERE: [{ id: data.contactid }] }).then(function(value) {
                 var tempValue = value[0];
                 temp.setInformation(tempValue);
             })
@@ -2749,16 +2747,15 @@ MapRealty.prototype.detailHouse = function(data) {
                 tag: "div",
                 class: "pizo-new-realty-dectruct-tab-historical-progress",
                 child: [{
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-tab",
-                        props: {
-                            innerHTML: "Lịch sử sở hữu"
-                        }
-                    },
-                ],
-                on:{
-                    click:function(){
-                        
+                    tag: "div",
+                    class: "pizo-new-realty-dectruct-tab",
+                    props: {
+                        innerHTML: "Lịch sử sở hữu"
+                    }
+                }, ],
+                on: {
+                    click: function() {
+
                     }
                 }
             },
@@ -2898,34 +2895,34 @@ MapRealty.prototype.possessionHistory = function(data) {
         current = current[1];
         if (current && current.length > 0)
             current = current[0];
-        var promise5 =  moduleDatabase.getModule("contacts").load({WHERE:[{id:current.contactid}]});
-            promiseTemp.push(promise5)
-        promise5.then(function(tempValue){
-            var varTemp = this.possessionHistoryNode(tempValue);
-            if (varTemp)
-                container.appendChild(varTemp);
-        }.bind(this,current))
-        // var varTemp = this.possessionHistoryNode(current);
-        // if (varTemp)
-        //     container.appendChild(varTemp);
+        var promise5 = moduleDatabase.getModule("contacts").load({ WHERE: [{ id: current.contactid }] });
+        promiseTemp.push(promise5)
+        promise5.then(function(tempValue) {
+                var varTemp = this.possessionHistoryNode(tempValue);
+                if (varTemp)
+                    container.appendChild(varTemp);
+            }.bind(this, current))
+            // var varTemp = this.possessionHistoryNode(current);
+            // if (varTemp)
+            //     container.appendChild(varTemp);
         var promise4 = moduleDatabase.getModule("possession_history").load({ WHERE: [{ houseid: data.id }] });
         promise4.then(function(values) {
             for (var i = 0; i < values.length; i++) {
-                if(values[i].contactid!=0){
-                    var promise6 = moduleDatabase.getModule("contacts").load({WHERE:[{id:values[i].contactid}]});
+                if (values[i].contactid != 0) {
+                    var promise6 = moduleDatabase.getModule("contacts").load({ WHERE: [{ id: values[i].contactid }] });
                     promiseTemp.push(promise6)
-                    promise6.then(function(tempValue){
+                    promise6.then(function(tempValue) {
                         var varTemp = this.possessionHistoryNode(tempValue);
                         if (varTemp)
                             container.appendChild(varTemp);
-                    }.bind(this,value[i]))
-                }else{
+                    }.bind(this, value[i]))
+                } else {
                     var varTemp = this.possessionHistoryNode(values[i]);
                     if (varTemp)
                         container.appendChild(varTemp);
                 }
             }
-            Promise.all(promiseTemp).then(function(){
+            Promise.all(promiseTemp).then(function() {
                 // if (container.childNodes.length <= 1)
                 //     container.style.display = "none";
             })
@@ -3429,7 +3426,7 @@ MapRealty.prototype.searchControlContent = function() {
                     query = [];
                 } else
                     query = [{ status: x }];
-                if (this.value == "[10,11]" ) {
+                if (this.value == "[10,11]") {
                     self.mapView.setLabelContent(false);
                 } else if (this.value == "[1,11,21,31]" || this.value == "0") {
                     self.mapView.setLabelContent(true);

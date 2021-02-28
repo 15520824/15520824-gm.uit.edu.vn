@@ -626,8 +626,8 @@ NewRealty.prototype.descViewdetail = function() {
                 child: [{
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-size-zone",
-                        style:{
-                          width:"calc(30% - 1.0714rem)"  
+                        style: {
+                            width: "calc(30% - 1.0714rem)"
                         },
                         child: [{
                             tag: "div",
@@ -649,8 +649,8 @@ NewRealty.prototype.descViewdetail = function() {
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-size-zone",
-                        style:{
-                            width:"calc(70% - 1.0714rem)"  
+                        style: {
+                            width: "calc(70% - 1.0714rem)"
                         },
                         child: [{
                             tag: "div",
@@ -685,12 +685,12 @@ NewRealty.prototype.descViewdetail = function() {
                                             {
                                                 tag: "selectmenu",
                                                 class: "pizo-new-realty-desc-detail-row-menu-1-checkbox",
-                                                props:{
-                                                    items:[
-                                                        {text:"Chưa xác định",value:0},
-                                                        {text:"Còn bán",value:1},
-                                                        {text:"Đã bán",value:2},
-                                                        {text:"Ngưng bán",value:3},
+                                                props: {
+                                                    items: [
+                                                        { text: "Chưa xác định", value: 0 },
+                                                        { text: "Còn bán", value: 1 },
+                                                        { text: "Đã bán", value: 2 },
+                                                        { text: "Ngưng bán", value: 3 },
                                                     ],
                                                 }
                                             }
@@ -713,12 +713,12 @@ NewRealty.prototype.descViewdetail = function() {
                                             {
                                                 tag: "selectmenu",
                                                 class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
-                                                props:{
-                                                    items:[
-                                                        {text:"Chưa xác định",value:0},
-                                                        {text:"Còn thuê",value:1},
-                                                        {text:"Đã thuê",value:2},
-                                                        {text:"Ngưng thuê",value:3},
+                                                props: {
+                                                    items: [
+                                                        { text: "Chưa xác định", value: 0 },
+                                                        { text: "Còn thuê", value: 1 },
+                                                        { text: "Đã thuê", value: 2 },
+                                                        { text: "Ngưng thuê", value: 3 },
                                                     ]
                                                 },
                                                 on: {
@@ -2572,13 +2572,12 @@ NewRealty.prototype.contactItem = function(data) {
                                     var tempValue = self.checkUser[this.value];
                                     temp.setInformation(tempValue);
                                 } else {
-                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
-                                        if(value.length>0){
+                                    moduleDatabase.getModule("contacts").load({ WHERE: [{ phone: this.value }] }).then(function(value) {
+                                        if (value.length > 0) {
                                             var tempValue = value[0];
                                             temp.setInformation(tempValue);
-                                        }else
-                                        {
-                                            tempValue.setOpenForm()
+                                        } else {
+                                            temp.setOpenForm()
                                         }
                                     })
                                 }
@@ -2638,7 +2637,7 @@ NewRealty.prototype.contactItem = function(data) {
             return;
         }
         if (data.contactid !== undefined && data.contactid != 0) {
-            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+            moduleDatabase.getModule("contacts").load({ WHERE: [{ id: data.contactid }] }).then(function(value) {
                 var tempValue = value[0];
                 temp.setInformation(tempValue);
             })

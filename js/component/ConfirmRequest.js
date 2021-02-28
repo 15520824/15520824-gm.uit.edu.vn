@@ -201,7 +201,8 @@ ConfirmRequest.prototype.getView = function() {
         var imageStatus = [];
         var imageJuridical = [];
         for (var j = 0; j < itemData.image.length; j++) {
-            if (this.checkImage[itemData.image[j]].type == 1) {
+            console.log(itemData.image[j])
+            if (itemData.image[j].type == 1) {
                 var dataChild = _({
                     tag: "div",
                     class: "grid-item",
@@ -209,7 +210,7 @@ ConfirmRequest.prototype.getView = function() {
                         tag: "img",
                         class: "full-size",
                         props: {
-                            src: prefixImage + this.checkImage[itemData.image[j]].src
+                            src: prefixImage + itemData.image[j].src
                         }
                     }]
                 });
@@ -223,7 +224,7 @@ ConfirmRequest.prototype.getView = function() {
                         tag: "img",
                         class: "full-size",
                         props: {
-                            src: prefixImage + this.checkImage[itemData.image[j]].src
+                            src: prefixImage + itemData.image[j].src
                         }
                     }, ]
                 })
@@ -1178,8 +1179,8 @@ ConfirmRequest.prototype.getView = function() {
             // }
         ]
     };
-    setAction(x);
     console.log(x)
+    setAction(x);
     myTool.setData({ editor: x });
     toolView.addStyle({ width: '100%', height: '100%' });
     this.$view.addChild(_({
@@ -1292,13 +1293,12 @@ ConfirmRequest.prototype.contactItem = function(data) {
                                     var tempValue = self.checkUser[this.value];
                                     temp.setInformation(tempValue);
                                 } else {
-                                    moduleDatabase.getModule("contacts").load({WHERE:[{phone:this.value}]}).then(function(value){
-                                        if(value.length>0){
+                                    moduleDatabase.getModule("contacts").load({ WHERE: [{ phone: this.value }] }).then(function(value) {
+                                        if (value.length > 0) {
                                             var tempValue = value[0];
                                             temp.setInformation(tempValue);
-                                        }else
-                                        {
-                                            tempValue.setOpenForm()
+                                        } else {
+                                            temp.setOpenForm()
                                         }
                                     })
                                 }
@@ -1356,9 +1356,9 @@ ConfirmRequest.prototype.contactItem = function(data) {
             })
             return;
         }
-       
+
         if (data.contactid !== undefined && data.contactid !== 0) {
-            moduleDatabase.getModule("contacts").load({WHERE:[{id:data.contactid}]}).then(function(value){
+            moduleDatabase.getModule("contacts").load({ WHERE: [{ id: data.contactid }] }).then(function(value) {
                 var tempValue = value[0];
                 temp.setInformation(tempValue);
             })

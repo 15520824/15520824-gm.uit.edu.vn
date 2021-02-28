@@ -123,7 +123,7 @@ export function getRealLength(arr) {
     var count = 0;
     var checkElement = [];
     for (var i = 0; i < arr.length; i++) {
-        if (typeof arr[i] === 'object') {
+        if (arr[i] != null && typeof arr[i] === 'object') {
             var item = arr[i];
             if (checkElement[item.element.innerHTML] !== undefined && checkManyArray(checkElement[item.element.innerHTML], checkValueElement(item.element))) {
                 arr.splice(i, 1);
