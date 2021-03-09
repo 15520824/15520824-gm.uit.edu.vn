@@ -1497,7 +1497,8 @@ tableView.prototype.getCellHeader = function(header, i, cellTemp) {
             }
         }));
     } else {
-        container.appendChild(data[i][j].element);
+        container.addChild(_(header.element));
+        // container.appendChild(data[i][j].element);
     }
 
     if (bonus !== undefined) {
