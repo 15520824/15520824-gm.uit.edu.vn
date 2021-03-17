@@ -57,11 +57,13 @@
     width: 100%;
 }
 
+/**
 .freebirdHeaderMastWithOverlay {
     padding: 10px;
     background-color: rgb(247, 246, 246);
     margin-bottom: 10px;
 }
+ */
 
 .freebirdFormeditorViewHeaderTopRow {
     display: -webkit-box;
