@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>TableView</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<script src="../pizo/index.js"></script>
+<script>
+    var _ = absol._;
+    var $ = absol.$;
+    var header = [
+        { type: 'dragzone' },
+        {
+            style: {
+                fontSize: '14px'
+            },
+            element: {
+                tag: 'checkboxbutton'
+            }
+        },
+        {
+            type: "increase",
+            element: {
+                tag: 'span',
+                child: { text: 'STT' }
+
+            }
+        },
+        {
+            value: 'Chức năng'
+        },
+        {
+            value: "Độ ưu tiên"
+        },
+        {
+            element: {
+                tag: 'rotatedtext',
+                style: { marginRight: '15px' },
+                props: {
+                    angle: -45,
+                    text: 'Hành chính nhân sự'
+                }
+            }
+        },
+        {
+            element: {
+                tag: 'rotatedtext',
+                style: { marginRight: '15px' },
+                props: {
+                    angle: -45,
+                    text: 'Kinh doanh'
+                }
+            }
+        },
+        { value: '' }
+    ];
+    var bodyData = ['Giao nhận, vận chuyển', "Báo cáo tài chính", "Bảo trì xe cơ giới", "Chăm sóc khách hàng, Giải quyết khiếu nại",
+        "Kinh doanh, bán hàng", "Phát triển thị trường", "Xuất nhập khẩu", "Nghiên cứu dự báo"].map(function (item, i) {
+        return [
+            { value: i },
+            {
+                element: _({
+                    child: {
+                        tag: 'checkboxbutton',
+                        props: { checked: Math.random() > 0.5 }
+                    }
+                })
+            },
+            {
+                style: { textAlign: 'center' }
+            },
+            {
+                element: _({
+                    child: { tag: 'span', child: { text: item } }
+                })
+            },
+            {
+                element: _({
+                    child: { tag: 'span', child: { text: (Math.random() * 5 >> 0) + '' } }
+                })
+            },
+            {
+                element: _({
+                    child: {
+                        tag: 'checkboxbutton',
+                        props: { checked: Math.random() > 0.5 }
+                    }
+                })
+            },
+            {
+                element: _({
+                    child: {
+                        tag: 'checkboxbutton',
+                        props: { checked: Math.random() > 0.5 }
+                    }
+                })
+            },
+            {
+                element: (function () {
+                    var elt = _({
+                        child: 'span.mdi.mdi-dots-vertical'
+                    });
+
+                    return elt;
+
+                })()
+            }
+        ]
+    });
+    console.log(bodyData)
+    var mTable = pizo.tableView(header, bodyData, false, true);
+    mTable.addStyle('height', 'calc(100vh - 150px)');
+    document.body.appendChild(mTable);
+    var marginBox = _({
+        style: {
+            height: 100 + 'px'
+        },
+        child: { text: '' }
+    });
+    document.body.insertBefore(marginBox, mTable);
+    document.body.style.backgroundColor = 'rgb(50, 50, 60)';
+</script>
+</body>
+</html>
