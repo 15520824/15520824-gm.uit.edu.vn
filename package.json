@@ -5,15 +5,15 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "webpack-dev-server --config webpack.config.js --host 127.0.0.1 --port 8080 --publicx",
+        "dev": "webpack-dev-server --config webpack.config.js --public https://frame.absol.cf",
         "dist": "webpack --config webpack.config.js  --progress --profile --colors --mode production "
     },
     "author": "Pham Quoc Du Thien",
     "license": "ISC",
     "dependencies": {
         "@dxfom/dxf": "^0.0.1",
-        "absol": "^1.15.20",
-        "absol-acomp": "^0.9.55",
+        "absol": "^1.17.0",
+        "absol-acomp": "github:duthienkt/absol-acomp#master",
         "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
     },
     "devDependencies": {
