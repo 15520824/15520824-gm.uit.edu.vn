@@ -2,6 +2,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/ModuleImage.css';
 import { formatDate } from './FormatFunction';
+import {saveAs} from "absol/src/Network/FileSaver";
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -318,6 +319,17 @@ export function descViewImagePreview(data = [], index = 0, promiseLazyLoad) {
                                     rel: "noopener noreferrer",
                                     download: "",
                                     title: "Lưu về máy",
+                                },
+
+                                on:{
+                                    click: function(event){
+                                        event.preventDefault();
+                                        var href = this.href;
+                                        var fileName = this.download||'noname.bin';
+                                        if (href  && href !== '#'){
+                                            saveAs(href, fileName);
+                                        }
+                                    }
                                 }
                             },
                             {

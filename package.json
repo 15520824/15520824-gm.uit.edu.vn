@@ -12,7 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "@dxfom/dxf": "^0.0.1",
-        "absol": "^1.17.0",
+        "absol": "^1.17.5",
         "absol-acomp": "github:duthienkt/absol-acomp#master",
         "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
     },
