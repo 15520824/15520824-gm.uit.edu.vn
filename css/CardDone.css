@@ -1,5 +1,5 @@
-.sortTable thead th,
-.sortTableClone thead th {
+.bsc-white .sortTable thead th,
+.bsc-white .sortTableClone thead th {
     text-align: center;
     background-color: #d6d6d6;
     color: black;
@@ -9,26 +9,21 @@
     padding: 10px;
 }
 
-table.sortTable th,
-table.sortTable td,
-table.sortTableClone th,
-table.sortTableClone td {
+.bsc-white table.sortTable th,
+.bsc-white table.sortTable td,
+.bsc-white table.sortTableClone th,
+.bsc-white table.sortTableClone td {
     border-bottom: 1px solid #ddd;
 }
 
-table.sortTable,
-table.sortTableClone {
+.bsc-white table.sortTable,
+.bsc-white table.sortTableClone {
     border-top: 0;
     border-right: 1px solid #ddd;
 }
 
-table.sortTable>tbody>tr>td:first-child,
-table.sortTableClone>tbody>tr>td:first-child {
+.bsc-white table.sortTable>tbody>tr>td:first-child,
+.bsc-white table.sortTableClone>tbody>tr>td:first-child {
     border-left: 1px solid #ddd;
 }
 
-
-/* table.sortTable>tbody>tr>td:last-child,
-table.sortTableClone>tbody>tr>td:last-child {
-    border-right: 1px solid #ddd;
-} */
