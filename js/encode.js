@@ -1095,4 +1095,4 @@ var EncodingClass = {
     }
 };
 
-window.EncodingClass = EncodingClass;
+window.EncodingClass =window.EncodingClass || EncodingClass;
